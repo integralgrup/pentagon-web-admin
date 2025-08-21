@@ -1,0 +1,343 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\Career;
+use App\Models\CareerSlider;
+use App\Models\CareerJob;
+use App\Models\Language; // Assuming you have a Language model to fetch languages
+
+class CareerController extends Controller
+{
+
+    protected $languages;
+
+    //constructor
+    public function __construct()
+    {
+        //$this->middleware('auth');
+        $this->languages = Language::all();
+        view()->share('languages', $this->languages);
+    }
+
+
+    //Career methods
+    public function index()
+    {
+        $careers = Career::all();
+        return view('admin.career.index', compact('careers'));
+    }
+
+    public function create()
+    {
+
+        $career = Career::all();
+
+        if ($career->isEmpty()) {
+            // Handle the case when there are no careers
+            return view('admin.career.create');
+        }else{
+            return view('admin.career.edit', compact( 'career'));
+        }
+        
+    }
+
+    public function store(Request $request)
+    {
+        try {
+            foreach ($this->languages as $language) {
+                    // Validate the request data
+                    $request->validate([
+                        'lang_' . $language->lang_code => 'required|string|max:10',
+                        'title_' . $language->lang_code => 'required|string|max:100',
+                        'title_1_' . $language->lang_code => 'required|string|max:255',
+                        'description_' . $language->lang_code => 'required|string',
+                        'image_' . $language->lang_code => 'nullable|image|max:2048',
+                        'alt_' . $language->lang_code => 'required|string|max:255',
+                        'button_text_' . $language->lang_code => 'required|string|max:50',
+                        'seo_title_' . $language->lang_code => 'required|string|max:255',
+                        'seo_description_' . $language->lang_code => 'required|string|max:255',
+                        'seo_keywords_' . $language->lang_code => 'nullable|string|max:255',
+                    ]);
+
+                    if ($request->hasFile('image_' . $language->lang_code)) {
+                        $image      = $request->file('image_' . $language->lang_code);
+                        $folderPath = public_path($language->lang_code.'/'.$language->uploads_folder.'/'.$language->images_folder); // full path inside public/
+
+                            // Create folder if it doesn't exist
+                            if (!file_exists($folderPath)) {
+                                mkdir($folderPath, 0777, true);
+                            }
+
+                            // Generate unique name
+                            $imageName = seoUrl($request->input('title_' . $language->lang_code)) . '_' . time() . '.' . $image->getClientOriginalExtension();
+
+                            // Move file into public/some_folder
+                            $image->move($folderPath, $imageName);
+                    } else {
+                        $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
+                    }
+
+                     
+
+                    // Create or update the career content for the specific language
+                    Career::updateOrCreate(
+                        [
+                            'lang' => $language->lang_code,
+                        ],
+                        [
+                            'title' => $request->input('title_' . $language->lang_code),
+                            'title_1' => $request->input('title_1_' . $language->lang_code),
+                            'description' => $request->input('description_' . $language->lang_code),
+                            'image' => $imageName, // save relative path
+                            'alt' => $request->input('alt_' . $language->lang_code),
+                            'button_text' => $request->input('button_text_' . $language->lang_code),
+                            'seo_title' => $request->input('seo_title_' . $language->lang_code),
+                            'seo_description' => $request->input('seo_description_' . $language->lang_code),
+                            'seo_keywords' => $request->input('seo_keywords_' . $language->lang_code),
+                        ]
+                    );
+
+                }
+
+            return redirect()->back()->with('success', 'Kariyer başarıyla kaydedildi.');
+
+        } catch (\Throwable $th) {
+            // Handle the exception, log it or return an error response
+            return redirect()->back()->withErrors(['error' => 'Hata: ' . $th->getMessage()]);
+        }
+    }
+
+    public function edit()
+    {
+        $career = Career::all();
+        //dd($career);
+        return view('admin.career.edit', compact('career'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'lang' => 'required',
+            'title' => 'required',
+            'description' => 'required',
+        ]);
+
+        Career::where('id', $id)->update($validated);
+        return redirect()->route('admin.career.index');
+    }
+
+    public function destroy($id)
+    {
+        Career::destroy($id);
+        return redirect()->route('admin.career.index');
+    }
+
+    // Career slider methods, index, create, store, edit, destroy
+    public function sliderIndex()
+    {
+        $sliders = CareerSlider::where('lang', app()->getLocale())->get();
+        
+        return view('admin.career.slider.index', compact('sliders'));
+    }
+
+    public function sliderCreate()
+    {
+        return view('admin.career.slider.create');
+    }
+
+    public function sliderStore(Request $request)
+    {
+        //dd($request->all());
+        if($request->has('slider_id')) {
+            $slider_id = $request->slider_id; // Use the provided slider_id
+        }
+        else {
+            $slider_id = CareerSlider::max('slider_id') + 1; // Increment the maximum slider_id by 1
+            if (!$slider_id) {
+                $slider_id = 1; // If no sliders exist, start with 1
+            }
+        }
+
+       try {
+            foreach ($this->languages as $language) {
+                $request->validate([
+                    'lang_' . $language->lang_code => 'required|string|max:10',
+                    'title_' . $language->lang_code => 'required|string|max:100',
+                    'title_1_' . $language->lang_code => 'required|string|max:255',
+                    'description_' . $language->lang_code => 'required|string|max:500',
+                    'image_' . $language->lang_code => 'nullable|image|max:2048',
+                    'alt_' . $language->lang_code => 'required|string|max:255',
+                ]);
+
+                if ($request->hasFile('image_' . $language->lang_code)) {
+                    $image = $request->file('image_' . $language->lang_code);
+                    $folderPath = public_path($language->lang_code.'/'.$language->uploads_folder.'/'.$language->images_folder);
+
+                    // Create folder if it doesn't exist
+                    if (!file_exists($folderPath)) {
+                        mkdir($folderPath, 0777, true);
+                    }
+
+                    // Generate unique name
+                    $imageName = seoUrl($request->input('title_' . $language->lang_code)) . '_' . time() . '.' . $image->getClientOriginalExtension();
+
+                    // Move file into public/some_folder
+                    $image->move($folderPath, $imageName);
+                } else {
+                   // old_image
+                   $imageName = $request->input('old_image_' . $language->lang_code);
+                }
+
+                CareerSlider::updateOrCreate(
+                    [
+                        'lang' => $language->lang_code,
+                        'slider_id' => $slider_id,
+                    ],
+                    [
+                        'title' => $request->input('title_' . $language->lang_code),
+                        'title_1' => $request->input('title_1_' . $language->lang_code),
+                        'description' => $request->input('description_' . $language->lang_code),
+                        'image' => $imageName,
+                        'alt' => $request->input('alt_' . $language->lang_code),
+                    ]
+                );
+            }
+            
+            return redirect()->back()->with('success', 'Kariyer slayt başarıyla kaydedildi.');
+
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', 'Kariyer slayt kaydedilirken bir hata oluştu. Hata: ' . $th->getMessage());
+        }
+
+    }
+
+    public function sliderEdit($id)
+    {
+        $slider = CareerSlider::where('slider_id', $id)->get();
+        return view('admin.career.slider.edit', compact('slider'));
+    }
+
+
+    public function sliderDestroy($id)
+    {
+        CareerSlider::destroy($id);
+        return redirect()->route('admin.career.slider.index');
+    }
+
+
+    // Career Job methods
+    public function jobIndex()
+    {
+        $jobs = CareerJob::where('lang', app()->getLocale())->get();
+        return view('admin.career.job.index', compact('jobs'));
+    }
+
+    public function jobCreate()
+    {
+        return view('admin.career.job.create');
+    }
+
+    public function jobStore(Request $request)
+    {
+            
+        try {
+            if($request->has('job_id')) {
+                $job_id = $request->job_id; // Use the provided job_id
+            } else {
+                $job_id = CareerJob::max('id') + 1; // Increment the maximum job_id by 1
+                if (!$job_id) {
+                    $job_id = 1; // If no jobs exist, start with 1
+                }
+            }
+
+            foreach ($this->languages as $language) {
+                $request->validate([
+                    'lang_' . $language->lang_code => 'required|string|max:10',
+                    'title_' . $language->lang_code => 'required|string|max:100',
+                    'short_description_' . $language->lang_code => 'required|string|max:255',
+                    'description_' . $language->lang_code => 'required|string',
+                    'outer_url_' . $language->lang_code => 'nullable|url|max:255',
+                    'button_text_' . $language->lang_code => 'nullable|string|max:50',
+                    'seo_title_' . $language->lang_code => 'nullable|string|max:255',
+                    'seo_description_' . $language->lang_code => 'nullable|string|max:255',
+                    'seo_keywords_' . $language->lang_code => 'nullable|string|max:255',
+            ]);
+
+                /*if ($request->hasFile('image_' . $language->lang_code)) {
+                    $image = $request->file('image_' . $language->lang_code);
+                    $folderPath = public_path($language->lang_code.'/'.$language->uploads_folder.'/'.$language->images_folder);
+
+                    // Create folder if it doesn't exist
+                    if (!file_exists($folderPath)) {
+                        mkdir($folderPath, 0777, true);
+                    }
+
+                    // Generate unique name
+                    $imageName = seoUrl($request->input('title_' . $language->lang_code)) . '_' . time() . '.' . $image->getClientOriginalExtension();
+
+                    // Move file into public/some_folder
+                    $image->move($folderPath, $imageName);
+                } else {
+                   // old_image
+                   $imageName = $request->input('old_image_' . $language->lang_code);
+                }*/
+
+                $careerJob = CareerJob::updateOrCreate(
+                    ['job_id' => $job_id, 'lang' => $language->lang_code],
+                    [
+                        'job_id' => $job_id,
+                        'title' => $request->input('title_' . $language->lang_code),
+                        'short_description' => $request->input('short_description_' . $language->lang_code),
+                        'description' => $request->input('description_' . $language->lang_code),
+                        'outer_url' => $request->input('outer_url_' . $language->lang_code),
+                        'button_text' => $request->input('button_text_' . $language->lang_code),
+                        'seo_title' => $request->input('seo_title_' . $language->lang_code),
+                        'seo_description' => $request->input('seo_description_' . $language->lang_code),
+                        'seo_keywords' => $request->input('seo_keywords_' . $language->lang_code),
+                        //'image' => $imageName,
+                    ]
+                );
+            }
+
+            return redirect()->back()->with('success', 'Job başarıyla kaydedildi.');
+
+        } catch (\Throwable $th) {
+            dd($th);
+            //return redirect()->back()->with('error', 'Job kaydedilirken bir hata oluştu.' . $th->getMessage());
+        }
+    }
+
+    public function jobEdit($id)
+    {
+        $job = CareerJob::where('job_id', $id)->get();
+        return view('admin.career.job.edit', compact('job'));
+    }
+
+    public function jobUpdate(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'lang' => 'required',
+            'title' => 'required|string|max:100',
+            'short_description' => 'required|string|max:255',
+            'description' => 'required|string',
+            'outer_url' => 'nullable|url|max:255',
+            'button_text' => 'nullable|string|max:50',
+            'seo_title' => 'nullable|string|max:255',
+            'seo_description' => 'nullable|string|max:255',
+            'seo_keywords' => 'nullable|string|max:255',
+        ]);
+
+        $job = CareerJob::findOrFail($id);
+        $job->update($validated);
+        return redirect()->route('admin.career.job.index');
+    }
+
+    public function jobDestroy($id)
+    {
+        CareerJob::destroy($id);
+        return redirect()->route('admin.career.job.index');
+    }
+}
