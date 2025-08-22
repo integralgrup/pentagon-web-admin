@@ -7,15 +7,15 @@
         <div class="w-1/3 md:w-full bg-secondary-main"></div>
         <div class="w-2/3 md:w-full bg-primary-main h-[calc(100%-60px)]"></div>
     </div>
-    <img src="{{ asset('assets')/image/static/vectorel-4.svg" alt="Vektör" width="531" height="571" class="max-w-[531px] h-auto absolute left-0 top-[50px] z-2 ">
+    <img src="{{ asset('assets') }}/image/static/vectorel-4.svg" alt="Vektör" width="531" height="571" class="max-w-[531px] h-auto absolute left-0 top-[50px] z-2 ">
     <div class="container max-w-[1650px] relative z-4">
         <div class="wrapper w-full pb-[120px]">
             <div class="flex flex-wrap">
                 <div class="w-1/3 md:w-full pr-[199px] 2xl:pr-[150px] xl:pr-[100px] lg:pr-[70px] md:pr-0">
                     <div class="flex flex-col mt-[18px]">
                         <div class="logo w-full xs:flex xs:justify-center mb-[60px] lg:mb-[40px] xs:mb-[30px]">
-                            <img src="{{ asset('assets')/image/trademark/logo-white.png" alt="Logo" width="285" height="113" class=" w-[285px] xs:w-[calc((285px)-285px*0.15)] h-auto">
-                            
+                            <img src="{{ asset('assets') }}/image/trademark/logo-white.png" alt="Logo" width="285" height="113" class=" w-[285px] xs:w-[calc((285px)-285px*0.15)] h-auto">
+
                         </div>
 
                         <div class="social mb-[50px] lg:mb-[30px]">
@@ -287,8 +287,7 @@
         <div class="container max-w-[1650px]">
             <div class="flex items-center justify-between sm:justify-center gap-[24px] xs:flex-col">
                 <p class="text-[15px] leading-[22px] tracking-[-0.15px] text-white font-light">© <?= Date('Y') ?> <strong>Pentagon</strong> | Tüm Hakları Saklıdır.</p>
-                <img src="{{ asset('assets')/image/trademark/logo-white.png" alt="Logo" width="285" height="113" class="w-[100px] h-auto sm:hidden">
-                
+                <img src="{{ asset('assets') }}/image/trademark/logo-white.png" alt="Logo" width="285" height="113" class="w-[100px] h-auto sm:hidden">
             </div>
         </div>
     </div>

@@ -60,7 +60,7 @@
                           </td>
                             <td>
                                 <?php if($menu->image): ?>
-                                <img src="{{ asset($menu->lang . '/' . getFolder($menu->lang, 'uploads_folder') . '/' . getFolder($menu->lang, 'images_folder') . '/' . $menu->image) }}" alt="<?=$menu->title?>" style="width: 50px; height: 50px;">
+                                <img src="{{ asset(getFolder(['uploads_folder', 'images_folder'], $menu->lang) . '/' . $menu->image) }}" alt="<?=$menu->title?>" style="width: 50px; height: 50px;">
                                 <?php else: ?>
                                 <span class="text-muted">Görsel Yok</span>
                                 <?php endif; ?>

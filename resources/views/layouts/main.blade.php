@@ -3,9 +3,9 @@
     <div class="mobile-menu-overlay pointer-events-none min-md:hidden opacity-0 transition-all duration-700 delay-100 absolute left-0 top-[112px] sm:top-[80px] z-[50] bg-black/50 backdrop-blur-[5px] h-full w-full"></div>
 
 <!-- header-space: HEADER KADAR BOŞLUK BIRAKMAKTADIR. -->
-<main class="main-field home-page">
+
     @yield('content')
-</main>
+
 
 </penta-yazilim>
 @include('partials.footer')

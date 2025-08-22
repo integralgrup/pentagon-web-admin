@@ -9,9 +9,7 @@ Route::get('/admin', function () {
     return view('admin.dashboard');
 })->name('admin.dashboard'); 
 
-//Home route
-Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
-
+//Project Admin Routes
 
 // admin/menu route to menu controller index function
 Route::get('/admin/menu', 'App\Http\Controllers\Admin\MenuController@index')->name('admin.menu');
@@ -182,3 +180,11 @@ Route::get('/admin/office/create', 'App\Http\Controllers\Admin\OfficeController@
 Route::post('/admin/office/store', 'App\Http\Controllers\Admin\OfficeController@store')->name('admin.office.store');
 Route::get('/admin/office/{office}/edit', 'App\Http\Controllers\Admin\OfficeController@edit')->name('admin.office.edit');
 Route::delete('/admin/office/{office}', 'App\Http\Controllers\Admin\OfficeController@destroy')->name('admin.office.destroy');
+
+
+
+
+//Project Front End routes
+//Home route
+Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
+Route::get('{slug}/{slug2?}', 'App\Http\Controllers\HomeController@route')->name('page.route');

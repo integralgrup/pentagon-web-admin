@@ -20,6 +20,7 @@ class Menu extends Model
 
     // Specify fillable columns
     protected $fillable = [
+        'parent_menu_id',
         'menu_id',
         'lang',
         'title',
@@ -27,6 +28,7 @@ class Menu extends Model
         'image',
         'alt',
         'menu_type',
+        'page_type',
         'sort',
         'isActive',
     ];

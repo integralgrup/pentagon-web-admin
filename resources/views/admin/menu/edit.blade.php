@@ -60,6 +60,32 @@
                                     <div class="card-body" style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">    
                                         <input type="hidden" name="lang_{{$menu->lang}}" value="{{$menu->lang}}">
                                         <input type="hidden" name="menu_id" value="{{ $menu->menu_id }}">
+                                        <!-- Page Type Dropdown -->
+                                        <div class="mb-3">
+                                            <label for="page_type_{{$menu->lang}}" class="form-label">Sayfa Türü ({{ $menu->lang }})</label>
+                                            <select name="page_type_{{$menu->lang}}" id="page_type_{{$menu->lang}}" class="form-select">
+                                                <option value="">Seçiniz</option>
+                                                <option value="about" {{ $menu->page_type == 'about' ? 'selected' : '' }}>Kurumsal</option>
+                                                <option value="contact" {{ $menu->page_type == 'contact' ? 'selected' : '' }}>İletişim</option>
+                                                <option value="sector" {{ $menu->page_type == 'sector' ? 'selected' : '' }}>Sektörler</option>
+                                                <option value="brand" {{ $menu->page_type == 'brand' ? 'selected' : '' }}>Markalar</option>
+                                                <option value="blog" {{ $menu->page_type == 'blog' ? 'selected' : '' }}>Blog</option>
+                                                <option value="career" {{ $menu->page_type == 'career' ? 'selected' : '' }}>Kariyer</option>
+                                                <option value="catalog" {{ $menu->page_type == 'catalog' ? 'selected' : '' }}>Katalog</option>
+                                                <option value="contact" {{ $menu->page_type == 'contact' ? 'selected' : '' }}>İletişim</option>
+                                                <option value="page" {{ $menu->page_type == 'page' ? 'selected' : '' }}>Özel Sayfa</option>
+                                            </select>
+                                        </div>
+                                        <!-- Parent Menu Dropdown -->
+                                        <div class="mb-3">
+                                            <label for="parent_menu_id_{{$menu->lang}}" class="form-label">Üst Menü ({{ $menu->lang }})</label>
+                                            <select name="parent_menu_id_{{$menu->lang}}" id="parent_menu_id_{{$menu->lang}}" class="form-select">
+                                                <option value="0">Seçiniz</option>
+                                                @foreach($parentMenus as $parentMenu)
+                                                    <option value="{{ $parentMenu->menu_id }}" {{ $parentMenu->menu_id == $menu->parent_menu_id ? 'selected' : '' }}>{{ $parentMenu->title }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                         <!-- Title -->
                                         <div class="mb-3">
                                             <label for="title_{{$menu->lang}}" class="form-label">Başlık ({{ $menu->lang }})<span class="text-danger">*</span></label>
@@ -71,7 +97,7 @@
                                             <input type="file" class="form-control" id="image_{{$menu->lang}}" name="image_{{$menu->lang}}" accept="image/*">
                                             @if($menu->{'image'})
                                                 <input type="hidden" class="form-control mt-2" name="old_image_{{$menu->lang}}" value="{{ $menu->{'image'} }}" readonly>
-                                                <img src="{{ asset($menu->lang . '/' . getFolder($menu->lang, 'uploads_folder') . '/' . getFolder($menu->lang, 'images_folder') . '/' . $menu->{'image'}) }}" alt="Menu Image" class="img-thumbnail mt-2" style="max-width: 200px;">
+                                                <img src="{{ asset(getFolder(['uploads_folder', 'images_folder'], $menu->lang) . '/' . $menu->image ) }}" alt="Menu Image" class="img-thumbnail mt-2" style="max-width: 200px;">
                                             @endif
                                         </div>
                                         <!-- SEO URL -->

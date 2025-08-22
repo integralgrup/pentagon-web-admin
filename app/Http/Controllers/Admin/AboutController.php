@@ -249,7 +249,7 @@ class AboutController extends Controller
 
                     $howWeDoImage = $request->file('image_' . $language->lang_code);
                     $imageName = seoUrl($request->input('alt_' . $language->lang_code)) .  '_' . time() . '.webp';
-                    $folderPath = getFolder(['uploads_folder','images_folder']);
+                    $folderPath = getFolder(['uploads_folder','images_folder'], $language->lang_code);
                     if(!file_exists($folderPath)) {
                         mkdir($folderPath, 0755, true);
                     }

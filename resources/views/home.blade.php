@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
+<main class="main-field home-page">
     <section class="homepage-carousel-field mb-[140px] xl:mb-[110px] lg:mb-[80px]">
         <div class="main-slider h-full overflow-hidden">
             <div class="swiper-wrapper">
@@ -287,7 +288,7 @@
                                         <div class="flex flex-col gap-[10px] min-md:transition-transform min-md:duration-450 group-hover:min-md:translate-y-[-20px]">
                                             <p class="text-[26px] xl:text-[22px] md:text-[20px] leading-[32px] font-light text-paragraph transition-all duration-450 group-hover:text-secondary-main [-webkit-text-stroke:2px_rgba(8,51,85,0)] group-hover:[-webkit-text-stroke:2px_rgba(8,51,85,1)] line-clamp-1"><?= $item->title ?></p>
                                             <div class="description opacity-0 translate-y-[-5px] group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                                                <p class="description text-[18px] md:text-[16px] leading-[32px] font-light text-paragraph line-clamp-1 "><?= $item['description'] ?></p>
+                                                <p class="description text-[18px] md:text-[16px] leading-[32px] font-light text-paragraph line-clamp-1 "><?= mb_substr($item->description, 0, 100) ?>...</p>
                                             </div>
                                         </div>
                                     </div>
@@ -308,7 +309,7 @@
                                                 <div class="blog-item item group flex">
                                                     <div class="flex flex-col gap-[10px]">
                                                         <a href="<?= $item->seo_url ?>" class="text-[20px] leading-[32px] text-paragraph transition-all duration-300 line-clamp-3"><?= $item->title ?></a>
-                                                        <p class="description text-[16px] leading-[32px] font-light text-paragraph line-clamp-4"><?= $item->description ?></p>
+                                                        <p class="description text-[16px] leading-[32px] font-light text-paragraph line-clamp-4"><?= mb_substr($item->description, 0, 100) ?>...</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -331,4 +332,5 @@
             </div>
         </div>
     </section>
+</main
 @endsection

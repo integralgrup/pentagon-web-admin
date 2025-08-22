@@ -54,7 +54,7 @@
                         <tr class="align-middle">
                           <td>{{ $file->id }}</td>
                           <td>{{ $file->title }}</td>
-                          <td><img src="{{ asset($file->lang . '/' . getFolder($file->lang, 'uploads_folder') . '/' . getFolder($file->lang, 'catalog_files_folder') . '/' . $file->image) }}" alt="{{ $file->alt }}" width="50"></td>
+                          <td><img src="{{ asset(getFolder(['uploads_folder', 'catalog_files_folder'], $file->lang) . '/' . $file->image) }}" alt="{{ $file->alt }}" width="50"></td>
                           <td>
                             <a href="{{ route('admin.catalog.files.edit', $file->file_id) }}" class="btn btn-primary btn-sm">Düzenle</a>
                             <form action="{{ route('admin.catalog.files.destroy', $file->file_id) }}" method="POST" style="display:inline;">

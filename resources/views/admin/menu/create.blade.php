@@ -66,6 +66,32 @@
                                         <input type="hidden" name="sort" value="0" >
                                         <input type="hidden" name="isActive" value="1">
                                         <input type="hidden" name="lang_{{$language->lang_code}}" value="{{$language->lang_code}}">
+                                        <!-- Page Type Dropdown -->
+                                        <div class="mb-3">
+                                            <label for="page_type_{{$language->lang_code}}" class="form-label">Sayfa Türü ({{ $language->lang_code }})</label>
+                                            <select name="page_type_{{$language->lang_code}}" id="page_type_{{$language->lang_code}}" class="form-select">
+                                                <option value="">Seçiniz</option>
+                                                <option value="about">Kurumsal</option>
+                                                <option value="contact">İletişim</option>
+                                                <option value="sector">Sektörler</option>
+                                                <option value="brand">Markalar</option>
+                                                <option value="blog">Blog</option>
+                                                <option value="career">Kariyer</option>
+                                                <option value="catalog">Katalog</option>
+                                                <option value="contact">İletişim</option>
+                                                <option value="page">Özel Sayfa</option>
+                                            </select>
+                                        </div>
+                                        <!-- Parent Menu Dropdown -->
+                                        <div class="mb-3">
+                                            <label for="parent_menu_id_{{$language->lang_code}}" class="form-label">Üst Menü ({{ $language->lang_code }})</label>
+                                            <select name="parent_menu_id_{{$language->lang_code}}" id="parent_menu_id_{{$language->lang_code}}" class="form-select">
+                                                <option value="0">Seçiniz</option>
+                                                @foreach($parentMenus as $parentMenu)
+                                                    <option value="{{ $parentMenu->menu_id }}">{{ $parentMenu->title }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                         <!-- Title -->
                                         <div class="mb-3">
                                             <label for="title_{{$language->lang_code}}" class="form-label">Başlık ({{ $language->lang_code }})<span class="text-danger">*</span></label>

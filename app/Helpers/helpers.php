@@ -51,3 +51,49 @@ if (! function_exists('getFolder')) {
         return null; // Return null if no language found
     }
 }
+
+if(!function_exists('getSubMenuItems')) {
+    function getSubMenuItems($menu_id = null)
+    {
+        $lang = app()->getLocale();
+        if ($menu_id) {
+            $subMenus = DB::table('menu')->where('lang', $lang)->where('parent_menu_id', $menu_id)->get();
+            
+            if ($subMenus->isNotEmpty()) {
+                $menuItems = [];
+                foreach ($subMenus as $subMenu) {
+                    $menuItems[] = [
+                        'id' => $subMenu->id,
+                        'title' => $subMenu->title,
+                        'link' => $subMenu->seo_url,
+                        'image' => $subMenu->image
+                    ];
+                }
+                return $menuItems;
+            }
+        }
+        return null;
+    }
+}
+
+if(!function_exists('getPageType')) {
+    function getPageType($slug = null)
+    {
+        $lang = app()->getLocale();
+        $menuItem = DB::table('menu')->where('lang', $lang)->where('slug', $slug)->first();
+        $page_type = $menuItem->page_type ?? null;
+
+        switch ($page_type) {
+            case 'about':
+                return 'AboutController';
+                break;
+            case 'contact':
+                return 'ContactController';
+                break;
+            default:
+                # code...
+                break;
+        }
+
+    }
+}

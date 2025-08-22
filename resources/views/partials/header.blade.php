@@ -24,14 +24,14 @@
     </script>
 </head>
 <body class="antialiased font-sans [background:linear-gradient(0deg,_#FBFAF6_0%,_#FBFAF6_100%),_#FFF] [&.contact]:!bg-white group/body">
-
+<?php $menuItems = App\Models\Menu::where(['lang' => app()->getLocale(), 'parent_menu_id' => 0])->get();?>
 <header class="group/header peer header-field h-[112px] sm:h-[80px] z-100 fixed w-full left-0 top-0 duration-500 bg-transparent [&.contact]:bg-[#FCFBF7] [&.contact]:xs:bg-[#FCFBF7]/50 will-change-[height,transform] [&.is-fixed]:!top-0 [&.is-fixed]:!translate-y-0 [&.is-fixed]:bg-[#FCFBF7] [&.is-fixed]:shadow-header [&.is-hidden.is-fixed]:!-translate-y-full [&.is-hidden.is-fixed]:shadow-none [&.no-scroll]:absolute [&.no-scroll]:!transform-none [&.no-scroll]:!shadow-none [&.mobile-menu-active]:bg-white">
     <div class="header-body relative w-full flex h-full">
         <div class="container max-w-[1650px] flex-grow">
             <div class="wrapper flex w-full h-full">
                 <div class="grid grid-cols-6 w-full h-full">
                     <div class="left col-span-2 md:col-span-3">
-                        <a href="index.php" class="flex items-center h-full w-max">
+                        <a href="<?=env('HTTP_DOMAIN')?>" class="flex items-center h-full w-max">
                             <svg width="248" height="100" viewBox="0 0 248 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-[248px] lg:w-[200px] xsm:w-[150px] h-auto">
                                 <mask id="mask0_2506_4821" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="159" y="15" width="70" height="78">
                                     <path d="M160.516 68.5109L180.136 92.3675L228.001 74.9458L227.534 27.6665L179.391 15.8528L160.127 42.1573H159.742L179.199 15.5868C179.235 15.5377 179.301 15.5131 179.358 15.5295L227.718 27.3923C227.788 27.4086 227.837 27.47 227.837 27.5396L228.303 75.0481C228.303 75.1136 228.263 75.1709 228.201 75.1955L180.132 92.6908C180.132 92.6908 180.095 92.699 180.079 92.699C180.034 92.699 179.989 92.6786 179.96 92.6417L160.455 68.9243C160.475 68.7851 160.496 68.646 160.512 68.5068" fill="white"/>
@@ -162,185 +162,22 @@
                             <div class="header-nav min-md:h-full mr-[50px] xl:mr-[30px] transition-all duration-500 md:overflow-hidden md:bg-white md:opacity-0 md:pointer-events-none md:absolute md:left-0 md:top-0 md:w-full md:translate-y-[112px] sm:translate-y-[80px] md:h-auto [&.active]:md:opacity-100 [&.active]:md:pointer-events-auto [&.active]:md:overflow-y-scroll [&.active]:md:max-h-[calc(100dvh-112px)] [&.active]:sm:max-h-[calc(100dvh-80px)]" id="header-nav">
                                 <nav class="min-md:h-full">
                                     <ul class="flex items-center md:flex-col md:items-start justify-end md:justify-start h-full">
-                                        <?php $menu = [
-                                            [
-                                                'title' => 'Kurumsal',
-                                                'link' => 'page-corporate.php',
-                                                'megamenu' => [
-                                                    [
-                                                        'title' => 'Biz Kimiz?',
-                                                        'link' => 'page-corporate.php',
-                                                        'image' => '{{ asset("assets")/image/general/slide-image.jpeg',
-                                                        'scrollableSection' => '#who-are-we'
-                                                    ],
-                                                    [
-                                                        'title' => 'Neler Yaparız?',
-                                                        'link' => 'page-corporate.php#what-we-do',
-                                                        'image' => '{{ asset("assets")/image/general/mega-menu-image.jpg',
-                                                        'scrollableSection' => '#what-we-do'
-                                                    ],
-                                                    [
-                                                        'title' => 'Vizyonumuz',
-                                                        'link' => 'page-corporate.php#vision',
-                                                        'image' => '{{ asset("assets")/image/general/mega-menu-image.jpg',
-                                                        'scrollableSection' => '#vision'
-                                                    ],
-                                                    [
-                                                        'title' => 'Üyeliklerimiz',
-                                                        'link' => 'page-corporate.php#memberships',
-                                                        'image' => '{{ asset("assets")/image/general/mega-menu-image.jpg',
-                                                        'scrollableSection' => '#memberships'
-                                                    ],
-                                                    [
-                                                        'title' => 'Kalite Politikamız',
-                                                        'link' => 'page-corporate.php#policies',
-                                                        'image' => '{{ asset("assets")/image/general/mega-menu-image.jpg',
-                                                        'scrollableSection' => '#policies',
-                                                        'tabID' => '0',
-                                                    ],
-                                                    [
-                                                        'title' => 'Çevre Politikamız',
-                                                        'link' => 'page-corporate.php#policies',
-                                                        'image' => '{{ asset("assets")/image/general/mega-menu-image.jpg',
-                                                        'scrollableSection' => '#policies',
-                                                        'tabID' => '1',
-                                                    ],
-                                                    [
-                                                        'title' => 'İş Güvenliği Politikamız',
-                                                        'link' => 'page-corporate.php#policies',
-                                                        'image' => '{{ asset("assets")/image/general/mega-menu-image.jpg',
-                                                        'scrollableSection' => '#policies',
-                                                        'tabID' => '2',
-                                                    ],
-                                                    [
-                                                        'title' => 'Sosyal Sorumluluk',
-                                                        'link' => 'page-corporate.php#policies',
-                                                        'image' => '{{ asset("assets")/image/general/mega-menu-image.jpg',
-                                                        'scrollableSection' => '#policies',
-                                                        'tabID' => '3',
-                                                    ],
-                                                ],
-                                            ],
-                                            [
-                                                'title' => 'Sektörler',
-                                                'link' => '#',
-                                                'megamenu' => [
-                                                    [
-                                                        'title' => 'İnşaat',
-                                                        'link' => 'page-sector-detail.php',
-                                                        'image' => '{{ asset("assets")/image/general/mega-menu-image.jpg',
-                                                    ],
-                                                    [
-                                                        'title' => 'Çelik',
-                                                        'link' => 'page-sector-detail.php',
-                                                        'image' => '{{ asset("assets")/image/general/mega-menu-image.jpg',
-                                                    ],
-                                                    [
-                                                        'title' => 'Elektronik',
-                                                        'link' => 'page-sector-detail.php',
-                                                        'image' => '{{ asset("assets")/image/general/mega-menu-image.jpg',
-                                                    ],
-                                                    [
-                                                        'title' => 'Dekorasyon',
-                                                        'link' => 'page-sector-detail.php',
-                                                        'image' => '{{ asset("assets")/image/general/mega-menu-image.jpg',
-                                                    ],
-                                                    [
-                                                        'title' => 'Tekstil',
-                                                        'link' => 'page-sector-detail.php',
-                                                        'image' => '{{ asset("assets")/image/general/mega-menu-image.jpg',
-                                                    ],
-                                                    [
-                                                        'title' => 'Kimya',
-                                                        'link' => 'page-sector-detail.php',
-                                                        'image' => '{{ asset("assets")/image/general/mega-menu-image.jpg',
-                                                    ],
-                                                    [
-                                                        'title' => 'Plastik',
-                                                        'link' => 'page-sector-detail.php',
-                                                        'image' => '{{ asset("assets")/image/general/mega-menu-image.jpg',
-                                                    ],
-                                                    [
-                                                        'title' => 'Güvenlik',
-                                                        'link' => 'page-sector-detail.php',
-                                                        'image' => '{{ asset("assets")/image/general/mega-menu-image.jpg',
-                                                    ],
-                                                    [
-                                                        'title' => 'Zemin Kaplamaları',
-                                                        'link' => 'page-sector-detail.php',
-                                                        'image' => '{{ asset("assets")/image/general/mega-menu-image.jpg',
-                                                    ],
-                                                ],
-                                            ],
-                                            [
-                                                'title' => 'Markalar',
-                                                'link' => '#',
-                                                'megamenu' => [
-                                                    [
-                                                        'title' => 'Peragrass',
-                                                        'link' => 'page-brand-detail.php',
-                                                        'image' => '{{ asset("assets")/image/general/mega-menu-image.jpg',
-                                                    ],
-                                                    [
-                                                        'title' => 'Evaligrass',
-                                                        'link' => 'page-brand-detail.php',
-                                                        'image' => '{{ asset("assets")/image/general/mega-menu-image.jpg',
-                                                    ],
-                                                    [
-                                                        'title' => 'Netrags',
-                                                        'link' => 'page-brand-detail.php',
-                                                        'image' => '{{ asset("assets")/image/general/mega-menu-image.jpg',
-                                                    ],
-                                                    [
-                                                        'title' => 'Acropanel',
-                                                        'link' => 'page-brand-detail.php',
-                                                        'image' => '{{ asset("assets")/image/general/mega-menu-image.jpg',
-                                                    ],
-                                                    [
-                                                        'title' => 'Geobera',
-                                                        'link' => 'page-brand-detail.php',
-                                                        'image' => '{{ asset("assets")/image/general/mega-menu-image.jpg',
-                                                    ],
-                                                    [
-                                                        'title' => 'Easygarden',
-                                                        'link' => 'page-brand-detail.php',
-                                                        'image' => '{{ asset("assets")/image/general/mega-menu-image.jpg',
-                                                    ],
-                                                ],
-                                            ],
-                                            [
-                                                'title' => 'Kariyer',
-                                                'link' => 'page-career.php',
-                                            ],
-                                            [
-                                                'title' => 'Katalog',
-                                                'link' => 'page-catalogs.php',
-                                                'megamenu' => [
-                                                    [
-                                                        'title' => 'Proje Katalogları',
-                                                        'link' => 'page-catalogs.php',
-                                                        'image' => '{{ asset("assets")/image/general/mega-menu-image.jpg',
-                                                    ],
-                                                    [
-                                                        'title' => 'Teknik Dökümanlar',
-                                                        'link' => 'page-catalogs.php',
-                                                        'image' => '{{ asset("assets")/image/general/mega-menu-image.jpg',
-                                                    ],
-                                                ],
-                                            ],
-                                            [
-                                                'title' => 'Haberler',
-                                                'link' => 'page-news.php',
-                                            ],
-                                            [
-                                                'title' => 'İletişim',
-                                                'link' => 'page-contact.php',
-                                            ],
-                                        ];
+                                        <?php 
+                                        foreach ($menuItems as $key =>  $menuItem):
+
+                                            $menu[$key]['title'] = $menuItem->title;
+                                            $menu[$key]['link'] = $menuItem->seo_url;
+                                            if(getSubMenuItems($menuItem->menu_id) != null){
+                                                $menu[$key]['megamenu'] = getSubMenuItems($menuItem->menu_id);
+                                            }
+
+                                        endforeach; 
+                                        ?>
+                                        <?php 
 
                                         foreach ($menu as $key => $item) { ?>
                                             <li class="min-md:h-full w-full px-[25px] md:px-[30px] xl:px-[15px] flex items-center md:flex-wrap md:justify-between group/item menu-item [&_i]:min-md:ml-[5px] [&_i]:md:text-[15px] [&_i]:text-[12px] [&_i]:leading-none [&_i]:md:w-[34px] [&_i]:w-[18px] [&_i]:cursor-pointer [&_i]:aspect-square [&_i]:flex [&_i]:items-center [&_i]:justify-center [&_i]:md:bg-primary-50 [&_i]:before:transition-all [&_i]:before:duration-450 [&_i]:before:content-['\0044'] [&_i]:before:pointer-events-none [&_i]:hover:before:min-md:rotate-180 [&_i]:before:[&.dropdown-active]:rotate-180 <?= isset($item['megamenu']) ? 'has-sub-menu' : ''?>">
-                                                <a href="<?= $item['link'] ?>" class="inline-block <?= !isset($item['megamenu']) ? 'w-full text-left' : '' ?> py-[10px] text-[17px] lg:text-[16px] leading-[41px] text-black font-light transition-all duration-300 group-hover/item:text-secondary-main [-webkit-text-stroke:1px_rgba(0,0,0,0)] group-hover/item:[-webkit-text-stroke:1px_rgba(8,51,85,1)] relative z-[20]">
+                                                <a href="<?= env('HTTP_DOMAIN') .'/'. $item['link'] ?>" class="inline-block <?= !isset($item['megamenu']) ? 'w-full text-left' : '' ?> py-[10px] text-[17px] lg:text-[16px] leading-[41px] text-black font-light transition-all duration-300 group-hover/item:text-secondary-main [-webkit-text-stroke:1px_rgba(0,0,0,0)] group-hover/item:[-webkit-text-stroke:1px_rgba(8,51,85,1)] relative z-[20]">
                                                     <?= $item['title'] ?>
                                                 </a>
                                                 <?php if (isset($item['megamenu'])) { ?>
@@ -353,7 +190,7 @@
                                                                             <ul class="sub-menu flex flex-col gap-[25px] md:gap-[15px] flex-grow relative transition-all duration-700 min-md:opacity-0 group-hover/item:min-md:opacity-100 min-md:delay-100 before:absolute before:top-0 before:left-0 before:w-[1px] before:h-screen before:md:h-full before:bg-black/10">
                                                                                 <?php foreach ($item['megamenu'] as $index => $subitem) { ?>
                                                                                     <li class="submenu-item pl-[65px] md:pl-[30px] relative before:absolute before:w-[3px] before:h-0 before:bottom-0 before:-left-[1px] before:bg-primary-main before:transition-all before:duration-200 hover:before:bottom-[unset] hover:before:top-0 hover:before:h-full" data-item-image="<?= $subitem['image'] ?>" data-item-id="<?= $key ?>" <?php if (isset($subitem['tabID'])) { echo 'data-tab-id="'. $subitem['tabID'] . '"'; } ?>>
-                                                                                        <a href="<?= $subitem['link'] ?>" class="block py-[4px] text-[18px] md:text-[16px] leading-[32px] md:leading-[28px] text-paragraph font-light duration-300 hover:text-primary-main hover:tracking-[0.1px] [-webkit-text-stroke:1px_rgba(51,51,51,0)] hover:[-webkit-text-stroke:1px_rgba(182,163,107,1)] <?= isset($subitem['scrollableSection']) ? 'scrollable-selector' : '' ?>" <?php if (isset($subitem['scrollableSection'])) { echo 'data-scrollable-section="'. $subitem['scrollableSection'] . '"'; } ?>>
+                                                                                        <a href="<?= env('HTTP_DOMAIN') .'/'. $item['link'] .'/'. $subitem['link'] ?>" class="block py-[4px] text-[18px] md:text-[16px] leading-[32px] md:leading-[28px] text-paragraph font-light duration-300 hover:text-primary-main hover:tracking-[0.1px] [-webkit-text-stroke:1px_rgba(51,51,51,0)] hover:[-webkit-text-stroke:1px_rgba(182,163,107,1)] <?= isset($subitem['scrollableSection']) ? 'scrollable-selector' : '' ?>" <?php if (isset($subitem['scrollableSection'])) { echo 'data-scrollable-section="'. $subitem['scrollableSection'] . '"'; } ?>>
                                                                                             <?= $subitem['title'] ?>
                                                                                         </a>
                                                                                     </li>
@@ -362,7 +199,7 @@
                                                                         </div>
                                                                         <div class="right col-span-4 md:hidden duration-700 min-md:opacity-0 group-hover/item:min-md:opacity-100">
                                                                             <div class="image-wrapper w-full relative h-[539px]">
-                                                                                <img src="{{ asset('assets')/image/general/mega-menu-image.jpg" alt="Menü Resim" width="1045" height="539" class="w-full h-full object-cover relative z-2 transition-all duration-500 [&.changed]:opacity-0 [&.changed]:translate-y-[5px] mega-menu-image" data-image-id="<?= $key ?>">
+                                                                                <img src="<?= env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','images_folder'], app()->getLocale()) . '/' . $subitem['image'] ?>" alt="Menü Resim" width="1045" height="539" class="w-full h-full object-cover relative z-2 transition-all duration-500 [&.changed]:opacity-0 [&.changed]:translate-y-[5px] mega-menu-image" data-image-id="<?= $key ?>">
                                                                                 <div class="bg-primary-main absolute -bottom-[48px] -right-[53px] w-[376px] aspect-square"></div>
                                                                             </div>
                                                                         </div>

@@ -30,8 +30,9 @@ class MenuController extends Controller
      */
     public function create()
     {
+        $parentMenus = Menu::where(['lang' => app()->getLocale()])->get(); // Fetch all parent menus for the dropdown
         $languages = Language::all(); // Fetch all languages for the dropdown
-        return view('admin.menu.create', compact('languages'));
+        return view('admin.menu.create', compact('languages', 'parentMenus'));
     }
 
     /**
@@ -61,11 +62,13 @@ class MenuController extends Controller
                     // Validate the request data for each language
                     $request->validate([
                         'lang_' . $language->lang_code => 'required|max:10',
+                        'parent_menu_id_' . $language->lang_code => 'nullable|integer',
                         'title_' . $language->lang_code => 'required|max:255',
                         'seo_url_' . $language->lang_code => 'required|max:255',
                         'image_' . $language->lang_code => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
                         'alt_' . $language->lang_code => 'required|max:255',
                         'menu_type_' . $language->lang_code => 'required|in:header,footer,sidebar', // Assuming these are the valid types
+                        'page_type_' . $language->lang_code => 'required|max:255',
                         'sort' => 'nullable|integer',
                         'isActive' => 'boolean',
                     ]);
@@ -87,11 +90,13 @@ class MenuController extends Controller
                             'lang' => $language->lang_code,
                         ],
                         [
+                            'parent_menu_id' => $request->input('parent_menu_id_' . $language->lang_code) ?? 0,
                             'title' => $request->input('title_' . $language->lang_code),
                             'seo_url' => $request->input('seo_url_' . $language->lang_code),
                             'image' => $imageName, // save relative path
                             'alt' => $request->input('alt_' . $language->lang_code),
                             'menu_type' => $request->input('menu_type_' . $language->lang_code),
+                            'page_type' => $request->input('page_type_' . $language->lang_code),
                             'sort' => $request->input('sort_' . $language->lang_code) ?? 0, // default to 0 if not provided
                             'isActive' => $request->isActive ? 1 : 0
                         ]
@@ -117,10 +122,11 @@ class MenuController extends Controller
      */
     public function edit($id)
     {
+        $parentMenus = Menu::where('lang', app()->getLocale())->where('menu_id', '!=', $id)->get(); // Fetch all parent menus for the dropdown except the current menu
         $menu_items = Menu::where('menu_id', $id)->get(); // Fetch all menu items with the same menu_id
         //dd($menu_items); // Debugging line to check the menu data
         $languages = Language::all(); // Fetch all languages for the dropdown
-        return view('admin.menu.edit', compact('menu_items', 'languages'));
+        return view('admin.menu.edit', compact('menu_items', 'languages', 'parentMenus'));
 
     }
 
