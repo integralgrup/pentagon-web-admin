@@ -75,25 +75,3 @@ if(!function_exists('getSubMenuItems')) {
         return null;
     }
 }
-
-if(!function_exists('getPageType')) {
-    function getPageType($slug = null)
-    {
-        $lang = app()->getLocale();
-        $menuItem = DB::table('menu')->where('lang', $lang)->where('slug', $slug)->first();
-        $page_type = $menuItem->page_type ?? null;
-
-        switch ($page_type) {
-            case 'about':
-                return 'AboutController';
-                break;
-            case 'contact':
-                return 'ContactController';
-                break;
-            default:
-                # code...
-                break;
-        }
-
-    }
-}
