@@ -66,7 +66,7 @@
                                         </div>
 
                                         <div class="mb-3">
-                                            <label for="title_1_{{ $language->lang_code }}" class="form-label">Alt Başlık ({{ strtoupper($language->lang_code) }})</label>
+                                            <label for="title_1_{{ $language->lang_code }}" class="form-label">Üst Başlık ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="text" class="form-control" id="title_1_{{ $language->lang_code }}" name="title_1_{{ $language->lang_code }}" required>
                                         </div>
 

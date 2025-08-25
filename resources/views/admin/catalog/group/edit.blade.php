@@ -55,6 +55,7 @@
                             $catalog_group_id = $item->catalog_group_id;
                             $brand_id = $item->brand_id;
                             $title[$item->lang] = $item->title;
+                            $seo_url[$item->lang] = $item->seo_url;
                             $bg_image[$item->lang] = $item->bg_image;
                             $alt[$item->lang] = $item->alt;
                             $seo_title[$item->lang] = $item->seo_title;
@@ -84,6 +85,10 @@
                                         <div class="form-group">
                                             <label for="title_{{ $language->lang_code }}">Başlık ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" value="{{ $title[$language->lang_code] }}" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="seo_url_{{ $language->lang_code }}">SEO URL ({{ strtoupper($language->lang_code) }})</label>
+                                            <input type="text" class="form-control" id="seo_url_{{ $language->lang_code }}" name="seo_url_{{ $language->lang_code }}" value="{{ $seo_url[$language->lang_code] }}" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="bg_image_{{ $language->lang_code }}">Resim ({{ strtoupper($language->lang_code) }})</label>

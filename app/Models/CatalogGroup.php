@@ -17,6 +17,7 @@ class CatalogGroup extends Model
         'brand_id',
         'lang',
         'title',
+        'seo_url',
         'bg_image',
         'alt',
         'seo_title',
@@ -31,4 +32,9 @@ class CatalogGroup extends Model
     ];
 
     public $timestamps = false;
+
+    public function catalogs()
+    {
+        return $this->hasMany(Catalog::class, 'catalog_group_id');
+    }
 }

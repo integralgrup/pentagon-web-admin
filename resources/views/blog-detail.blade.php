@@ -147,30 +147,13 @@
                     <div class="bg-primary-main absolute -z-[1] bottom-0 translate-y-[-70px] sm:translate-y-[-10px] translate-x-[60px] 2xl:translate-x-[30px] right-0 w-[426px] sm:w-[250px] aspect-square"></div>
                     <div class="news-detail-slider overflow-hidden reveal">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="image-wrapper relative w-full h-[650px] xl:h-[580px] lg:h-[530px] sm:h-[320px] 2xl:pl-[30px] xl:pl-[60px] md:pl-0">
-                                    <img src="../assets/image/general/home-blog.jpg" alt="Blog" width="657" height="406" class="w-full h-full object-cover">
+                            <?php foreach($blogSlider as $slide): ?>
+                                <div class="swiper-slide">
+                                    <div class="image-wrapper relative w-full h-[650px] xl:h-[580px] lg:h-[530px] sm:h-[320px] 2xl:pl-[30px] xl:pl-[60px] md:pl-0">
+                                        <img src="<?= env('HTTP_DOMAIN') .'/'. getFolder(['uploads_folder','blog_images_folder'], $slide->lang) .'/'.  $slide->media_file ?>" alt="Blog" width="657" height="406" class="w-full h-full object-cover">
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div class="swiper-slide">
-                                <div class="image-wrapper relative w-full h-[650px] xl:h-[580px] lg:h-[530px] sm:h-[320px] 2xl:pl-[30px] xl:pl-[60px] md:pl-0">
-                                    <video controls muted playsinline class="w-full h-full object-cover">
-                                        <source srcset="../assets/video/mv-video.mp4" src="../assets/video/mv-video.mp4">
-                                    </video>
-                                </div>
-                            </div>
-
-                            <div class="swiper-slide">
-                                <div class="image-wrapper relative w-full h-[650px] xl:h-[580px] lg:h-[530px] sm:h-[320px] 2xl:pl-[30px] xl:pl-[60px] md:pl-0 [&_iframe]:w-full [&_iframe]:h-full [&_iframe_#player]:w-full [&_iframe_#player]:h-full">
-                                    <iframe width="1280" height="720" src="https://www.youtube.com/embed/KJwYBJMSbPI" title="EARTH 4K - Relaxation Film - Peaceful Relaxing Music - Nature 4k Video UltraHD -  OUR PLANET" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="image-wrapper relative w-full h-[650px] xl:h-[580px] lg:h-[530px] sm:h-[320px] 2xl:pl-[30px] xl:pl-[60px] md:pl-0 [&_iframe]:w-full [&_iframe]:h-full [&_iframe_#player]:w-full" >
-                                    <iframe src="https://player.vimeo.com/video/347015432?h=6a611828c5" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-                                </div>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
                         <div class="nav-buttons pl-[30px] pt-[15px] flex items-center justify-end gap-[30px] md:gap-[20px]">
                             <div class="news-detail-prev cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.news-detail-disabled]:opacity-65 relative z-4 [&.news-detail-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
@@ -214,49 +197,12 @@
             </div>
             <div class="other-news-slider reveal overflow-hidden mb-[130px] xl:mb-[100px] lg:mb-[70px] md:mb-[50px]">
                 <div class="swiper-wrapper">
-                    <?php $blogs = [
-                        [
-                            'title' => 'Olimpik Yüzme Havuzu Kurulumu Nasıl Yapılır?',
-                            'description' => 'Uluslararası Yüzme Federasyonu’nun (FINA) standartlarına uygun bir şekilde tasarlan...',
-                            'image' => 'blog-image-1.jpg',
-                            'link' => 'page-news-detail.php',
-                        ],
-                        [
-                            'title' => 'Olimpik Yüzme Havuzu Kurulumu Nasıl Yapılır?',
-                            'description' => 'Uluslararası Yüzme Federasyonu’nun (FINA) standartlarına uygun bir şekilde tasarlan...',
-                            'image' => 'blog-image-2.jpg',
-                            'link' => 'page-news-detail.php',
-                        ],
-                        [
-                            'title' => 'Olimpik Yüzme Havuzu Kurulumu Nasıl Yapılır?',
-                            'description' => 'Uluslararası Yüzme Federasyonu’nun (FINA) standartlarına uygun bir şekilde tasarlan...',
-                            'image' => 'blog-image-3.jpg',
-                            'link' => 'page-news-detail.php',
-                        ],
-                        [
-                            'title' => 'Olimpik Yüzme Havuzu Kurulumu Nasıl Yapılır?',
-                            'description' => 'Uluslararası Yüzme Federasyonu’nun (FINA) standartlarına uygun bir şekilde tasarlan...',
-                            'image' => 'blog-image-4.jpg',
-                            'link' => 'page-news-detail.php',
-                        ],
-                        [
-                            'title' => 'Olimpik Yüzme Havuzu Kurulumu Nasıl Yapılır?',
-                            'description' => 'Uluslararası Yüzme Federasyonu’nun (FINA) standartlarına uygun bir şekilde tasarlan...',
-                            'image' => 'blog-image-5.jpg',
-                            'link' => 'page-news-detail.php',
-                        ],
-                        [
-                            'title' => 'Olimpik Yüzme Havuzu Kurulumu Nasıl Yapılır?',
-                            'description' => 'Uluslararası Yüzme Federasyonu’nun (FINA) standartlarına uygun bir şekilde tasarlan...',
-                            'image' => 'blog-image-1.jpg',
-                            'link' => 'page-news-detail.php',
-                        ],
-                    ]; foreach ($blogs as $item): ?>
+                    <?php foreach ($blogs as $item): ?>
 
                         <div class="swiper-slide">
                             <div class="item w-full bg-[#F0EEE7] grid grid-cols-2 md:grid-cols-1 transition-all duration-500 group/item hover:min-md:bg-secondary-main">
-                                <a href="<?= $item['link'] ?>" class="block img w-full min-h-[405px] lg:min-h-[350px] xs:min-h-[300px]">
-                                    <img src="../assets/image/general/<?= $item['image'] ?>" alt="Blog Görsel" width="405" height="405" class="w-full h-full object-cover">
+                                <a href="<?= $item['seo_url'] ?>" class="block img w-full min-h-[405px] lg:min-h-[350px] xs:min-h-[300px]">
+                                    <img src="<?= env('HTTP_DOMAIN').'/'.getFolder(['uploads_folder', 'blog_images_folder'], app()->getLocale()).'/'.$item['image'] ?>" alt="Blog Görsel" width="405" height="405" class="w-full h-full object-cover">
                                 </a>
                                 <div class="p-[45px] xl:p-[35px] lg:p-[15px] lg:py-[25px] w-full flex flex-col justify-between gap-[20px]">
                                     <div class="flex items-center gap-[6px] transition-all duration-450 opacity-50 group-hover/item:opacity-100 mb-[20px]">
@@ -268,10 +214,10 @@
                                         <time class="text-[16px] font-medium leading-none tracking-[-0.16px] text-dark/50 group-hover/item:text-white transition-all duration-450"><?= date('d'.'.'.'m'.'.'.'Y') ?></time>
                                     </div>
                                     <div class="flex flex-col">
-                                        <a href="<?= $item['link'] ?>" class="block text-[24px] xl:text-[20px] xl:leading-[28px] leading-[35px] font-semibold text-secondary-main mb-[20px] line-clamp-2 transition-all duration-300 group-hover/item:min-md:text-white"><?= $item['title'] ?></a>
-                                        <p class="text-[17px] lg:text-[16px] leading-[28px] font-light text-paragraph line-clamp-3 transition-all duration-300 group-hover/item:min-md:text-white"><?= $item['description'] ?></p>
+                                        <a href="<?= env('HTTP_DOMAIN').'/'.getUrl('blog_url').'/'. $item['seo_url'] ?>" class="block text-[24px] xl:text-[20px] xl:leading-[28px] leading-[35px] font-semibold text-secondary-main mb-[20px] line-clamp-2 transition-all duration-300 group-hover/item:min-md:text-white"><?= $item['title'] ?></a>
+                                        <p class="text-[17px] lg:text-[16px] leading-[28px] font-light text-paragraph line-clamp-3 transition-all duration-300 group-hover/item:min-md:text-white"><?= mb_substr($item['description'], 0, 100) ?>...</p>
                                     </div>
-                                    <a href="<?= $item['link'] ?>" class="flex items-center justify-center relative w-max sm:w-full overflow-hidden main-button group w-full">
+                                    <a href="<?= $item['seo_url'] ?>" class="flex items-center justify-center relative w-max sm:w-full overflow-hidden main-button group w-full">
                                         <div class="w-full left px-[66px] lg:px-[35px] group-hover:px-[30px] py-[20px] flex items-center justify-center z-2 bg-transparent border border-solid border-paragraph/16 group-hover/item:min-md:border-white/16 group-hover:min-md:border-primary-main transition-all duration-300 group-hover:min-md:bg-primary-main sm:w-full">
                                             <span class="text-[16px] leading-none font-medium text-paragraph transition-all duration-300 tracking-[-0.16px] group-hover/item:min-md:text-white group-hover:min-md:text-white">Detaylı İncele</span>
                                         </div>

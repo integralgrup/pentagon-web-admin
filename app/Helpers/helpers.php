@@ -52,6 +52,19 @@ if (! function_exists('getFolder')) {
     }
 }
 
+if (! function_exists('getUrl')) {
+    function getUrl($value)
+    {
+        $lang = app()->getLocale();
+        // Connect to DB and get language data
+        $language = DB::table('language')->where('lang_code', $lang)->first();
+
+        if ($language) {
+            return $language->{$value} ?? null;
+        }
+    }
+}
+
 if(!function_exists('getSubMenuItems')) {
     function getSubMenuItems($menu_id = null)
     {

@@ -179,7 +179,7 @@ class SectorController extends Controller
                 $sliderId = $request->input('slider_id');
             }else{
                 // Select max id
-                $sliderId = DB::table('sector_slider_1')->where('sector_id', $id)->max('id') + 1;
+                $sliderId = DB::table('sector_slider_1')->where('sector_id', $id)->max('slider_id') + 1;
             }
 
 

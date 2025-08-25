@@ -74,22 +74,19 @@
                     <div class="flex flex-wrap items-center">
                         <div class="w-3/5 md:w-full translate-x-[-30px] [@media(max-width:1670px)]:pr-[50px] md:!pr-0">
                             <div class="image-wrapper reveal w-full h-[677px] md:h-[580px] sm:h-[320px] relative">
-                                <img src="../assets/image/general/home-about-us.jpg" alt="Hakkımızda" width="911" height="677" class="w-full h-full object-cover relative z-2">
+                                <img src="<?=env('HTTP_DOMAIN'). '/'. getFolder(['uploads_folder', 'images_folder'], app()->getLocale()) .'/' .$about['image']?>" alt="<?=$about['alt']?>" width="911" height="677" class="w-full h-full object-cover relative z-2">
                                 <div class="bg-primary-main absolute -top-[38px] sm:-top-[20px] -right-[38px] sm:-right-[20px] w-[421px] sm:w-[320px] aspect-square"></div>
                             </div>
                         </div>
                         <div class="w-2/5 md:w-full md:p-0 md:mt-[30px] [@media(min-width:1760px)]:translate-x-[-20px]">
                             <div class="flex flex-col text-editor reveal">
-                                <span class="text-[16px] leading-[32px] font-light text-paragraph opacity-65 tracking-[7.2px] block mb-[30px] lg:mb-[5px]">Bizi Tanıyın</span>
+                                <span class="text-[16px] leading-[32px] font-light text-paragraph opacity-65 tracking-[7.2px] block mb-[30px] lg:mb-[5px]"><?=$about['upper_title']?></span>
                                 <h2 class="text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-light text-secondary-main mb-[80px] 2xl:mb-[50px] md:mb-[30px] xs:mb-[20px]">
-                                    Geleceği Şekillendirme Tutkusu:
-                                    <span class="font-bold">Pentagon Yapı'nın Hikayesi.</span>
+                                    <?=$about['title']?></span>
                                 </h2>
-                                <p class="text-[22px] lg:text-[18px] leading-[45px] lg:leading-[40px] font-light tracking-[-0.22px] text-paragraph mb-[30px] xs:mb-[20px]">Sektördeki Mirasımız, Gelecekteki İnşaat Trendlerini Belirliyor.</p>
+                                <p class="text-[22px] lg:text-[18px] leading-[45px] lg:leading-[40px] font-light tracking-[-0.22px] text-paragraph mb-[30px] xs:mb-[20px]"><?=$about['title_1']?></p>
                                 <p class="text-[18px] lg:text-[16px] leading-[32px] font-light text-paragraph mb-[60px] xl:mb-[40px] md:mb-[30px]">
-                                    İnşaat sektöründeki köklü deneyimimiz ve yenilikçi bakış açımızla geleceği inşa ediyoruz. Küresel arenada, spor tesislerinden sürdürülebilir konutlara kadar geniş bir yelpazede faaliyet gösteriyoruz.
-                                    <br><br>
-                                    Her projemizde, güvenilirliği ve yaratıcı çözümleri bir araya getirerek inşaatın ötesine geçiyoruz. 9 farklı sektördeki 6 markayla, dünya çapında tanınan bir lideriz. İnşaatın geleceğini şekillendirme sorumluluğuyla, vizyoner yaklaşımımızı her aşamada yansıtıyoruz.
+                                    <?=$about['description']?>
                                 </p>
                             </div>
                         </div>
@@ -103,48 +100,22 @@
                     <div class="container max-w-[1800px]">
                         <div class="bg-primary-main absolute -z-[1] -bottom-[90px] xl:-bottom-[60px] lg:-bottom-[20px] -right-0 max-w-[440px] [@media(max-width:1780px)_and_(min-width:1441px)]:max-w-[400px] xl:max-w-[360px] w-full h-[426px] md:hidden"></div>
                         <div class="wrapper min-sm:overflow-hidden bg-secondary-main md:bg-transparent p-[50px] pl-[105px] xl:pl-[80px] lg:pl-[30px] lg:p-[30px] sm:p-[20px_0] relative">
-                            <!--                    <span class="reveal absolute sm:static sm:block sm:mb-[30px] z-2 top-[100px] lg:top-[50px] left-[105px] xl:left-[80px] lg:left-[30px] text-[16px] leading-[32px] font-light text-white opacity-65 tracking-[7.2px]">Neler Yaparız?</span>-->
                             <img src="../assets/image/static/vectorel-2.svg" alt="Vektör" width="610" height="535" class="reveal max-w-[610px] xl:max-w-[500px] sm:max-w-full sm:w-full h-auto absolute z-2 pointer-events-none left-1/2 top-1/2 sm:top-[30px] -translate-x-1/2 min-sm:-translate-y-1/2">
                             <div class="sector-slider reveal overflow-hidden relative z-4">
                                 <div class="swiper-wrapper">
-                                    <?php $corporateList = [
-                                        [
-                                            'name' => 'Anahtar Teslim Projeler',
-                                            'title' => 'Anahtar Teslim <span>Projeler</span>',
-                                            'description' => 'Alanında uzman ve çeşitli disiplinlerden gelen meslektaşlarınızla birlikte çalışma fırsatı, sıradan bir iş deneyiminin ötesine geçerek gerçek bir işbirliği atmosferi sunar. <br><br> İnşaat projeleri, sadece tuğlaların bir araya gelmesi değil, farklı beceri setlerinin ve vizyonların bir araya gelmesidir.',
-                                            'image' => '../assets/image/general/career-slider-image.jpg',
-                                        ],
-                                        [
-                                            'name' => 'Tasarım',
-                                            'title' => 'Tasarım',
-                                            'description' => 'Alanında uzman ve çeşitli disiplinlerden gelen meslektaşlarınızla birlikte çalışma fırsatı, sıradan bir iş deneyiminin ötesine geçerek gerçek bir işbirliği atmosferi sunar. <br><br> İnşaat projeleri, sadece tuğlaların bir araya gelmesi değil, farklı beceri setlerinin ve vizyonların bir araya gelmesidir.',
-                                            'image' => '../assets/image/general/career-slider-image.jpg',
-                                        ],
-                                        [
-                                            'name' => 'Üretim',
-                                            'title' => 'Üretim',
-                                            'description' => 'Alanında uzman ve çeşitli disiplinlerden gelen meslektaşlarınızla birlikte çalışma fırsatı, sıradan bir iş deneyiminin ötesine geçerek gerçek bir işbirliği atmosferi sunar. <br><br> İnşaat projeleri, sadece tuğlaların bir araya gelmesi değil, farklı beceri setlerinin ve vizyonların bir araya gelmesidir.',
-                                            'image' => '../assets/image/general/career-slider-image.jpg',
-                                        ],
-                                        [
-                                            'name' => 'Uygulama',
-                                            'title' => 'Uygulama',
-                                            'description' => 'Alanında uzman ve çeşitli disiplinlerden gelen meslektaşlarınızla birlikte çalışma fırsatı, sıradan bir iş deneyiminin ötesine geçerek gerçek bir işbirliği atmosferi sunar. <br><br> İnşaat projeleri, sadece tuğlaların bir araya gelmesi değil, farklı beceri setlerinin ve vizyonların bir araya gelmesidir.',
-                                            'image' => '../assets/image/general/career-slider-image.jpg',
-                                        ],
-                                    ]; foreach ($corporateList as $key => $item) { ?>
-                                        <div class="swiper-slide overflow-hidden" data-slide-name="<?= $item['name'] ?>" data-slide-id="<?= $key + 1 ?>">
+                                    <?php foreach ($what_we_do as $key => $item) { ?>
+                                        <div class="swiper-slide overflow-hidden" data-slide-name="<?= $item->title ?>" data-slide-id="<?= $key + 1 ?>">
                                             <div class="item w-full grid grid-cols-2 sm:grid-cols-1 items-end gap-[200px] 2xl:gap-[160px] xl:gap-[100px] lg:gap-[60px] md:gap-[30px]">
                                                 <div class="left mb-[90px] 2xl:mb-[60px] xl:mb-[45px] lg:mb-[30px] md:mb-0">
                                                     <span class="block mb-[50px] md:mb-[30px] text-[16px] leading-[32px] font-light text-white opacity-65 tracking-[7.2px]">Neler Yaparız?</span>
                                                     <div class="flex flex-col gap-[30px] sm:gap-[20px] text-editor">
-                                                        <h3 class="text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-light text-white [&_span]:font-bold"><?= $item['title'] ?></h3>
-                                                        <p class="text-[17px] md:text-[16px] sm:text-[15px] leading-[32px] sm:leading-[28px] font-light text-white mb-[20px] sm:mb-[5px]"><?= $item['description'] ?></p>
+                                                        <h3 class="text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-light text-white [&_span]:font-bold"><?= $item->title ?></h3>
+                                                        <p class="text-[17px] md:text-[16px] sm:text-[15px] leading-[32px] sm:leading-[28px] font-light text-white mb-[20px] sm:mb-[5px]"><?= $item->description ?></p>
                                                     </div>
                                                 </div>
                                                 <div class="right">
                                                     <div class="image-wrapper w-full h-[500px]  xl:h-[450px] sm:h-[320px] xsm:mt-[40px]">
-                                                        <img src="<?= $item['image'] ?>" alt="<?= $item['name'] ?>" width="745" height="535" class="w-full h-full object-cover" data-swiper-parallax="50%">
+                                                        <img src="<?=env('HTTP_DOMAIN'). '/'. getFolder(['uploads_folder', 'images_folder'], app()->getLocale()) .'/' .$item->image?>" alt="<?= $item->title ?>" width="745" height="535" class="w-full h-full object-cover" data-swiper-parallax="50%">
                                                     </div>
                                                 </div>
                                             </div>
@@ -185,7 +156,7 @@
                     <div class="flex flex-wrap items-center">
                         <div class="w-3/5 md:w-full pr-[120px] 2xl:pr-[90px] xl:pr-[60px] md:p-0 md:mt-[10px] md:order-2">
                             <div class="image-wrapper reveal w-full h-[667px] md:h-[580px] sm:h-[320px] relative">
-                                <img src="../assets/image/general/corporate-image.jpg" alt="Hakkımızda" width="814" height="667" class="w-full h-full object-cover relative z-2 transition-all duration-500 [&.changed]:opacity-0 [&.changed]:translate-y-[10px]" id="box-image">
+                                <img src="<?=env('HTTP_DOMAIN'). '/'. getFolder(['uploads_folder', 'images_folder'], app()->getLocale()) .'/' .$how_we_do[0]->image?>" alt="Hakkımızda" width="814" height="667" class="w-full h-full object-cover relative z-2 transition-all duration-500 [&.changed]:opacity-0 [&.changed]:translate-y-[10px]" id="box-image">
                                 <div class="bg-primary-main absolute -bottom-[38px] sm:-bottom-[20px] -left-[38px] sm:-left-[20px] w-[421px] sm:w-[320px] aspect-square"></div>
                             </div>
                         </div>
@@ -193,38 +164,27 @@
                             <div class="flex flex-col text-editor reveal pt-[38px] lg:pt-[25px] md:pt-0">
                                 <span class="text-[18px] leading-[32px] font-light text-paragraph opacity-65 tracking-[7.2px] block mb-[50px] lg:mb-[30px]">Neyi Nasıl Yaparız?</span>
                                 <div class="boxes flex items-center gap-[28px] sm:gap-[15px] mb-[80px] xl:mb-[50px]">
-                                    <div class="box min-sm:max-w-[250px] w-full tab cursor-pointer border border-solid border-black/16 grid place-items-center gap-[30px] p-[35px] lg:p-[20px] xs:p-[15px] transition-all duration-500 group/box active [&.active]:bg-secondary-main [&_*]:[&.active]:text-white" data-tab-id="arge" data-image="../assets/image/general/corporate-image.jpg">
+                                    <?php foreach($how_we_do as $index => $item): ?>
+                                    <div class="box min-sm:max-w-[250px] w-full tab cursor-pointer border border-solid border-black/16 grid place-items-center gap-[30px] p-[35px] lg:p-[20px] xs:p-[15px] transition-all duration-500 group/box <?= $index === 0 ? 'active' : '' ?> [&.active]:bg-secondary-main [&_*]:[&.active]:text-white" data-tab-id="arge-<?= $index ?>" 
+                                        data-image="<?=env('HTTP_DOMAIN'). '/'. getFolder(['uploads_folder', 'images_folder'], app()->getLocale()) .'/' .$item->image?>">
                                         <i class="icon-brain text-[55px] leading-none text-paragraph/50 transition-all duration-500"></i>
-                                        <p class="text-[18px] lg:text-[16px] md:text-[15px] xs:text-[14px] leading-[27px] font-medium text-paragraph/50 transition-all duration-500 text-center">AR-GE
-                                            <br>
-                                            FAALİYETLERİMİZ</p>
+                                        <p class="text-[18px] lg:text-[16px] md:text-[15px] xs:text-[14px] leading-[27px] font-medium text-paragraph/50 transition-all duration-500 text-center">
+                                            <?= $item->title ?>
+                                        </p>
                                     </div>
-
-                                    <div class="box min-sm:max-w-[250px] w-full tab cursor-pointer border border-solid border-black/16 grid place-items-center gap-[30px] p-[35px] lg:p-[20px] xs:p-[15px] transition-all duration-500 group/box [&.active]:bg-secondary-main [&_*]:[&.active]:text-white" data-tab-id="test" data-image="../assets/image/general/career-breadcrumb.jpg">
-                                        <i class="icon-check-polygon text-[55px] leading-none text-paragraph/50 transition-all duration-500"></i>
-                                        <p class="text-[18px] lg:text-[16px] md:text-[15px] xs:text-[14px] leading-[27px] font-medium text-paragraph/50 transition-all duration-500 text-center">TEST
-                                            <br>
-                                            SÜREÇLERİ</p>
-                                    </div>
+                                    <?php endforeach; ?>
                                 </div>
                                 <div class="boxes-content w-full flex flex-col relative overflow-hidden">
-                                    <div class="content w-full opacity-0 translate-x-full absolute left-0 top-0 z-2 h-full transition-all duration-500 [&.active]:relative [&.active]:opacity-100 [&.active]:translate-x-0 active" id="arge">
+                                    <?php foreach($how_we_do as $index => $item): ?>
+                                    <div class="content w-full opacity-0 translate-x-full absolute left-0 top-0 z-2 h-full transition-all duration-500 [&.active]:relative [&.active]:opacity-100 [&.active]:translate-x-0 <?= $index === 0 ? 'active' : '' ?>" id="arge-<?= $index ?>">
                                         <h3 class="text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-light text-secondary-main mb-[30px] xs:mb-[20px]">
-                                            Ar-ge <span class="font-bold">Faaliyetlerimiz</span>
+                                           <?= $item->title_1 ?>
                                         </h3>
                                         <p class="text-[18px] lg:text-[16px] leading-[32px] font-light text-paragraph mb-[60px] xl:mb-[40px] md:mb-[30px]">
-                                            Ar-Ge ekibimiz, ürünlerimizin ve ürün gamımızın her zaman güncel ve çağın gereklerine uygun olduğundan emin olmak için çalışıyor. Bir taraftan ürünlerimizi güncelleyip yeni ürünler geliştirirken diğer yandan da ürün gamımızı, beklenti ve talepler çerçevesinde çeşitlendiriyoruz.
+                                            <?= $item->description ?>
                                         </p>
                                     </div>
-
-                                    <div class="content w-full opacity-0 -translate-x-full absolute left-0 top-0 z-2 h-full transition-all duration-500 [&.active]:relative [&.active]:opacity-100 [&.active]:-translate-x-0" id="test">
-                                        <h3 class="text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-light text-secondary-main mb-[30px] xs:mb-[20px]">
-                                            Test <span class="font-bold">Süreçleri</span>
-                                        </h3>
-                                        <p class="text-[18px] lg:text-[16px] leading-[32px] font-light text-paragraph mb-[60px] xl:mb-[40px] md:mb-[30px]">
-                                            Ar-Ge ekibimiz, ürünlerimizin ve ürün gamımızın her zaman güncel ve çağın gereklerine uygun olduğundan emin olmak için çalışıyor. Bir taraftan ürünlerimizi güncelleyip yeni ürünler geliştirirken diğer yandan da ürün gamımızı, beklenti ve talepler çerçevesinde çeşitlendiriyoruz.
-                                        </p>
-                                    </div>
+                                    <?php endforeach; ?>
                                 </div>
                             </div>
                         </div>
@@ -239,7 +199,7 @@
                         <div class="bg-primary-main absolute -z-[1] -top-[30px] sm:-top-[20px] -right-[30px] sm:-right-[20px] w-[421px] xsm:w-[290px] aspect-square"></div>
                         <div class="video-image  h-[700px] md:h-[500px] sm:h-[420px] xsm:h-[320px] md:order-2" id="mv-video">
                             <video autoplay loop muted playsinline class="w-full h-full object-cover">
-                                <source srcset="../assets/video/mv-video.mp4" src="../assets/video/mv-video.mp4">
+                                <source srcset="<?=env('HTTP_DOMAIN').'/'.getFolder(['uploads_folder','images_folder'], app()->getLocale()).'/'.$about['bg_video'] ?>" src="<?=env('HTTP_DOMAIN').'/'.getFolder(['uploads_folder','images_folder'], app()->getLocale()).'/'.$about['bg_video'] ?>">
                             </video>
 
                         </div>
@@ -248,18 +208,18 @@
                                 <div class="item bg-[#FBFAF6] flex flex-col justify-center gap-[30px] lg:gap-[15px] px-[60px] py-[75px] lg:py-[30px] 2xl:px-[45px] sm:p-[24px] w-2/5 md:h-auto md:w-full">
                                     <div class="flex items-center gap-[20px]">
                                         <i class="icon-share text-[70px] lg:text-[40px] leading-none text-primary-main"></i>
-                                        <p class="text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-bold text-secondary-main">Misyonumuz</p>
+                                        <p class="text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-bold text-secondary-main"><?=$about['mission_title']?></p>
                                     </div>
-                                    <p class="text-[18px] lg:text-[16px] leading-[32px] font-light text-paragraph tracking-[-0.18px]">Biz, insanların daha kaliteli yaşamasını sağlayacak spor tesisleri ve sosyal alanlar inşa etmek için varız.</p>
+                                    <p class="text-[18px] lg:text-[16px] leading-[32px] font-light text-paragraph tracking-[-0.18px]"><?=$about['mission_text']?></p>
                                 </div>
                             </div>
                             <div class="row reveal h-full md:h-auto md:w-full flex items-end justify-end md:order-3">
                                 <div class="item bg-[#FBFAF6] flex flex-col justify-center gap-[30px] lg:gap-[15px] px-[60px] py-[75px] lg:py-[30px] 2xl:px-[45px] sm:p-[24px] w-2/5 md:h-auto md:w-full">
                                     <div class="flex items-center gap-[20px]">
                                         <i class="icon-gps text-[70px] lg:text-[40px] leading-none text-primary-main"></i>
-                                        <p class="text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-bold text-secondary-main">Vizyonumuz</p>
+                                        <p class="text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-bold text-secondary-main"><?=$about['vision_title']?></p>
                                     </div>
-                                    <p class="text-[18px] lg:text-[16px] leading-[32px] font-light text-paragraph tracking-[-0.18px]">Dünyanın her ülkesinde spor tesisleri inşa etmiş ve sosyal alanlar oluşturmuş, her bölgede paydaşları bulunan, global ölçekte kendi alanında lider firma olmak için çalışıyoruz.</p>
+                                    <p class="text-[18px] lg:text-[16px] leading-[32px] font-light text-paragraph tracking-[-0.18px]"><?=$about['vision_text']?></p>
                                 </div>
                             </div>
                         </div>
@@ -280,61 +240,11 @@
                     </div>
                     <div class="logos-slider overflow-hidden reveal">
                         <div class="swiper-wrapper">
-                            <?php $logos = [
-                                    [
-                                        'logo' => 'logo-1.png',
-                                        'alt' => 'ITF',
-                                    ],
-
-                                    [
-                                        'logo' => 'logo-2.png',
-                                        'alt' => 'İTO',
-                                    ],
-
-                                    [
-                                        'logo' => 'logo-3.png',
-                                        'alt' => 'MUSİAD',
-                                    ],
-
-                                    [
-                                        'logo' => 'logo-4.png',
-                                        'alt' => 'İTKİB',
-                                    ],
-
-                                    [
-                                        'logo' => 'logo-5.png',
-                                        'alt' => 'TIM',
-                                    ],
-
-                                    [
-                                        'logo' => 'logo-1.png',
-                                        'alt' => 'ITF',
-                                    ],
-
-                                    [
-                                        'logo' => 'logo-2.png',
-                                        'alt' => 'İTO',
-                                    ],
-
-                                    [
-                                        'logo' => 'logo-3.png',
-                                        'alt' => 'MUSİAD',
-                                    ],
-
-                                    [
-                                        'logo' => 'logo-4.png',
-                                        'alt' => 'İTKİB',
-                                    ],
-
-                                    [
-                                        'logo' => 'logo-5.png',
-                                        'alt' => 'TIM',
-                                    ],
-                                ]; foreach ($logos as $item): ?>
+                            <?php foreach ($memberships as $item): ?>
                                 <div class="swiper-slide">
                                     <a href="#" target="_blank" class="block">
                                         <div class="item w-full h-[170px] md:h-[90px] p-[50px] xl:p-[35px] md:p-[30px] sm:p-[15px] xs:px-0 group">
-                                            <img src="../assets/image/logos/<?= $item['logo'] ?>" alt="<?= $item['alt'] ?>" width="190" height="62" class="w-full h-full object-contain transition-all duration-500 min-md:opacity-50 min-md:grayscale group-hover:min-md:opacity-100 group-hover:min-md:grayscale-0">
+                                            <img src="<?= env('HTTP_DOMAIN').'/'.getFolder(['uploads_folder','images_folder'], app()->getLocale()).'/'.$item->image ?>" alt="<?= $item->alt ?>" width="190" height="62" class="w-full h-full object-contain transition-all duration-500 min-md:opacity-50 min-md:grayscale group-hover:min-md:opacity-100 group-hover:min-md:grayscale-0">
                                         </div>
                                     </a>
                                 </div>
@@ -350,7 +260,7 @@
                     <div class="flex flex-wrap items-center">
                         <div class="w-1/2 md:w-full pr-[30px] 2xl:pr-[30px] md:p-0 reveal">
                             <div class="image-wrapper w-full h-[670px] 2xl:h-[620px] md:h-[580px] sm:h-[320px] relative transition-all duration-500 [&.changed]:opacity-0 [&.changed]:translate-y-[10px]">
-                                <img src="../assets/image/general/home-about-us.jpg" alt="Hakkımızda" width="814" height="794" class="w-full h-full object-cover relative z-2" id="tab-image">
+                                <img src="<?= env('HTTP_DOMAIN').'/'.getFolder(['uploads_folder','images_folder'], app()->getLocale()).'/'.$politics[0]->image ?>" alt="Hakkımızda" width="814" height="794" class="w-full h-full object-cover relative z-2" id="tab-image">
                                 <div class="bg-primary-main absolute -bottom-[38px] sm:-bottom-[20px] -left-[38px] sm:-left-[20px] w-[421px] sm:w-[320px] aspect-square transition-all duration-500 [&.changed]:opacity-0 [&.changed]:translate-y-[10px]"></div>
                             </div>
                         </div>
@@ -358,39 +268,15 @@
                             <div class="flex flex-col">
                                 <span class="reveal text-[16px] leading-[32px] font-light text-paragraph opacity-65 tracking-[7.2px] block mb-[30px]">Politikalarımız</span>
                                 <div class="tabs flex flex-col gap-[28px] w-full reveal">
-                                    <?php $tabs = [
-                                            [
-                                                'title' => 'Kalite Politikamız',
-                                                'description' => 'Ar-Ge ekibimiz, ürünlerimizin ve ürün gamımızın her zaman güncel ve çağın gereklerine uygun olduğundan emin olmak için çalışıyor. Bir taraftan ürünlerimizi güncelleyip yeni ürünler geliştirirken diğer yandan da ürün gamımızı, beklenti ve talepler çerçevesinde çeşitlendiriyoruz.',
-                                                'image' => '../assets/image/general/quality-policy.jpg',
-                                            ],
-
-                                            [
-                                                'title' => 'Çevre Politikamız',
-                                                'description' => 'Ar-Ge ekibimiz, ürünlerimizin ve ürün gamımızın her zaman güncel ve çağın gereklerine uygun olduğundan emin olmak için çalışıyor. Bir taraftan ürünlerimizi güncelleyip yeni ürünler geliştirirken diğer yandan da ürün gamımızı, beklenti ve talepler çerçevesinde çeşitlendiriyoruz.',
-                                                'image' => '../assets/image/general/home-sector.jpg',
-                                            ],
-
-                                            [
-                                                'title' => 'İş Güvenliği Politikamız',
-                                                'description' => 'Ar-Ge ekibimiz, ürünlerimizin ve ürün gamımızın her zaman güncel ve çağın gereklerine uygun olduğundan emin olmak için çalışıyor. Bir taraftan ürünlerimizi güncelleyip yeni ürünler geliştirirken diğer yandan da ürün gamımızı, beklenti ve talepler çerçevesinde çeşitlendiriyoruz.',
-                                                'image' => '../assets/image/general/career-image.jpg',
-                                            ],
-
-                                            [
-                                                'title' => 'Sosyal Sorumluluk',
-                                                'description' => 'Ar-Ge ekibimiz, ürünlerimizin ve ürün gamımızın her zaman güncel ve çağın gereklerine uygun olduğundan emin olmak için çalışıyor. Bir taraftan ürünlerimizi güncelleyip yeni ürünler geliştirirken diğer yandan da ürün gamımızı, beklenti ve talepler çerçevesinde çeşitlendiriyoruz.',
-                                                'image' => '../assets/image/general/home-sector.jpg',
-                                            ],
-                                        ]; foreach ($tabs as $key => $item): ?>
-                                            <div class="tab md:overflow-hidden cursor-pointer w-full pb-[28px] last:pb-0 [&.active]:pb-[50px] [&.active]:md:pb-[30px] !border-b border-b-black/10 border-solid border-0 last:!border-0 group transition-all duration-500 <?= $key == 0 ? 'active' : ''; ?>" data-image="<?= $item['image'] ?>" data-tab-id="<?= $key ?>">
+                                        <?php  foreach ($politics as $key => $item): ?>
+                                            <div class="tab md:overflow-hidden cursor-pointer w-full pb-[28px] last:pb-0 [&.active]:pb-[50px] [&.active]:md:pb-[30px] !border-b border-b-black/10 border-solid border-0 last:!border-0 group transition-all duration-500 <?= $key == 0 ? 'active' : ''; ?>" data-image="<?= env('HTTP_DOMAIN').'/'.getFolder(['uploads_folder','images_folder'], app()->getLocale()).'/'.$item->image ?>" data-tab-id="<?= $key ?>">
                                                 <div class="flex flex-col gap-[10px] overflow-hidden">
                                                     <h4 class="text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.32px] group-[&.active]:tracking-[-0.20px] font-medium text-paragraph/50 transition-all duration-300 group-[&.active]:text-secondary-main [-webkit-text-stroke:1px_rgba(51,51,51,0)] group-[&.active]:[-webkit-text-stroke:1px_rgba(8,51,85,1)] relative after:absolute after:left-[-120px] after:xl:left-[-100px] after:top-[24px] after:w-0 after:h-[3px] after:bg-primary-main after:transition-all after:duration-500 group-[&.active]:after:w-[90px] group-[&.active]:after:xl:w-[70px] after:z-2 after:md:hidden">
-                                                        <?= $item['title'] ?>
+                                                        <?= $item->title ?>
                                                     </h4>
                                                     <div class="overflow-hidden description will-change-transform opacity-0 transition-all duration-500 group-[&.active]:opacity-100">
                                                         <p class="text-[18px] lg:text-[16px] leading-[32px] tracking-[-0.18px] font-light text-paragraph">
-                                                            <?= $item['description'] ?>
+                                                            <?= $item->description ?>
                                                         </p>
                                                     </div>
                                                 </div>

@@ -58,6 +58,7 @@ class CatalogController extends Controller
        foreach($this->languages as $language) {
             $request->validate([
                 'title_' . $language->lang_code => 'required|max:255',
+                'seo_url_' . $language->lang_code => 'required|max:255',
                 'bg_image_' . $language->lang_code => 'nullable|image|max:2048', // Assuming image is optional
                 'alt_' . $language->lang_code => 'required|max:255',
                 'seo_title_' . $language->lang_code => 'nullable|max:255',
@@ -80,6 +81,7 @@ class CatalogController extends Controller
                 [
                     'brand_id' => $request->input('brand_id'),
                     'title' => $request->input('title_' . $language->lang_code),
+                    'seo_url' => $request->input('seo_url_' . $language->lang_code),
                     'bg_image' => $imageName,
                     'alt' => $request->input('alt_' . $language->lang_code),
                     'seo_title' => $request->input('seo_title_' . $language->lang_code),

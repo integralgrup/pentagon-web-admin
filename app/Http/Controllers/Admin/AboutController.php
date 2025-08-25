@@ -46,21 +46,21 @@ class AboutController extends Controller
      */
     public function store(Request $request)
     {
+    //dd($request->all());
         try {
             $languages = Language::all(); // Fetch all languages for the dropdown
-
-            
-                //Update or create existing menu items for the given menu_id
                 foreach ($languages as $language) {
                     // Validate the request data
                     $request->validate([
                         'lang_' . $language->lang_code => 'required|string|max:10',
+                        'upper_title_' . $language->lang_code => 'required|string|max:100',
                         'title_' . $language->lang_code => 'required|string|max:100',
                         'title_1_' . $language->lang_code => 'required|string|max:255',
                         'description_' . $language->lang_code => 'required|string',
                         'image_' . $language->lang_code => 'nullable|image|max:2048',
                         'alt_' . $language->lang_code => 'required|string|max:255',
-                        'bg_video_' . $language->lang_code => 'nullable|file|mimes:mp4,avi,mov|max:20480', // 20MB max
+                        //bg_video should be 50MB limit
+                        'bg_video_' . $language->lang_code => 'nullable|file|mimetypes:video/mp4,video/avi,video/mpeg,video/quicktime|max:51200', // 50MB
                         'mission_title_' . $language->lang_code => 'required|string|max:255',
                         'mission_text_' . $language->lang_code => 'required|string',
                         'mission_image_' . $language->lang_code => 'nullable|image|max:2048',
@@ -71,6 +71,7 @@ class AboutController extends Controller
                         'seo_description_' . $language->lang_code => 'required|string|max:255',
                         'seo_keywords_' . $language->lang_code => 'nullable|string|max:255',
                     ]);
+
 
                     if ($request->hasFile('image_' . $language->lang_code)) {
                         $image      = $request->file('image_' . $language->lang_code);
@@ -101,7 +102,7 @@ class AboutController extends Controller
 
                             // Generate unique name
                             $videoName = seoUrl($request->input('title_' . $language->lang_code)) . '_' . time() . '.' . $video->getClientOriginalExtension();
-
+                            
                             // Move file into public/some_folder
                             $video->move($folderPath, $videoName);
 
@@ -147,13 +148,13 @@ class AboutController extends Controller
                     } else {
                         $visionImageName = $request->input('old_vision_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
                     }
-
                     // Create or update the about content for the specific language
                     About::updateOrCreate(
                         [
                             'lang' => $language->lang_code,
                         ],
                         [
+                            'upper_title' => $request->input('upper_title_' . $language->lang_code),
                             'title' => $request->input('title_' . $language->lang_code),
                             'title_1' => $request->input('title_1_' . $language->lang_code),
                             'description' => $request->input('description_' . $language->lang_code),
@@ -173,9 +174,10 @@ class AboutController extends Controller
                     );
 
                 }
+                
             return redirect()->route('admin.about')->with('success', 'Hakkımızda içeriği başarıyla kaydedildi.');
         } catch (\Exception $e) {
-            dd($e);
+            throw $e;
             return redirect()->back()->withErrors(['error' => 'Hata oluştu: ' . $e->getMessage()]);
         }
     }

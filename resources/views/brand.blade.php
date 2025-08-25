@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-   <?php $pageTitle = 'Marka Detay'; 
+   <?php $pageTitle = $brand->title; 
         $breadcrumbImage = "corporate-breadcrumb.jpg";
         $breadcrumbVideo = "breadcrumb-video.mp4";
         $pageLink = "page-corporate.php";
@@ -25,15 +25,12 @@
                         <div class="flex flex-col text-editor reveal">
                             <span class="text-[16px] leading-[32px] font-light text-paragraph opacity-65 tracking-[7.2px] block mb-[30px] lg:mb-[5px]">Bizi Tanıyın</span>
                             <h1 class="text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-light text-secondary-main mb-[80px] 2xl:mb-[50px] md:mb-[30px] xs:mb-[20px]">
-                                Geleceği Şekillendirme Tutkusu:
-                                <span class="font-bold">Pentagon Yapı'nın Hikayesi.</span>
+                                <?=$brand->title_1?>
                             </h1>
                             <p class="text-[18px] lg:text-[16px] leading-[32px] font-light text-paragraph mb-[60px] xl:mb-[40px] md:mb-[30px]">
-                                İnşaat sektöründeki köklü deneyimimiz ve yenilikçi bakış açımızla geleceği inşa ediyoruz. Küresel arenada, spor tesislerinden sürdürülebilir konutlara kadar geniş bir yelpazede faaliyet gösteriyoruz.
-                                <br><br>
-                                Her projemizde, güvenilirliği ve yaratıcı çözümleri bir araya getirerek inşaatın ötesine geçiyoruz. 9 farklı sektördeki 6 markayla, dünya çapında tanınan bir lideriz. İnşaatın geleceğini şekillendirme sorumluluğuyla, vizyoner yaklaşımımızı her aşamada yansıtıyoruz.
+                                <?= $brand->description; ?>
                             </p>
-                            <a href="#" target="_blank" class="flex items-center justify-center relative w-max overflow-hidden main-button group sm:w-full" id="website-button">
+                            <a href="<?=$brand->url?>" target="_blank" class="flex items-center justify-center relative w-max overflow-hidden main-button group sm:w-full" id="website-button">
                                 <div class="left px-[30px] py-[20px] flex items-center justify-center z-2 bg-transparent border border-solid border-primary-main transition-all duration-300 relative sm:w-full before:absolute before:left-0 before:top-0 before:w-0 before:h-full before:translate-x-[-100px] group-hover:before:min-md:w-full group-hover:before:min-md:translate-x-0 before:bg-primary-main before:transition-all before:duration-500">
                                     <span class="text-[16px] leading-none font-medium text-primary-main transition-all duration-300 group-hover:min-md:duration-600 group-hover:min-md:text-white translate-x-[-100px] opacity-0 group-hover:min-md:translate-x-0 group-hover:min-md:opacity-100 w-0 whitespace-nowrap relative z-2">Websitesine Git</span>
                                     <span class="text-[16px] leading-none font-medium text-primary-main transition-all duration-600 group-hover:min-md:duration-300 group-hover:min-md:text-white group-hover:min-md:translate-x-[100px] group-hover:min-md:opacity-0 relative z-2">Websitesine Git</span>
@@ -51,7 +48,7 @@
             </div>
         </section>
 
-        <section class="career-slider-area overflow-hidden md:bg-secondary-main relative">
+       <section class="career-slider-area overflow-hidden md:bg-secondary-main mb-[180px] xl:mb-[120px] lg:mb-[90px] md:mb-[60px] relative">
             <div class="max-w-[1920px] mx-auto relative overflow-hidden">
                 <div class="container max-w-[1800px]">
                     <div class="bg-primary-main absolute -z-[1] -bottom-[90px] xl:-bottom-[60px] lg:-bottom-[20px] -right-0 max-w-[440px] [@media(max-width:1780px)_and_(min-width:1441px)]:max-w-[400px] xl:max-w-[360px] w-full h-[426px] md:hidden"></div>
@@ -59,44 +56,19 @@
                         <img src="../assets/image/static/vectorel-2.svg" alt="Vektör" width="610" height="535" class="reveal max-w-[610px] xl:max-w-[500px] sm:max-w-full sm:w-full h-auto absolute z-2 pointer-events-none left-1/2 top-1/2 sm:top-[30px] -translate-x-1/2 min-sm:-translate-y-1/2">
                         <div class="sector-slider reveal overflow-hidden relative z-4">
                             <div class="swiper-wrapper">
-                                <?php $brandList = [
-                                    [
-                                        'name' => 'Açık Kapalı Stadyumlar',
-                                        'title' => 'Açık Kapalı <span>Stadyumlar</span>',
-                                        'description' => 'Alanında uzman ve çeşitli disiplinlerden gelen meslektaşlarınızla birlikte çalışma fırsatı, sıradan bir iş deneyiminin ötesine geçerek gerçek bir işbirliği atmosferi sunar. <br><br> İnşaat projeleri, sadece tuğlaların bir araya gelmesi değil, farklı beceri setlerinin ve vizyonların bir araya gelmesidir.',
-                                        'image' => '../assets/image/general/brand-detail-image.jpg',
-                                    ],
-                                    [
-                                        'name' => 'Etkinlik Fuarlar',
-                                        'title' => 'Etkinlik <span>Fuarlar</span>',
-                                        'description' => 'Alanında uzman ve çeşitli disiplinlerden gelen meslektaşlarınızla birlikte çalışma fırsatı, sıradan bir iş deneyiminin ötesine geçerek gerçek bir işbirliği atmosferi sunar. <br><br> İnşaat projeleri, sadece tuğlaların bir araya gelmesi değil, farklı beceri setlerinin ve vizyonların bir araya gelmesidir.',
-                                        'image' => '../assets/image/general/brand-detail-image.jpg',
-                                    ],
-                                    [
-                                        'name' => 'Spor Alanları',
-                                        'title' => 'Spor <span>Alanları</span>',
-                                        'description' => 'Alanında uzman ve çeşitli disiplinlerden gelen meslektaşlarınızla birlikte çalışma fırsatı, sıradan bir iş deneyiminin ötesine geçerek gerçek bir işbirliği atmosferi sunar. <br><br> İnşaat projeleri, sadece tuğlaların bir araya gelmesi değil, farklı beceri setlerinin ve vizyonların bir araya gelmesidir.',
-                                        'image' => '../assets/image/general/brand-detail-image.jpg',
-                                    ],
-                                    [
-                                        'name' => 'Konser Alanları',
-                                        'title' => 'Konser <span>Alanları</span>',
-                                        'description' => 'Alanında uzman ve çeşitli disiplinlerden gelen meslektaşlarınızla birlikte çalışma fırsatı, sıradan bir iş deneyiminin ötesine geçerek gerçek bir işbirliği atmosferi sunar. <br><br> İnşaat projeleri, sadece tuğlaların bir araya gelmesi değil, farklı beceri setlerinin ve vizyonların bir araya gelmesidir.',
-                                        'image' => '../assets/image/general/brand-detail-image.jpg',
-                                    ],
-                                ]; foreach ($brandList as $key => $item) { ?>
-                                    <div class="swiper-slide overflow-hidden" data-slide-name="<?= $item['name'] ?>" data-slide-id="<?= $key + 1 ?>">
+                                <?php foreach ($slider1 as $key => $item) { ?>
+                                    <div class="swiper-slide overflow-hidden" data-slide-name="<?= $item->title ?>" data-slide-id="<?= $key + 1 ?>">
                                         <div class="item w-full grid grid-cols-2 sm:grid-cols-1 items-end gap-[200px] 2xl:gap-[160px] xl:gap-[100px] lg:gap-[60px] md:gap-[30px]">
                                             <div class="left mb-[90px] 2xl:mb-[60px] xl:mb-[45px] lg:mb-[30px] md:mb-0">
-                                                <span class="block mb-[50px] md:mb-[30px] text-[16px] leading-[32px] font-light text-white opacity-65 tracking-[7.2px]">Uygulama Alanları</span>
+                                                <span class="block mb-[50px] md:mb-[30px] text-[16px] leading-[32px] font-light text-white opacity-65 tracking-[7.2px]"><?= $item->title_1 ?></span>
                                                 <div class="flex flex-col gap-[30px] sm:gap-[20px] text-editor">
-                                                    <h2 class="text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-light text-white [&_span]:font-bold"><?= $item['title'] ?></h2>
-                                                    <p class="text-[17px] md:text-[16px] sm:text-[15px] leading-[32px] sm:leading-[28px] font-light text-white mb-[20px] sm:mb-[5px]"><?= $item['description'] ?></p>
+                                                    <h3 class="text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-light text-white [&_span]:font-bold"><?= $item->title ?></h3>
+                                                    <p class="text-[17px] md:text-[16px] sm:text-[15px] leading-[32px] sm:leading-[28px] font-light text-white mb-[20px] sm:mb-[5px]"><?= $item->description ?></p>
                                                 </div>
                                             </div>
                                             <div class="right">
-                                                <div class="image-wrapper w-full h-[500px]  xl:h-[450px] sm:h-[320px] xsm:mt-[40px]">
-                                                    <img src="<?= $item['image'] ?>" alt="<?= $item['name'] ?>" width="745" height="535" class="w-full h-full object-cover" data-swiper-parallax="50%">
+                                                <div class="image-wrapper w-full h-[500px]  xl:h-[450px] sm:h-[320px]  xsm:mt-[40px]">
+                                                    <img src="<?= env('HTTP_DOMAIN').'/'.getFolder(['uploads_folder','brand_images_folder'], app()->getLocale()).'/'. $item->image ?>" alt="<?= $item->title ?>" width="745" height="535" class="w-full h-full object-cover" data-swiper-parallax="50%">
                                                 </div>
                                             </div>
                                         </div>
@@ -138,45 +110,10 @@
                             <div class="w-full reveal h-full bg-[#FBFAF6] p-[50px] sm:pt-[20px] sm:pb-[80px] relative z-2 shadow-[0px_4px_100px_0px_rgba(0,0,0,0.10)]">
                                 <div class="product-image-slider overflow-hidden">
                                     <div class="swiper-wrapper">
-                                        <?php $products = [
-                                            [
-                                                'image' => '../assets/image/general/product-main.png',
-                                                'title' => 'Tartan Surface',
-                                                'category' => 'Yeşil Zemin',
-                                                'link' => 'https://pentayazilim.com',
-                                            ],
-
-                                            [
-                                                'image' => '../assets/image/general/product-1.png',
-                                                'title' => 'Tartan Surface',
-                                                'category' => 'Yeşil Zemin',
-                                                'link' => 'https://ui.pentayazilim.com',
-                                            ],
-
-                                            [
-                                                'image' => '../assets/image/general/product-2.png',
-                                                'title' => 'Tartan Surface',
-                                                'category' => 'Yeşil Zemin',
-                                                'link' => 'https://pentayazilim.com',
-                                            ],
-
-                                            [
-                                                'image' => '../assets/image/general/product-3.png',
-                                                'title' => 'Tartan Surface',
-                                                'category' => 'Yeşil Zemin',
-                                                'link' => 'https://ui.pentayazilim.com',
-                                            ],
-
-                                            [
-                                                'image' => '../assets/image/general/product-3.png',
-                                                'title' => 'Tartan Surface',
-                                                'category' => 'Yeşil Zemin',
-                                                'link' => 'https://ui.pentayazilim.com',
-                                            ],
-                                        ]; foreach ($products as $item) { ?>
-                                            <div class="swiper-slide" data-link="<?= $item['link'] ?>">
+                                        <?php foreach ($slider2 as $item) { ?>
+                                            <div class="swiper-slide" data-link="<?= $item->url ?>">
                                                 <div class="item w-full h-full">
-                                                    <img src="<?= $item['image'] ?>" alt="Ürün" width="814" height="696" class="w-full h-full object-contain">
+                                                    <img src="<?= env('HTTP_DOMAIN').'/'.getFolder(['uploads_folder','brand_images_folder'], app()->getLocale()).'/'. $item->image ?>" alt="Ürün" width="814" height="696" class="w-full h-full object-contain">
                                                 </div>
                                             </div>
                                         <?php } ?>
@@ -216,15 +153,15 @@
                         <div class="flex flex-col reveal">
                             <div class="product-top-slider overflow-hidden">
                                 <div class="swiper-wrapper">
-                                    <?php foreach ($products as $item) { ?>
-                                        <div class="swiper-slide" data-link="<?= $item['link'] ?>">
+                                    <?php foreach ($slider2 as $item) { ?>
+                                        <div class="swiper-slide" data-link="<?= $item->url ?>">
                                             <div class="text-editor w-full">
                                                 <span class="text-[16px] leading-[32px] font-light text-paragraph opacity-65 tracking-[7.2px] block mb-[30px] lg:mb-[15px]">En İyi Kalite</span>
                                                 <h2 class="text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-light text-secondary-main mb-[30px]">
-                                                    Netrags <span class="font-bold">Ürünlerimiz</span>
+                                                    <?=$brand->title?> <span class="font-bold">Ürünlerimiz</span>
                                                 </h2>
                                                 <p class="text-[18px] lg:text-[16px] leading-[32px] font-light text-paragraph">
-                                                    Küresel iş ortaklarımız için en kaliteli ürünleri ve hizmetleri sunma ilkesiyle hareket ederek, sürekli gelişen ve değişen iş dünyasında öncü bir rol üstleniyoruz.
+                                                    <?= $item->description ?>
                                                 </p>
                                             </div>
                                         </div>
@@ -233,15 +170,15 @@
                             </div>
                             <div class="product-slider pt-[80px] pb-[60px] sm:py-[50px] relative xs:hidden" id="product-slider">
                                 <div class="swiper-wrapper [&_.swiper-slide-next_+_.swiper-slide]:min-xs:opacity-100">
-                                    <?php foreach ($products as $item) { ?>
-                                        <div class="swiper-slide group opacity-0 md:opacity-100 [&.swiper-slide-prev]:min-xs:!opacity-0 [&.swiper-slide-active]:min-xs:opacity-100 [&.swiper-slide-next]:min-xs:opacity-100 [&.swiper-slide-visible]:min-xs:opacity-100 transition-all duration-300" data-link="<?= $item['link'] ?>">
+                                    <?php foreach ($slider2 as $item) { ?>
+                                        <div class="swiper-slide group opacity-0 md:opacity-100 [&.swiper-slide-prev]:min-xs:!opacity-0 [&.swiper-slide-active]:min-xs:opacity-100 [&.swiper-slide-next]:min-xs:opacity-100 [&.swiper-slide-visible]:min-xs:opacity-100 transition-all duration-300" data-link="<?= $item->url ?>">
                                             <div class="item w-full flex flex-col border border-solid border-black/16 bg-[#FBFAF6] transition-all duration-500 group-[&.swiper-slide-active]:border-primary-main group-[&.swiper-slide-active]:shadow-[0px_25px_50px_0px_rgba(0,0,0,0.20)]">
                                                 <div class="image-wrapper p-[25px] rounded-[10px] w-full h-[250px] overflow-hidden mb-[20px] transition-all duration-500 opacity-65 group-[&.swiper-slide-active]:opacity-100">
-                                                    <img src="<?= $item['image'] ?>" alt="<?= $item['title'] ?>" class="w-full h-full object-contain" width="225" height="142" data-image="<?= $item['image'] ?>">
+                                                    <img src="<?= env('HTTP_DOMAIN').'/'.getFolder(['uploads_folder','brand_images_folder'], app()->getLocale()).'/'. $item->image ?>" alt="<?= $item->alt ?>" class="w-full h-full object-contain" width="225" height="142" data-image="<?= $item->image ?>">
                                                 </div>
                                                 <div class="flex flex-col gap-[20px] px-[40px] lg:px-[20px] pb-[45px] lg:pb-[25px]">
-                                                    <span class="text-[16px] leading-none font-light tracking-[1.6px] text-paragraph/65 transition-all duration-500"><?= $item['category'] ?></span>
-                                                    <h3 class="text-[22px] md:text-[20px] leading-none font-medium tracking-[-0.22px] text-paragraph group-[&.swiper-slide-active]:text-secondary-main transition-all duration-300"><?= $item['title'] ?></h3>
+                                                    <span class="text-[16px] leading-none font-light tracking-[1.6px] text-paragraph/65 transition-all duration-500"><?= $item->category ?></span>
+                                                    <h3 class="text-[22px] md:text-[20px] leading-none font-medium tracking-[-0.22px] text-paragraph group-[&.swiper-slide-active]:text-secondary-main transition-all duration-300"><?= $item->title ?></h3>
                                                 </div>
                                             </div>
                                         </div>

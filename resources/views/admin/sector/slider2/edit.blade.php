@@ -60,7 +60,7 @@
                         }
                     ?>
                     <div class="card-body">
-                        <form action="{{ route('admin.sector.slider1.store', $sector_id[$item->lang]) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('admin.sector.slider2.store', $sector_id[$item->lang]) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             
                             <div class="tab-content" id="myTabContent">
@@ -81,7 +81,7 @@
                                             <label for="image_{{ $language->lang_code }}" class="form-label">Dosya ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="file" class="form-control" id="image_{{ $language->lang_code }}" name="image_{{ $language->lang_code }}">
                                             @if($image[$language->lang_code])
-                                                <img src="{{ asset(getFolder(['uploads_folder','sector_images_folder']) . '/' . $image[$language->lang_code]) }}" alt="{{ $alt[$language->lang_code] }}" style="width: 200px; height: auto; margin-top: 10px;">
+                                                <img src="{{ asset(getFolder(['uploads_folder','sector_images_folder'], $language->lang_code) . '/' . $image[$language->lang_code]) }}" alt="{{ $alt[$language->lang_code] }}" style="width: 200px; height: auto; margin-top: 10px;">
                                                 <input type="hidden" class="form-control" id="old_image_{{ $language->lang_code }}" name="old_image_{{ $language->lang_code }}" value="{{ $image[$language->lang_code] }}" readonly>
                                             @endif
                                         </div>

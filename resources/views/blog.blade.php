@@ -18,29 +18,8 @@
             <div class="bg-primary-main absolute -z-[1] bottom-[10px] -right-[30px] w-[426px] aspect-square sm:hidden"></div>
             <div class="news-slider w-full overflow-hidden">
                 <div class="swiper-wrapper">
-                    <?php $news = [
-                        [
-                            'title' => 'Olimpik Yüzme Havuzu Kurulumu Nasıl Yapılır?',
-                            'description' => 'Uluslararası Yüzme Federasyonu’nun (FINA) standartlarına uygun bir şekilde tasarlan...',
-                            'link' => 'page-news-detail.php',
-                        ],
-                        [
-                            'title' => 'Olimpik Yüzme Havuzu Kurulumu Nasıl Yapılır?',
-                            'description' => 'Uluslararası Yüzme Federasyonu’nun (FINA) standartlarına uygun bir şekilde tasarlan...',
-                            'link' => 'page-news-detail.php',
-                        ],
-                        [
-                            'title' => 'Olimpik Yüzme Havuzu Kurulumu Nasıl Yapılır?',
-                            'description' => 'Uluslararası Yüzme Federasyonu’nun (FINA) standartlarına uygun bir şekilde tasarlan...',
-                            'link' => 'page-news-detail.php',
-                        ],
-                        [
-                            'title' => 'Olimpik Yüzme Havuzu Kurulumu Nasıl Yapılır?',
-                            'description' => 'Uluslararası Yüzme Federasyonu’nun (FINA) standartlarına uygun bir şekilde tasarlan...',
-                            'link' => 'page-news-detail.php',
-                        ],
-                    ];
-                    foreach ($news as $key => $item) { ?>
+                    <?php 
+                    foreach ($blogs as $key => $item) { ?>
                         <div class="swiper-slide">
                             <div class="item w-full flex flex-wrap items-end">
                                 <div class="w-1/4 md:w-1/3 sm:w-full">
@@ -53,9 +32,9 @@
                                             </i>
                                             <time class="text-[16px] font-medium leading-none tracking-[-0.16px] text-dark/50"><?= date('d'.'.'.'m'.'.'.'Y') ?></time>
                                         </div>
-                                        <h2><a href="<?= $item['link'] ?>" class="<?= $key == 0 ? 'reveal' : ''; ?> block text-[30px] xl:text-[22px] xl:leading-[28px] leading-[35px] font-medium text-secondary-main mb-[25px] line-clamp-2"><?= $item['title'] ?></a></h2>
-                                        <p class="<?= $key == 0 ? 'reveal' : ''; ?> text-[18px] lg:text-[16px] leading-[28px] font-light text-paragraph mb-[50px] xl:mb-[30px] line-clamp-2"><?= $item['description'] ?></p>
-                                        <a href="<?= $item['link'] ?>" class="<?= $key == 0 ? 'reveal' : ''; ?> flex items-center justify-center relative w-max overflow-hidden main-button group sm:w-full">
+                                        <h2><a href="<?= env('HTTP_DOMAIN').'/'. getUrl('blog_url'). '/'.$item['seo_url'] ?>" class="<?= $key == 0 ? 'reveal' : ''; ?> block text-[30px] xl:text-[22px] xl:leading-[28px] leading-[35px] font-medium text-secondary-main mb-[25px] line-clamp-2"><?= $item['title'] ?></a></h2>
+                                        <p class="<?= $key == 0 ? 'reveal' : ''; ?> text-[18px] lg:text-[16px] leading-[28px] font-light text-paragraph mb-[50px] xl:mb-[30px] line-clamp-2"><?= mb_substr($item['description'], 0, 100) ?>...</p>
+                                        <a href="<?= env('HTTP_DOMAIN').'/'. getUrl('blog_url'). '/'.$item['seo_url'] ?>" class="<?= $key == 0 ? 'reveal' : ''; ?> flex items-center justify-center relative w-max overflow-hidden main-button group sm:w-full">
                                             <div class="left px-[30px] py-[20px] flex items-center justify-center z-2 bg-transparent border border-solid border-primary-main transition-all duration-300 sm:w-full relative before:absolute before:left-0 before:top-0 before:w-0 before:h-full before:translate-x-[-100px] group-hover:before:min-md:w-full group-hover:before:min-md:translate-x-0 before:bg-primary-main before:transition-all before:duration-500">
                                                 <span class="text-[16px] leading-none font-medium text-primary-main transition-all duration-300 group-hover:min-md:duration-600 group-hover:min-md:text-white translate-x-[-100px] opacity-0 group-hover:min-md:translate-x-0 group-hover:min-md:opacity-100 w-0 whitespace-nowrap relative z-2">Detaylı İncele</span>
                                                 <span class="text-[16px] leading-none font-medium text-primary-main transition-all duration-600 group-hover:min-md:duration-300 group-hover:min-md:text-white group-hover:min-md:translate-x-[100px] group-hover:min-md:opacity-0 relative z-2">Detaylı İncele</span>
@@ -69,7 +48,7 @@
                                 </div>
                                 <div class="w-3/4 md:w-2/3 sm:w-full pl-[95px] 2xl:pl-[60px] xl:pl-[30px] sm:pl-0 sm:mt-[30px]">
                                     <div class="image-wrapper <?= $key == 0 ? 'reveal' : ''; ?> w-full h-[650px] xl:h-[580px] lg:h-[530px] sm:h-[320px]">
-                                        <img src="../assets/image/general/home-blog.jpg" alt="Blog" width="657" height="406" class="w-full h-full object-cover">
+                                        <img src="<?= env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','blog_images_folder', ], $item['lang']). '/'.$item['image'] ?>" alt="Blog" width="657" height="406" class="w-full h-full object-cover">
                                     </div>
                                 </div>
                             </div>
@@ -159,48 +138,11 @@
             </div>
 
             <div class="blog-items grid grid-cols-2 sm:flex sm:flex-col gap-[30px] mb-[130px] xl:mb-[100px] lg:mb-[70px] md:mb-[50px]">
-                <?php $blogs = [
-                    [
-                        'title' => 'Olimpik Yüzme Havuzu Kurulumu Nasıl Yapılır?',
-                        'description' => 'Uluslararası Yüzme Federasyonu’nun (FINA) standartlarına uygun bir şekilde tasarlan...',
-                        'image' => 'blog-image-1.jpg',
-                        'link' => 'page-news-detail.php',
-                    ],
-                    [
-                        'title' => 'Olimpik Yüzme Havuzu Kurulumu Nasıl Yapılır?',
-                        'description' => 'Uluslararası Yüzme Federasyonu’nun (FINA) standartlarına uygun bir şekilde tasarlan...',
-                        'image' => 'blog-image-2.jpg',
-                        'link' => 'page-news-detail.php',
-                    ],
-                    [
-                        'title' => 'Olimpik Yüzme Havuzu Kurulumu Nasıl Yapılır?',
-                        'description' => 'Uluslararası Yüzme Federasyonu’nun (FINA) standartlarına uygun bir şekilde tasarlan...',
-                        'image' => 'blog-image-3.jpg',
-                        'link' => 'page-news-detail.php',
-                    ],
-                    [
-                        'title' => 'Olimpik Yüzme Havuzu Kurulumu Nasıl Yapılır?',
-                        'description' => 'Uluslararası Yüzme Federasyonu’nun (FINA) standartlarına uygun bir şekilde tasarlan...',
-                        'image' => 'blog-image-4.jpg',
-                        'link' => 'page-news-detail.php',
-                    ],
-                    [
-                        'title' => 'Olimpik Yüzme Havuzu Kurulumu Nasıl Yapılır?',
-                        'description' => 'Uluslararası Yüzme Federasyonu’nun (FINA) standartlarına uygun bir şekilde tasarlan...',
-                        'image' => 'blog-image-5.jpg',
-                        'link' => 'page-news-detail.php',
-                    ],
-                    [
-                        'title' => 'Olimpik Yüzme Havuzu Kurulumu Nasıl Yapılır?',
-                        'description' => 'Uluslararası Yüzme Federasyonu’nun (FINA) standartlarına uygun bir şekilde tasarlan...',
-                        'image' => 'blog-image-1.jpg',
-                        'link' => 'page-news-detail.php',
-                    ],
-                ]; foreach ($blogs as $item): ?>
+                <?php foreach ($blogs as $item): ?>
 
                 <div class="reveal blog-item item w-full bg-[#F0EEE7] grid grid-cols-2 md:grid-cols-1 transition-all duration-500 group/item hover:min-md:bg-secondary-main">
-                    <a href="<?= $item['link'] ?>" class="block img w-full h-full min-h-[405px] lg:min-h-[350px] xs:min-h-[300px]">
-                        <img src="../assets/image/general/<?= $item['image'] ?>" alt="Blog Görsel" width="405" height="405" class="w-full h-full object-cover">
+                    <a href="<?= env('HTTP_DOMAIN').'/'. getUrl('blog_url'). '/'. $item['seo_url'] ?>" class="block img w-full h-full min-h-[405px] lg:min-h-[350px] xs:min-h-[300px]">
+                        <img src="<?= env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','blog_images_folder', ], $item['lang']). '/'.$item['image'] ?>" alt="Blog Görsel" width="405" height="405" class="w-full h-full object-cover">
                     </a>
                     <div class="p-[45px] xl:p-[35px] lg:p-[15px] lg:py-[25px] w-full flex flex-col justify-between gap-[20px]">
                         <div class="flex items-center gap-[6px] transition-all duration-450 opacity-50 group-hover/item:opacity-100 mb-[20px]">
@@ -212,10 +154,10 @@
                             <time class="text-[16px] font-medium leading-none tracking-[-0.16px] text-dark/50 group-hover/item:text-white transition-all duration-450"><?= date('d'.'.'.'m'.'.'.'Y') ?></time>
                         </div>
                         <div class="flex flex-col">
-                            <h3><a href="<?= $item['link'] ?>" class="block text-[24px] xl:text-[20px] xl:leading-[28px] leading-[35px] font-semibold text-secondary-main mb-[20px] line-clamp-2 transition-all duration-300 group-hover/item:min-md:text-white"><?= $item['title'] ?></a></h3>
-                            <p class="text-[17px] lg:text-[16px] leading-[28px] font-light text-paragraph line-clamp-3 transition-all duration-300 group-hover/item:min-md:text-white"><?= $item['description'] ?></p>
+                            <h3><a href="<?= env('HTTP_DOMAIN').'/'. getUrl('blog_url'). '/'. $item['seo_url'] ?>" class="block text-[24px] xl:text-[20px] xl:leading-[28px] leading-[35px] font-semibold text-secondary-main mb-[20px] line-clamp-2 transition-all duration-300 group-hover/item:min-md:text-white"><?= $item['title'] ?></a></h3>
+                            <p class="text-[17px] lg:text-[16px] leading-[28px] font-light text-paragraph line-clamp-3 transition-all duration-300 group-hover/item:min-md:text-white"><?= mb_substr($item['description'], 0, 100) ?>...</p>
                         </div>
-                        <a href="<?= $item['link'] ?>" class="flex items-center justify-center relative w-max sm:w-full overflow-hidden main-button group w-full">
+                        <a href="<?= env('HTTP_DOMAIN').'/'. getUrl('blog_url'). '/'. $item['seo_url'] ?>" class="flex items-center justify-center relative w-max sm:w-full overflow-hidden main-button group w-full">
                             <div class="w-full left px-[66px] lg:px-[35px] group-hover:min-md:px-[30px] py-[20px] flex items-center justify-center z-2 bg-transparent border border-solid border-paragraph/16 group-hover/item:min-md:border-white/16 group-hover:min-md:border-primary-main transition-all duration-300 group-hover:min-md:bg-primary-main sm:w-full">
                                 <span class="text-[16px] leading-none font-medium text-paragraph transition-all duration-300 tracking-[-0.16px] group-hover/item:min-md:text-white group-hover:min-md:text-white">Detaylı İncele</span>
                             </div>

@@ -60,7 +60,7 @@
                                 @foreach($sliders as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td><img src="{{ asset('storage/images/blog/' . $item->lang . '/' . $item->media_file) }}" alt="{{ $item->alt }}" width="100"></td>
+                                        <td><img src="{{ asset( getFolder(['uploads_folder','blog_images_folder']) . '/' . $item->media_file) }}" alt="{{ $item->alt }}" width="100"></td>
                                         <td>
                                             <a href="{{ route('admin.blog.slider.edit', [$id, $item->slider_id]) }}" class="btn btn-warning btn-sm">
                                                 <i class="bi bi-pencil"></i> Düzenle

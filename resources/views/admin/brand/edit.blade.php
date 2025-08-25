@@ -89,7 +89,7 @@
                                             <input type="text" class="form-control" id="url_{{ $language->lang_code }}" name="url_{{ $language->lang_code }}" value="{{ $url[$language->lang_code] }}" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="image_{{ $language->lang_code }}">Resim ({{ strtoupper($language->lang_code) }})</label>
+                                            <label for="image_{{ $language->lang_code }}">Logo ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="file" class="form-control" id="image_{{ $language->lang_code }}" name="image_{{ $language->lang_code }}">
                                             @if($image[$language->lang_code])
                                                 <img src="{{ asset(getFolder(['uploads_folder','brand_images_folder'], $language->lang_code) . '/' . $image[$language->lang_code]) }}" alt="{{ $alt[$language->lang_code] }}" style="width: 200px; height: auto; margin-top: 10px;">
@@ -97,7 +97,7 @@
                                             @endif
                                         </div>
                                         <div class="form-group">
-                                            <label for="bg_image_{{ $language->lang_code }}">Arka Plan Resmi ({{ strtoupper($language->lang_code) }})</label>
+                                            <label for="bg_image_{{ $language->lang_code }}">Görsel ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="file" class="form-control" id="bg_image_{{ $language->lang_code }}" name="bg_image_{{ $language->lang_code }}">
                                             @if($bg_image[$language->lang_code])
                                                 <img src="{{ asset(getFolder(['uploads_folder','brand_images_folder'], $language->lang_code) . '/' . $bg_image[$language->lang_code]) }}" alt="{{ $alt[$language->lang_code] }}" style="width: 200px; height: auto; margin-top: 10px;">

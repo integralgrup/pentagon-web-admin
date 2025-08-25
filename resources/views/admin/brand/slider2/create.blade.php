@@ -61,8 +61,14 @@
                                         <input type="hidden" name="lang_{{ $language->lang_code }}" value="{{ $language->lang_code }}">
                                         <input type="hidden" name="brand_id" value="{{ $id }}">
                                         <div class="mb-3">
-                                            <label for="title_{{ $language->lang_code }}" class="form-label">Başlık ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" required>
+                                            <div>
+                                                <label for="title_{{ $language->lang_code }}" class="form-label">Başlık ({{ strtoupper($language->lang_code) }})</label>
+                                                <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" required>
+                                            </div>
+                                            <div>
+                                                <label for="description_{{ $language->lang_code }}" class="form-label">Açıklama ({{ strtoupper($language->lang_code) }})</label>
+                                                <textarea class="form-control" id="description_{{ $language->lang_code }}" name="description_{{ $language->lang_code }}" rows="3" required></textarea>
+                                            </div>
                                         </div>
 
                                         <div class="mb-3">
@@ -73,6 +79,14 @@
                                         <div class="mb-3">
                                             <label for="alt_{{ $language->lang_code }}" class="form-label">Alt Metin ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="text" class="form-control" id="alt_{{ $language->lang_code }}" name="alt_{{ $language->lang_code }}" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="category_{{ $language->lang_code }}" class="form-label">Kategori ({{ strtoupper($language->lang_code) }})</label>
+                                            <input type="text" class="form-control" id="category_{{ $language->lang_code }}" name="category_{{ $language->lang_code }}" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="url_{{ $language->lang_code }}" class="form-label">URL ({{ strtoupper($language->lang_code) }})</label>
+                                            <input type="text" class="form-control" id="url_{{ $language->lang_code }}" name="url_{{ $language->lang_code }}" required>
                                         </div>
                                     </div>
                                 </div>

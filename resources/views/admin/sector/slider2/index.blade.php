@@ -62,10 +62,10 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td><img src="{{ asset( getFolder(['uploads_folder', 'sector_images_folder']) . '/' . $item->image) }}" alt="{{ $item->alt }}" width="100"></td>
                                         <td>
-                                            <a href="{{ route('admin.sector.slider1.edit', [$id, $item->slider_id]) }}" class="btn btn-warning btn-sm">
+                                            <a href="{{ route('admin.sector.slider2.edit', [$id, $item->slider_id]) }}" class="btn btn-warning btn-sm">
                                                 <i class="bi bi-pencil"></i> Düzenle
                                             </a>
-                                            <form action="{{ route('admin.sector.slider1.destroy', [$id, $item->slider_id]) }}" method="POST" style="display:inline;">
+                                            <form action="{{ route('admin.sector.slider2.destroy', [$id, $item->slider_id]) }}" method="POST" style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Bu içeriği silmek istediğinize emin misiniz?')">

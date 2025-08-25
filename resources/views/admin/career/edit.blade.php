@@ -53,6 +53,7 @@
                     <?php 
                         foreach($career as $item){
                             $title[$item->lang] = $item->title;
+                            $upper_title[$item->lang] = $item->upper_title;
                             $title_1[$item->lang] = $item->title_1;
                             $description[$item->lang] = $item->description;
                             $image[$item->lang] = $item->image;
@@ -73,12 +74,12 @@
                                 <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" id="tab-{{ $language->id }}" role="tabpanel" aria-labelledby="tab-{{ $language->id }}-tab">
                                     <div class="card-body" style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
                                         <div class="form-group">
-                                            <label for="title_{{ $language->lang_code }}">Başlık ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" value="{{ $title[$language->lang_code] }}" required>
+                                            <label for="upper_title_{{ $language->lang_code }}">Üst Başlık ({{ strtoupper($language->lang_code) }})</label>
+                                            <input type="text" class="form-control" id="upper_title_{{ $language->lang_code }}" name="upper_title_{{ $language->lang_code }}" value="{{ $upper_title[$language->lang_code] }}" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="title_1_{{ $language->lang_code }}">Alt Başlık ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="text" class="form-control" id="title_1_{{ $language->lang_code }}" name="title_1_{{ $language->lang_code }}" value="{{ $title_1[$language->lang_code] }}" required>
+                                            <label for="title_{{ $language->lang_code }}">Başlık ({{ strtoupper($language->lang_code) }})</label>
+                                            <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" value="{{ $title[$language->lang_code] }}" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="image_{{ $language->lang_code }}">Resim ({{ strtoupper($language->lang_code) }})</label>
@@ -88,6 +89,11 @@
                                                 <input type="hidden" class="form-control" id="old_image_{{ $language->lang_code }}" name="old_image_{{ $language->lang_code }}" value="{{ $image[$language->lang_code] }}" readonly>
                                             @endif
                                         </div>
+                                        <div class="form-group">
+                                            <label for="title_1_{{ $language->lang_code }}">Alt Başlık ({{ strtoupper($language->lang_code) }})</label>
+                                            <input type="text" class="form-control" id="title_1_{{ $language->lang_code }}" name="title_1_{{ $language->lang_code }}" value="{{ $title_1[$language->lang_code] }}" required>
+                                        </div>
+                                        
                                         <div class="form-group">
                                             <label for="button_text_{{ $language->lang_code }}">Buton Metni ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="text" class="form-control" id="button_text_{{ $language->lang_code }}" name="button_text_{{ $language->lang_code }}" value="{{ $button_text[$language->lang_code] }}" required>

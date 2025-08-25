@@ -18,6 +18,7 @@ class Career extends Model
     protected $fillable = [
         'lang',
         'title',
+        'upper_title',
         'title_1',
         'description',
         'image',

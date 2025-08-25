@@ -282,6 +282,9 @@ class BrandController extends Controller
                 //Validation
                 $request->validate([
                     'title_' . $language->lang_code => 'required|string|max:255',
+                    'description_' . $language->lang_code => 'required|string|max:255',
+                    'category_' . $language->lang_code => 'required|string|max:255',
+                    'url_' . $language->lang_code => 'required|string|max:255',
                     'alt_' . $language->lang_code => 'required|string|max:255',
                     'image_' . $language->lang_code => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
                 ]); 
@@ -306,6 +309,9 @@ class BrandController extends Controller
                         ->where('lang', $language->lang_code)
                         ->update([
                             'title' => $request->input('title_' . $language->lang_code),
+                            'description' => $request->input('description_' . $language->lang_code),
+                            'category' => $request->input('category_' . $language->lang_code),
+                            'url' => $request->input('url_' . $language->lang_code),
                             'image' => $imageName,
                             'alt' => $request->input('alt_' . $language->lang_code),
                         ]);
@@ -316,6 +322,9 @@ class BrandController extends Controller
                         'brand_id' => $id,
                         'slider_id' => $sliderId,
                         'title' => $request->input('title_' . $language->lang_code),
+                        'description' => $request->input('description_' . $language->lang_code),
+                        'category' => $request->input('category_' . $language->lang_code),
+                        'url' => $request->input('url_' . $language->lang_code),
                         'image' => $imageName,
                         'alt' => $request->input('alt_' . $language->lang_code),
                     ]);

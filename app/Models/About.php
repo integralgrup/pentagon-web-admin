@@ -14,6 +14,7 @@ class About extends Model
 
     protected $fillable = [
         'lang',
+        'upper_title',
         'title',
         'title_1',
         'description',

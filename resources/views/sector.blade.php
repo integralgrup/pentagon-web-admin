@@ -3,7 +3,7 @@
 @section('content')
     <main class="main-field header-space">
     <?php
-        $pageTitle = "Sektörler";
+        $pageTitle = $sector->title ?? 'Sektör Detay';
         $breadcrumbImage = "corporate-breadcrumb.jpg";
         $breadcrumbVideo = "breadcrumb-video.mp4";
         $pageLink = "page-sector-detail.php";
@@ -26,14 +26,11 @@
                         <div class="flex flex-col text-editor reveal">
                             <span class="text-[16px] leading-[32px] font-light text-paragraph opacity-65 tracking-[7.2px] block mb-[30px] lg:mb-[5px]">Bizi Tanıyın</span>
                             <h2 class="text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-light text-secondary-main mb-[80px] 2xl:mb-[50px] md:mb-[30px] xs:mb-[20px]">
-                                Geleceği Şekillendirme Tutkusu:
-                                <span class="font-bold">Pentagon Yapı'nın Hikayesi.</span>
+                                <?= $sector->title_1 ?>
                             </h2>
-                            <p class="text-[22px] lg:text-[18px] leading-[45px] lg:leading-[40px] font-light tracking-[-0.22px] text-paragraph mb-[30px] xs:mb-[20px]">Sektördeki Mirasımız, Gelecekteki İnşaat Trendlerini Belirliyor.</p>
+                            <p class="text-[22px] lg:text-[18px] leading-[45px] lg:leading-[40px] font-light tracking-[-0.22px] text-paragraph mb-[30px] xs:mb-[20px]"></p>
                             <p class="text-[18px] lg:text-[16px] leading-[32px] font-light text-paragraph mb-[60px] xl:mb-[40px] md:mb-[30px]">
-                                İnşaat sektöründeki köklü deneyimimiz ve yenilikçi bakış açımızla geleceği inşa ediyoruz. Küresel arenada, spor tesislerinden sürdürülebilir konutlara kadar geniş bir yelpazede faaliyet gösteriyoruz.
-                                <br><br>
-                                Her projemizde, güvenilirliği ve yaratıcı çözümleri bir araya getirerek inşaatın ötesine geçiyoruz. 9 farklı sektördeki 6 markayla, dünya çapında tanınan bir lideriz. İnşaatın geleceğini şekillendirme sorumluluğuyla, vizyoner yaklaşımımızı her aşamada yansıtıyoruz.
+                                <?= $sector->description ?>
                             </p>
                         </div>
                     </div>
@@ -49,44 +46,19 @@
                         <img src="../assets/image/static/vectorel-2.svg" alt="Vektör" width="610" height="535" class="reveal max-w-[610px] xl:max-w-[500px] sm:max-w-full sm:w-full h-auto absolute z-2 pointer-events-none left-1/2 top-1/2 sm:top-[30px] -translate-x-1/2 min-sm:-translate-y-1/2">
                         <div class="sector-slider reveal overflow-hidden relative z-4">
                             <div class="swiper-wrapper">
-                                <?php $sectorList = [
-                                    [
-                                        'name' => 'Malzeme Tedarik Seçimi',
-                                        'title' => 'Malzeme <span>Tedarik Seçimi</span>',
-                                        'description' => 'Alanında uzman ve çeşitli disiplinlerden gelen meslektaşlarınızla birlikte çalışma fırsatı, sıradan bir iş deneyiminin ötesine geçerek gerçek bir işbirliği atmosferi sunar. <br><br> İnşaat projeleri, sadece tuğlaların bir araya gelmesi değil, farklı beceri setlerinin ve vizyonların bir araya gelmesidir.',
-                                        'image' => '../assets/image/general/sector-detail.jpg',
-                                    ],
-                                    [
-                                        'name' => 'Örnek Alan 2',
-                                        'title' => 'Örnek Alan 2',
-                                        'description' => 'Alanında uzman ve çeşitli disiplinlerden gelen meslektaşlarınızla birlikte çalışma fırsatı, sıradan bir iş deneyiminin ötesine geçerek gerçek bir işbirliği atmosferi sunar. <br><br> İnşaat projeleri, sadece tuğlaların bir araya gelmesi değil, farklı beceri setlerinin ve vizyonların bir araya gelmesidir.',
-                                        'image' => '../assets/image/general/career-slider-image.jpg',
-                                    ],
-                                    [
-                                        'name' => 'Örnek Alan 3',
-                                        'title' => 'Örnek Alan 3',
-                                        'description' => 'Alanında uzman ve çeşitli disiplinlerden gelen meslektaşlarınızla birlikte çalışma fırsatı, sıradan bir iş deneyiminin ötesine geçerek gerçek bir işbirliği atmosferi sunar. <br><br> İnşaat projeleri, sadece tuğlaların bir araya gelmesi değil, farklı beceri setlerinin ve vizyonların bir araya gelmesidir.',
-                                        'image' => '../assets/image/general/career-slider-image.jpg',
-                                    ],
-                                    [
-                                        'name' => 'Örnek Alan 4',
-                                        'title' => 'Örnek Alan 4',
-                                        'description' => 'Alanında uzman ve çeşitli disiplinlerden gelen meslektaşlarınızla birlikte çalışma fırsatı, sıradan bir iş deneyiminin ötesine geçerek gerçek bir işbirliği atmosferi sunar. <br><br> İnşaat projeleri, sadece tuğlaların bir araya gelmesi değil, farklı beceri setlerinin ve vizyonların bir araya gelmesidir.',
-                                        'image' => '../assets/image/general/career-slider-image.jpg',
-                                    ],
-                                ]; foreach ($sectorList as $key => $item) { ?>
-                                    <div class="swiper-slide overflow-hidden" data-slide-name="<?= $item['name'] ?>" data-slide-id="<?= $key + 1 ?>">
+                                <?php foreach ($slider1 as $key => $item) { ?>
+                                    <div class="swiper-slide overflow-hidden" data-slide-name="<?= $item->title ?>" data-slide-id="<?= $key + 1 ?>">
                                         <div class="item w-full grid grid-cols-2 sm:grid-cols-1 items-end gap-[200px] 2xl:gap-[160px] xl:gap-[100px] lg:gap-[60px] md:gap-[30px]">
                                             <div class="left mb-[90px] 2xl:mb-[60px] xl:mb-[45px] lg:mb-[30px] md:mb-0">
-                                                <span class="block mb-[50px] md:mb-[30px] text-[16px] leading-[32px] font-light text-white opacity-65 tracking-[7.2px]">Üretim Süreçlerimiz</span>
+                                                <span class="block mb-[50px] md:mb-[30px] text-[16px] leading-[32px] font-light text-white opacity-65 tracking-[7.2px]"><?= $item->title_1 ?></span>
                                                 <div class="flex flex-col gap-[30px] sm:gap-[20px] text-editor">
-                                                    <h3 class="text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-light text-white [&_span]:font-bold"><?= $item['title'] ?></h3>
-                                                    <p class="text-[17px] md:text-[16px] sm:text-[15px] leading-[32px] sm:leading-[28px] font-light text-white mb-[20px] sm:mb-[5px]"><?= $item['description'] ?></p>
+                                                    <h3 class="text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-light text-white [&_span]:font-bold"><?= $item->title ?></h3>
+                                                    <p class="text-[17px] md:text-[16px] sm:text-[15px] leading-[32px] sm:leading-[28px] font-light text-white mb-[20px] sm:mb-[5px]"><?= $item->description ?></p>
                                                 </div>
                                             </div>
                                             <div class="right">
                                                 <div class="image-wrapper w-full h-[500px]  xl:h-[450px] sm:h-[320px]  xsm:mt-[40px]">
-                                                    <img src="<?= $item['image'] ?>" alt="<?= $item['name'] ?>" width="745" height="535" class="w-full h-full object-cover" data-swiper-parallax="50%">
+                                                    <img src="<?= env('HTTP_DOMAIN').'/'.getFolder(['uploads_folder','sector_images_folder'], app()->getLocale()).'/'. $item->image ?>" alt="<?= $item->title ?>" width="745" height="535" class="w-full h-full object-cover" data-swiper-parallax="50%">
                                                 </div>
                                             </div>
                                         </div>
@@ -120,7 +92,42 @@
             </div>
         </section>
 
-        <?php //include 'layout/gallery-section.php'; ?>
+        <section class="gallery mb-[170px] xl:mb-[120px] lg:mb-[90px] md:mb-[60px] overflow-hidden">
+            <div class="container max-w-[1650px]">
+                <h3 class="reveal text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-light text-secondary-main mb-[60px] xs:mb-[30px] text-center">
+                    Pentagon Yapı <br> <span class="font-bold">Galeri Medyası</span>
+                </h3>
+
+                <div class="gallery-slider reveal overflow-[revert]">
+                    <div class="swiper-wrapper items-center h-[700px] xl:h-[600px] md:h-[500px] sm:h-[400px]">
+                        <?php foreach ($slider2 as $slide): ?>
+                            <div class="swiper-slide h-max group/slide sm:opacity-0 [&.swiper-slide-active]:sm:opacity-100 duration-300 transition-all">
+                                <a href="<?= env('HTTP_DOMAIN').'/'.getFolder(['uploads_folder','sector_images_folder'], app()->getLocale()).'/'. $slide->image ?>" class="overflow-hidden grid place-items-center item w-full h-[600px] group-[&.swiper-slide-active]/slide:h-[700px] group-[&.swiper-slide-active]/slide:xl:h-[600px] xl:h-[500px] group-[&.swiper-slide-active]/slide:md:h-[500px] md:h-[400px] sm:h-[320px] group-[&.swiper-slide-active]/slide:sm:h-[400px] transition-all duration-500 opacity-50 group-[&.swiper-slide-active]/slide:opacity-100 group/gallery" data-fancybox="gallery">
+                                    <img src="<?= env('HTTP_DOMAIN').'/'.getFolder(['uploads_folder','sector_images_folder'], app()->getLocale()).'/'. $slide->image ?>" alt="Galeri Görsel" class="w-full h-full object-cover transition-transform duration-450 hover:scale-105" data-swiper-parallax="50%">
+                                </a>
+                            </div>
+                        <?php endforeach; ?>
+
+                    </div>
+
+                    <div class="reveal nav-buttons w-full grid place-items-center">
+                        <div class="flex items-center gap-[30px] px-[45px] md:px-[25px] py-[15px] sm:p-[5px] bg-primary-main">
+                            <div class="gallery-prev cursor-pointer flex items-center gap-[9px] md:w-[40px] md:h-[40px] md:justify-center transition-all duration-300 [&.gallery-disabled]:opacity-65 relative [&.gallery-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
+                                <i class="icon-angle-left text-[12px] leading-none text-white"></i>
+                                <span class="text-[16px] leading-[32px] text-white md:hidden">Önceki</span>
+                            </div>
+
+                            <div class="separator w-[1px] h-[22px] bg-white/20"></div>
+
+                            <div class="gallery-next cursor-pointer flex items-center gap-[9px] md:w-[40px] md:h-[40px] md:justify-center transition-all duration-300 [&.gallery-disabled]:opacity-65 relative [&.gallery-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
+                                <span class="text-[16px] leading-[32px] text-white md:hidden">Sonraki</span>
+                                <i class="icon-angle-right text-[12px] leading-none text-white "></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <?php //include 'layout/brands.php'; ?>
     </section>

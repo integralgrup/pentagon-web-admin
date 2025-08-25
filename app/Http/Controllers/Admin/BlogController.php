@@ -131,7 +131,8 @@ class BlogController extends Controller
 
         $languages = Language::all();
 
-        if($request->has('slider_id')) {
+        try {
+            if($request->has('slider_id')) {
             $slider_id = $request->slider_id; // Use the provided slider_id
         }
         else {
@@ -155,20 +156,25 @@ class BlogController extends Controller
                 $image->move(public_path($language->lang_code.'/'.$language->uploads_folder.'/'.$language->blog_images_folder), $imageName);
 
             }else {
-                $imagePath = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
+                $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
             }
 
             BlogSlider::updateOrCreate(
                 ['slider_id' => $slider_id, 'lang' => $language->lang_code],
                 [
                     'blog_id' => $id,
-                    'media_file' => basename($imagePath),
+                    'media_file' => $imageName,
                     'alt' => $request->input('alt_' . $language->lang_code),
                 ]
             );
         }
 
         return redirect()->route('admin.blog.slider.index', $id)->with('success', 'Slider başarıyla kaydedildi.');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+
+        
     }
 
     public function sliderEdit($id, $slider_id)

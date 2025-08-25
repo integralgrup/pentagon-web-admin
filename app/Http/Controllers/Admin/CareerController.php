@@ -52,6 +52,7 @@ class CareerController extends Controller
                     $request->validate([
                         'lang_' . $language->lang_code => 'required|string|max:10',
                         'title_' . $language->lang_code => 'required|string|max:100',
+                        'upper_title_' . $language->lang_code => 'required|string|max:100',
                         'title_1_' . $language->lang_code => 'required|string|max:255',
                         'description_' . $language->lang_code => 'required|string',
                         'image_' . $language->lang_code => 'nullable|image|max:2048',
@@ -72,7 +73,7 @@ class CareerController extends Controller
                             }
 
                             // Generate unique name
-                            $imageName = seoUrl($request->input('title_' . $language->lang_code)) . '_' . time() . '.' . $image->getClientOriginalExtension();
+                            $imageName = seoUrl($request->input('alt_' . $language->lang_code)) . '_' . time() . '.' . $image->getClientOriginalExtension();
 
                             // Move file into public/some_folder
                             $image->move($folderPath, $imageName);
@@ -89,6 +90,7 @@ class CareerController extends Controller
                         ],
                         [
                             'title' => $request->input('title_' . $language->lang_code),
+                            'upper_title' => $request->input('upper_title_' . $language->lang_code),
                             'title_1' => $request->input('title_1_' . $language->lang_code),
                             'description' => $request->input('description_' . $language->lang_code),
                             'image' => $imageName, // save relative path

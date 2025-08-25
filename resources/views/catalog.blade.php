@@ -3,7 +3,7 @@
 @section('content')
 
 
-<?php   $pageTitle = 'Katalog'; 
+<?php   $pageTitle = $catalogGroup->title; 
         $breadcrumbImage = "career-breadcrumb.jpg"; 
         $breadcrumbVideo = "breadcrumb-video.mp4"; 
         $pageLink = "page-catalogs.php"; 
@@ -43,41 +43,16 @@
                 </div>
 
                 <div class="categories w-full flex flex-col gap-[70px] xl:gap-[50px] md:gap-[35px]">
+                    <?php foreach ($catalogGroup->catalogs as $catalog): ?>
                     <div class="item flex flex-col gap-[30px] xsm:gap-[20px] sm:!border-b sm:border-0 sm:border-solid sm:border-b-black/10 last:sm:border-b-0 sm:pb-[30px] last:sm:pb-0">
-                        <h2 class="reveal text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.32px] font-light text-secondary-main">Suni Çim Ürünleri <span class="font-bold">Tanıtım Katalogları</span></h2>
+                        <h2 class="reveal text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.32px] font-light text-secondary-main"><?= $catalog->title ?></h2>
                         <div class="grid grid-cols-4 md:grid-cols-3 sm:grid-cols-2 xsm:grid-cols-1 gap-[30px]">
-                            <?php $catalog1 = [
-                                [
-                                    'title' => 'Netgrass Teknik Döküman',
-                                    'image' => 'catalog-image-1.jpg',
-                                    'pdf' => 'sample.pdf',
-                                ],
-
-                                [
-                                    'title' => 'Netgrass Teknik Döküman',
-                                    'image' => 'catalog-image-2.jpg',
-                                    'pdf' => 'sample.pdf',
-                                ],
-
-                                [
-                                    'title' => 'Netgrass Teknik Döküman',
-                                    'image' => 'catalog-image-3.jpg',
-                                    'pdf' => 'sample.pdf',
-                                ],
-
-                                [
-                                    'title' => 'Netgrass Teknik Döküman',
-                                    'image' => 'catalog-image-4.jpg',
-                                    'pdf' => 'sample.pdf',
-                                ],
-                            ];  foreach ($catalog1 as $key => $item): ?>
-
-<!--                            Sadece ilk 4 item 'reveal' class'ı almalı-->
+                            <?php foreach ($catalog->files as $key => $item): ?>
                             <div class="<?= $key <= 3 ? 'reveal' : '';  ?> item w-full flex flex-col group/item">
-                                <a href="../assets/file/<?= $item['pdf'] ?>" class="block image-wrapper w-full h-[220px] relative group/gallery overflow-hidden" data-fancybox="catalog-1">
-                                    <img src="../assets/image/general/<?= $item['image'] ?>" alt="Katalog Görsel" width="390" height="219" class="w-full h-full object-cover transition-transform duration-450 group-hover/item:scale-105">
+                                <a href="<?=env('HTTP_DOMAIN') .'/'. getFolder(['uploads_folder', 'catalog_files_folder'], app()->getLocale()) .'/'. $item['file'] ?>" class="block image-wrapper w-full h-[220px] relative group/gallery overflow-hidden" data-fancybox="catalog-1">
+                                    <img src="<?=env('HTTP_DOMAIN') .'/'. getFolder(['uploads_folder', 'catalog_files_folder'], app()->getLocale()) .'/'. $item['image'] ?>" alt="Katalog Görsel" width="390" height="219" class="w-full h-full object-cover transition-transform duration-450 group-hover/item:scale-105">
                                 </a>
-                                <a href="../assets/file/<?= $item['pdf'] ?>" download class="bottom flex items-center group">
+                                <a href="<?=env('HTTP_DOMAIN') .'/'. getFolder(['uploads_folder', 'catalog_files_folder'], app()->getLocale()) .'/'. $item['file'] ?>" download class="bottom flex items-center group">
                                     <p class="text-[16px] lg:text-[15px] leading-[28px] font-medium text-paragraph tracking-[-0.16px] transition-all duration-300 bg-[#F0EEE7] min-h-[73px] h-full p-[30px] xl:p-[15px] w-full group-hover:min-md:bg-secondary-main group-hover:min-md:text-white inline-flex items-center"><?= $item['title'] ?></p>
                                     <div class="min-w-[73px] min-h-[73px] h-full aspect-square grid place-items-center bg-primary-main/10 transition-all duration-300 group-hover:min-md:bg-primary-main">
                                         <i class="icon-download-shape text-[22px] leading-none text-paragraph/65 transition-all duration-300 group-hover:min-md:text-white"></i>
@@ -91,93 +66,8 @@
                             <a href="#" class="text-[16px] leading-[32px] md:text-[15px] text-[#888888] hover:text-secondary-main/90 font-light inline-flex items-center gap-[14px] transition-all duration-300">Tümünü Gör <i class="icon-angle-down text-[12px]"></i></a>
                         </div>
                     </div>
-
-                    <div class="item flex flex-col gap-[30px] xsm:gap-[20px] sm:!border-b sm:border-0 sm:border-solid sm:border-b-black/10 last:sm:border-b-0 sm:pb-[30px] last:sm:pb-0">
-                        <h2 class="reveal text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.32px] font-light text-secondary-main">Spor Zemin Ürünleri <span class="font-bold">Tanıtım Katalogları</span></h2>
-                        <div class="grid grid-cols-4 md:grid-cols-3 sm:grid-cols-2 xsm:grid-cols-1 gap-[30px]">
-                            <?php $catalog2 = [
-                                [
-                                    'title' => 'Netgrass Teknik Döküman',
-                                    'image' => 'catalog-image-5.jpg',
-                                    'pdf' => 'sample.pdf',
-                                ],
-
-                                [
-                                    'title' => 'Netgrass Teknik Döküman',
-                                    'image' => 'catalog-image-6.jpg',
-                                    'pdf' => 'sample.pdf',
-                                ],
-
-                                [
-                                    'title' => 'Netgrass Teknik Döküman',
-                                    'image' => 'catalog-image-7.jpg',
-                                    'pdf' => 'sample.pdf',
-                                ],
-
-                                [
-                                    'title' => 'Netgrass Teknik Döküman',
-                                    'image' => 'catalog-image-8.jpg',
-                                    'pdf' => 'sample.pdf',
-                                ],
-                            ];  foreach ($catalog2 as $key => $item): ?>
-<!--                            Sadece ilk 4 item 'reveal' class'ı almalı-->
-                            <div class="<?= $key <= 3 ? 'reveal' : '';  ?> item w-full flex flex-col group/item">
-                                <a href="../assets/file/<?= $item['pdf'] ?>" class="block image-wrapper w-full h-[220px] relative group/gallery overflow-hidden" data-fancybox="catalog-2">
-                                    <img src="../assets/image/general/<?= $item['image'] ?>" alt="Katalog Görsel" width="390" height="219" class="w-full h-full object-cover transition-transform duration-450 group-hover/item:scale-105">
-                                </a>
-                                <a href="../assets/file/<?= $item['pdf'] ?>" download class="bottom flex items-center group">
-                                    <p class="text-[16px] lg:text-[15px] leading-[28px] font-medium text-paragraph tracking-[-0.16px] transition-all duration-300 bg-[#F0EEE7] min-h-[73px] h-full p-[30px] xl:p-[15px] w-full group-hover:min-md:bg-secondary-main group-hover:min-md:text-white inline-flex items-center"><?= $item['title'] ?></p>
-                                    <div class="min-w-[73px] min-h-[73px] h-full aspect-square grid place-items-center bg-primary-main/10 transition-all duration-300 group-hover:min-md:bg-primary-main">
-                                        <i class="icon-download-shape text-[22px] leading-none text-paragraph/65 transition-all duration-300 group-hover:min-md:text-white"></i>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <?php endforeach; ?>
-                        </div>
-                        <div class="see-all grid place-items-center">
-                            <a href="#" class="text-[16px] leading-[32px] md:text-[15px] text-[#888888] hover:text-secondary-main/90 font-light inline-flex items-center gap-[14px] transition-all duration-300">Tümünü Gör <i class="icon-angle-down text-[12px]"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="item flex flex-col gap-[30px] xsm:gap-[20px] sm:!border-b sm:border-0 sm:border-solid sm:border-b-black/10 last:sm:border-b-0 sm:pb-[30px] last:sm:pb-0">
-                        <h2 class="reveal text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.32px] font-light text-secondary-main">Suni Çim Ürünleri <span class="font-bold">Tanıtım Katalogları</span></h2>
-                        <div class="grid grid-cols-4 md:grid-cols-3 sm:grid-cols-2 xsm:grid-cols-1 gap-[30px]">
-                            <?php $catalog3 = [
-                                [
-                                    'title' => 'Netgrass Teknik Döküman',
-                                    'image' => 'catalog-image-9.jpg',
-                                    'pdf' => 'sample.pdf',
-                                ],
-
-                                [
-                                    'title' => 'Netgrass Teknik Döküman',
-                                    'image' => 'catalog-image-10.jpg',
-                                    'pdf' => 'sample.pdf',
-                                ],
-
-                                [
-                                    'title' => 'Netgrass Teknik Döküman',
-                                    'image' => 'catalog-image-11.jpg',
-                                    'pdf' => 'sample.pdf',
-                                ],
-                            ];  foreach ($catalog3 as $key => $item): ?>
-<!--                            Sadece ilk 4 item 'reveal' class'ı almalı-->
-                                <div class="<?= $key <= 3 ? 'reveal' : '';  ?> item w-full flex flex-col group/item">
-                                    <a href="../assets/file/<?= $item['pdf'] ?>" class="block image-wrapper w-full h-[220px] relative group/gallery overflow-hidden" data-fancybox="catalog-3">
-                                        <img src="../assets/image/general/<?= $item['image'] ?>" alt="Katalog Görsel" width="390" height="219" class="w-full h-full object-cover transition-transform duration-450 group-hover/item:scale-105">
-                                    </a>
-                                    <a href="../assets/file/<?= $item['pdf'] ?>" download class="bottom flex items-center group">
-                                        <p class="text-[16px] lg:text-[15px] leading-[28px] font-medium text-paragraph tracking-[-0.16px] transition-all duration-300 bg-[#F0EEE7] min-h-[73px] h-full p-[30px] xl:p-[15px] w-full group-hover:min-md:bg-secondary-main group-hover:min-md:text-white inline-flex items-center"><?= $item['title'] ?></p>
-                                        <div class="min-w-[73px] min-h-[73px] h-full aspect-square grid place-items-center bg-primary-main/10 transition-all duration-300 group-hover:min-md:bg-primary-main">
-                                            <i class="icon-download-shape text-[22px] leading-none text-paragraph/65 transition-all duration-300 group-hover:min-md:text-white"></i>
-                                        </div>
-                                    </a>
-                                </div>
-
-                            <?php endforeach; ?>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
+                    
                 </div>
             </div>
         </div>
