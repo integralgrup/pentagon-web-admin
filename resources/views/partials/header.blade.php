@@ -24,7 +24,7 @@
     </script>
 </head>
 <body class="antialiased font-sans [background:linear-gradient(0deg,_#FBFAF6_0%,_#FBFAF6_100%),_#FFF] [&.contact]:!bg-white group/body">
-<?php $menuItems = App\Models\Menu::where(['lang' => app()->getLocale(), 'parent_menu_id' => 0])->get();?>
+<?php $menuItems = App\Models\Menu::where(['lang' => app()->getLocale(), 'parent_menu_id' => 0, 'menu_type' => 'header'])->get();?>
 <header class="group/header peer header-field h-[112px] sm:h-[80px] z-100 fixed w-full left-0 top-0 duration-500 bg-transparent [&.contact]:bg-[#FCFBF7] [&.contact]:xs:bg-[#FCFBF7]/50 will-change-[height,transform] [&.is-fixed]:!top-0 [&.is-fixed]:!translate-y-0 [&.is-fixed]:bg-[#FCFBF7] [&.is-fixed]:shadow-header [&.is-hidden.is-fixed]:!-translate-y-full [&.is-hidden.is-fixed]:shadow-none [&.no-scroll]:absolute [&.no-scroll]:!transform-none [&.no-scroll]:!shadow-none [&.mobile-menu-active]:bg-white">
     <div class="header-body relative w-full flex h-full">
         <div class="container max-w-[1650px] flex-grow">
@@ -189,7 +189,7 @@
                                                                         <div class="left col-span-2 flex h-full md:h-auto md:col-span-6">
                                                                             <ul class="sub-menu flex flex-col gap-[25px] md:gap-[15px] flex-grow relative transition-all duration-700 min-md:opacity-0 group-hover/item:min-md:opacity-100 min-md:delay-100 before:absolute before:top-0 before:left-0 before:w-[1px] before:h-screen before:md:h-full before:bg-black/10">
                                                                                 <?php foreach ($item['megamenu'] as $index => $subitem) { ?>
-                                                                                    <li class="submenu-item pl-[65px] md:pl-[30px] relative before:absolute before:w-[3px] before:h-0 before:bottom-0 before:-left-[1px] before:bg-primary-main before:transition-all before:duration-200 hover:before:bottom-[unset] hover:before:top-0 hover:before:h-full" data-item-image="<?= $subitem['image'] ?>" data-item-id="<?= $key ?>" <?php if (isset($subitem['tabID'])) { echo 'data-tab-id="'. $subitem['tabID'] . '"'; } ?>>
+                                                                                    <li class="submenu-item pl-[65px] md:pl-[30px] relative before:absolute before:w-[3px] before:h-0 before:bottom-0 before:-left-[1px] before:bg-primary-main before:transition-all before:duration-200 hover:before:bottom-[unset] hover:before:top-0 hover:before:h-full" data-item-image="<?= env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','images_folder'], app()->getLocale()) . '/' . $subitem['image'] ?>" data-item-id="<?= $key ?>" <?php if (isset($subitem['tabID'])) { echo 'data-tab-id="'. $subitem['tabID'] . '"'; } ?>>
                                                                                         <a href="<?= env('HTTP_DOMAIN') .'/'. $item['link'] .'/'. $subitem['link'] ?>" class="block py-[4px] text-[18px] md:text-[16px] leading-[32px] md:leading-[28px] text-paragraph font-light duration-300 hover:text-primary-main hover:tracking-[0.1px] [-webkit-text-stroke:1px_rgba(51,51,51,0)] hover:[-webkit-text-stroke:1px_rgba(182,163,107,1)] <?= isset($subitem['scrollableSection']) ? 'scrollable-selector' : '' ?>" <?php if (isset($subitem['scrollableSection'])) { echo 'data-scrollable-section="'. $subitem['scrollableSection'] . '"'; } ?>>
                                                                                             <?= $subitem['title'] ?>
                                                                                         </a>
@@ -228,7 +228,7 @@
                                         foreach ($lang as $item) { ?>
                                             <li class="option group/option">
                                                 <a href="" class="flex items-center gap-[10px] bg-primary-main/30 group-[&.is-fixed]/header:bg-secondary-main/30 group-[&.is-fixed]/header:group-hover/option:bg-secondary-main/20 group-hover/option:bg-primary-main/20 px-[12.5px] py-[10px] sm:px-[10px] sm:py-[7.5px] relative border-solid border border-white/15 transition-all duration-450 group-hover/option:border-primary-500 group-[&.is-fixed]/header:group-hover/option:border-secondary-500 group-[&amp;.is-active]/option:before:border-sun-500">
-                                                    <div class="image w-[20px] h-[15px] shrink-0"><img class="full-cover" src="{{ asset('assets')/image/other/flag-<?= $item ?>.png" alt="" loading="lazy"></div>
+                                                    <div class="image w-[20px] h-[15px] shrink-0"><img class="full-cover" src="{{ asset('assets')}}/image/other/flag-<?= $item ?>.png" alt="" loading="lazy"></div>
                                                     <div class="text-white/70 duration-350 group-hover/option:text-white group-[&amp;.is-active]/option:text-white sm:text-[14px] uppercase"><?= $item ?></div>
                                                 </a>
                                             </li>

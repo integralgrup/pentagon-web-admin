@@ -17,6 +17,7 @@ use App\Models\CareerSlider;
 use App\Models\Catalog;
 use App\Models\CatalogGroup;
 use App\Models\Office;
+use App\Models\Page;
 use Illuminate\Support\Facades\DB;
 
 
@@ -65,6 +66,10 @@ class HomeController extends Controller
             $career = Career::where(['lang' => app()->getLocale()])->first();
             $careerJobs = CareerJob::where(['lang' => app()->getLocale()])->get();
             $careerSlider = CareerSlider::where(['lang' => app()->getLocale()])->get();
+            if($slug2!= null) {
+                $careerJob = CareerJob::where(['lang' => app()->getLocale(), 'seo_url' => $slug2])->first();
+                return view('career-job', compact('career', 'careerJobs', 'careerJob'));
+            }
             return view('career', compact('career', 'careerJobs', 'careerSlider'));
         }
 
@@ -119,6 +124,12 @@ class HomeController extends Controller
         if($menu->page_type == 'contact') {
             $offices = Office::where(['lang' => app()->getLocale()])->get();
             return view('contact', compact('offices'));
+        }
+
+        if($menu->page_type == 'page') {
+            $page = Page::where(['lang' => app()->getLocale(), 'seo_url' => $slug])->first();
+            //dd($page);
+            return view('page', compact('page'));
         }
 
         //return view('page', compact('page'));

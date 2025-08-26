@@ -116,11 +116,11 @@
                                 <img src="../assets/image/static/career-box-vector-hover.svg" alt="Vektör" width="457" height="401" class="h-full w-auto absolute z-2 top-1/2 -translate-y-1/2 right-0 transition-all duration-500 opacity-0 group-hover/item:min-md:opacity-100">
                                 <div class="content flex flex-col relative z-3">
                                     <h3 class="text-[30px] xl:text-[24px] md:text-[20px] leading-[38px] md:leading-[30px] font-medium text-paragraph/80 tracking-[-0.3px] mb-[30px] xs:mb-[20px] transition-all duration-300 group-hover/item:min-md:text-white">
-                                        <a href="<?= $item['outer_url'] ?>"><?= $item['title'] ?></a>
+                                        <a href="<?= env('HTTP_DOMAIN') .'/'. getUrl('career_url') . '/' . $item['seo_url'] ?>"><?= $item['title'] ?></a>
                                     </h3>
                                     <p class="text-[18px] xl:text-[16px] leading-[32px] font-light text-paragraph/80 transition-all duration-300 group-hover/item:min-md:text-white line-clamp-3"><?= $item['description'] ?></p>
                                     <div class="buttons flex sm:flex-col items-center gap-[20px] mt-[80px] xl:mt-[60px] lg:mt-[40px]">
-                                        <a href="<?= $item['outer_url'] ?>" class="flex items-center justify-center relative w-max sm:w-full overflow-hidden main-button group">
+                                        <a href="<?= env('HTTP_DOMAIN') .'/'. getUrl('career_url') . '/' . $item['seo_url'] ?>" class="flex items-center justify-center relative w-max sm:w-full overflow-hidden main-button group">
                                             <div class="left px-[66px] xs:px-[20px] group-hover:min-md:px-[30px] py-[20px] flex items-center justify-center z-2 bg-transparent border border-solid border-paragraph/16 group-hover/item:min-md:border-white/16 group-hover:min-md:border-primary-main transition-all duration-300 group-hover:min-md:bg-primary-main sm:w-full">
                                                 <span class="text-[16px] leading-none font-medium text-paragraph transition-all duration-300 tracking-[-0.16px] group-hover/item:min-md:text-white group-hover:min-md:text-white">Detaylı İncele</span>
                                             </div>

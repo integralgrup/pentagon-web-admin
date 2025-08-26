@@ -80,6 +80,24 @@
                     </a>
                   </li>
                   <li class="nav-item">
+                    <a href="{{ route('admin.catalog.group.index') }}" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>Katalog Grupları</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{ route('admin.page.index') }}" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>Sayfa Yönetimi</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{ route('admin.static_text.index') }}" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>Sabit Kelime Yönetimi</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
                     <a href="#" class="nav-link">
                       <i class="nav-icon bi bi-box-arrow-in-right"></i>
                     <p>
@@ -108,24 +126,7 @@
                       </li>
                     </ul>
                   </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="nav-icon bi bi-box-arrow-in-right"></i>
-                    <p>
-                      Katalog
-                      <i class="nav-arrow bi bi-chevron-right"></i>
-                    </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                      <li class="nav-item">
-                        <a href="{{ route('admin.catalog.group.index') }}" class="nav-link">
-                          <i class="nav-icon bi bi-circle"></i>
-                          <p>Katalog Grubu Yönetimi</p>
-                        </a>
-                      </li>
-                     
-                    </ul>
-                  </li>
+                  
                 </ul>
               </li>
               <li class="nav-item">

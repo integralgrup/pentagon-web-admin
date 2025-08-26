@@ -30,6 +30,7 @@ class CareerJob extends Model
         'lang',
         'job_id',
         'title',
+        'seo_url',
         'short_description',
         'description',
         'outer_url',

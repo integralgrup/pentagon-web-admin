@@ -33,7 +33,7 @@
                                                     <p class="text-[18px] lg:text-[16px] leading-[32px] font-light text-paragraph mb-[60px] xl:mb-[40px] md:mb-[30px]"><?=$item->title_2?></p>
                                                     <a href="#" class="flex items-center justify-center relative w-max overflow-hidden main-button group sm:w-full">
                                                         <div class="left px-[30px] py-[20px] flex items-center justify-center z-2 bg-transparent border border-solid border-primary-main transition-all duration-300 sm:w-full relative before:absolute before:left-0 before:top-0 before:w-0 before:h-full before:translate-x-[-100px] group-hover:before:min-md:w-full group-hover:before:min-md:translate-x-0 before:bg-primary-main before:transition-all before:duration-500">
-                                                            <span class="text-[16px] leading-none font-medium text-primary-main transition-all duration-300 group-hover:min-md:duration-600 group-hover:min-md:text-white translate-x-[-100px] opacity-0 group-hover:min-md:translate-x-0 group-hover:min-md:opacity-100 w-0 whitespace-nowrap relative z-2">Detaylı İncele</span>
+                                                            <span class="text-[16px] leading-none font-medium text-primary-main transition-all duration-300 group-hover:min-md:duration-600 group-hover:min-md:text-white translate-x-[-100px] opacity-0 group-hover:min-md:translate-x-0 group-hover:min-md:opacity-100 w-0 whitespace-nowrap relative z-2"><?= getStaticText(5) ?></span>
                                                             <span class="text-[16px] leading-none font-medium text-primary-main transition-all duration-600 group-hover:min-md:duration-300 group-hover:min-md:text-white group-hover:min-md:translate-x-[100px] group-hover:min-md:opacity-0 relative z-2"><?=$item->button_title?></span>
                                                         </div>
                                                         <div class="right flex items-center justify-center z-2 bg-[#9D8D5D] py-[22px] px-[24px] border border-solid border-[#9D8D5D] w-[56px] h-[58px] overflow-hidden">
@@ -79,7 +79,7 @@
                 </div>
                 <div class="w-2/5 md:w-full md:p-0 md:mt-[30px] [@media(min-width:1760px)]:translate-x-[-20px]">
                     <div class="flex flex-col text-editor reveal">
-                        <span class="text-[16px] leading-[32px] font-light text-paragraph opacity-65 tracking-[7.2px] block mb-[30px] lg:mb-[5px]">Bizi Tanıyın</span>
+                        <span class="text-[16px] leading-[32px] font-light text-paragraph opacity-65 tracking-[7.2px] block mb-[30px] lg:mb-[5px]"><?= getStaticText(1) ?></span>
                         <h1 class="text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-light text-secondary-main mb-[80px] 2xl:mb-[50px] md:mb-[30px] xs:mb-[20px]">
                             <?=$about->title?>
                         </h1>
@@ -89,8 +89,8 @@
                         </p>
                         <a href="#" class="flex items-center justify-center relative w-max overflow-hidden main-button group sm:w-full">
                             <div class="left px-[30px] py-[20px] flex items-center justify-center z-2 bg-transparent border border-solid border-primary-main transition-all duration-300 sm:w-full relative before:absolute before:left-0 before:top-0 before:w-0 before:h-full before:translate-x-[-100px] group-hover:before:min-md:w-full group-hover:before:min-md:translate-x-0 before:bg-primary-main before:transition-all before:duration-500">
-                                <span class="text-[16px] leading-none font-medium text-primary-main transition-all duration-300 group-hover:min-md:duration-600 group-hover:min-md:text-white translate-x-[-100px] opacity-0 group-hover:min-md:translate-x-0 group-hover:min-md:opacity-100 w-0 whitespace-nowrap relative z-2">Detaylı İncele</span>
-                                <span class="text-[16px] leading-none font-medium text-primary-main transition-all duration-600 group-hover:min-md:duration-300 group-hover:min-md:text-white group-hover:min-md:translate-x-[100px] group-hover:min-md:opacity-0 relative z-2">Detaylı İncele</span>
+                                <span class="text-[16px] leading-none font-medium text-primary-main transition-all duration-300 group-hover:min-md:duration-600 group-hover:min-md:text-white translate-x-[-100px] opacity-0 group-hover:min-md:translate-x-0 group-hover:min-md:opacity-100 w-0 whitespace-nowrap relative z-2"><?= getStaticText(5) ?></span>
+                                <span class="text-[16px] leading-none font-medium text-primary-main transition-all duration-600 group-hover:min-md:duration-300 group-hover:min-md:text-white group-hover:min-md:translate-x-[100px] group-hover:min-md:opacity-0 relative z-2"><?= getStaticText(5) ?></span>
                             </div>
                             <div class="right flex items-center justify-center z-2 bg-[#9D8D5D] py-[22px] px-[24px] border border-solid border-[#9D8D5D] w-[56px] h-[58px] overflow-hidden">
                                 <i class="icon-angle-right text-[12px] leading-none text-white transition-all duration-300 group-hover:min-md:duration-600 translate-x-[-100px] opacity-0 group-hover:min-md:translate-x-0 group-hover:min-md:opacity-100 w-0 whitespace-nowrap"></i>
@@ -115,14 +115,14 @@
                                 <div class="swiper-slide overflow-hidden" data-slide-name="<?= $item->title ?>" data-slide-id="<?= $key ?>">
                                     <div class="item w-full grid grid-cols-2 sm:grid-cols-1 items-center gap-[200px] 2xl:gap-[160px] xl:gap-[100px] lg:gap-[60px] md:gap-[30px]">
                                         <div class="left">
-                                            <span class="block mb-[50px] md:mb-[30px] text-[16px] leading-[32px] font-light text-white opacity-65 tracking-[7.2px]">Faaliyet Alanları</span>
+                                            <span class="block mb-[50px] md:mb-[30px] text-[16px] leading-[32px] font-light text-white opacity-65 tracking-[7.2px]"><?= getStaticText(4) ?></span>
                                             <div class="flex flex-col gap-[30px] sm:gap-[20px] text-editor">
                                                 <h2 class="text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-light text-white [&_span]:font-bold"><?= $item->title ?></h2>
                                                 <p class="text-[17px] md:text-[16px] sm:text-[15px] leading-[32px] sm:leading-[28px] font-light text-white mb-[20px] sm:mb-[5px]"><?= $item['description'] ?></p>
                                                 <a href="<?= $item->seo_url ?>" class="flex items-center justify-center relative w-max overflow-hidden main-button group sm:w-full">
                                                     <div class="left px-[30px] py-[20px] flex items-center justify-center z-2 bg-transparent border border-solid border-primary-main transition-all duration-300 sm:w-full relative before:absolute before:left-0 before:top-0 before:w-0 before:h-full before:translate-x-[-100px] group-hover:before:min-md:w-full group-hover:before:min-md:translate-x-0 before:bg-primary-main before:transition-all before:duration-500">
-                                                        <span class="text-[16px] leading-none font-medium text-white transition-all duration-300 group-hover:min-md:duration-600 group-hover:min-md:text-white translate-x-[-100px] opacity-0 group-hover:min-md:translate-x-0 group-hover:min-md:opacity-100 w-0 whitespace-nowrap relative z-2">Detaylı İncele</span>
-                                                        <span class="text-[16px] leading-none font-medium text-white transition-all duration-600 group-hover:min-md:duration-300 group-hover:min-md:text-white group-hover:min-md:translate-x-[100px] group-hover:min-md:opacity-0 relative z-2">Detaylı İncele</span>
+                                                        <span class="text-[16px] leading-none font-medium text-white transition-all duration-300 group-hover:min-md:duration-600 group-hover:min-md:text-white translate-x-[-100px] opacity-0 group-hover:min-md:translate-x-0 group-hover:min-md:opacity-100 w-0 whitespace-nowrap relative z-2"><?= getStaticText(5) ?></span>
+                                                        <span class="text-[16px] leading-none font-medium text-white transition-all duration-600 group-hover:min-md:duration-300 group-hover:min-md:text-white group-hover:min-md:translate-x-[100px] group-hover:min-md:opacity-0 relative z-2"><?= getStaticText(5) ?></span>
                                                     </div>
                                                     <div class="right flex items-center justify-center z-2 bg-[#9D8D5D] py-[22px] px-[24px] border border-solid border-[#9D8D5D] w-[56px] h-[58px] overflow-hidden">
                                                         <i class="icon-angle-right text-[12px] leading-none text-white transition-all duration-300 group-hover:min-md:duration-600 translate-x-[-100px] opacity-0 group-hover:min-md:translate-x-0 group-hover:min-md:opacity-100 w-0 whitespace-nowrap"></i>
@@ -147,13 +147,13 @@
                     <div class="nav-buttons reveal pb-[5px] flex items-center gap-[30px] sm:hidden">
                         <div class="sector-prev cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.sector-disabled]:opacity-65 relative [&.sector-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
                             <i class="icon-angle-left text-[12px] leading-none text-white"></i>
-                            <span class="text-[16px] leading-[32px] text-white md:hidden">Önceki</span>
+                            <span class="text-[16px] leading-[32px] text-white md:hidden"><?= getStaticText(2) ?></span>
                         </div>
 
                         <div class="separator w-[1px] h-[22px] bg-white/20"></div>
 
                         <div class="sector-next cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.sector-disabled]:opacity-65 relative [&.sector-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
-                            <span class="text-[16px] leading-[32px] text-white md:hidden">Sonraki</span>
+                            <span class="text-[16px] leading-[32px] text-white md:hidden"><?= getStaticText(3) ?></span>
                             <i class="icon-angle-right text-[12px] leading-none text-white "></i>
                         </div>
                     </div>
@@ -177,13 +177,13 @@
                         <div class="reveal nav-buttons w-full flex items-center gap-[30px] pt-[12px] sm:pt-0 sm:pb-[12px] pl-[135px] 2xl:pl-[100px] xl:pl-[70px] sm:pl-[30px] relative z-2">
                             <div class="brand-prev cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.brand-disabled]:opacity-65 relative [&.brand-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
                                 <i class="icon-angle-left text-[12px] leading-none text-white"></i>
-                                <span class="text-[16px] leading-[32px] text-white">Önceki</span>
+                                <span class="text-[16px] leading-[32px] text-white"><?= getStaticText(2) ?></span>
                             </div>
 
                             <div class="separator w-[1px] h-[22px] bg-white/20"></div>
 
                             <div class="brand-next cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.brand-disabled]:opacity-65 relative [&.brand-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
-                                <span class="text-[16px] leading-[32px] text-white">Sonraki</span>
+                                <span class="text-[16px] leading-[32px] text-white"><?= getStaticText(3) ?></span>
                                 <i class="icon-angle-right text-[12px] leading-none text-white "></i>
                             </div>
                         </div>
@@ -198,7 +198,7 @@
                                     <div class="swiper-slide">
                                         <div class="img hidden" data-image="<?= env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','brand_images_folder']) . '/' . $item->image ?>"></div>
                                         <div class="text-editor">
-                                            <span class="text-[16px] leading-[32px] font-light text-paragraph opacity-65 tracking-[7.2px] block mb-[30px] lg:mb-[15px]">Markalarımız</span>
+                                            <span class="text-[16px] leading-[32px] font-light text-paragraph opacity-65 tracking-[7.2px] block mb-[30px] lg:mb-[15px]"><?= getStaticText(6) ?></span>
                                             <h2 class="text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-light text-secondary-main">
                                                 <?=$item->title?>
                                             </h2>
@@ -231,8 +231,8 @@
                                         </div>
                                         <a href="<?= $item['website'] ?>" target="_blank" class="order-4 flex items-center justify-center relative w-max overflow-hidden main-button group/button sm:w-full" id="website-button">
                                             <div class="left px-[30px] py-[20px] flex items-center justify-center z-2 bg-transparent border border-solid border-primary-main transition-all duration-300 sm:w-full relative before:absolute before:left-0 before:top-0 before:w-0 before:h-full before:translate-x-[-100px] group-hover/button:before:min-md:w-full group-hover/button:before:min-md:translate-x-0 before:bg-primary-main before:transition-all before:duration-500">
-                                                <span class="text-[16px] leading-none font-medium text-primary-main transition-all duration-300 group-hover/button:min-md:duration-600 group-hover/button:min-md:text-white translate-x-[-100px] opacity-0 group-hover/button:min-md:translate-x-0 group-hover/button:min-md:opacity-100 w-0 whitespace-nowrap relative z-2">Websitesine Git</span>
-                                                <span class="text-[16px] leading-none font-medium text-primary-main transition-all duration-600 group-hover/button:min-md:duration-300 group-hover/button:min-md:text-white group-hover/button:min-md:translate-x-[100px] group-hover/button:min-md:opacity-0 relative z-2">Websitesine Git</span>
+                                                <span class="text-[16px] leading-none font-medium text-primary-main transition-all duration-300 group-hover/button:min-md:duration-600 group-hover/button:min-md:text-white translate-x-[-100px] opacity-0 group-hover/button:min-md:translate-x-0 group-hover/button:min-md:opacity-100 w-0 whitespace-nowrap relative z-2"><?= getStaticText(7) ?></span>
+                                                <span class="text-[16px] leading-none font-medium text-primary-main transition-all duration-600 group-hover/button:min-md:duration-300 group-hover/button:min-md:text-white group-hover/button:min-md:translate-x-[100px] group-hover/button:min-md:opacity-0 relative z-2"><?= getStaticText(7) ?></span>
                                             </div>
                                             <div class="right flex items-center justify-center z-2 bg-[#9D8D5D] py-[22px] px-[24px] border border-solid border-[#9D8D5D] w-[56px] h-[58px] overflow-hidden">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="h-[18px] w-auto transition-all duration-300 group-hover/button:min-md:duration-600 translate-x-[-100px] opacity-0 group-hover/button:min-md:translate-x-[9px] group-hover/button:min-md:opacity-100"><path d="M304 24c0 13.3 10.7 24 24 24H430.1L207 271c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l223-223V184c0 13.3 10.7 24 24 24s24-10.7 24-24V24c0-13.3-10.7-24-24-24H328c-13.3 0-24 10.7-24 24zM72 32C32.2 32 0 64.2 0 104V440c0 39.8 32.2 72 72 72H408c39.8 0 72-32.2 72-72V312c0-13.3-10.7-24-24-24s-24 10.7-24 24V440c0 13.3-10.7 24-24 24H72c-13.3 0-24-10.7-24-24V104c0-13.3 10.7-24 24-24H200c13.3 0 24-10.7 24-24s-10.7-24-24-24H72z" fill="white"/></svg>
@@ -256,24 +256,23 @@
             <div class="wrapper w-full">
                 <div class="reveal flex items-end justify-between gap-[24px] mb-[120px] 2xl:mb-[90px] xl:mb-[70px] lg:mb-[50px] md:mb-[30px]">
                     <h4 class="text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-light text-secondary-main">
-                        Pentagon Yapı’dan <br>
-                        <span class="font-bold">Haberler & Blog</span>
+                        <?= getStaticText(8) ?>
                     </h4>
 
                     <a href="page-blog.php" class="text-[16px] leading-normal font-medium text-paragraph/65 tracking-[-0.16px] transition-all duration-300 px-[66px] py-[22px] border border-solid border-paragraph/16 hover:bg-secondary-main hover:border-secondary-main hover:text-white xsm:w-full xsm:text-center sm:py-[15px] md:hidden">
-                        Tümünü Gör
+                        <?= getStaticText(9) ?>
                     </a>
 
                     <div class="nav-buttons hidden md:flex items-center justify-end gap-[30px]">
                         <div class="mobile-blog-prev project-nav-button cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.mobile-blog-disabled]:opacity-65 relative">
                             <i class="icon-angle-left text-[12px] leading-none text-primary-main"></i>
-                            <span class="text-[16px] leading-[32px] text-primary-main sm:hidden">Önceki</span>
+                            <span class="text-[16px] leading-[32px] text-primary-main sm:hidden"><?= getStaticText(2) ?></span>
                         </div>
 
                         <div class="separator w-[1px] h-[22px] bg-primary-main/20"></div>
 
                         <div class="mobile-blog-next project-nav-button cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.mobile-blog-disabled]:opacity-65 relative">
-                            <span class="text-[16px] leading-[32px] text-primary-main sm:hidden">Sonraki</span>
+                            <span class="text-[16px] leading-[32px] text-primary-main sm:hidden"><?= getStaticText(3) ?></span>
                             <i class="icon-angle-right text-[12px] leading-none text-primary-main "></i>
                         </div>
                     </div>
@@ -327,7 +326,7 @@
                     </div>
                 </div>
                 <a href="page-blog.php" class="text-[16px] leading-normal font-medium text-paragraph/65 tracking-[-0.16px] transition-all duration-300 px-[66px] py-[22px] border border-solid border-paragraph/16 sm:w-full sm:text-center sm:py-[15px] min-sm:hidden md:block sm:mt-[35px]">
-                    Tümünü Gör
+                    <?= getStaticText(9) ?>
                 </a>
             </div>
         </div>

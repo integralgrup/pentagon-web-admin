@@ -1,6 +1,5 @@
 @extends('admin.layouts.main')
-@section('title', 'Katalog Grubu Yönetimi')
-
+@section('title', 'Sabit Kelime Yönetimi')
 @section('content')
 <!--begin::App Content Header-->
         <div class="app-content-header">
@@ -8,11 +7,11 @@
           <div class="container-fluid">
             <!--begin::Row-->
             <div class="row">
-              <div class="col-sm-6"><h3 class="mb-0">Katalog Grubu Yönetimi</h3></div>
+              <div class="col-sm-6"><h3 class="mb-0">Sabit Kelime Yönetimi</h3></div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-end">
                   <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Anasayfa</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Katalog Grubu Yönetimi</li>
+                  <li class="breadcrumb-item active" aria-current="page">Sabit Kelime Yönetimi</li>
                 </ol>
               </div>
             </div>
@@ -33,8 +32,8 @@
                 <div class="card mb-4">
                   <div class="card-header" >
                     <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <h3 style="display:inline-block;" class="card-title">Katalog Grubu Yönetimi</h3>
-                        <a style="display:inline-block;" href="{{ route('admin.catalog.group.create') }}" class="btn btn-sm btn-primary">Grup Ekle</a>
+                        <h3 style="display:inline-block;" class="card-title">Sabit Kelime Yönetimi</h3>
+                        <a style="display:inline-block;" href="{{ route('admin.static_text.create') }}" class="btn btn-sm btn-primary">Sabit Kelime Ekle</a>
                     </div>
                     
                   </div>
@@ -45,21 +44,20 @@
                         <tr>
                           <th style="width: 30px">#</th>
                           <th>Başlık</th>
-                          <th>Görsel</th>
+                          <th>Sayfa Adı</th>
                           <th  style="width: 300px">İşlem</th>
                         </tr>
                       </thead>
                       <tbody>
-                        @foreach($catalogGroups as $group)
+                        @foreach($staticTexts as $staticText)
                         <tr class="align-middle">
-                          <td>{{ $group->id }}</td>
-                          <td>{{ strip_tags($group->title) }}</td>
-                          <td><img src="{{ asset( getFolder([ 'uploads_folder', 'catalog_files_folder'], $group->lang) . '/' . $group->bg_image) }}" alt="{{ $group->title }}" width="50"></td>
+                          <td>{{ $staticText->id }}</td>
+                          <td>{{ strip_tags($staticText->title) }}</td>
+                          <td>{{ strip_tags($staticText->page_name) }}</td>
                           <td>
-                            <!-- Kataloglar -->
-                            <a href="{{ route('admin.catalog.index', ['catalogGroupId' => $group->catalog_group_id]) }}" class="btn btn-info btn-sm">Kataloglar</a>
-                            <a href="{{ route('admin.catalog.group.edit', $group->catalog_group_id) }}" class="btn btn-primary btn-sm">Düzenle</a>
-                            <form action="{{ route('admin.catalog.group.destroy', $group->catalog_group_id) }}" method="POST" style="display:inline;">
+                            <!-- Katalog Dosyaları -->
+                            <a href="{{ route('admin.static_text.edit', $staticText->text_id) }}" class="btn btn-primary btn-sm">Düzenle</a>
+                            <form action="{{ route('admin.static_text.destroy', $staticText->text_id) }}" method="POST" style="display:inline;">
                               @csrf
                               @method('DELETE')
                               <button type="submit" class="btn btn-danger btn-sm">Sil</button>

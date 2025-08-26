@@ -55,6 +55,7 @@
                         foreach($job as $item){
                             $job_id = $item->job_id;
                             $title[$item->lang] = $item->title;
+                            $seo_url[$item->lang] = $item->seo_url;
                             $short_description[$item->lang] = $item->short_description;
                             $description[$item->lang] = $item->description;
                             $outer_url[$item->lang] = $item->outer_url;
@@ -76,6 +77,11 @@
                                         <div class="mb-3">
                                             <label for="title_{{ $language->lang_code }}" class="form-label">Başlık ({{ $language->lang_code }})</label>
                                             <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" required value="{{ $title[$language->lang_code] ?? '' }}">
+                                        </div>
+                                        <!-- seo_url -->
+                                        <div class="mb-3">
+                                            <label for="seo_url_{{ $language->lang_code }}" class="form-label">SEO URL ({{ $language->lang_code }})</label>
+                                            <input type="text" class="form-control" id="seo_url_{{ $language->lang_code }}" name="seo_url_{{ $language->lang_code }}" required value="{{ $seo_url[$language->lang_code] ?? '' }}">
                                         </div>
                                         <!-- short_description -->
                                         <div class="mb-3">

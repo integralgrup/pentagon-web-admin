@@ -88,3 +88,17 @@ if(!function_exists('getSubMenuItems')) {
         return null;
     }
 }
+
+if(!function_exists('getStaticText')) {
+    function getStaticText($text_id = null)
+    {
+        $lang = app()->getLocale();
+        if ($text_id) {
+            $staticText = DB::table('static_text')->where('lang', $lang)->where('text_id', $text_id)->first();
+            if ($staticText) {
+                return $staticText->title;
+            }
+        }
+        return null;
+    }
+}

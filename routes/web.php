@@ -181,8 +181,19 @@ Route::post('/admin/office/store', 'App\Http\Controllers\Admin\OfficeController@
 Route::get('/admin/office/{office}/edit', 'App\Http\Controllers\Admin\OfficeController@edit')->name('admin.office.edit');
 Route::delete('/admin/office/{office}', 'App\Http\Controllers\Admin\OfficeController@destroy')->name('admin.office.destroy');
 
+// Page routes
+Route::get('/admin/page', 'App\Http\Controllers\Admin\PageController@index')->name('admin.page.index');
+Route::get('/admin/page/create', 'App\Http\Controllers\Admin\PageController@create')->name('admin.page.create');
+Route::post('/admin/page/store', 'App\Http\Controllers\Admin\PageController@store')->name('admin.page.store');
+Route::get('/admin/page/{id}/edit', 'App\Http\Controllers\Admin\PageController@edit')->name('admin.page.edit');
+Route::delete('/admin/page/{id}', 'App\Http\Controllers\Admin\PageController@destroy')->name('admin.page.destroy');
 
-
+// Static Text routes
+Route::get('/admin/static-text', 'App\Http\Controllers\Admin\StaticTextController@index')->name('admin.static_text.index');
+Route::get('/admin/static-text/create', 'App\Http\Controllers\Admin\StaticTextController@create')->name('admin.static_text.create');
+Route::post('/admin/static-text/store', 'App\Http\Controllers\Admin\StaticTextController@store')->name('admin.static_text.store');
+Route::get('/admin/static-text/{id}/edit', 'App\Http\Controllers\Admin\StaticTextController@edit')->name('admin.static_text.edit');
+Route::delete('/admin/static-text/{id}', 'App\Http\Controllers\Admin\StaticTextController@destroy')->name('admin.static_text.destroy');
 
 //Project Front End routes
 //Home route

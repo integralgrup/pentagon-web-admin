@@ -86,146 +86,47 @@
                         </div>
                     </div>
                 </div>
+                <?php $footerPages = App\Models\Menu::where(['lang' => app()->getLocale(), 'parent_menu_id' => 0, 'page_type' => 'page'])->get();?>
+                <?php $footerAbout = App\Models\Menu::where(['lang' => app()->getLocale(),  'page_type' => 'about'])->get();?>
+                <?php $footerSectors = App\Models\Menu::where(['lang' => app()->getLocale(), 'parent_menu_id' => 2, 'page_type' => 'sector'])->get();?>
+                <?php $footerBrands = App\Models\Menu::where(['lang' => app()->getLocale(), 'parent_menu_id' => 3, 'page_type' => 'brand'])->get();?>
+                <?php $footerCareers = App\Models\Menu::where(['lang' => app()->getLocale(), 'page_type' => 'career'])->get();?>
+
                 <div class="w-2/3 md:w-full sm:hidden md:relative md:after:w-[calc(100vw+60px)] md:after:h-[calc(100%+90px)] md:after:absolute md:after:left-[-30px] md:after:bottom-[-120px] md:after:bg-primary-main md:after:z-[-1]">
                     <div class="menu w-full grid xsm:flex xsm:flex-wrap grid-cols-3 gap-[120px] 2xl:gap-[90px] xl:gap-[70px] lg:gap-[50px] md:gap-[30px] xsm:gap-0 mt-[70px] pl-[122px] 2xl:pl-[100px] xl:pl-[70px] lg:pl-[40px] md:pl-0">
                         <?php $menu = [
                                 [
                                     'menu' => [
                                         'title' => 'Kurumsal',
-                                        'items' => [
-                                            'itemOne' => [
-                                                'name' => 'Biz Kimiz?',
-                                                'link' => 'page-corporate.php',
-                                            ],
-                                            'itemTwo' => [
-                                                'name' => 'Neler Yaparız?',
-                                                'link' => 'page-corporate.php',
-                                            ],
-                                            'itemThree' => [
-                                                'name' => 'Nasıl Yaparız?',
-                                                'link' => 'page-corporate.php',
-                                            ],
-                                            'itemFour' => [
-                                                'name' => 'Vizyonumuz',
-                                                'link' => 'page-corporate.php',
-                                            ],
-                                        ],
+                                        'items' => $footerAbout
                                     ],
                                 ],
 
                                 [
                                     'menu' => [
                                         'title' => 'Sektörler',
-                                        'items' => [
-                                            'itemOne' => [
-                                                'name' => 'İnşaat',
-                                                'link' => 'page-sector-detail.php',
-                                            ],
-                                            'itemTwo' => [
-                                                'name' => 'Çelik',
-                                                'link' => 'page-sector-detail.php',
-                                            ],
-                                            'itemThree' => [
-                                                'name' => 'Elektronik',
-                                                'link' => 'page-sector-detail.php',
-                                            ],
-                                            'itemFour' => [
-                                                'name' => 'Dekorasyon',
-                                                'link' => 'page-sector-detail.php',
-                                            ],
-                                        ],
+                                        'items' => $footerSectors
                                     ],
                                 ],
 
                                 [
                                     'menu' => [
-                                        'title' => 'Sektörler',
-                                        'items' => [
-                                            'itemOne' => [
-                                                'name' => 'İnşaat',
-                                                'link' => 'page-sector-detail.php',
-                                            ],
-                                            'itemTwo' => [
-                                                'name' => 'Çelik',
-                                                'link' => 'page-sector-detail.php',
-                                            ],
-                                            'itemThree' => [
-                                                'name' => 'Elektronik',
-                                                'link' => 'page-sector-detail.php',
-                                            ],
-                                            'itemFour' => [
-                                                'name' => 'Dekorasyon',
-                                                'link' => 'page-sector-detail.php',
-                                            ],
-                                        ],
+                                        'title' => 'Kariyer',
+                                        'items' => $footerCareers
                                     ],
                                 ],
 
                                 [
                                     'menu' => [
-                                        'title' => 'Sektörler',
-                                        'items' => [
-                                            'itemOne' => [
-                                                'name' => 'İnşaat',
-                                                'link' => 'page-sector-detail.php',
-                                            ],
-                                            'itemTwo' => [
-                                                'name' => 'Çelik',
-                                                'link' => 'page-sector-detail.php',
-                                            ],
-                                            'itemThree' => [
-                                                'name' => 'Elektronik',
-                                                'link' => 'page-sector-detail.php',
-                                            ],
-                                            'itemFour' => [
-                                                'name' => 'Dekorasyon',
-                                                'link' => 'page-sector-detail.php',
-                                            ],
-                                        ],
+                                        'title' => 'Gizlilik & Politikalar',
+                                        'items' => $footerPages
                                     ],
                                 ],
 
                                 [
                                     'menu' => [
                                         'title' => 'Markalarımız',
-                                        'items' => [
-                                            'itemOne' => [
-                                                'name' => 'Netrags',
-                                                'link' => 'page-brand-detail.php',
-                                            ],
-                                            'itemTwo' => [
-                                                'name' => 'Geobera',
-                                                'link' => 'page-brand-detail.php',
-                                            ],
-                                            'itemThree' => [
-                                                'name' => 'Ifence',
-                                                'link' => 'page-brand-detail.php',
-                                            ],
-                                            'itemFour' => [
-                                                'name' => 'Anymats',
-                                                'link' => 'page-brand-detail.php',
-                                            ],
-                                            'itemFive' => [
-                                                'name' => 'Avind',
-                                                'link' => 'page-brand-detail.php',
-                                            ],
-                                            'itemSix' => [
-                                                'name' => 'Integralspor',
-                                                'link' => 'page-brand-detail.php',
-                                            ],
-                                            'itemSeven' => [
-                                                'name' => 'Wallgrass',
-                                                'link' => 'page-brand-detail.php',
-                                            ],
-                                            'itemEight' => [
-                                                'name' => 'Avengrass',
-                                                'link' => 'page-brand-detail.php',
-                                            ],
-                                            'itemNine' => [
-                                                'name' => 'Stilagrandstand',
-                                                'link' => 'page-brand-detail.php',
-                                            ],
-                                        ],
+                                        'items' => $footerBrands
                                     ],
                                 ],
                             ];
@@ -235,7 +136,7 @@
                                 <p class=" text-[26px] xl:text-[22px] md:text-[20px] leading-[32px] text-[#6D6243] font-bold mb-[8px]"><?php foreach ($menu[0] as $item): echo $item['title']; endforeach; ?></p>
                                 <ul>
                                     <?php foreach ($menu[0]['menu']['items'] as $item) : ?>
-                                        <li class=""><a href="<?php echo $item['link']; ?>" class="text-[18px] lg:text-[16px] leading-[45px] lg:leading-[40px] font-light tracking-[-0.18px] text-white transition-all duration-300 hover:text-[#6D6243] [-webkit-text-stroke:1.5px_rgba(255,255,255,0)] hover:[-webkit-text-stroke:1.5px_rgba(109,98,67,1)] hover:tracking-[-0.05px]"><?php echo $item['name']; ?></a></li>
+                                        <li class=""><a href="<?= env('HTTP_DOMAIN') .'/'. $item['seo_url']; ?>" class="text-[18px] lg:text-[16px] leading-[45px] lg:leading-[40px] font-light tracking-[-0.18px] text-white transition-all duration-300 hover:text-[#6D6243] [-webkit-text-stroke:1.5px_rgba(255,255,255,0)] hover:[-webkit-text-stroke:1.5px_rgba(109,98,67,1)] hover:tracking-[-0.05px]"><?php echo $item['title']; ?></a></li>
                                     <?php endforeach; ?>
                                 </ul>
                             </div>
@@ -244,7 +145,7 @@
                                 <p class=" text-[26px] xl:text-[22px] md:text-[20px] leading-[32px] text-[#6D6243] font-bold mb-[8px]"><?php foreach ($menu[1] as $item): echo $item['title']; endforeach; ?></p>
                                 <ul>
                                     <?php foreach ($menu[1]['menu']['items'] as $item) : ?>
-                                        <li class=""><a href="<?php echo $item['link']; ?>" class="text-[18px] lg:text-[16px] leading-[45px] lg:leading-[40px] font-light tracking-[-0.18px] text-white transition-all duration-300 hover:text-[#6D6243] [-webkit-text-stroke:1.5px_rgba(255,255,255,0)] hover:[-webkit-text-stroke:1.5px_rgba(109,98,67,1)] hover:tracking-[-0.05px]"><?php echo $item['name']; ?></a></li>
+                                        <li class=""><a href="<?= env('HTTP_DOMAIN') .'/'. getUrl('sector_url') .'/'. $item['seo_url']; ?>" class="text-[18px] lg:text-[16px] leading-[45px] lg:leading-[40px] font-light tracking-[-0.18px] text-white transition-all duration-300 hover:text-[#6D6243] [-webkit-text-stroke:1.5px_rgba(255,255,255,0)] hover:[-webkit-text-stroke:1.5px_rgba(109,98,67,1)] hover:tracking-[-0.05px]"><?php echo $item['title']; ?></a></li>
                                     <?php endforeach; ?>
                                 </ul>
                             </div>
@@ -254,7 +155,7 @@
                                 <p class=" text-[26px] xl:text-[22px] md:text-[20px] leading-[32px] text-[#6D6243] font-bold mb-[8px]"><?php foreach ($menu[2] as $item): echo $item['title']; endforeach; ?></p>
                                 <ul>
                                     <?php foreach ($menu[2]['menu']['items'] as $item) : ?>
-                                        <li class=""><a href="<?php echo $item['link']; ?>" class="text-[18px] lg:text-[16px] leading-[45px] lg:leading-[40px] font-light tracking-[-0.18px] text-white transition-all duration-300 hover:text-[#6D6243] [-webkit-text-stroke:1.5px_rgba(255,255,255,0)] hover:[-webkit-text-stroke:1.5px_rgba(109,98,67,1)] hover:tracking-[-0.05px]"><?php echo $item['name']; ?></a></li>
+                                        <li class=""><a href="<?= env('HTTP_DOMAIN') .'/'.  $item['seo_url']; ?>" class="text-[18px] lg:text-[16px] leading-[45px] lg:leading-[40px] font-light tracking-[-0.18px] text-white transition-all duration-300 hover:text-[#6D6243] [-webkit-text-stroke:1.5px_rgba(255,255,255,0)] hover:[-webkit-text-stroke:1.5px_rgba(109,98,67,1)] hover:tracking-[-0.05px]"><?php echo $item['title']; ?></a></li>
                                     <?php endforeach; ?>
                                 </ul>
                             </div>
@@ -263,7 +164,7 @@
                                 <p class=" text-[26px] xl:text-[22px] md:text-[20px] leading-[32px] text-[#6D6243] font-bold mb-[8px]"><?php foreach ($menu[3] as $item): echo $item['title']; endforeach; ?></p>
                                 <ul>
                                     <?php foreach ($menu[3]['menu']['items'] as $item) : ?>
-                                        <li class=""><a href="<?php echo $item['link']; ?>" class="text-[18px] lg:text-[16px] leading-[45px] lg:leading-[40px] font-light tracking-[-0.18px] text-white transition-all duration-300 hover:text-[#6D6243] [-webkit-text-stroke:1.5px_rgba(255,255,255,0)] hover:[-webkit-text-stroke:1.5px_rgba(109,98,67,1)] hover:tracking-[-0.05px]"><?php echo $item['name']; ?></a></li>
+                                        <li class=""><a href="<?= env('HTTP_DOMAIN') .'/'. $item['seo_url']; ?>" class="text-[18px] lg:text-[16px] leading-[45px] lg:leading-[40px] font-light tracking-[-0.18px] text-white transition-all duration-300 hover:text-[#6D6243] [-webkit-text-stroke:1.5px_rgba(255,255,255,0)] hover:[-webkit-text-stroke:1.5px_rgba(109,98,67,1)] hover:tracking-[-0.05px]"><?php echo $item['title']; ?></a></li>
                                     <?php endforeach; ?>
                                 </ul>
                             </div>
@@ -273,7 +174,7 @@
                                 <p class=" text-[26px] xl:text-[22px] md:text-[20px] leading-[32px] text-[#6D6243] font-bold mb-[8px]"><?php foreach ($menu[4] as $item): echo $item['title']; endforeach; ?></p>
                                 <ul>
                                     <?php foreach ($menu[4]['menu']['items'] as $item) : ?>
-                                        <li class=""><a href="<?php echo $item['link']; ?>" class="lg:text-[18px] md:text-[16px] leading-[45px] md:leading-[40px] font-light tracking-[-0.18px] text-white transition-all duration-300 hover:text-[#6D6243] [-webkit-text-stroke:1.5px_rgba(255,255,255,0)] hover:[-webkit-text-stroke:1.5px_rgba(109,98,67,1)] hover:tracking-[-0.05px]"><?php echo $item['name']; ?></a></li>
+                                        <li class=""><a href="<?= env('HTTP_DOMAIN') .'/'. getUrl('brand_url') .'/'. $item['seo_url']; ?>" class="lg:text-[18px] md:text-[16px] leading-[45px] md:leading-[40px] font-light tracking-[-0.18px] text-white transition-all duration-300 hover:text-[#6D6243] [-webkit-text-stroke:1.5px_rgba(255,255,255,0)] hover:[-webkit-text-stroke:1.5px_rgba(109,98,67,1)] hover:tracking-[-0.05px]"><?php echo $item['title']; ?></a></li>
                                     <?php endforeach; ?>
                                 </ul>
                             </div>

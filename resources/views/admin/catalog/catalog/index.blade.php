@@ -51,7 +51,7 @@
                         @foreach($catalogs as $catalog)
                         <tr class="align-middle">
                           <td>{{ $catalog->id }}</td>
-                          <td>{{ $catalog->title }}</td>
+                          <td>{{ strip_tags($catalog->title) }}</td>
                           <td>
                             <!-- Katalog Dosyaları -->
                             <a href="{{ route('admin.catalog.files.index', $catalog->catalog_id) }}" class="btn btn-info btn-sm">Dosyalar</a>

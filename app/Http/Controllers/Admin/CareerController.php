@@ -259,6 +259,7 @@ class CareerController extends Controller
                 $request->validate([
                     'lang_' . $language->lang_code => 'required|string|max:10',
                     'title_' . $language->lang_code => 'required|string|max:100',
+                    'seo_url_' . $language->lang_code => 'required|string|max:255',
                     'short_description_' . $language->lang_code => 'required|string|max:255',
                     'description_' . $language->lang_code => 'required|string',
                     'outer_url_' . $language->lang_code => 'nullable|url|max:255',
@@ -268,33 +269,17 @@ class CareerController extends Controller
                     'seo_keywords_' . $language->lang_code => 'nullable|string|max:255',
             ]);
 
-                /*if ($request->hasFile('image_' . $language->lang_code)) {
-                    $image = $request->file('image_' . $language->lang_code);
-                    $folderPath = public_path($language->lang_code.'/'.$language->uploads_folder.'/'.$language->images_folder);
-
-                    // Create folder if it doesn't exist
-                    if (!file_exists($folderPath)) {
-                        mkdir($folderPath, 0777, true);
-                    }
-
-                    // Generate unique name
-                    $imageName = seoUrl($request->input('title_' . $language->lang_code)) . '_' . time() . '.' . $image->getClientOriginalExtension();
-
-                    // Move file into public/some_folder
-                    $image->move($folderPath, $imageName);
-                } else {
-                   // old_image
-                   $imageName = $request->input('old_image_' . $language->lang_code);
-                }*/
+                
 
                 $careerJob = CareerJob::updateOrCreate(
                     ['job_id' => $job_id, 'lang' => $language->lang_code],
                     [
                         'job_id' => $job_id,
                         'title' => $request->input('title_' . $language->lang_code),
+                        'seo_url' => $request->input('seo_url_' . $language->lang_code),
                         'short_description' => $request->input('short_description_' . $language->lang_code),
                         'description' => $request->input('description_' . $language->lang_code),
-                        'outer_url' => $request->input('outer_url_' . $language->lang_code),
+                        'outer_url' => $request->input('outer_url_' . $language->lang_code) ?? '-',
                         'button_text' => $request->input('button_text_' . $language->lang_code),
                         'seo_title' => $request->input('seo_title_' . $language->lang_code),
                         'seo_description' => $request->input('seo_description_' . $language->lang_code),
@@ -307,7 +292,7 @@ class CareerController extends Controller
             return redirect()->back()->with('success', 'Job başarıyla kaydedildi.');
 
         } catch (\Throwable $th) {
-            dd($th);
+            throw $th;
             //return redirect()->back()->with('error', 'Job kaydedilirken bir hata oluştu.' . $th->getMessage());
         }
     }
