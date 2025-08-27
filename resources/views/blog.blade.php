@@ -36,8 +36,8 @@
                                         <p class="<?= $key == 0 ? 'reveal' : ''; ?> text-[18px] lg:text-[16px] leading-[28px] font-light text-paragraph mb-[50px] xl:mb-[30px] line-clamp-2"><?= mb_substr($item['description'], 0, 100) ?>...</p>
                                         <a href="<?= env('HTTP_DOMAIN').'/'. getUrl('blog_url'). '/'.$item['seo_url'] ?>" class="<?= $key == 0 ? 'reveal' : ''; ?> flex items-center justify-center relative w-max overflow-hidden main-button group sm:w-full">
                                             <div class="left px-[30px] py-[20px] flex items-center justify-center z-2 bg-transparent border border-solid border-primary-main transition-all duration-300 sm:w-full relative before:absolute before:left-0 before:top-0 before:w-0 before:h-full before:translate-x-[-100px] group-hover:before:min-md:w-full group-hover:before:min-md:translate-x-0 before:bg-primary-main before:transition-all before:duration-500">
-                                                <span class="text-[16px] leading-none font-medium text-primary-main transition-all duration-300 group-hover:min-md:duration-600 group-hover:min-md:text-white translate-x-[-100px] opacity-0 group-hover:min-md:translate-x-0 group-hover:min-md:opacity-100 w-0 whitespace-nowrap relative z-2">Detaylı İncele</span>
-                                                <span class="text-[16px] leading-none font-medium text-primary-main transition-all duration-600 group-hover:min-md:duration-300 group-hover:min-md:text-white group-hover:min-md:translate-x-[100px] group-hover:min-md:opacity-0 relative z-2">Detaylı İncele</span>
+                                                <span class="text-[16px] leading-none font-medium text-primary-main transition-all duration-300 group-hover:min-md:duration-600 group-hover:min-md:text-white translate-x-[-100px] opacity-0 group-hover:min-md:translate-x-0 group-hover:min-md:opacity-100 w-0 whitespace-nowrap relative z-2"><?=getStaticText(5)?></span>
+                                                <span class="text-[16px] leading-none font-medium text-primary-main transition-all duration-600 group-hover:min-md:duration-300 group-hover:min-md:text-white group-hover:min-md:translate-x-[100px] group-hover:min-md:opacity-0 relative z-2"><?=getStaticText(5)?></span>
                                             </div>
                                             <div class="right flex items-center justify-center z-2 bg-[#9D8D5D] py-[22px] px-[24px] border border-solid border-[#9D8D5D] w-[56px] h-[58px] overflow-hidden">
                                                 <i class="icon-angle-right text-[12px] leading-none text-white transition-all duration-300 group-hover:min-md:duration-600 translate-x-[-100px] opacity-0 group-hover:min-md:translate-x-0 group-hover:min-md:opacity-100 w-0 whitespace-nowrap"></i>
@@ -59,13 +59,13 @@
                     <div class="reveal nav-buttons pb-[5px] flex items-center gap-[30px] ">
                         <div class="news-prev cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.news-disabled]:opacity-65 relative [&.news-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
                             <i class="icon-angle-left text-[12px] leading-none text-white"></i>
-                            <span class="text-[16px] leading-[32px] text-white">Önceki</span>
+                            <span class="text-[16px] leading-[32px] text-white"><?=getStaticText(2)?></span>
                         </div>
 
                         <div class="separator w-[1px] h-[22px] bg-white/20"></div>
 
                         <div class="news-next cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.news-disabled]:opacity-65 relative [&.news-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
-                            <span class="text-[16px] leading-[32px] text-white">Sonraki</span>
+                            <span class="text-[16px] leading-[32px] text-white"><?=getStaticText(3)?></span>
                             <i class="icon-angle-right text-[12px] leading-none text-white "></i>
                         </div>
                     </div>
@@ -159,7 +159,7 @@
                         </div>
                         <a href="<?= env('HTTP_DOMAIN').'/'. getUrl('blog_url'). '/'. $item['seo_url'] ?>" class="flex items-center justify-center relative w-max sm:w-full overflow-hidden main-button group w-full">
                             <div class="w-full left px-[66px] lg:px-[35px] group-hover:min-md:px-[30px] py-[20px] flex items-center justify-center z-2 bg-transparent border border-solid border-paragraph/16 group-hover/item:min-md:border-white/16 group-hover:min-md:border-primary-main transition-all duration-300 group-hover:min-md:bg-primary-main sm:w-full">
-                                <span class="text-[16px] leading-none font-medium text-paragraph transition-all duration-300 tracking-[-0.16px] group-hover/item:min-md:text-white group-hover:min-md:text-white">Detaylı İncele</span>
+                                <span class="text-[16px] leading-none font-medium text-paragraph transition-all duration-300 tracking-[-0.16px] group-hover/item:min-md:text-white group-hover:min-md:text-white"><?=getStaticText(5)?></span>
                             </div>
                             <div class="right flex items-center justify-center z-2 bg-[#9D8D5D] py-[22px] border border-solid border-transparent transition-all duration-300 opacity-0 w-0 group-hover:min-md:w-[56px] group-hover:min-md:px-[24px] group-hover:min-md:border-[#9D8D5D] group-hover:min-md:opacity-100 h-[58px]">
                                 <i class="icon-angle-right text-[12px] leading-none text-white"></i>

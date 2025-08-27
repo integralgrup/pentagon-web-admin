@@ -83,13 +83,13 @@
                         <div class="reveal nav-buttons pb-[5px] flex items-center gap-[30px] sm:hidden">
                             <div class="sector-prev cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.sector-disabled]:opacity-65 relative [&.sector-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
                                 <i class="icon-angle-left text-[12px] leading-none text-white"></i>
-                                <span class="text-[16px] leading-[32px] text-white md:hidden">Önceki</span>
+                                <span class="text-[16px] leading-[32px] text-white md:hidden"><?=getStaticText(2)?></span>
                             </div>
 
                             <div class="separator w-[1px] h-[22px] bg-white/20"></div>
 
                             <div class="sector-next cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.sector-disabled]:opacity-65 relative [&.sector-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
-                                <span class="text-[16px] leading-[32px] text-white md:hidden">Sonraki</span>
+                                <span class="text-[16px] leading-[32px] text-white md:hidden"><?=getStaticText(3)?></span>
                                 <i class="icon-angle-right text-[12px] leading-none text-white "></i>
                             </div>
                         </div>
@@ -122,7 +122,7 @@
                                     <div class="buttons flex sm:flex-col items-center gap-[20px] mt-[80px] xl:mt-[60px] lg:mt-[40px]">
                                         <a href="<?= env('HTTP_DOMAIN') .'/'. getUrl('career_url') . '/' . $item['seo_url'] ?>" class="flex items-center justify-center relative w-max sm:w-full overflow-hidden main-button group">
                                             <div class="left px-[66px] xs:px-[20px] group-hover:min-md:px-[30px] py-[20px] flex items-center justify-center z-2 bg-transparent border border-solid border-paragraph/16 group-hover/item:min-md:border-white/16 group-hover:min-md:border-primary-main transition-all duration-300 group-hover:min-md:bg-primary-main sm:w-full">
-                                                <span class="text-[16px] leading-none font-medium text-paragraph transition-all duration-300 tracking-[-0.16px] group-hover/item:min-md:text-white group-hover:min-md:text-white">Detaylı İncele</span>
+                                                <span class="text-[16px] leading-none font-medium text-paragraph transition-all duration-300 tracking-[-0.16px] group-hover/item:min-md:text-white group-hover:min-md:text-white"><?=getStaticText(5)?></span>
                                             </div>
                                             <div class="right flex items-center justify-center z-2 bg-[#9D8D5D] py-[22px] border border-solid border-transparent transition-all duration-300 opacity-0 w-0 group-hover:min-md:w-[56px] group-hover:min-md:px-[24px] group-hover:min-md:border-[#9D8D5D] group-hover:min-md:opacity-100 h-[58px]">
                                                 <i class="icon-angle-right text-[12px] leading-none text-white"></i>

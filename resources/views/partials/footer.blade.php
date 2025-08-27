@@ -1,7 +1,10 @@
+<?php
+    $footerInfo = App\Models\FooterInfo::where('lang', app()->getLocale())->first();
+?>
 <footer class="footer-field bg-secondary-main pt-[60px] sm:pt-[45px] xs:pt-[5px] w-full relative overflow-hidden">
     <div class="scroll-top absolute flex flex-col items-center right-[35px] bottom-[145px] z-10 cursor-pointer transition-all duration-300 hover:scale-x-95 hover:scale-y-110" id="scroll-top">
         <i class="icon-arrow-up-long text-[27px] text-white"></i>
-        <p class="text-[12px] leading-normal tracking-[1.2px] font-medium text-white uppercase">başa dön</p>
+        <p class="text-[12px] leading-normal tracking-[1.2px] font-medium text-white uppercase"><?=getStaticText(12)?></p>
     </div>
     <div class="flex md:hidden items-end absolute left-0 bottom-0 w-full h-full z-3 pointer-events-none">
         <div class="w-1/3 md:w-full bg-secondary-main"></div>
@@ -23,20 +26,24 @@
                                 <?php
                                     $social = [
                                         [
-                                            'link' => 'https://facebook.com',
+                                            'link' => $footerInfo['facebook_url'] ?? '',
                                             'icon' => 'facebook-square',
                                         ],
                                         [
-                                            'link' => 'https://youtube.com',
+                                            'link' => $footerInfo['youtube_url'] ?? '',
                                             'icon' => 'youtube-square',
                                         ],
                                         [
-                                            'link' => 'https://linkedin.com',
+                                            'link' => $footerInfo['linkedin_url'] ?? '',
                                             'icon' => 'linkedin-square',
                                         ],
                                         [
-                                            'link' => 'https://twitter.com',
+                                            'link' => $footerInfo['x_url'] ?? '',
                                             'icon' => 'twitter-square',
+                                        ],
+                                        [
+                                            'link' => $footerInfo['instagram_url'] ?? '',
+                                            'icon' => 'instagram-square',
                                         ],
                                     ];
                                     foreach ($social as $item):
@@ -47,41 +54,25 @@
                                         </a>
                                     </li>
                                 <?php endforeach; ?>
-                                <li class="">
-                                    <a href="<?= $item['link'] ?>" target="_blank" class="group block transition-all duration-300 hover:scale-110 [&_svg_g,_svg_path]:transition-all [&_svg_g,_svg_path]:duration-300 [&_svg_path]:hover:fill-primary-400 [&_svg_g]:hover:opacity-100">
-                                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <g opacity="0.2" clip-path="url(#clip0_2920_2485)">
-                                                <path d="M18.4714 0H3.48807C1.77651 0 0.383789 1.39272 0.383789 3.10428V18.0876C0.383789 19.7992 1.77651 21.1919 3.48807 21.1919H18.4714C20.1829 21.1919 21.5757 19.7992 21.5757 18.0876V3.10428C21.5757 1.39272 20.1829 0 18.4714 0ZM11.0211 16.1422C7.93996 16.1422 5.43342 13.6357 5.43342 10.5545C5.43342 7.47339 7.93996 4.96685 11.0211 4.96685C14.1023 4.96685 16.6088 7.47339 16.6088 10.5545C16.6088 13.6357 14.1023 16.1422 11.0211 16.1422ZM17.2297 6.20856C16.2027 6.20856 15.3671 5.37299 15.3671 4.34599C15.3671 3.31899 16.2027 2.48342 17.2297 2.48342C18.2567 2.48342 19.0922 3.31899 19.0922 4.34599C19.0922 5.37299 18.2567 6.20856 17.2297 6.20856Z" fill="white"/>
-                                                <path d="M17.2301 3.7251C16.8873 3.7251 16.6089 4.00349 16.6089 4.34627C16.6089 4.68905 16.8873 4.96744 17.2301 4.96744C17.5728 4.96744 17.8512 4.68905 17.8512 4.34627C17.8512 4.00349 17.5728 3.7251 17.2301 3.7251Z" fill="white"/>
-                                                <path d="M11.021 6.2085C8.62492 6.2085 6.67505 8.15837 6.67505 10.5545C6.67505 12.9506 8.62492 14.9005 11.021 14.9005C13.4172 14.9005 15.367 12.9506 15.367 10.5545C15.367 8.15837 13.4172 6.2085 11.021 6.2085Z" fill="white"/>
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_2920_2485">
-                                                    <rect width="21.1919" height="21.1919" fill="white" transform="translate(0.383789)"/>
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                    </a>
-                                </li>
                             </ul>
                         </div>
                         <div class="office flex flex-col gap-[6px] mb-[24px] ">
 
-                            <span class="text-[16px] leading-normal font-bold text-white tracking-[-0.16px]">MERKEZ OFİS</span>
-                            <p class="text-[16px] leading-[24px] font-light text-white tracking-[-0.16px] mb-[6px]">Metro 34 Plaza No:23/100, İOSB Bedrettin Dalan Bulvarı Başakşehir, İstanbul / Türkiye</p>
-                            <a href="https://maps.google.com" target="_blank" class="group flex items-center gap-[20px] w-max relative hover:text-white after:absolute after:bottom-0 after:right-0 after:bg-white after:w-0 after:h-[1px] after:hover:right-auto after:hover:left-0 after:hover:w-full after:transition-all after:duration-300">
-                                <span class="text-[14px] leading-normal font-light text-white uppercase transition-all duration-300 group-hover:text-white">Haritada Göster</span>
+                            <span class="text-[16px] leading-normal font-bold text-white tracking-[-0.16px]"><?=getStaticText(27)?></span>
+                            <p class="text-[16px] leading-[24px] font-light text-white tracking-[-0.16px] mb-[6px]"><?=$footerInfo->address?></p>
+                            <a href="<?= $footerInfo->map_url ?>" target="_blank" class="group flex items-center gap-[20px] w-max relative hover:text-white after:absolute after:bottom-0 after:right-0 after:bg-white after:w-0 after:h-[1px] after:hover:right-auto after:hover:left-0 after:hover:w-full after:transition-all after:duration-300">
+                                <span class="text-[14px] leading-normal font-light text-white uppercase transition-all duration-300 group-hover:text-white"><?=getStaticText(28)?></span>
                                 <i class="icon-map text-[17px] leading-none text-white transition-all duration-300 group-hover:text-white"></i>
                             </a>
                         </div>
                         <div class="phones flex flex-col gap-[25px] ">
                             <div class="flex flex-col gap-[6px]">
-                                <span class="text-[16px] leading-normal font-bold text-white tracking-[-0.16px]">TELEFON</span>
-                                <a href="tel:+902126781313" class="text-[16px] leading-[24px] font-light text-white tracking-[-0.16px] mb-[6px] relative w-max after:absolute after:bottom-0 after:right-0 after:bg-white after:w-0 after:h-[1px] after:hover:right-auto after:hover:left-0 after:hover:w-full after:transition-all after:duration-300">+90 212 678 13 13</a>
+                                <span class="text-[16px] leading-normal font-bold text-white tracking-[-0.16px]"><?=getStaticText(29)?></span>
+                                <a href="tel:+902126781313" class="text-[16px] leading-[24px] font-light text-white tracking-[-0.16px] mb-[6px] relative w-max after:absolute after:bottom-0 after:right-0 after:bg-white after:w-0 after:h-[1px] after:hover:right-auto after:hover:left-0 after:hover:w-full after:transition-all after:duration-300"><?=$footerInfo->phone?></a>
                             </div>
                             <div class="flex flex-col gap-[6px]">
-                                <span class="text-[16px] leading-normal font-bold text-white tracking-[-0.16px]">E-POSTA</span>
-                                <a href="mailto:info@pentagon.com.tr" class="text-[16px] leading-[24px] font-light text-white tracking-[-0.16px] mb-[6px] relative w-max after:absolute after:bottom-0 after:right-0 after:bg-white after:w-0 after:h-[1px] after:hover:right-auto after:hover:left-0 after:hover:w-full after:transition-all after:duration-300">info@pentagon.com.tr</a>
+                                <span class="text-[16px] leading-normal font-bold text-white tracking-[-0.16px]"><?=getStaticText(30)?></span>
+                                <a href="mailto:info@pentagon.com.tr" class="text-[16px] leading-[24px] font-light text-white tracking-[-0.16px] mb-[6px] relative w-max after:absolute after:bottom-0 after:right-0 after:bg-white after:w-0 after:h-[1px] after:hover:right-auto after:hover:left-0 after:hover:w-full after:transition-all after:duration-300"><?=$footerInfo->email?></a>
                             </div>
                         </div>
                     </div>
@@ -97,35 +88,35 @@
                         <?php $menu = [
                                 [
                                     'menu' => [
-                                        'title' => 'Kurumsal',
+                                        'title' => getStaticText(21),
                                         'items' => $footerAbout
                                     ],
                                 ],
 
                                 [
                                     'menu' => [
-                                        'title' => 'Sektörler',
+                                        'title' => getStaticText(22),
                                         'items' => $footerSectors
                                     ],
                                 ],
 
                                 [
                                     'menu' => [
-                                        'title' => 'Kariyer',
+                                        'title' => getStaticText(23),
                                         'items' => $footerCareers
                                     ],
                                 ],
 
                                 [
                                     'menu' => [
-                                        'title' => 'Gizlilik & Politikalar',
+                                        'title' => getStaticText(24),
                                         'items' => $footerPages
                                     ],
                                 ],
 
                                 [
                                     'menu' => [
-                                        'title' => 'Markalarımız',
+                                        'title' => getStaticText(25),
                                         'items' => $footerBrands
                                     ],
                                 ],
@@ -187,7 +178,7 @@
     <div class="blur-area absolute left-0 bottom-0 w-full z-5 py-[10px] bg-white/30 backdrop-blur-[50px]">
         <div class="container max-w-[1650px]">
             <div class="flex items-center justify-between sm:justify-center gap-[24px] xs:flex-col">
-                <p class="text-[15px] leading-[22px] tracking-[-0.15px] text-white font-light">© <?= Date('Y') ?> <strong>Pentagon</strong> | Tüm Hakları Saklıdır.</p>
+                <p class="text-[15px] leading-[22px] tracking-[-0.15px] text-white font-light">© <?= Date('Y') ?> <?=getStaticText(26)?></p>
                 <img src="{{ asset('assets') }}/image/trademark/logo-white.png" alt="Logo" width="285" height="113" class="w-[100px] h-auto sm:hidden">
             </div>
         </div>
@@ -277,7 +268,7 @@
                 </div>
             </div>
             <div class="image-wrapper w-full h-[250px] mb-[20px] md:hidden">
-                <img src="{{ asset('assets')/image/general/offer-image.jpg" alt="Teklif" width="675" height="342" class="w-full h-full object-cover">
+                <img src="{{ asset('assets') }}/image/general/offer-image.jpg" alt="Teklif" width="675" height="342" class="w-full h-full object-cover">
             </div>
             <div class="form px-[30px] xl:px-0">
                 <p class="text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-light text-white mb-[20px]">

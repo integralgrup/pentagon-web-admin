@@ -4,7 +4,7 @@
     <main class="main-field header-space corporate-page">
         <div  id="who-are-we-section"></div>
         <?php
-            $pageTitle = "Kurumsal";
+            $pageTitle = $about->upper_title;
             $breadcrumbImage = "corporate-breadcrumb.jpg";
             $breadcrumbVideo = "breadcrumb-video.mp4";
             $pageLink = "page-corporate.php";
@@ -18,37 +18,37 @@
                     <div class="flex items-center gap-[30px]">
                         <?php $items = [
                                 [
-                                    'title' => 'Biz Kimiz?',
+                                    'title' => getStaticText(13),
                                     'section' => '#who-are-we-section',
                                     'id' => 'who-are-we',
                                 ],
 
                                 [
-                                    'title' => 'Neler Yaparız?',
+                                    'title' => getStaticText(14),
                                     'section' => '#what-we-do-section',
                                     'id' => 'what-we-do',
                                 ],
 
                                 [
-                                    'title' => 'Nasıl Yaparız?',
+                                    'title' => getStaticText(15),
                                     'section' => '#how-we-do-section',
                                     'id' => 'how-we-do',
                                 ],
 
                                 [
-                                    'title' => 'Vizyonumuz',
+                                    'title' => getStaticText(16),
                                     'section' => '#vision-section',
                                     'id' => 'vision',
                                 ],
 
                                 [
-                                    'title' => 'Üyeliklerimiz',
+                                    'title' => getStaticText(17),
                                     'section' => '#memberships-section',
                                     'id' => 'memberships',
                                 ],
 
                                 [
-                                    'title' => 'Politikalarımız',
+                                    'title' => getStaticText(18),
                                     'section' => '#policies-section',
                                     'id' => 'policies',
                                 ],
@@ -129,13 +129,13 @@
                             <div class="reveal nav-buttons pb-[5px] flex items-center gap-[30px] sm:hidden">
                                 <div class="sector-prev cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.sector-disabled]:opacity-65 relative [&.sector-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
                                     <i class="icon-angle-left text-[12px] leading-none text-white"></i>
-                                    <span class="text-[16px] leading-[32px] text-white md:hidden">Önceki</span>
+                                    <span class="text-[16px] leading-[32px] text-white md:hidden"><?=getStaticText(2)?></span>
                                 </div>
 
                                 <div class="separator w-[1px] h-[22px] bg-white/20"></div>
 
                                 <div class="sector-next cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.sector-disabled]:opacity-65 relative [&.sector-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
-                                    <span class="text-[16px] leading-[32px] text-white md:hidden">Sonraki</span>
+                                    <span class="text-[16px] leading-[32px] text-white md:hidden"><?=getStaticText(3)?></span>
                                     <i class="icon-angle-right text-[12px] leading-none text-white"></i>
                                 </div>
                             </div>
@@ -162,7 +162,7 @@
                         </div>
                         <div class="w-2/5 md:w-full md:p-0 md:order-1">
                             <div class="flex flex-col text-editor reveal pt-[38px] lg:pt-[25px] md:pt-0">
-                                <span class="text-[18px] leading-[32px] font-light text-paragraph opacity-65 tracking-[7.2px] block mb-[50px] lg:mb-[30px]">Neyi Nasıl Yaparız?</span>
+                                <span class="text-[18px] leading-[32px] font-light text-paragraph opacity-65 tracking-[7.2px] block mb-[50px] lg:mb-[30px]"><?=getStaticText(19)?></span>
                                 <div class="boxes flex items-center gap-[28px] sm:gap-[15px] mb-[80px] xl:mb-[50px]">
                                     <?php foreach($how_we_do as $index => $item): ?>
                                     <div class="box min-sm:max-w-[250px] w-full tab cursor-pointer border border-solid border-black/16 grid place-items-center gap-[30px] p-[35px] lg:p-[20px] xs:p-[15px] transition-all duration-500 group/box <?= $index === 0 ? 'active' : '' ?> [&.active]:bg-secondary-main [&_*]:[&.active]:text-white" data-tab-id="arge-<?= $index ?>" 
@@ -232,9 +232,9 @@
                 <div class="container max-w-[1650px]">
                     <div class="flex flex-col gap-[60px] 2xl:gap-[45px] md:gap-[30px]">
                         <div class="flex flex-col gap-[20px] text-center items-center">
-                            <span class="reveal text-[18px] leading-[32px] font-light text-paragraph opacity-65 tracking-[7.2px] block">Üyeliklerimiz</span>
+                            <span class="reveal text-[18px] leading-[32px] font-light text-paragraph opacity-65 tracking-[7.2px] block"><?=getStaticText(17)?></span>
                             <h4 class="reveal text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-light text-secondary-main mb-[30px] xs:mb-[20px]">
-                                En İyisi İçin <span class="font-bold">Pentagon Yapı</span>
+                                <?=getStaticText(20)?>
                             </h4>
                         </div>
                     </div>
@@ -266,7 +266,7 @@
                         </div>
                         <div class="w-1/2 md:w-full pl-[90px] 2xl:pl-[60px] md:p-0 md:mt-[70px]">
                             <div class="flex flex-col">
-                                <span class="reveal text-[16px] leading-[32px] font-light text-paragraph opacity-65 tracking-[7.2px] block mb-[30px]">Politikalarımız</span>
+                                <span class="reveal text-[16px] leading-[32px] font-light text-paragraph opacity-65 tracking-[7.2px] block mb-[30px]"><?=getStaticText(18)?></span>
                                 <div class="tabs flex flex-col gap-[28px] w-full reveal">
                                         <?php  foreach ($politics as $key => $item): ?>
                                             <div class="tab md:overflow-hidden cursor-pointer w-full pb-[28px] last:pb-0 [&.active]:pb-[50px] [&.active]:md:pb-[30px] !border-b border-b-black/10 border-solid border-0 last:!border-0 group transition-all duration-500 <?= $key == 0 ? 'active' : ''; ?>" data-image="<?= env('HTTP_DOMAIN').'/'.getFolder(['uploads_folder','images_folder'], app()->getLocale()).'/'.$item->image ?>" data-tab-id="<?= $key ?>">

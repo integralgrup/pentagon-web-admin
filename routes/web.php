@@ -195,6 +195,13 @@ Route::post('/admin/static-text/store', 'App\Http\Controllers\Admin\StaticTextCo
 Route::get('/admin/static-text/{id}/edit', 'App\Http\Controllers\Admin\StaticTextController@edit')->name('admin.static_text.edit');
 Route::delete('/admin/static-text/{id}', 'App\Http\Controllers\Admin\StaticTextController@destroy')->name('admin.static_text.destroy');
 
+// FooterInfo routes
+Route::get('/admin/footer-info', 'App\Http\Controllers\Admin\FooterInfoController@index')->name('admin.footer_info.index');
+Route::get('/admin/footer-info/create', 'App\Http\Controllers\Admin\FooterInfoController@create')->name('admin.footer_info.create');
+Route::post('/admin/footer-info/store', 'App\Http\Controllers\Admin\FooterInfoController@store')->name('admin.footer_info.store');
+Route::get('/admin/footer-info/{id}/edit', 'App\Http\Controllers\Admin\FooterInfoController@edit')->name('admin.footer_info.edit');
+Route::delete('/admin/footer-info/{id}', 'App\Http\Controllers\Admin\FooterInfoController@destroy')->name('admin.footer_info.destroy');
+
 //Project Front End routes
 //Home route
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');

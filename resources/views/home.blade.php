@@ -11,7 +11,7 @@
                             <div class="item relative w-full h-full">
                                 <div class="image-wrapper w-full h-full pointer-events-none relative" data-swiper-parallax="50%">
                                     <div class="slider-image z-2 w-full h-full">
-                                        <img src="<?= env('HTTP_DOMAIN') .'/'. getFolder(['uploads_folder','images_folder']) .'/'. $item->image ?>" alt="<?=$item->alt?>" width="1920" height="968" class="w-full h-full object-cover">
+                                        <img src="<?= env('HTTP_DOMAIN') .'/'. getFolder(['uploads_folder','images_folder'], app()->getLocale()) .'/'. $item->image ?>" alt="<?=$item->alt?>" width="1920" height="968" class="w-full h-full object-cover">
                                     </div>
                                     <img src="{{ asset('assets') }}/image/static/slider-overlay.png" alt="Slider Overlay" width="1920" height="968" class="absolute left-0 top-0 w-full h-full object-cover z-3 sm:hidden">
                                     <div class="overlay min-sm:hidden absolute left-0 top-0 w-full h-full z-3 bg-white/80"></div>
@@ -55,7 +55,7 @@
                     <div class="reveal category-pagination flex items-center sm:justify-center gap-[30px] xl:gap-[20px] xs:gap-[10px]"></div>
                 </div>
                 <div class="reveal scroll-area absolute left-[calc(50%-25px)] md:left-[30px] sm:left-[calc(50%-25px)] bottom-0 md:bottom-[60px] xs:bottom-[30px] flex flex-col items-center gap-[9px] xs:hidden cursor-pointer scrollable-selector" data-scrollable-section="#about-us">
-                    <p class="text-[10px] leading-none tracking-[2.5px] font-medium text-paragraph">SCROLL</p>
+                    <p class="text-[10px] leading-none tracking-[2.5px] font-medium text-paragraph"><?=getStaticText(11)?></p>
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="24" viewBox="0 0 15 24" fill="none">
                         <path d="M7.29937 1.22803H7.30024C10.9918 1.22803 13.9844 4.22062 13.9844 7.91217V15.8157C13.9844 19.5072 10.9918 22.4998 7.30024 22.4998H7.29937C3.60783 22.4998 0.615234 19.5072 0.615234 15.8157V7.91217C0.615234 4.22062 3.60783 1.22803 7.29937 1.22803Z" stroke="#333333"/>
                         <path d="M7.30002 1.16064H7.29916C3.57051 1.16064 0.547852 4.18331 0.547852 7.91195V15.8155C0.547852 19.5441 3.57051 22.5668 7.29916 22.5668H7.30002C11.0287 22.5668 14.0513 19.5441 14.0513 15.8155V7.91195C14.0513 4.18331 11.0287 1.16064 7.30002 1.16064Z" stroke="#333333"/>
@@ -68,12 +68,12 @@
     </section>
 
     <section class="about-us relative mb-[150px] xl:mb-[120px] lg:mb-[90px] md:mb-[60px]" id="about-us">
-        <img src="<?= env('HTTP_DOMAIN') .'/assets/image/static/vectorel.svg' ?>" alt="Vektör" width="387" height="588" class="pointer-events-none absolute top-1/2 -translate-y-1/2 right-0 ">
+        <img src="{{ asset('assets')}}/image/static/vectorel.svg" alt="Vektör" width="387" height="588" class="pointer-events-none absolute top-1/2 -translate-y-1/2 right-0 ">
         <div class="container max-w-[1650px]">
             <div class="flex flex-wrap items-center">
                 <div class="w-3/5 md:w-full translate-x-[-30px] [@media(max-width:1670px)]:pr-[50px] md:!pr-0">
                     <div class="image-wrapper reveal w-full h-[677px] md:h-[580px] sm:h-[320px] relative">
-                        <img src="<?= env('HTTP_DOMAIN') .'/'. getFolder(['uploads_folder','images_folder']) .'/'.$about->image ?>" alt="Hakkımızda" width="911" height="677" class="w-full h-full object-cover relative z-2">
+                        <img src="<?= env('HTTP_DOMAIN') .'/'. getFolder(['uploads_folder','images_folder'], app()->getLocale()) .'/'.$about->image ?>" alt="Hakkımızda" width="911" height="677" class="w-full h-full object-cover relative z-2">
                         <div class="bg-primary-main absolute -top-[38px] sm:-top-[20px] -right-[38px] sm:-right-[20px] w-[421px] sm:w-[320px] aspect-square"></div>
                     </div>
                 </div>
@@ -108,7 +108,7 @@
             <div class="container max-w-[1800px]">
                 <div class="bg-primary-main absolute -z-[1] -bottom-[90px] xl:-bottom-[60px] lg:-bottom-[20px] -right-0 max-w-[440px] [@media(max-width:1780px)_and_(min-width:1441px)]:max-w-[400px] xl:max-w-[360px] w-full h-[426px] md:hidden"></div>
                 <div class="wrapper min-sm:overflow-hidden bg-secondary-main md:bg-transparent p-[50px] pl-[105px] xl:pl-[80px] lg:pl-[30px] lg:p-[30px] sm:p-[20px_0] relative">
-                    <img src="{{ asset('assets')/image/static/vectorel-2.svg" alt="Vektör" width="846" height="742" class="reveal min-sm:max-w-[846px] w-full h-auto absolute z-2 pointer-events-none left-1/2 top-1/2 sm:top-[30px] -translate-x-1/2 min-sm:-translate-y-1/2">
+                    <img src="{{ asset('assets')}}/image/static/vectorel-2.svg" alt="Vektör" width="846" height="742" class="reveal min-sm:max-w-[846px] w-full h-auto absolute z-2 pointer-events-none left-1/2 top-1/2 sm:top-[30px] -translate-x-1/2 min-sm:-translate-y-1/2">
                     <div class="sector-slider reveal overflow-hidden relative z-4">
                         <div class="swiper-wrapper">
                             <?php foreach ($sectors as $key => $item) { ?>
@@ -133,7 +133,7 @@
                                         </div>
                                         <div class="right">
                                             <div class="image-wrapper w-full h-[500px]  xl:h-[450px] sm:h-[320px] xsm:mt-[40px]">
-                                                <img src="<?= env('HTTP_DOMAIN') .'/'. getFolder(['uploads_folder','sector_images_folder']) .'/'. $item->image ?>" alt="<?= $item->title ?>" width="745" height="802" class="w-full h-full object-cover" data-swiper-parallax="50%">
+                                                <img src="<?= env('HTTP_DOMAIN') .'/'. getFolder(['uploads_folder','sector_images_folder'], app()->getLocale()) .'/'. $item->image ?>" alt="<?= $item->title ?>" width="745" height="802" class="w-full h-full object-cover" data-swiper-parallax="50%">
                                             </div>
                                         </div>
                                     </div>
@@ -172,7 +172,7 @@
             <div class="flex flex-wrap items-center">
                 <div class="w-3/5 md:w-full pr-[77px] md:mt-[15px] md:p-0 md:order-2">
                     <div class="image-wrapper reveal w-full sm:h-auto relative flex flex-col sm:flex-col-reverse" id="brand-logo-image-area">
-                        <img src="{{ asset('assets')/image/general/brand-image.jpg" alt="Markamız" width="814" height="696" class=" w-full h-[700px] md:h-[580px] sm:h-[320px] object-cover relative z-2 transition-all duration-450 [&.changed]:opacity-0 [&.changed]:translate-y-[5px]" id="brand-image">
+                        <img src="{{ asset('assets') }}/image/general/brand-image.jpg" alt="Markamız" width="814" height="696" class=" w-full h-[700px] md:h-[580px] sm:h-[320px] object-cover relative z-2 transition-all duration-450 [&.changed]:opacity-0 [&.changed]:translate-y-[5px]" id="brand-image">
                         <div class="bg-primary-main absolute min-sm:-bottom-[10px] sm:-top-[20px] -left-[60px] sm:-left-[50px] w-[421px] sm:w-[320px] aspect-square"></div>
                         <div class="reveal nav-buttons w-full flex items-center gap-[30px] pt-[12px] sm:pt-0 sm:pb-[12px] pl-[135px] 2xl:pl-[100px] xl:pl-[70px] sm:pl-[30px] relative z-2">
                             <div class="brand-prev cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.brand-disabled]:opacity-65 relative [&.brand-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
@@ -196,7 +196,7 @@
                             <div class="swiper-wrapper">
                                 <?php foreach ($brands as $item) { ?>
                                     <div class="swiper-slide">
-                                        <div class="img hidden" data-image="<?= env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','brand_images_folder']) . '/' . $item->image ?>"></div>
+                                        <div class="img hidden" data-image="<?= env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','brand_images_folder'], app()->getLocale()) . '/' . $item->image ?>"></div>
                                         <div class="text-editor">
                                             <span class="text-[16px] leading-[32px] font-light text-paragraph opacity-65 tracking-[7.2px] block mb-[30px] lg:mb-[15px]"><?= getStaticText(6) ?></span>
                                             <h2 class="text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-light text-secondary-main">
@@ -211,9 +211,9 @@
                             <div class="swiper-wrapper">
                                 <?php foreach ($brands as $item) { ?>
                                     <div class="swiper-slide group">
-                                        <div class="img hidden" data-image="<?= env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','brand_images_folder']) . '/' . $item->bg_image ?>"></div>
+                                        <div class="img hidden" data-image="<?= env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','brand_images_folder'], app()->getLocale()) . '/' . $item->bg_image ?>"></div>
                                         <div class="logo grayscale flex items-center justify-center h-[80px] opacity-50 transition-all duration-300 scale-90 group-[&.swiper-slide-active]:grayscale-0 group-[&.swiper-slide-active]:opacity-100 group-[&.swiper-slide-active]:scale-100">
-                                            <img src="<?= env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','brand_images_folder']) . '/' . $item->image ?>" alt="Group Logo" width="176" height="40" class="group-[&.swiper-slide-active]:w-full group-[&.swiper-slide-active]:h-full w-5/6 h-5/6 object-contain transition-all duration-450 group-[&.swiper-slide-active]:xs:w-3/4 group-[&.swiper-slide-active]:xs:h-3/4">
+                                            <img src="<?= env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','brand_images_folder'], app()->getLocale()) . '/' . $item->image ?>" alt="Group Logo" width="176" height="40" class="group-[&.swiper-slide-active]:w-full group-[&.swiper-slide-active]:h-full w-5/6 h-5/6 object-contain transition-all duration-450 group-[&.swiper-slide-active]:xs:w-3/4 group-[&.swiper-slide-active]:xs:h-3/4">
                                         </div>
                                     </div>
                                 <?php } ?>
@@ -281,7 +281,7 @@
                     <div class="w-3/5 md:hidden md:mb-[30px]">
                         <div id="test" class="items flex flex-col">
                             <?php foreach ($blogs as $key => $item) { ?>
-                                <a href="<?= $item->seo_url ?>" class="reveal blog-item item group transition-all duration-500 [&_>_div]:last:!border-0 py-[25px] md:py-[15px]" data-item-image="<?= env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','blog_images_folder']) . '/' . $item->image ?>" data-blog-id="<?= $key + 1 ?>">
+                                <a href="<?= $item->seo_url ?>" class="reveal blog-item item group transition-all duration-500 [&_>_div]:last:!border-0 py-[25px] md:py-[15px]" data-item-image="<?= env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','blog_images_folder'], app()->getLocale()) . '/' . $item->image ?>" data-blog-id="<?= $key + 1 ?>">
                                     <div class="flex gap-[50px] xl:gap-[30px] pb-[30px] border-0 !border-b border-solid border-black/10 transition-all duration-500">
                                         <span class="text-[26px] xl:text-[22px] md:text-[20px] leading-[32px] text-paragraph group-hover:text-primary-main transition-all duration-450 [-webkit-text-stroke:2px_rgba(182,163,107,0)] group-hover:[-webkit-text-stroke:2px_rgba(182,163,107,1)]"><?= "0" . ($key + 1) ?></span>
                                         <div class="flex flex-col gap-[10px] min-md:transition-transform min-md:duration-450 group-hover:min-md:translate-y-[-20px]">
@@ -303,7 +303,7 @@
                                         <div class="swiper-slide">
                                             <div class="item w-full flex flex-col gap-[20px]">
                                                 <div class="image-wrapper w-full h-[320px]">
-                                                    <img src="<?= env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','blog_images_folder']) . '/' . $item->image ?>" alt="Blog Resim" width="657" height="406" class="w-full h-full object-cover relative z-2">
+                                                    <img src="<?= env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','blog_images_folder'], app()->getLocale()) . '/' . $item->image ?>" alt="Blog Resim" width="657" height="406" class="w-full h-full object-cover relative z-2">
                                                 </div>
                                                 <div class="blog-item item group flex">
                                                     <div class="flex flex-col gap-[10px]">
@@ -320,7 +320,7 @@
                     </div>
                     <div class="w-2/5 md:hidden flex items-center justify-center relative reveal">
                         <div class="image-wrapper w-full h-[406px] xl:h-[370px] lg:h-[350px] sm:h-[300px] min-md:absolute min-md:left-0 min-md:top-1/2 min-md:-translate-y-1/2 transition-all duration-500 [&.changed]:opacity-0 [&.changed]:translate-y-[5px]" id="blog-image">
-                            <img src="{{ asset('assets')/image/general/home-blog.jpg" alt="Blog Resim" width="657" height="406" class="w-full h-full object-cover relative z-2" id="item-image">
+                            <img src="{{ asset('assets') }}/image/general/home-blog.jpg" alt="Blog Resim" width="657" height="406" class="w-full h-full object-cover relative z-2" id="item-image">
                             <div class="bg-primary-main absolute -bottom-[15px] -right-[15px] w-[269px] aspect-square"></div>
                         </div>
                     </div>

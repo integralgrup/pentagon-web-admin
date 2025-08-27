@@ -139,7 +139,7 @@
                 <h1 class="reveal text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-bold text-white"><?= $pageTitle ?></h1>
                 <ul class="flex items-center flex-wrap justify-center">
                     <li class="reveal">
-                        <a href="index.php">Ana Sayfa</a>
+                        <a href="<?=env('HTTP_DOMAIN')?>"><?=getStaticText(10)?></a>
                     </li>
                     <li class="reveal">
                         <a href="<?= $pageLink ?>"><?= $pageTitle ?></a>

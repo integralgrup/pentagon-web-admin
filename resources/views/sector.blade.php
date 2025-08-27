@@ -72,13 +72,13 @@
                         <div class="reveal nav-buttons pb-[5px] flex items-center gap-[30px] sm:hidden">
                             <div class="sector-prev cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.sector-disabled]:opacity-65 relative [&.sector-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
                                 <i class="icon-angle-left text-[12px] leading-none text-white"></i>
-                                <span class="text-[16px] leading-[32px] text-white md:hidden">Önceki</span>
+                                <span class="text-[16px] leading-[32px] text-white md:hidden"><?=getStaticText(2)?></span>
                             </div>
 
                             <div class="separator w-[1px] h-[22px] bg-white/20"></div>
 
                             <div class="sector-next cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.sector-disabled]:opacity-65 relative [&.sector-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
-                                <span class="text-[16px] leading-[32px] text-white md:hidden">Sonraki</span>
+                                <span class="text-[16px] leading-[32px] text-white md:hidden"><?=getStaticText(3)?></span>
                                 <i class="icon-angle-right text-[12px] leading-none text-white "></i>
                             </div>
                         </div>
@@ -114,13 +114,13 @@
                         <div class="flex items-center gap-[30px] px-[45px] md:px-[25px] py-[15px] sm:p-[5px] bg-primary-main">
                             <div class="gallery-prev cursor-pointer flex items-center gap-[9px] md:w-[40px] md:h-[40px] md:justify-center transition-all duration-300 [&.gallery-disabled]:opacity-65 relative [&.gallery-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
                                 <i class="icon-angle-left text-[12px] leading-none text-white"></i>
-                                <span class="text-[16px] leading-[32px] text-white md:hidden">Önceki</span>
+                                <span class="text-[16px] leading-[32px] text-white md:hidden"><?=getStaticText(2)?></span>
                             </div>
 
                             <div class="separator w-[1px] h-[22px] bg-white/20"></div>
 
                             <div class="gallery-next cursor-pointer flex items-center gap-[9px] md:w-[40px] md:h-[40px] md:justify-center transition-all duration-300 [&.gallery-disabled]:opacity-65 relative [&.gallery-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
-                                <span class="text-[16px] leading-[32px] text-white md:hidden">Sonraki</span>
+                                <span class="text-[16px] leading-[32px] text-white md:hidden"><?=getStaticText(3)?></span>
                                 <i class="icon-angle-right text-[12px] leading-none text-white "></i>
                             </div>
                         </div>
