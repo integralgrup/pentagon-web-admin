@@ -51,27 +51,28 @@ class AboutController extends Controller
             $languages = Language::all(); // Fetch all languages for the dropdown
                 foreach ($languages as $language) {
                     // Validate the request data
-                    $request->validate([
-                        'lang_' . $language->lang_code => 'required|string|max:10',
-                        'upper_title_' . $language->lang_code => 'required|string|max:100',
-                        'title_' . $language->lang_code => 'required|string|max:100',
-                        'title_1_' . $language->lang_code => 'required|string|max:255',
-                        'description_' . $language->lang_code => 'required|string',
-                        'image_' . $language->lang_code => 'nullable|image|max:2048',
-                        'alt_' . $language->lang_code => 'required|string|max:255',
-                        //bg_video should be 50MB limit
-                        'bg_video_' . $language->lang_code => 'nullable|file|mimetypes:video/mp4,video/avi,video/mpeg,video/quicktime|max:51200', // 50MB
-                        'mission_title_' . $language->lang_code => 'required|string|max:255',
-                        'mission_text_' . $language->lang_code => 'required|string',
-                        'mission_image_' . $language->lang_code => 'nullable|image|max:2048',
-                        'vision_title_' . $language->lang_code => 'required|string|max:255',
-                        'vision_text_' . $language->lang_code => 'required|string',
-                        'vision_image_' . $language->lang_code => 'nullable|image|max:2048',
-                        'seo_title_' . $language->lang_code => 'required|string|max:255',
-                        'seo_description_' . $language->lang_code => 'required|string|max:255',
-                        'seo_keywords_' . $language->lang_code => 'nullable|string|max:255',
-                    ]);
-
+                    if($language->lang_code == 'en'){
+                        $request->validate([
+                            'lang_' . $language->lang_code => 'required|string|max:10',
+                            'upper_title_' . $language->lang_code => 'required|string|max:100',
+                            'title_' . $language->lang_code => 'required|string|max:100',
+                            'title_1_' . $language->lang_code => 'required|string|max:255',
+                            'description_' . $language->lang_code => 'required|string',
+                            'image_' . $language->lang_code => 'nullable|image|max:2048',
+                            'alt_' . $language->lang_code => 'required|string|max:255',
+                            //bg_video should be 50MB limit
+                            'bg_video_' . $language->lang_code => 'nullable|file|mimetypes:video/mp4,video/avi,video/mpeg,video/quicktime|max:51200', // 50MB
+                            'mission_title_' . $language->lang_code => 'required|string|max:255',
+                            'mission_text_' . $language->lang_code => 'required|string',
+                            'mission_image_' . $language->lang_code => 'nullable|image|max:2048',
+                            'vision_title_' . $language->lang_code => 'required|string|max:255',
+                            'vision_text_' . $language->lang_code => 'required|string',
+                            'vision_image_' . $language->lang_code => 'nullable|image|max:2048',
+                            'seo_title_' . $language->lang_code => 'required|string|max:255',
+                            'seo_description_' . $language->lang_code => 'required|string|max:255',
+                            'seo_keywords_' . $language->lang_code => 'nullable|string|max:255',
+                        ]);
+                    }
 
                     if ($request->hasFile('image_' . $language->lang_code)) {
                         $image      = $request->file('image_' . $language->lang_code);
