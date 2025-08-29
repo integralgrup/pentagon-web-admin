@@ -55,6 +55,8 @@ class LanguageController extends Controller
                 'lang_code' => 'required|max:10',
                 'flag_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048', // Validate image file
                 'title' => 'required|max:255',
+                'domain' => 'required|max:255',
+                'path' => 'required|max:255',
                 'about_url' => 'nullable|string|max:255',
                 'sector_url' => 'nullable|string|max:255',
                 'brand_url' => 'nullable|string|max:255',
@@ -94,6 +96,8 @@ class LanguageController extends Controller
                     'lang_code' => $request->lang_code,
                     'flag_image' => $language->flag_image,
                     'title' => $request->title,
+                    'domain' => $request->domain,
+                    'path' => $request->path,
                     'about_url' => $request->about_url,
                     'sector_url' => $request->sector_url,
                     'brand_url' => $request->brand_url,

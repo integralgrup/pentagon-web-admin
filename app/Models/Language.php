@@ -23,6 +23,8 @@ class Language extends Model
         'lang_code',
         'flag_image',
         'title',
+        'domain',
+        'path',
         'about_url',
         'sector_url',
         'brand_url',

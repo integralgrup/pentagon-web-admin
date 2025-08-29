@@ -49,6 +49,14 @@
                                 <input type="text" class="form-control" id="lang_code" name="lang_code" value="{{ $language->lang_code }}" required>
                             </div>
                             <div class="mb-2">
+                                <label for="domain" class="form-label">Domain</label>
+                                <input type="text" class="form-control" id="domain" name="domain" value="{{ $language->domain }}" required>
+                            </div>
+                            <div class="mb-2">
+                                <label for="path" class="form-label">Resim Dizin</label>
+                                <input type="text" class="form-control" id="path" name="path" value="{{ $language->path }}" required>
+                            </div>
+                            <div class="mb-2">
                                 <label for="title" class="form-label">Başlık</label>
                                 <input type="text" class="form-control" id="title" name="title" value="{{ $language->title }}" required>
                             </div>

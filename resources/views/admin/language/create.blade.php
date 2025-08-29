@@ -60,6 +60,17 @@
                                             <label for="title" class="form-label">Dil Kodu <span class="text-danger">*</span></label>
                                             <input type="text" name="lang_code" id="lang_code" class="form-control" maxlength="100" required>
                                         </div>
+                                        <!-- domain -->
+                                        <div class="mb-2">
+                                            <label for="domain" class="form-label">Domain <span class="text-danger">*</span></label>
+                                            <input type="text" name="domain" id="domain" class="form-control" maxlength="100" required>
+                                        </div>
+
+                                        <!-- Path -->
+                                        <div class="mb-2">
+                                            <label for="path" class="form-label">Resim Dizin <span class="text-danger">*</span></label>
+                                            <input type="text" name="path" id="path" class="form-control" maxlength="100" required>
+                                        </div>
 
                                         <!-- Flag Image -->
                                         <div class="mb-2">
