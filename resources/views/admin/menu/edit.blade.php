@@ -44,7 +44,7 @@
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link {{ $loop->first ? 'active' : '' }}" id="tab-{{ $language->lang_code }}-tab" data-bs-toggle="tab" data-bs-target="#tab-{{ $language->lang_code }}"
                                             type="button" role="tab" aria-controls="tab-{{ $language->lang_code }}" aria-selected="{{ $loop->first ? 'true' : 'false' }}">
-                                        <img src="{{ asset('storage/images/languages/' . $language->flag_image) }}" alt="{{ $language->title }}" style="width: 20px; margin-right: 5px;"> {{ strtoupper($language->lang_code) }}
+                                        <img src="{{ $language->domain .'/'. getFolder(['uploads_folder', 'images_folder'], $language->lang_code) .'/'.$language->flag_image }}" alt="{{ $language->title }}" style="width: 20px; margin-right: 5px;"> {{ strtoupper($language->lang_code) }}
 
                                     </button>
                                 </li>

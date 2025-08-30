@@ -42,6 +42,7 @@ if (! function_exists('getFolder')) {
         }
 
         if ($language) {
+            return implode('/', (array)$folder_name);
             if(env('APP_DEBUG')) {
                 return $lang . '/' . implode('/', (array)$folder_name);
             }else{

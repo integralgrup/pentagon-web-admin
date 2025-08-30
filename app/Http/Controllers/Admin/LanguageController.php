@@ -40,7 +40,7 @@ class LanguageController extends Controller
      */
     public function store(Request $request)
     {
-        
+        //dd($request->all());
         try {
             //Create or update existing language items
             // Check if the request has an id field to determine if it's an update or create
@@ -53,7 +53,7 @@ class LanguageController extends Controller
 
             $request->validate([
                 'lang_code' => 'required|max:10',
-                'flag_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048', // Validate image file
+                'flag_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048', // Validate image file
                 'title' => 'required|max:255',
                 'domain' => 'required|max:255',
                 'path' => 'required|max:255',
@@ -78,12 +78,17 @@ class LanguageController extends Controller
 
             if ($request->hasFile('flag_image')) {
                 // Save the uploaded image
-                $imagePath = $request->file('flag_image')->storeAs(
-                    'images/languages', // Store in a specific folder
-                    time() . '_' . $request->file('flag_image')->getClientOriginalName(),
-                    'public' // Use the public disk
-                );
-                $language->flag_image = basename($imagePath); // Store just the image name
+                $folderPath = $request->input('path').'/'.$request->input('uploads_folder').'/'.$request->input('images_folder');
+                // Create folder if it doesn't exist
+                if (!file_exists($folderPath)) {
+                    mkdir($folderPath, 0777, true);
+                }
+
+                $image = $request->file('flag_image');
+                    $imageName = seoUrl($request->input('lang_code')) . '_' . time() . '.' . $image->getClientOriginalExtension();
+                    $image->move($folderPath, $imageName); // Save to public/en/images
+
+                $language->flag_image = $imageName;
 
             } else {
                 $language->flag_image = $request->input('old_flag_image', null); // Use old image if no new image is uploaded

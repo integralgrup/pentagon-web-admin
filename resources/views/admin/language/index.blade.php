@@ -56,7 +56,7 @@
                           <td>{{ $language->id }}</td>
                           <td>{{ $language->title }}</td>
                           <td>{{ $language->lang_code }}</td>
-                          <td><img src="{{ asset('storage/images/languages/' . $language->flag_image) }}" alt="{{ $language->title }}" style="width: 30px;"></td>
+                          <td><img src="{{ $language->domain .'/'. getFolder(['uploads_folder','images_folder'], $language->lang_code) . '/' . $language->flag_image }}" alt="{{ $language->title }}" style="width: 30px;"></td>
                           <td>
                             <a href="{{ route('admin.language.edit', $language->id) }}" class="btn btn-sm btn-warning">Düzenle</a>
                             <form action="{{ route('admin.language.destroy', $language->id) }}" method="POST" style="display:inline-block;">

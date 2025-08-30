@@ -49,6 +49,64 @@ class AboutController extends Controller
     //dd($request->all());
         try {
             $languages = Language::all(); // Fetch all languages for the dropdown
+
+            if($request->hasFile('image_en')){
+                //save image to temp folder
+                $image = $request->file('image_en');
+                $imageName = 'aaaa'.time() . '.' . $image->getClientOriginalExtension();
+                $tmpPath = $languages[0]->path.'/'.$languages[0]->uploads_folder.'/'.$languages[0]->images_folder . '/temp/';
+                
+                if (!file_exists($tmpPath)) {
+                    mkdir($tmpPath, 0777, true);
+                }
+
+                copy($image->getRealPath(), $tmpPath . $imageName);
+
+                $tmpImgPath = $tmpPath . $imageName;
+
+            }
+
+            if($request->hasFile('bg_video_en')){
+                //save image to temp folder
+                $bgVideo = $request->file('bg_video_en');
+                $bgVideoName = 'bbbb'.time() . '.' . $bgVideo->getClientOriginalExtension();
+                $tmpBgVideoPath = $languages[0]->path.'/'.$languages[0]->uploads_folder.'/'.$languages[0]->images_folder . '/temp/';
+                if (!file_exists($tmpBgVideoPath)) {
+                    mkdir($tmpBgVideoPath, 0777, true);
+                }
+                copy($bgVideo->getRealPath(), $tmpBgVideoPath . $bgVideoName);
+
+                $tmpBgVideoPath = $tmpBgVideoPath . $bgVideoName;
+            }
+
+            if($request->hasFile('mission_image_en')){
+                //save image to temp folder
+                $missionImage = $request->file('mission_image_en');
+                $missionImageName = 'cccc'.time() . '.' . $missionImage->getClientOriginalExtension();
+                $tmpMissionImagePath = $languages[0]->path.'/'.$languages[0]->uploads_folder.'/'.$languages[0]->images_folder . '/temp/';
+                if (!file_exists($tmpMissionImagePath)) {
+                    mkdir($tmpMissionImagePath, 0777, true);
+                }
+                copy($missionImage->getRealPath(), $tmpMissionImagePath . $missionImageName);
+
+                $tmpMissionImagePath = $tmpMissionImagePath . $missionImageName;
+            }
+
+            if($request->hasFile('vision_image_en')){
+                //save image to temp folder
+                $visionImage = $request->file('vision_image_en');
+                $visionImageName = 'dddd'.time() . '.' . $visionImage->getClientOriginalExtension();
+                $tmpVisionImagePath = $languages[0]->path.'/'.$languages[0]->uploads_folder.'/'.$languages[0]->images_folder . '/temp/';
+                if (!file_exists($tmpVisionImagePath)) {
+                    mkdir($tmpVisionImagePath, 0777, true);
+                }
+                copy($visionImage->getRealPath(), $tmpVisionImagePath . $visionImageName);
+
+                $tmpVisionImagePath = $tmpVisionImagePath . $visionImageName;
+            }
+
+//dd($tmpImgPath, $tmpBgVideoPath, $tmpMissionImagePath, $tmpVisionImagePath);
+
                 foreach ($languages as $language) {
                     // Validate the request data
                     if($language->lang_code == 'en'){
@@ -74,77 +132,91 @@ class AboutController extends Controller
                         ]);
                     }
 
-                    if ($request->hasFile('image_' . $language->lang_code)) {
-                        $image      = $request->file('image_' . $language->lang_code);
-                        $folderPath = public_path($language->lang_code.'/'.$language->uploads_folder.'/'.$language->images_folder); // full path inside public/
+                    
 
-                            // Create folder if it doesn't exist
-                            if (!file_exists($folderPath)) {
-                                mkdir($folderPath, 0777, true);
-                            }
+                    if ($request->hasFile('image_' . $language->lang_code) || $request->hasFile('image_en')) {
 
-                            // Generate unique name
-                            $imageName = seoUrl($request->input('alt_' . $language->lang_code)) . '_' . time() . '.' . $image->getClientOriginalExtension();
+                        $image = $request->file('image_' . $language->lang_code) ?? $request->file('image_en');
+                        $imageName = seoUrl($request->input('alt_' . $language->lang_code) ?? $request->input('alt_en')) . '_' . time() . '.' . $image->getClientOriginalExtension();
+                        $folderPath = $language->path.'/'.$language->uploads_folder.'/'.$language->images_folder ;
+                        $imgPath = $folderPath .'/'. $imageName;
 
-                            // Move file into public/some_folder
+                        if (!file_exists($folderPath)) {
+                            mkdir($folderPath, 0777, true);
+                        }
+
+                        // Copy image from temp to final location
+
+                        if(isset($tmpImgPath) && file_exists($tmpImgPath)){
+                            copy($tmpImgPath, $imgPath);
+                        }else{
                             $image->move($folderPath, $imageName);
+                        }
+
                     } else {
                         $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
                     }
 
-                     if ($request->hasFile('bg_video_' . $language->lang_code)) {
-                        $video = $request->file('bg_video_' . $language->lang_code);
-                        $folderPath = public_path($language->lang_code.'/'.$language->uploads_folder.'/'.$language->images_folder); // full path inside public/
+                    
 
+                    if ($request->hasFile('bg_video_' . $language->lang_code) || $request->hasFile('bg_video_en')) {
+                        $video = $request->file('bg_video_' . $language->lang_code) ?? $request->file('bg_video_en');
+                        $videoName = seoUrl($request->input('title_' . $language->lang_code) ?? $request->input('title_en')) . '_' . time() . '.' . $video->getClientOriginalExtension();
+                        $videoFolderPath = $language->path.'/'.$language->uploads_folder.'/'.$language->images_folder; // full path inside public/
+                        $videoPath = $videoFolderPath .'/'. $videoName;
                             // Create folder if it doesn't exist
-                            if (!file_exists($folderPath)) {
-                                mkdir($folderPath, 0777, true);
+                            if (!file_exists($videoFolderPath)) {
+                                mkdir($videoFolderPath, 0777, true);
                             }
 
-                            // Generate unique name
-                            $videoName = seoUrl($request->input('title_' . $language->lang_code)) . '_' . time() . '.' . $video->getClientOriginalExtension();
-                            
-                            // Move file into public/some_folder
-                            $video->move($folderPath, $videoName);
+                            // Copy video from temp to final location
+                            if (isset($tmpBgVideoPath) && file_exists($tmpBgVideoPath)) {
+                                copy($tmpBgVideoPath, $videoPath);
+                            } else {
+                                $video->move($videoFolderPath, $videoName);
+                            }
 
                     } else {
                         $videoName = $request->input('old_bg_video_' . $language->lang_code, null); // Use old video if no new video is uploaded
                     }
 
-                     if ($request->hasFile('mission_image_' . $language->lang_code)) {
-                        $missionImage = $request->file('mission_image_' . $language->lang_code);
-                        $folderPath = public_path($language->lang_code.'/'.$language->uploads_folder.'/'.$language->images_folder); // full path inside public/
-
+                     if ($request->hasFile('mission_image_' . $language->lang_code) || $request->hasFile('mission_image_en')) {
+                        $missionImage = $request->file('mission_image_' . $language->lang_code) ?? $request->file('mission_image_en');
+                        $missionImageName =  seoUrl($request->input('mission_title_' . $language->lang_code) ?? $request->input('mission_title_en')) . '_' . time() . '.' . $missionImage->getClientOriginalExtension();
+                        $missionFolderPath = $language->path.'/'.$language->uploads_folder.'/'.$language->images_folder; // full path inside public/
+                        $missionImgPath = $missionFolderPath .'/'. $missionImageName;
                             // Create folder if it doesn't exist
-                            if (!file_exists($folderPath)) {
-                                mkdir($folderPath, 0777, true);
+                            if (!file_exists($missionFolderPath)) {
+                                mkdir($missionFolderPath, 0777, true);
                             }
 
-                            // Generate unique name
-                            $missionImageName = seoUrl($request->input('mission_title_' . $language->lang_code)) . '_' . time() . '.webp';
-
-                            // Move file into public/some_folder
-                            $missionImage->move($folderPath, $missionImageName);
+                            if (isset($tmpMissionImagePath) && file_exists($tmpMissionImagePath)) {
+                                copy($tmpMissionImagePath, $missionImgPath);
+                            } else {
+                                $missionImage->move($missionFolderPath, $missionImageName);
+                            }
 
                     } else {
                         $missionImageName = $request->input('old_mission_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
                     }
 
-                    if ($request->hasFile('vision_image_' . $language->lang_code)) {
+                    
 
-                        $visionImage = $request->file('vision_image_' . $language->lang_code);
-                        $folderPath = public_path($language->lang_code.'/'.$language->uploads_folder.'/'.$language->images_folder); // full path inside public/
-
+                     if ($request->hasFile('vision_image_' . $language->lang_code) || $request->hasFile('vision_image_en')) {
+                        $visionImage = $request->file('vision_image_' . $language->lang_code) ?? $request->file('vision_image_en');
+                        $visionImageName =  seoUrl($request->input('vision_title_' . $language->lang_code) ?? $request->input('vision_title_en')) . '_' . time() . '.' . $visionImage->getClientOriginalExtension();
+                        $visionFolderPath = $language->path.'/'.$language->uploads_folder.'/'.$language->images_folder; // full path inside public/
+                        $visionImgPath = $visionFolderPath .'/'. $visionImageName;
                             // Create folder if it doesn't exist
-                            if (!file_exists($folderPath)) {
-                                mkdir($folderPath, 0777, true);
+                            if (!file_exists($visionFolderPath)) {
+                                mkdir($visionFolderPath, 0777, true);
                             }
 
-                            // Generate unique name
-                            $visionImageName = seoUrl($request->input('vision_title_' . $language->lang_code)) . '_' . time() . '.webp';
-
-                            // Move file into public/some_folder
-                            $visionImage->move($folderPath, $visionImageName);
+                            if (isset($tmpVisionImagePath) && file_exists($tmpVisionImagePath)) {
+                                copy($tmpVisionImagePath, $visionImgPath);
+                            } else {
+                                $visionImage->move($visionFolderPath, $visionImageName);
+                            }
 
                     } else {
                         $visionImageName = $request->input('old_vision_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
@@ -155,31 +227,45 @@ class AboutController extends Controller
                             'lang' => $language->lang_code,
                         ],
                         [
-                            'upper_title' => $request->input('upper_title_' . $language->lang_code),
-                            'title' => $request->input('title_' . $language->lang_code),
-                            'title_1' => $request->input('title_1_' . $language->lang_code),
-                            'description' => $request->input('description_' . $language->lang_code),
+                            'upper_title' => $request->input('upper_title_' . $language->lang_code) ?: $request->input('upper_title_en'),
+                            'title' => $request->input('title_' . $language->lang_code) ?: $request->input('title_en'),
+                            'title_1' => $request->input('title_1_' . $language->lang_code) ?: $request->input('title_1_en'),
+                            'description' => $request->input('description_' . $language->lang_code) ?: $request->input('description_en'),
                             'image' => $imageName, // save relative path
-                            'alt' => $request->input('alt_' . $language->lang_code),
+                            'alt' => $request->input('alt_' . $language->lang_code) ?: $request->input('alt_en'),
                             'bg_video' => $videoName, // save relative path
-                            'mission_title' => $request->input('mission_title_' . $language->lang_code),
-                            'mission_text' => $request->input('mission_text_' . $language->lang_code),
+                            'mission_title' => $request->input('mission_title_' . $language->lang_code) ?: $request->input('mission_title_en'),
+                            'mission_text' => $request->input('mission_text_' . $language->lang_code) ?: $request->input('mission_text_en'),
                             'mission_image' => $missionImageName, // save relative path
-                            'vision_title' => $request->input('vision_title_' . $language->lang_code),
-                            'vision_text' => $request->input('vision_text_' . $language->lang_code),
+                            'vision_title' => $request->input('vision_title_' . $language->lang_code) ?: $request->input('vision_title_en'),
+                            'vision_text' => $request->input('vision_text_' . $language->lang_code) ?: $request->input('vision_text_en'),
                             'vision_image' => $visionImageName, // save relative path
-                            'seo_title' => $request->input('seo_title_' . $language->lang_code),
-                            'seo_description' => $request->input('seo_description_' . $language->lang_code),
-                            'seo_keywords' => $request->input('seo_keywords_' . $language->lang_code),
+                            'seo_title' => $request->input('seo_title_' . $language->lang_code) ?: $request->input('seo_title_en'),
+                            'seo_description' => $request->input('seo_description_' . $language->lang_code) ?: $request->input('seo_description_en'),
+                            'seo_keywords' => $request->input('seo_keywords_' . $language->lang_code) ?: $request->input('seo_keywords_en'),
                         ]
                     );
 
                 }
-                
+
+                // unlink tmp images
+                if (isset($tmpImgPath)) {
+                    @unlink($tmpImgPath);
+                }
+                if (isset($tmpBgVideoPath)) {
+                    @unlink($tmpBgVideoPath);
+                }
+                if (isset($tmpMissionImagePath)) {
+                    @unlink($tmpMissionImagePath);
+                }
+                if (isset($tmpVisionImagePath)) {
+                    @unlink($tmpVisionImagePath);
+                }
+
             return redirect()->route('admin.about')->with('success', 'Hakkımızda içeriği başarıyla kaydedildi.');
         } catch (\Exception $e) {
             throw $e;
-            return redirect()->back()->withErrors(['error' => 'Hata oluştu: ' . $e->getMessage()]);
+            //return redirect()->back()->withErrors(['error' => 'Hata oluştu: ' . $e->getMessage()]);
         }
     }
 
@@ -238,26 +324,51 @@ class AboutController extends Controller
                 }   
             }
 
+            if($request->hasFile('image_en')){
+                //save image to temp folder
+                $image = $request->file('image_en');
+                $imageName = time() . '.' . $image->getClientOriginalExtension();
+                $tmpPath = $languages[0]->path.'/'.$languages[0]->uploads_folder.'/'.$languages[0]->images_folder . '/temp/';
+                
+                if (!file_exists($tmpPath)) {
+                    mkdir($tmpPath, 0777, true);
+                }
+
+                copy($image->getRealPath(), $tmpPath . $imageName);
+
+                $tmpImgPath = $tmpPath . $imageName;
+
+            }
+
             foreach ($languages as $language) {
                 // Validate the request data
-                $request->validate([
-                    'title_' . $language->lang_code => 'required|string|max:100',
-                    'title_1_' . $language->lang_code => 'required|string|max:255',
-                    'description_' . $language->lang_code => 'required|string',
-                    'image_' . $language->lang_code => 'nullable|image|max:2048',
-                    'alt_' . $language->lang_code => 'required|string|max:255',
-                ]);
+                if ($language->lang_code === 'en') {
+                    $request->validate([
+                        'title_' . $language->lang_code => 'required|string|max:100',
+                        'title_1_' . $language->lang_code => 'required|string|max:255',
+                        'description_' . $language->lang_code => 'required|string',
+                        'image_' . $language->lang_code => 'nullable|image|max:2048',
+                        'alt_' . $language->lang_code => 'required|string|max:255',
+                    ]);
+                }
 
-                if ($request->hasFile('image_' . $language->lang_code)) {
+                if ($request->hasFile('image_' . $language->lang_code) || $request->hasFile('image_en')) {
 
-                    $howWeDoImage = $request->file('image_' . $language->lang_code);
-                    $imageName = seoUrl($request->input('alt_' . $language->lang_code)) .  '_' . time() . '.webp';
-                    $folderPath = getFolder(['uploads_folder','images_folder'], $language->lang_code);
-                    if(!file_exists($folderPath)) {
-                        mkdir($folderPath, 0755, true);
-                    }
+                    $howWeDoImage = $request->file('image_' . $language->lang_code) ?? $request->file('image_en');
+                    $imageName = seoUrl($request->input('alt_' . $language->lang_code) ?? $request->input('alt_en')) . '_' . time() . '.' . $howWeDoImage->getClientOriginalExtension();
+                    $folderPath = $language->path.'/'.$language->uploads_folder.'/'.$language->images_folder ;
+                    $imgPath = $folderPath .'/'. $imageName;
 
-                    $howWeDoImage->move($folderPath, $imageName); // Move the image to the specified folder
+                        if (!file_exists($folderPath)) {
+                            mkdir($folderPath, 0777, true);
+                        }
+
+                        // Copy image from temp to final location
+                        if (isset($tmpImgPath) && file_exists($tmpImgPath)) {
+                            copy($tmpImgPath, $imgPath);
+                        } else {
+                            $howWeDoImage->move($folderPath, $imageName);
+                        }
 
                 } else {
                     $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
@@ -271,14 +382,19 @@ class AboutController extends Controller
                     ],
                     [
                         'content_id' => $content_id,
-                        'title' => $request->input('title_' . $language->lang_code),
-                        'title_1' => $request->input('title_1_' . $language->lang_code),
-                        'description' => $request->input('description_' . $language->lang_code),
+                        'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
+                        'title_1' => $request->input('title_1_' . $language->lang_code) ?? $request->input('title_1_en'),
+                        'description' => $request->input('description_' . $language->lang_code) ?? $request->input('description_en'),
                         'image' => $imageName, // save relative path
-                        'alt' => $request->input('alt_' . $language->lang_code),
+                        'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
                     ]
                 );
             }
+            // unlink tmp image
+            if (isset($tmpImgPath)) {
+                @unlink($tmpImgPath);
+            }
+            
             return redirect()->route('admin.about.how_we_do')->with('success', 'Nasıl Yaparız içeriği başarıyla kaydedildi.');
         } catch (\Exception $e) {
             
@@ -325,30 +441,50 @@ class AboutController extends Controller
                 }   
             }
 
+            if($request->hasFile('image_en')){
+                //save image to temp folder
+                $image = $request->file('image_en');
+                $imageName = time() . '.' . $image->getClientOriginalExtension();
+                $tmpPath = $languages[0]->path.'/'.$languages[0]->uploads_folder.'/'.$languages[0]->images_folder . '/temp/';
+                
+                if (!file_exists($tmpPath)) {
+                    mkdir($tmpPath, 0777, true);
+                }
+
+                copy($image->getRealPath(), $tmpPath . $imageName);
+
+                $tmpImgPath = $tmpPath . $imageName;
+
+            }
+
             foreach ($languages as $language) {
                 // Validate the request data
-                $request->validate([
-                    'title_' . $language->lang_code => 'required|string|max:100',
-                    'title_1_' . $language->lang_code => 'required|string|max:255',
-                    'description_' . $language->lang_code => 'required|string',
-                    'image_' . $language->lang_code => 'nullable|image|max:2048',
-                    'alt_' . $language->lang_code => 'required|string|max:255',
-                ]);
+                if ($language->lang_code === 'en') {
+                    $request->validate([
+                        'title_' . $language->lang_code => 'required|string|max:100',
+                        'title_1_' . $language->lang_code => 'required|string|max:255',
+                        'description_' . $language->lang_code => 'required|string',
+                        'image_' . $language->lang_code => 'nullable|image|max:2048',
+                        'alt_' . $language->lang_code => 'required|string|max:255',
+                    ]);
+                }
 
-                if ($request->hasFile('image_' . $language->lang_code)) {
-                    $image      = $request->file('image_' . $language->lang_code);
-                    $folderPath = public_path($language->lang_code.'/'.$language->uploads_folder.'/'.$language->images_folder); // full path inside public/
+                if ($request->hasFile('image_' . $language->lang_code) || $request->hasFile('image_en')) {
+                    $image      = $request->file('image_' . $language->lang_code) ?? $request->file('image_en');
+                    $imageName = seoUrl($request->input('alt_' . $language->lang_code) ?? $request->input('alt_en')) . '_' . time() . '.' . $image->getClientOriginalExtension();
+                    $folderPath = $language->path.'/'.$language->uploads_folder.'/'.$language->images_folder ;
+                    $imgPath = $folderPath .'/'. $imageName;
 
-                        // Create folder if it doesn't exist
                         if (!file_exists($folderPath)) {
                             mkdir($folderPath, 0777, true);
                         }
 
-                        // Generate unique name
-                        $imageName = seoUrl($request->input('title_' . $language->lang_code)) . '_' . time() . '.' . $image->getClientOriginalExtension();
-
-                        // Move file into public/some_folder
-                        $image->move($folderPath, $imageName);
+                        // Copy image from temp to final location
+                        if (isset($tmpImgPath) && file_exists($tmpImgPath)) {
+                            copy($tmpImgPath, $imgPath);
+                        } else {
+                            $image->move($folderPath, $imageName);
+                        }
                 } else {
                     $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
                 }
@@ -401,7 +537,26 @@ class AboutController extends Controller
     public function membershipsStore(Request $request)
     {
         try {
+
             $languages = Language::all(); // Fetch all languages for the dropdown
+
+            if($request->hasFile('image_en')){
+                //save image to temp folder
+                $image = $request->file('image_en');
+                $imageName = time() . '.' . $image->getClientOriginalExtension();
+                $tmpPath = $languages[0]->path.'/'.$languages[0]->uploads_folder.'/'.$languages[0]->images_folder . '/temp/';
+                
+                if (!file_exists($tmpPath)) {
+                    mkdir($tmpPath, 0777, true);
+                }
+
+                copy($image->getRealPath(), $tmpPath . $imageName);
+
+                $tmpImgPath = $tmpPath . $imageName;
+
+            }
+
+            
 
             if ($request->has('content_id')) {
                 $content_id = $request->input('content_id'); // Use the provided content_id
@@ -414,23 +569,20 @@ class AboutController extends Controller
 
             foreach ($languages as $language) {
                 // Validate the request data
-                $request->validate([
-                    'title_' . $language->lang_code => 'required|string|max:100',
-                    'title_1_' . $language->lang_code => 'required|string|max:255',
-                    'url_' . $language->lang_code => 'required|string|max:255',
-                    'image_' . $language->lang_code => 'nullable|image|max:2048',
-                    'alt_' . $language->lang_code => 'required|string|max:255',
+                if ($language->lang_code === 'en') {
+                    $request->validate([
+                        'title_' . $language->lang_code => 'required|string|max:100',
+                        'title_1_' . $language->lang_code => 'required|string|max:255',
+                        'url_' . $language->lang_code => 'required|string|max:255',
+                        'image_' . $language->lang_code => 'nullable|image|max:2048',
+                        'alt_' . $language->lang_code => 'required|string|max:255',
                 ]);
+            }
 
-                if ($request->hasFile('image_' . $language->lang_code)) {
-                    $howWeDoImage = $request->file('image_' . $language->lang_code);
-                    $imageName = seoUrl($request->input('alt_' . $language->lang_code)) . '_' . time() .  '.webp';
-                    $folderPath = getFolder(['uploads_folder','images_folder']);
-                    if(!file_exists($folderPath)) {
-                        mkdir($folderPath, 0755, true);
-                    }
+                if ($request->hasFile('image_' . $language->lang_code) || $request->hasFile('image_en')) {
 
-                    $howWeDoImage->move($folderPath, $imageName); // Move the image to the specified folder
+                   $imageName = $this->moveFile($request, $language, $tmpImgPath);
+
                 } else {
                     $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
                 }
@@ -442,17 +594,21 @@ class AboutController extends Controller
                         'content_id' => $content_id, // Use the content_id for grouping
                     ],
                     [
-                        'content_id' => $content_id,
-                        'title' => $request->input('title_' . $language->lang_code),
-                        'title_1' => $request->input('title_1_' . $language->lang_code),
-                        'url' => $request->input('url_' . $language->lang_code),
-                        'image' => $imageName, // save relative path
-                        'alt' => $request->input('alt_' . $language->lang_code),
+                        'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
+                        'title_1' => $request->input('title_1_' . $language->lang_code) ?? $request->input('title_1_en'),
+                        'url' => $request->input('url_' . $language->lang_code) ?? $request->input('url_en'),
+                        'image' => $imageName ?? '',
+                        'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
                     ]
                 );
+            } // <-- Add this closing brace for the foreach loop
+            // unlink tmp image
+            if (isset($tmpImgPath)) {
+                @unlink($tmpImgPath);
             }
             return redirect()->route('admin.about.memberships')->with('success', 'Üyelik içeriği başarıyla kaydedildi.');
         } catch (\Exception $e) {
+            //throw $e;
             return redirect()->back()->withErrors(['error' => 'Hata oluştu: ' . $e->getMessage()]);
         }
     }
@@ -560,6 +716,25 @@ class AboutController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => 'Hata oluştu: ' . $e->getMessage()]);
         }
+    }
+
+    protected function moveFile($request, $language, $tmpImgPath = null)
+    {
+        $image = $request->file('image_' . $language->lang_code) ?? $request->file('image_en');
+        $imageName = seoUrl($request->input('alt_' . $language->lang_code) ?? $request->input('alt_en')) . '_' . time() . '.' . $image->getClientOriginalExtension();
+        $folderPath = $language->path.'/'.$language->uploads_folder.'/'.$language->images_folder ;
+        $imgPath = $folderPath .'/'. $imageName;
+
+        if(!file_exists($folderPath)) {
+            mkdir($folderPath, 0755, true);
+        }
+
+        if(isset($tmpImgPath) && file_exists($tmpImgPath)) {
+            copy($tmpImgPath, $imgPath);
+        }else{
+            $image->move($folderPath, $imageName); // Move the image to the specified folder
+        }
+        return $imageName;
     }
 
 }

@@ -40,11 +40,12 @@
                 <div class="card">
                     <div class="card-header">
                         <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                            
                             @foreach($languages as $language)
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link {{ $loop->first ? 'active' : '' }}" id="tab-{{ $language->lang_code }}-tab" data-bs-toggle="tab" data-bs-target="#tab-{{ $language->lang_code }}"
                                             type="button" role="tab" aria-controls="tab-{{ $language->lang_code }}" aria-selected="{{ $loop->first ? 'true' : 'false' }}">
-                                        <img src="{{ asset('storage/images/languages/' . $language->flag_image) }}" alt="{{ $language->title }}" style="width: 20px; margin-right: 5px;"> {{ strtoupper($language->lang_code) }}
+                                        <img src="{{ $language->domain .'/'. getFolder(['uploads_folder', 'images_folder'], $language->lang_code) .'/'.$language->flag_image }}" alt="{{ $language->title }}" style="width: 20px; margin-right: 5px;"> {{ strtoupper($language->lang_code) }}
                                     </button>
                                 </li>
                             @endforeach
@@ -54,7 +55,7 @@
                         <form action="{{ route('admin.about.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="tab-content" id="myTabContent">
-                            @foreach($about_contents as $about)
+                            @foreach($about_contents as $key => $about)
                                 <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" id="tab-{{$about->lang}}" role="tabpanel" aria-labelledby="tab{{$about->lang}}-tab">
                                     <div class="card-body" style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">    
                                         <input type="hidden" name="lang_{{$about->lang}}" value="{{$about->lang}}">
@@ -85,7 +86,7 @@
                                                 <label for="image_{{ $about->lang }}" class="form-label">Görsel ({{ $about->lang }})</label>
                                                 <input type="file" class="form-control" id="image_{{ $about->lang }}" name="image_{{ $about->lang }}" accept="image/*">
                                                 @if($about->image)
-                                                <img src="{{ asset( getFolder( ['uploads_folder', 'images_folder'], $about->lang) . '/' . $about->image) }}" 
+                                                <img src="{{ $languages[$key]->domain .'/'. getFolder(['uploads_folder', 'images_folder'], $about->lang ) .'/'.$about->image }}" 
                                                     alt="{{ $about->title }}" class="img-thumbnail mt-2" style="max-width: 200px;">
                                                     <input type="hidden" class="form-control mt-2" name="old_image_{{ $about->lang }}" value="{{ $about->image }}" readonly>
                                                 @endif
@@ -105,7 +106,7 @@
                                             <input type="file" class="form-control" id="bg_video_{{ $about->lang }}" name="bg_video_{{ $about->lang }}" accept="video/*">
                                             @if($about->bg_video)
                                                 <video controls class="mt-2" style="max-width: 400px;">
-                                                    <source src="{{  asset( getFolder( ['uploads_folder', 'images_folder'], $about->lang) . '/' . $about->bg_video ) }}" type="video/mp4">
+                                                    <source src="{{  $languages[$key]->domain .'/'. getFolder(['uploads_folder', 'images_folder'], $about->lang ) .'/'.$about->bg_video }}" type="video/mp4">
                                                     Your browser does not support the video tag.
                                                 </video>
                                                 <input type="hidden" class="form-control mt-2" name="old_bg_video_{{ $about->lang }}" value="{{ $about->bg_video }}" readonly>
@@ -123,7 +124,7 @@
                                             <label for="mission_image_{{ $about->lang }}" class="form-label">Misyon Görseli ({{ $about->lang }})</label>
                                             <input type="file" class="form-control" id="mission_image_{{ $about->lang }}" name="mission_image_{{ $about->lang }}" accept="image/*">     
                                             @if($about->mission_image)
-                                                <img src="{{ asset( getFolder( ['uploads_folder', 'images_folder'], $about->lang) . '/' .  $about->mission_image) }}" alt="{{ $about->title }}" class="img-thumbnail mt-2" style="max-width: 200px;">
+                                                <img src="{{ $languages[$key]->domain .'/'. getFolder(['uploads_folder', 'images_folder'], $about->lang) .'/'.$about->mission_image }}" alt="{{ $about->title }}" class="img-thumbnail mt-2" style="max-width: 200px;">
                                                 <input type="hidden" class="form-control mt-2" name="old_mission_image_{{ $about->lang }}" value="{{ $about->mission_image }}" readonly>
                                             @endif  
                                         </div>
@@ -139,7 +140,7 @@
                                             <label for="vision_image_{{ $about->lang }}" class="form-label">Vizyon Görseli ({{ $about->lang }})</label>
                                             <input type="file" class="form-control" id="vision_image_{{ $about->lang }}" name="vision_image_{{ $about->lang }}" accept="image/*">
                                             @if($about->vision_image)
-                                                <img src="{{ asset( getFolder( ['uploads_folder', 'images_folder'], $about->lang) . '/' .  $about->vision_image) }}" alt="{{ $about->title }}" class="img-thumbnail mt-2" style="max-width: 200px;">
+                                                <img src="{{ $languages[$key]->domain .'/'. getFolder(['uploads_folder', 'images_folder'], $about->lang) .'/'.$about->vision_image }}" alt="{{ $about->title }}" class="img-thumbnail mt-2" style="max-width: 200px;">
                                                 <input type="hidden" class="form-control mt-2" name="old_vision_image_{{ $about->lang }}" value="{{ $about->vision_image }}" readonly>
                                             @endif
                                         </div>

@@ -67,7 +67,8 @@
                                 </div>
                                 <div>
                                     @if($language->flag_image)
-                                        <img src="{{ asset('storage/images/languages/' . $language->flag_image) }}" alt="{{ $language->title }}" style="width: 50px; margin-top: 10px;">
+                                        <img src="{{ $language->domain .'/'. getFolder(['uploads_folder','images_folder'], $language->lang_code) . '/' . $language->flag_image }}" alt="{{ $language->lang_code }}" style="width: 200px; height: auto; margin-top: 10px;">
+                                        <input type="hidden" class="form-control" id="old_flag_image" name="old_flag_image" value="{{ $language->flag_image }}" readonly>
                                     @endif
                                 </div>
                             </div>
