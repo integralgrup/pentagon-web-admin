@@ -49,35 +49,27 @@ class CareerController extends Controller
         try {
             foreach ($this->languages as $language) {
                     // Validate the request data
-                    $request->validate([
-                        'lang_' . $language->lang_code => 'required|string|max:10',
-                        'title_' . $language->lang_code => 'required|string|max:100',
-                        'upper_title_' . $language->lang_code => 'required|string|max:100',
-                        'title_1_' . $language->lang_code => 'required|string|max:255',
-                        'description_' . $language->lang_code => 'required|string',
-                        'image_' . $language->lang_code => 'nullable|image|max:2048',
-                        'alt_' . $language->lang_code => 'required|string|max:255',
-                        'button_text_' . $language->lang_code => 'required|string|max:50',
-                        'seo_title_' . $language->lang_code => 'required|string|max:255',
-                        'seo_description_' . $language->lang_code => 'required|string|max:255',
-                        'seo_keywords_' . $language->lang_code => 'nullable|string|max:255',
-                    ]);
+                    if ($language->lang_code === 'en') {
+                        $request->validate([
+                            'lang_' . $language->lang_code => 'required|string|max:10',
+                            'title_' . $language->lang_code => 'required|string|max:100',
+                            'upper_title_' . $language->lang_code => 'required|string|max:100',
+                            'title_1_' . $language->lang_code => 'required|string|max:255',
+                            'description_' . $language->lang_code => 'required|string',
+                            'image_' . $language->lang_code => 'nullable|image|max:2048',
+                            'alt_' . $language->lang_code => 'required|string|max:255',
+                            'button_text_' . $language->lang_code => 'required|string|max:50',
+                            'seo_title_' . $language->lang_code => 'required|string|max:255',
+                            'seo_description_' . $language->lang_code => 'required|string|max:255',
+                            'seo_keywords_' . $language->lang_code => 'nullable|string|max:255',
+                        ]);
+                    }
 
-                    if ($request->hasFile('image_' . $language->lang_code)) {
-                        $image      = $request->file('image_' . $language->lang_code);
-                        $folderPath = public_path($language->lang_code.'/'.$language->uploads_folder.'/'.$language->images_folder); // full path inside public/
-
-                            // Create folder if it doesn't exist
-                            if (!file_exists($folderPath)) {
-                                mkdir($folderPath, 0777, true);
-                            }
-
-                            // Generate unique name
-                            $imageName = seoUrl($request->input('alt_' . $language->lang_code)) . '_' . time() . '.' . $image->getClientOriginalExtension();
-
-                            // Move file into public/some_folder
-                            $image->move($folderPath, $imageName);
-                    } else {
+                    if ($request->hasFile('image_en') || $request->hasFile('image_' . $language->lang_code)) {
+                        $tmpImgPath = createTmpFile($request, 'image_en', $this->languages[0]);
+                        $imageName = moveFile($request,$language,'image_' . $language->lang_code, 'image_en', 'alt_' . $language->lang_code, 'alt_en', $language->images_folder, $tmpImgPath);
+                        //dd($imageName);
+                    }else{
                         $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
                     }
 
@@ -89,16 +81,16 @@ class CareerController extends Controller
                             'lang' => $language->lang_code,
                         ],
                         [
-                            'title' => $request->input('title_' . $language->lang_code),
-                            'upper_title' => $request->input('upper_title_' . $language->lang_code),
-                            'title_1' => $request->input('title_1_' . $language->lang_code),
-                            'description' => $request->input('description_' . $language->lang_code),
+                            'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
+                            'upper_title' => $request->input('upper_title_' . $language->lang_code) ?? $request->input('upper_title_en'),
+                            'title_1' => $request->input('title_1_' . $language->lang_code) ?? $request->input('title_1_en'),
+                            'description' => $request->input('description_' . $language->lang_code) ?? $request->input('description_en'),
                             'image' => $imageName, // save relative path
-                            'alt' => $request->input('alt_' . $language->lang_code),
-                            'button_text' => $request->input('button_text_' . $language->lang_code),
-                            'seo_title' => $request->input('seo_title_' . $language->lang_code),
-                            'seo_description' => $request->input('seo_description_' . $language->lang_code),
-                            'seo_keywords' => $request->input('seo_keywords_' . $language->lang_code),
+                            'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
+                            'button_text' => $request->input('button_text_' . $language->lang_code) ?? $request->input('button_text_en'),
+                            'seo_title' => $request->input('seo_title_' . $language->lang_code) ?? $request->input('seo_title_en'),
+                            'seo_description' => $request->input('seo_description_' . $language->lang_code) ?? $request->input('seo_description_en'),
+                            'seo_keywords' => $request->input('seo_keywords_' . $language->lang_code) ?? $request->input('seo_keywords_en'),
                         ]
                     );
 
@@ -165,32 +157,23 @@ class CareerController extends Controller
 
        try {
             foreach ($this->languages as $language) {
-                $request->validate([
-                    'lang_' . $language->lang_code => 'required|string|max:10',
-                    'title_' . $language->lang_code => 'required|string|max:100',
-                    'title_1_' . $language->lang_code => 'required|string|max:255',
-                    'description_' . $language->lang_code => 'required|string|max:500',
-                    'image_' . $language->lang_code => 'nullable|image|max:2048',
-                    'alt_' . $language->lang_code => 'required|string|max:255',
-                ]);
+                if($language->lang_code == 'en'){
+                    $request->validate([
+                        'lang_' . $language->lang_code => 'required|string|max:10',
+                        'title_' . $language->lang_code => 'required|string|max:100',
+                        'title_1_' . $language->lang_code => 'required|string|max:255',
+                        'description_' . $language->lang_code => 'required|string|max:500',
+                        'image_' . $language->lang_code => 'nullable|image|max:2048',
+                        'alt_' . $language->lang_code => 'required|string|max:255',
+                    ]);
+                }
 
-                if ($request->hasFile('image_' . $language->lang_code)) {
-                    $image = $request->file('image_' . $language->lang_code);
-                    $folderPath = public_path($language->lang_code.'/'.$language->uploads_folder.'/'.$language->images_folder);
-
-                    // Create folder if it doesn't exist
-                    if (!file_exists($folderPath)) {
-                        mkdir($folderPath, 0777, true);
-                    }
-
-                    // Generate unique name
-                    $imageName = seoUrl($request->input('title_' . $language->lang_code)) . '_' . time() . '.' . $image->getClientOriginalExtension();
-
-                    // Move file into public/some_folder
-                    $image->move($folderPath, $imageName);
-                } else {
-                   // old_image
-                   $imageName = $request->input('old_image_' . $language->lang_code);
+                if ($request->hasFile('image_en') || $request->hasFile('image_' . $language->lang_code)) {
+                    $tmpImgPath = createTmpFile($request, 'image_en', $this->languages[0]);
+                    $imageName = moveFile($request,$language,'image_' . $language->lang_code, 'image_en', 'title_' . $language->lang_code, 'title_en', $language->images_folder, $tmpImgPath);
+                    //dd($imageName);
+                }else{
+                    $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
                 }
 
                 CareerSlider::updateOrCreate(
@@ -199,16 +182,16 @@ class CareerController extends Controller
                         'slider_id' => $slider_id,
                     ],
                     [
-                        'title' => $request->input('title_' . $language->lang_code),
-                        'title_1' => $request->input('title_1_' . $language->lang_code),
-                        'description' => $request->input('description_' . $language->lang_code),
+                        'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
+                        'title_1' => $request->input('title_1_' . $language->lang_code) ?? $request->input('title_1_en'),
+                        'description' => $request->input('description_' . $language->lang_code) ?? $request->input('description_en'),
                         'image' => $imageName,
-                        'alt' => $request->input('alt_' . $language->lang_code),
+                        'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
                     ]
                 );
             }
-            
-            return redirect()->back()->with('success', 'Kariyer slayt başarıyla kaydedildi.');
+
+            return redirect()->route('admin.career.slider.index')->with('success', 'Kariyer slayt başarıyla kaydedildi.');
 
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', 'Kariyer slayt kaydedilirken bir hata oluştu. Hata: ' . $th->getMessage());

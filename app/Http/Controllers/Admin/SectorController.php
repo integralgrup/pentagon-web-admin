@@ -43,53 +43,52 @@ class SectorController extends Controller
             }
         try {
             foreach($this->languages as $language){
-                $request->validate([
-                    'lang_'.$language->lang_code => 'required|string|max:10',
-                    'title_'.$language->lang_code => 'required|string|max:100',
-                    'title_1_'.$language->lang_code => 'required|string|max:255',
-                    'seo_url_'.$language->lang_code => 'required|string|max:255',
-                    'description_'.$language->lang_code => 'required|string',
-                    'bg_image_'.$language->lang_code => 'nullable|image',
-                    'image_'.$language->lang_code => 'nullable|image',
-                    'alt_'.$language->lang_code => 'required|string|max:255',
-                    'seo_title_'.$language->lang_code => 'nullable|string|max:255',
-                    'seo_description_'.$language->lang_code => 'nullable|string|max:255',
-                    'seo_keywords_'.$language->lang_code => 'nullable|string|max:255',
-                ]);
+                if($language->lang_code == 'en'){
+                    
+                    $request->validate([
+                        'lang_'.$language->lang_code => 'required|string|max:10',
+                        'title_'.$language->lang_code => 'required|string|max:100',
+                        'title_1_'.$language->lang_code => 'required|string|max:255',
+                        'seo_url_'.$language->lang_code => 'required|string|max:255',
+                        'description_'.$language->lang_code => 'required|string',
+                        'bg_image_'.$language->lang_code => 'nullable|image',
+                        'image_'.$language->lang_code => 'nullable|image',
+                        'alt_'.$language->lang_code => 'required|string|max:255',
+                        'seo_title_'.$language->lang_code => 'nullable|string|max:255',
+                        'seo_description_'.$language->lang_code => 'nullable|string|max:255',
+                        'seo_keywords_'.$language->lang_code => 'nullable|string|max:255',
+                    ]);
+                }
 
-                if ($request->hasFile('image_' . $language->lang_code)) {
-
-                        $image = $request->file('image_' . $language->lang_code);
-                        $imageName = seoUrl($request->input('alt_' . $language->lang_code)) . '_' . time() . '.' . $image->getClientOriginalExtension();
-                        $image->move(public_path($language->lang_code.'/'.$language->uploads_folder.'/'.$language->sector_images_folder), $imageName); // Save to public/uploads/blog
-
-                } else {
+                if ($request->hasFile('image_en') || $request->hasFile('image_' . $language->lang_code)) {
+                    $tmpImgPath = createTmpFile($request, 'image_en', $this->languages[0]);
+                    $imageName = moveFile($request,$language,'image_' . $language->lang_code, 'image_en', 'alt_' . $language->lang_code, 'alt_en', $language->sector_images_folder, $tmpImgPath);
+                    //dd($imageName);
+                }else{
                     $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
                 }
 
-                if ($request->hasFile('bg_image_' . $language->lang_code)) {
-
-                        $bgImage = $request->file('bg_image_' . $language->lang_code);
-                        $bgImageName = seoUrl($request->input('alt_' . $language->lang_code)) . '_bg_' . time() . '.' . $bgImage->getClientOriginalExtension();
-                        $bgImage->move(public_path($language->lang_code.'/'.$language->uploads_folder.'/'.$language->sector_images_folder), $bgImageName); // Save to public/uploads/blog
-
-                } else {
+                if ($request->hasFile('bg_image_en') || $request->hasFile('bg_image_' . $language->lang_code)) {
+                    $tmpImgPath = createTmpFile($request, 'bg_image_en', $this->languages[0]);
+                    $bgImageName = moveFile($request,$language,'bg_image_' . $language->lang_code, 'bg_image_en', 'alt_' . $language->lang_code, 'alt_en', $language->sector_images_folder, $tmpImgPath);
+                    //dd($bgImageName);
+                }else{
                     $bgImageName = $request->input('old_bg_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
                 }
 
                 $data = [
                     'sector_id' => $sector_id,
                     'lang' => $language->lang_code,
-                    'title' => $request->input('title_'.$language->lang_code),
-                    'title_1' => $request->input('title_1_'.$language->lang_code),
-                    'seo_url' => $request->input('seo_url_'.$language->lang_code),
-                    'description' => $request->input('description_'.$language->lang_code),
+                    'title' => $request->input('title_'.$language->lang_code) ?? $request->input('title_en'),
+                    'title_1' => $request->input('title_1_'.$language->lang_code) ?? $request->input('title_1_en'),
+                    'seo_url' => $request->input('seo_url_'.$language->lang_code) ?? $request->input('seo_url_en'),
+                    'description' => $request->input('description_'.$language->lang_code) ?? $request->input('description_en'),
                     'bg_image' => $bgImageName,
                     'image' => $imageName,
-                    'alt' => $request->input('alt_'.$language->lang_code),
-                    'seo_title' => $request->input('seo_title_'.$language->lang_code),
-                    'seo_description' => $request->input('seo_description_'.$language->lang_code),
-                    'seo_keywords' => $request->input('seo_keywords_'.$language->lang_code),
+                    'alt' => $request->input('alt_'.$language->lang_code) ?? $request->input('alt_en'),
+                    'seo_title' => $request->input('seo_title_'.$language->lang_code) ?? $request->input('seo_title_en'),
+                    'seo_description' => $request->input('seo_description_'.$language->lang_code) ?? $request->input('seo_description_en'),
+                    'seo_keywords' => $request->input('seo_keywords_'.$language->lang_code) ?? $request->input('seo_keywords_en'),
                 ];
 
                 Sector::updateOrCreate(
@@ -186,20 +185,23 @@ class SectorController extends Controller
             foreach ($this->languages as $language) {
 
                 //Validation
-                $request->validate([
-                    'title_' . $language->lang_code => 'required|string|max:255',
-                    'title_1_' . $language->lang_code => 'required|string|max:255',
-                    'description_' . $language->lang_code => 'required|string',
-                    'alt_' . $language->lang_code => 'required|string|max:255',
-                    'image_' . $language->lang_code => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-                ]); 
+                if($language->lang_code == 'en'){
+                    
+                    $request->validate([
+                        'title_' . $language->lang_code => 'required|string|max:255',
+                        'title_1_' . $language->lang_code => 'required|string|max:255',
+                        'description_' . $language->lang_code => 'required|string',
+                        'alt_' . $language->lang_code => 'required|string|max:255',
+                        'image_' . $language->lang_code => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+                    ]); 
+                }
 
-                if ($request->hasFile('image_' . $language->lang_code)) {
-                    $image = $request->file('image_' . $language->lang_code);
-                    $imageName = seoUrl($request->input('alt_' . $language->lang_code)) . '_' . time() . '.' . $image->getClientOriginalExtension();
-                    $image->move(public_path($language->lang_code . '/' . $language->uploads_folder . '/' . $language->sector_images_folder), $imageName);
-                } else {
-                    $imageName = $request->input('old_image_' . $language->lang_code, null);
+                if ($request->hasFile('image_en') || $request->hasFile('image_' . $language->lang_code)) {
+                    $tmpImgPath = createTmpFile($request, 'image_en', $this->languages[0]);
+                    $imageName = moveFile($request,$language,'image_' . $language->lang_code, 'image_en', 'alt_' . $language->lang_code, 'alt_en', $language->sector_images_folder, $tmpImgPath);
+                    //dd($imageName);
+                }else{
+                    $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
                 }
 
                 //DB::table('sector_slider_1') updateOrCreate
@@ -213,11 +215,11 @@ class SectorController extends Controller
                         ->where('slider_id', $sliderId)
                         ->where('lang', $language->lang_code)
                         ->update([
-                            'title' => $request->input('title_' . $language->lang_code),
-                            'title_1' => $request->input('title_1_' . $language->lang_code),
-                            'description' => $request->input('description_' . $language->lang_code),
+                            'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
+                            'title_1' => $request->input('title_1_' . $language->lang_code) ?? $request->input('title_1_en'),
+                            'description' => $request->input('description_' . $language->lang_code) ?? $request->input('description_en'),
                             'image' => $imageName,
-                            'alt' => $request->input('alt_' . $language->lang_code),
+                            'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
                         ]);
                 } else {
                     DB::table('sector_slider_1')->insert([
@@ -225,17 +227,17 @@ class SectorController extends Controller
                         'lang' => $language->lang_code,
                         'sector_id' => $id,
                         'slider_id' => $sliderId,
-                        'title' => $request->input('title_' . $language->lang_code),
-                        'title_1' => $request->input('title_1_' . $language->lang_code),
-                        'description' => $request->input('description_' . $language->lang_code),
+                        'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
+                        'title_1' => $request->input('title_1_' . $language->lang_code) ?? $request->input('title_1_en'),
+                        'description' => $request->input('description_' . $language->lang_code) ?? $request->input('description_en'),
                         'image' => $imageName,
-                        'alt' => $request->input('alt_' . $language->lang_code),
+                        'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
                     ]);
                 }
 
             }
 
-            return redirect()->back()->with('success', 'Slider başarıyla eklendi.');
+            return redirect()->route('admin.sector.slider1.index', $id)->with('success', 'Slider başarıyla eklendi.');
         } catch (\Throwable $th) {
             dd($th);
             return redirect()->back()->withErrors(['error' => 'Hata oluştu: ' . $th->getMessage()]);
@@ -295,18 +297,20 @@ class SectorController extends Controller
             foreach ($this->languages as $language) {
 
                 //Validation
-                $request->validate([
-                    'title_' . $language->lang_code => 'required|string|max:255',
-                    'alt_' . $language->lang_code => 'required|string|max:255',
-                    'image_' . $language->lang_code => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-                ]); 
+                if($language->lang_code == 'en'){
+                    $request->validate([
+                        'title_' . $language->lang_code => 'required|string|max:255',
+                        'alt_' . $language->lang_code => 'required|string|max:255',
+                        'image_' . $language->lang_code => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+                    ]); 
+                }
 
-                if ($request->hasFile('image_' . $language->lang_code)) {
-                    $image = $request->file('image_' . $language->lang_code);
-                    $imageName = seoUrl($request->input('alt_' . $language->lang_code)) . '_' . time() . '.' . $image->getClientOriginalExtension();
-                    $image->move(public_path($language->lang_code . '/' . $language->uploads_folder . '/' . $language->sector_images_folder), $imageName);
-                } else {
-                    $imageName = $request->input('old_image_' . $language->lang_code, null);
+                if ($request->hasFile('image_en') || $request->hasFile('image_' . $language->lang_code)) {
+                    $tmpImgPath = createTmpFile($request, 'image_en', $this->languages[0]);
+                    $imageName = moveFile($request,$language,'image_' . $language->lang_code, 'image_en', 'alt_' . $language->lang_code, 'alt_en', $language->sector_images_folder, $tmpImgPath);
+                    //dd($imageName);
+                }else{
+                    $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
                 }
 
                 //DB::table('sector_slider_1') updateOrCreate
@@ -320,9 +324,9 @@ class SectorController extends Controller
                         ->where('slider_id', $sliderId)
                         ->where('lang', $language->lang_code)
                         ->update([
-                            'title' => $request->input('title_' . $language->lang_code),
+                            'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
                             'image' => $imageName,
-                            'alt' => $request->input('alt_' . $language->lang_code),
+                            'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
                         ]);
                 } else {
                     DB::table('sector_slider_2')->insert([
@@ -330,15 +334,15 @@ class SectorController extends Controller
                         'lang' => $language->lang_code,
                         'sector_id' => $id,
                         'slider_id' => $sliderId,
-                        'title' => $request->input('title_' . $language->lang_code),
+                        'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
                         'image' => $imageName,
-                        'alt' => $request->input('alt_' . $language->lang_code),
+                        'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
                     ]);
                 }
 
             }
 
-            return redirect()->back()->with('success', 'Slider başarıyla eklendi.');
+            return redirect()->route('admin.sector.slider2.index', $id)->with('success', 'Slider başarıyla eklendi.');
         } catch (\Throwable $th) {
             dd($th);
             return redirect()->back()->withErrors(['error' => 'Hata oluştu: ' . $th->getMessage()]);

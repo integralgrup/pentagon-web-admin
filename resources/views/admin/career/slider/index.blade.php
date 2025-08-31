@@ -54,7 +54,7 @@
                         <tr class="align-middle">
                           <td>{{ $slider->id }}</td>
                           <td>{{ $slider->title }}</td>
-                          <td><img src="{{ asset(getFolder(['uploads_folder', 'images_folder'], $slider->lang_code) . '/' . $slider->image) }}" alt="{{ $slider->alt }}" width="50"></td>
+                          <td><img src="{{ $languages[0]->domain .'/'. getFolder(['uploads_folder', 'images_folder'], $languages[0]->lang_code) . '/' . $slider->image }}" alt="{{ $slider->alt }}" width="50"></td>
                           <td>
                             <a href="{{ route('admin.career.slider.edit', $slider->slider_id) }}" class="btn btn-primary btn-sm">Düzenle</a>
                             <form action="{{ route('admin.career.slider.destroy', $slider->slider_id) }}" method="POST" style="display:inline;">

@@ -45,40 +45,41 @@ class PageController extends Controller
             
             //validation
             foreach ($languages as $language) {
-                
-                $request->validate([
-                    'title_' . $language->lang_code => 'required|max:100',
-                    'seo_url_' . $language->lang_code => 'required|max:255',
-                    'description_' . $language->lang_code => 'required',
-                    'image_' . $language->lang_code => 'nullable|image|max:2048', // Assuming image is optional
-                    'alt_' . $language->lang_code => 'required|max:255',
-                    'seo_title_' . $language->lang_code => 'nullable|max:255',
-                    'seo_description_' . $language->lang_code => 'nullable|max:255',
-                    'seo_keywords_' . $language->lang_code => 'nullable|max:255',
-                ]);
+                if($language->lang_code == 'en'){
+                    
+                    $request->validate([
+                        'title_' . $language->lang_code => 'required|max:100',
+                        'seo_url_' . $language->lang_code => 'required|max:255',
+                        'description_' . $language->lang_code => 'required',
+                        'image_' . $language->lang_code => 'nullable|image|max:2048', // Assuming image is optional
+                        'alt_' . $language->lang_code => 'required|max:255',
+                        'seo_title_' . $language->lang_code => 'nullable|max:255',
+                        'seo_description_' . $language->lang_code => 'nullable|max:255',
+                        'seo_keywords_' . $language->lang_code => 'nullable|max:255',
+                    ]);
+
+                }
 
                 // save image if it exists
-                if ($request->hasFile('image_' . $language->lang_code)) {
-                    
-                    $image = $request->file('image_' . $language->lang_code);
-                    $imageName = seoUrl($request->input('alt_' . $language->lang_code)) . '_' . time() . '.' . $image->getClientOriginalExtension();
-                    $image->move(public_path($language->lang_code.'/'.$language->uploads_folder.'/'.$language->images_folder), $imageName); // Save to public/uploads/page
-
-                } else {
+                if ($request->hasFile('image_en') || $request->hasFile('image_' . $language->lang_code)) {
+                    $tmpImgPath = createTmpFile($request, 'image_en', $languages[0]);
+                    $imageName = moveFile($request,$language,'image_' . $language->lang_code, 'image_en', 'alt_' . $language->lang_code, 'alt_en', $language->images_folder, $tmpImgPath);
+                    //dd($imageName);
+                }else{
                     $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
                 }
 
                 Page::updateOrCreate(
                     ['page_id' => $page_id, 'lang' => $language->lang_code],
                     [
-                        'title' => $request->input('title_' . $language->lang_code),
-                        'description' => $request->input('description_' . $language->lang_code),
+                        'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
+                        'description' => $request->input('description_' . $language->lang_code) ?? $request->input('description_en'),
                         'image' => $imageName,
-                        'alt' => $request->input('alt_' . $language->lang_code),
-                        'seo_url' => $request->input('seo_url_' . $language->lang_code),
-                        'seo_title' => $request->input('seo_title_' . $language->lang_code),
-                        'seo_description' => $request->input('seo_description_' . $language->lang_code),
-                        'seo_keywords' => $request->input('seo_keywords_' . $language->lang_code),
+                        'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
+                        'seo_url' => $request->input('seo_url_' . $language->lang_code) ?? $request->input('seo_url_en'),
+                        'seo_title' => $request->input('seo_title_' . $language->lang_code) ?? $request->input('seo_title_en'),
+                        'seo_description' => $request->input('seo_description_' . $language->lang_code) ?? $request->input('seo_description_en'),
+                        'seo_keywords' => $request->input('seo_keywords_' . $language->lang_code) ?? $request->input('seo_keywords_en'),
                         'created_at' => date('Y-m-d H:i:s')
                     ]
                 );

@@ -83,7 +83,7 @@
                                             <label for="image_{{ $language->lang_code }}" class="form-label">Görsel ({{ $language->lang_code }})</label>
                                             <input type="file" class="form-control" id="image_{{ $language->lang_code }}" name="image_{{ $language->lang_code }}" accept="image/*" >
                                             @if($image[$language->lang_code])
-                                                <img src="{{ asset(getFolder(['uploads_folder','catalog_files_folder'], $language->lang_code) . '/' . $image[$language->lang_code]) }}" alt="{{ $alt[$language->lang_code] }}" style="width: 200px; height: auto; margin-top: 10px;">
+                                                <img src="{{ $language->domain .'/'. getFolder(['uploads_folder','catalog_files_folder'], $language->lang_code) . '/' . $image[$language->lang_code] }}" alt="{{ $alt[$language->lang_code] }}" style="width: 200px; height: auto; margin-top: 10px;">
                                                 <input type="hidden" class="form-control" id="old_image_{{ $language->lang_code }}" name="old_image_{{ $language->lang_code }}" value="{{ $image[$language->lang_code] }}" readonly>
                                             @endif
                                         </div>
@@ -92,7 +92,7 @@
                                             <label for="file_{{ $language->lang_code }}" class="form-label">Dosya ({{ $language->lang_code }})</label>
                                             <input type="file" class="form-control" id="file_{{ $language->lang_code }}" name="file_{{ $language->lang_code }}" accept=".pdf" >
                                             @if($filename[$language->lang_code])
-                                                <a href="{{ asset(getFolder(['uploads_folder','catalog_files_folder'], $language->lang_code) . '/' . $filename[$language->lang_code]) }}" target="_blank">Mevcut Dosyayı Görüntüle</a>
+                                                <a href="{{ $language->domain .'/'. getFolder(['uploads_folder','catalog_files_folder'], $language->lang_code) . '/' . $filename[$language->lang_code] }}" target="_blank">Mevcut Dosyayı Görüntüle</a>
                                                 <input type="hidden" class="form-control" id="old_file_{{ $language->lang_code }}" name="old_file_{{ $language->lang_code }}" value="{{ $filename[$language->lang_code] }}" readonly>
                                             @endif
                                         </div>

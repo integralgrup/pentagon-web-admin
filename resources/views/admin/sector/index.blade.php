@@ -58,12 +58,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($sectors as $item)
+                                @foreach($sectors as $key => $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->title }}</td>
                                         <td>
-                                            <img src="{{ asset( getFolder(['uploads_folder', 'sector_images_folder']) . '/' . $item->image) }}" alt="{{ $item->alt }}" class="img-thumbnail" width="100">
+                                            <img src="{{ $languages[0]->domain .'/'. getFolder(['uploads_folder', 'sector_images_folder'], $item->lang) . '/' . $item->image }}" alt="{{ $item->alt }}" class="img-thumbnail" width="100">
                                         </td>
                                         <td>
                                             <a href="{{ route('admin.sector.slider1.index', $item->sector_id) }}" class="btn btn-info btn-sm">

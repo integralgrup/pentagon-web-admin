@@ -60,26 +60,26 @@ class MenuController extends Controller
                 //Update or create existing menu items for the given menu_id
                 foreach ($languages as $language) {
                     // Validate the request data for each language
-                    $request->validate([
-                        'lang_' . $language->lang_code => 'required|max:10',
-                        'parent_menu_id_' . $language->lang_code => 'nullable|integer',
-                        'title_' . $language->lang_code => 'required|max:255',
-                        'seo_url_' . $language->lang_code => 'required|max:255',
-                        'image_' . $language->lang_code => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
-                        'alt_' . $language->lang_code => 'required|max:255',
-                        'menu_type_' . $language->lang_code => 'required|in:header,footer,sidebar', // Assuming these are the valid types
-                        'page_type_' . $language->lang_code => 'required|max:255',
-                        'sort' => 'nullable|integer',
-                        'isActive' => 'boolean',
-                    ]);
+                    if($language->lang_code == 'en'){
+                        $request->validate([
+                            'lang_' . $language->lang_code => 'required|max:10',
+                            'parent_menu_id_' . $language->lang_code => 'nullable|integer',
+                            'title_' . $language->lang_code => 'required|max:255',
+                            'seo_url_' . $language->lang_code => 'required|max:255',
+                            'image_' . $language->lang_code => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+                            'alt_' . $language->lang_code => 'required|max:255',
+                            'menu_type_' . $language->lang_code => 'required|in:header,footer,sidebar', // Assuming these are the valid types
+                            'page_type_' . $language->lang_code => 'required|max:255',
+                            'sort' => 'nullable|integer',
+                            'isActive' => 'boolean',
+                        ]);
+                    }
                     // save image if it exists
-                    if ($request->hasFile('image_' . $language->lang_code)) {
-                        
-                        $image = $request->file('image_' . $language->lang_code);
-                        $imageName = seoUrl($request->input('title_' . $language->lang_code)) . '_' . time() .  '.webp';
-                        $image->move(public_path($language->lang_code.'/'.$language->uploads_folder.'/'.$language->images_folder), $imageName); // Save to public/uploads/images
-
-                    } else {
+                    if ($request->hasFile('image_en') || $request->hasFile('image_' . $language->lang_code)) {
+                        $tmpImgPath = createTmpFile($request, 'image_en', $languages[0]);
+                        $imageName = moveFile($request,$language,'image_' . $language->lang_code, 'image_en', 'title_' . $language->lang_code, 'title_en', $language->images_folder, $tmpImgPath);
+                        //dd($imageName);
+                    }else{
                         $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
                     }
 
@@ -91,12 +91,12 @@ class MenuController extends Controller
                         ],
                         [
                             'parent_menu_id' => $request->input('parent_menu_id_' . $language->lang_code) ?? 0,
-                            'title' => $request->input('title_' . $language->lang_code),
-                            'seo_url' => $request->input('seo_url_' . $language->lang_code),
+                            'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
+                            'seo_url' => $request->input('seo_url_' . $language->lang_code) ?? $request->input('seo_url_en'),
                             'image' => $imageName, // save relative path
-                            'alt' => $request->input('alt_' . $language->lang_code),
-                            'menu_type' => $request->input('menu_type_' . $language->lang_code),
-                            'page_type' => $request->input('page_type_' . $language->lang_code),
+                            'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
+                            'menu_type' => $request->input('menu_type_' . $language->lang_code) ?? $request->input('menu_type_en'),
+                            'page_type' => $request->input('page_type_' . $language->lang_code) ?? $request->input('page_type_en'),
                             'sort' => $request->input('sort_' . $language->lang_code) ?? 0, // default to 0 if not provided
                             'isActive' => $request->isActive ? 1 : 0
                         ]

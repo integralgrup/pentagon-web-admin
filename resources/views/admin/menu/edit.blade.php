@@ -55,7 +55,7 @@
                         <form action="{{ route('admin.menu.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="tab-content" id="myTabContent">
-                            @foreach($menu_items as $menu)
+                            @foreach($menu_items as $key => $menu)
                                 <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" id="tab-{{$menu->lang}}" role="tabpanel" aria-labelledby="tab{{$menu->lang}}-tab">
                                     <div class="card-body" style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">    
                                         <input type="hidden" name="lang_{{$menu->lang}}" value="{{$menu->lang}}">
@@ -97,7 +97,7 @@
                                             <input type="file" class="form-control" id="image_{{$menu->lang}}" name="image_{{$menu->lang}}" accept="image/*">
                                             @if($menu->{'image'})
                                                 <input type="hidden" class="form-control mt-2" name="old_image_{{$menu->lang}}" value="{{ $menu->{'image'} }}" readonly>
-                                                <img src="{{ asset(getFolder(['uploads_folder', 'images_folder'], $menu->lang) . '/' . $menu->image ) }}" alt="Menu Image" class="img-thumbnail mt-2" style="max-width: 200px;">
+                                                <img src="{{ $languages[$key]->domain .'/'. getFolder(['uploads_folder', 'images_folder'], $menu->lang) .'/'.$menu->image }}" alt="Menu Image" class="img-thumbnail mt-2" style="max-width: 200px;">
                                             @endif
                                         </div>
                                         <!-- SEO URL -->

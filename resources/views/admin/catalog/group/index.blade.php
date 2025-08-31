@@ -54,7 +54,7 @@
                         <tr class="align-middle">
                           <td>{{ $group->id }}</td>
                           <td>{{ strip_tags($group->title) }}</td>
-                          <td><img src="{{ asset( getFolder([ 'uploads_folder', 'catalog_files_folder'], $group->lang) . '/' . $group->bg_image) }}" alt="{{ $group->title }}" width="50"></td>
+                          <td><img src="{{ $languages[0]->domain.'/'.getFolder([ 'uploads_folder', 'catalog_files_folder'], $group->lang) . '/' . $group->bg_image }}" alt="{{ $group->title }}" width="50"></td>
                           <td>
                             <!-- Kataloglar -->
                             <a href="{{ route('admin.catalog.index', ['catalogGroupId' => $group->catalog_group_id]) }}" class="btn btn-info btn-sm">Kataloglar</a>

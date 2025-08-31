@@ -47,63 +47,58 @@ class BrandController extends Controller
             
             //validation
             foreach ($languages as $language) {
-                
-                $request->validate([
-                    'title_' . $language->lang_code => 'required|max:100',
-                    'title_1_' . $language->lang_code => 'required|max:100',
-                    'url_' . $language->lang_code => 'required|max:255',
-                    'seo_url_' . $language->lang_code => 'required|max:255',
-                    'description_' . $language->lang_code => 'required',
-                    'bg_image_' . $language->lang_code => 'nullable|max:2048|mimes:webp,svg,jpg,jpeg,png', // Assuming image is optional
-                    // webp or svg or jpg or png
-                    'image_' . $language->lang_code => 'nullable|max:2048|mimes:webp,svg,jpg,jpeg,png',
-                    'alt_' . $language->lang_code => 'required|max:255',
-                    'url_' . $language->lang_code => 'required|max:255',
-                    'seo_title_' . $language->lang_code => 'nullable|max:255',
-                    'seo_description_' . $language->lang_code => 'nullable|max:255',
-                    'seo_keywords_' . $language->lang_code => 'nullable|max:255',
-                ]);
-
+                if($language->lang_code == 'en'){
+                    $request->validate([
+                        'title_' . $language->lang_code => 'required|max:100',
+                        'title_1_' . $language->lang_code => 'required|max:100',
+                        'url_' . $language->lang_code => 'required|max:255',
+                        'seo_url_' . $language->lang_code => 'required|max:255',
+                        'description_' . $language->lang_code => 'required',
+                        'bg_image_' . $language->lang_code => 'nullable|max:2048|mimes:webp,svg,jpg,jpeg,png', // Assuming image is optional
+                        // webp or svg or jpg or png
+                        'image_' . $language->lang_code => 'nullable|max:2048|mimes:webp,svg,jpg,jpeg,png',
+                        'alt_' . $language->lang_code => 'required|max:255',
+                        'url_' . $language->lang_code => 'required|max:255',
+                        'seo_title_' . $language->lang_code => 'nullable|max:255',
+                        'seo_description_' . $language->lang_code => 'nullable|max:255',
+                        'seo_keywords_' . $language->lang_code => 'nullable|max:255',
+                    ]);
+                }
                 // save image if it exists
-                if ($request->hasFile('image_' . $language->lang_code)) {
-                    
-                    $image = $request->file('image_' . $language->lang_code);
-                    // Add original file extension
-                    $imageName = seoUrl($request->input('alt_' . $language->lang_code)) .  '_' . time() . '.' . $image->getClientOriginalExtension();
-                    $image->move(public_path($language->lang_code.'/'.$language->uploads_folder.'/'.$language->brand_images_folder), $imageName);
-                } else {
+                if ($request->hasFile('image_en') || $request->hasFile('image_' . $language->lang_code)) {
+                    $tmpImgPath = createTmpFile($request, 'image_en', $languages[0]);
+                    $imageName = moveFile($request,$language,'image_' . $language->lang_code, 'image_en', 'alt_' . $language->lang_code, 'alt_en', $language->brand_images_folder, $tmpImgPath);
+                    //dd($imageName);
+                }else{
                     $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
                 }
 
-                if ($request->hasFile('bg_image_' . $language->lang_code)) {
-                    $bgImage = $request->file('bg_image_' . $language->lang_code);
-                    // Add original file extension
-                    $bgImageName = seoUrl($request->input('alt_' . $language->lang_code)) .  '_bg_' . time() . '.' . $bgImage->getClientOriginalExtension();
-                    $bgImage->move(public_path($language->lang_code.'/'.$language->uploads_folder.'/'.$language->brand_images_folder), $bgImageName);
-                } else {
+                if ($request->hasFile('bg_image_' . $language->lang_code) || $request->hasFile('bg_image_en')) {
+                    $tmpImgPath = createTmpFile($request, 'bg_image_en', $languages[0]);
+                    $bgImageName = moveFile($request,$language,'bg_image_' . $language->lang_code, 'bg_image_en', 'alt_' . $language->lang_code, 'alt_en', $language->brand_images_folder, $tmpImgPath);
+                    //dd($bgImageName);
+                }else{
                     $bgImageName = $request->input('old_bg_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
                 }
 
                 Brand::updateOrCreate(
                     ['brand_id' => $brand_id, 'lang' => $language->lang_code],
                     [
-                        'title' => $request->input('title_' . $language->lang_code),
-                        'title_1' => $request->input('title_1_' . $language->lang_code),
-                        'url' => $request->input('url_' . $language->lang_code),
+                        'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
+                        'title_1' => $request->input('title_1_' . $language->lang_code) ?? $request->input('title_1_en'),
+                        'url' => $request->input('url_' . $language->lang_code) ?? $request->input('url_en'),
                         'bg_image' => $bgImageName,
-                        'description' => $request->input('description_' . $language->lang_code),
+                        'description' => $request->input('description_' . $language->lang_code) ?? $request->input('description_en'),
                         'image' => $imageName,
-                        'alt' => $request->input('alt_' . $language->lang_code),
-                        'seo_url' => $request->input('seo_url_' . $language->lang_code),
-                        'seo_title' => $request->input('seo_title_' . $language->lang_code),
-                        'seo_description' => $request->input('seo_description_' . $language->lang_code),
-                        'seo_keywords' => $request->input('seo_keywords_' . $language->lang_code),
+                        'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
+                        'seo_url' => $request->input('seo_url_' . $language->lang_code) ?? $request->input('seo_url_en'),
+                        'seo_title' => $request->input('seo_title_' . $language->lang_code) ?? $request->input('seo_title_en'),
+                        'seo_description' => $request->input('seo_description_' . $language->lang_code) ?? $request->input('seo_description_en'),
+                        'seo_keywords' => $request->input('seo_keywords_' . $language->lang_code) ?? $request->input('seo_keywords_en'),
                     ]
                 );
 
             }
-
-
 
             return redirect()->route('admin.brand')->with('success', 'Marka başarıyla kaydedildi.');
         } catch (\Exception $e) {
@@ -169,20 +164,22 @@ class BrandController extends Controller
             foreach ($languages as $language) {
 
                 //Validation
-                $request->validate([
-                    'title_' . $language->lang_code => 'required|string|max:255',
-                    'title_1_' . $language->lang_code => 'required|string|max:255',
-                    'description_' . $language->lang_code => 'required|string',
-                    'alt_' . $language->lang_code => 'required|string|max:255',
-                    'image_' . $language->lang_code => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-                ]); 
+                if($language->lang_code == 'en'){
+                    $request->validate([
+                        'title_' . $language->lang_code => 'required|string|max:255',
+                        'title_1_' . $language->lang_code => 'required|string|max:255',
+                        'description_' . $language->lang_code => 'required|string',
+                        'alt_' . $language->lang_code => 'required|string|max:255',
+                        'image_' . $language->lang_code => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+                    ]); 
+                }
 
-                if ($request->hasFile('image_' . $language->lang_code)) {
-                    $image = $request->file('image_' . $language->lang_code);
-                    $imageName = seoUrl($request->input('alt_' . $language->lang_code)) . '_' . time() . '.' . $image->getClientOriginalExtension();
-                    $image->move(public_path($language->lang_code . '/' . $language->uploads_folder . '/' . $language->brand_images_folder), $imageName);
-                } else {
-                    $imageName = $request->input('old_image_' . $language->lang_code, null);
+                if ($request->hasFile('image_en') || $request->hasFile('image_' . $language->lang_code)) {
+                    $tmpImgPath = createTmpFile($request, 'image_en', $languages[0]);
+                    $imageName = moveFile($request,$language,'image_' . $language->lang_code, 'image_en', 'alt_' . $language->lang_code, 'alt_en', $language->brand_images_folder, $tmpImgPath);
+                    //dd($imageName);
+                }else{
+                    $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
                 }
 
                 //DB::table('brand_slider_1') updateOrCreate
@@ -196,11 +193,11 @@ class BrandController extends Controller
                         ->where('slider_id', $sliderId)
                         ->where('lang', $language->lang_code)
                         ->update([
-                            'title' => $request->input('title_' . $language->lang_code),
-                            'title_1' => $request->input('title_1_' . $language->lang_code),
-                            'description' => $request->input('description_' . $language->lang_code),
+                            'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
+                            'title_1' => $request->input('title_1_' . $language->lang_code) ?? $request->input('title_1_en'),
+                            'description' => $request->input('description_' . $language->lang_code) ?? $request->input('description_en'),
                             'image' => $imageName,
-                            'alt' => $request->input('alt_' . $language->lang_code),
+                            'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
                         ]);
                 } else {
                     DB::table('brand_slider_1')->insert([
@@ -208,11 +205,11 @@ class BrandController extends Controller
                         'lang' => $language->lang_code,
                         'brand_id' => $id,
                         'slider_id' => $sliderId,
-                        'title' => $request->input('title_' . $language->lang_code),
-                        'title_1' => $request->input('title_1_' . $language->lang_code),
-                        'description' => $request->input('description_' . $language->lang_code),
+                        'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
+                        'title_1' => $request->input('title_1_' . $language->lang_code) ?? $request->input('title_1_en'),
+                        'description' => $request->input('description_' . $language->lang_code) ?? $request->input('description_en'),
                         'image' => $imageName,
-                        'alt' => $request->input('alt_' . $language->lang_code),
+                        'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
                     ]);
                 }
 
@@ -280,21 +277,23 @@ class BrandController extends Controller
             foreach ($languages as $language) {
 
                 //Validation
-                $request->validate([
-                    'title_' . $language->lang_code => 'required|string|max:255',
-                    'description_' . $language->lang_code => 'required|string|max:255',
-                    'category_' . $language->lang_code => 'required|string|max:255',
-                    'url_' . $language->lang_code => 'required|string|max:255',
-                    'alt_' . $language->lang_code => 'required|string|max:255',
-                    'image_' . $language->lang_code => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-                ]); 
+                if($language->lang_code == 'en'){   
+                    $request->validate([
+                        'title_' . $language->lang_code => 'required|string|max:255',
+                        'description_' . $language->lang_code => 'required|string|max:255',
+                        'category_' . $language->lang_code => 'required|string|max:255',
+                        'url_' . $language->lang_code => 'required|string|max:255',
+                        'alt_' . $language->lang_code => 'required|string|max:255',
+                        'image_' . $language->lang_code => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+                    ]); 
+                }
 
-                if ($request->hasFile('image_' . $language->lang_code)) {
-                    $image = $request->file('image_' . $language->lang_code);
-                    $imageName = seoUrl($request->input('alt_' . $language->lang_code)) . '_' . time() . '.' . $image->getClientOriginalExtension();
-                    $image->move(public_path($language->lang_code . '/' . $language->uploads_folder . '/' . $language->brand_images_folder), $imageName);
-                } else {
-                    $imageName = $request->input('old_image_' . $language->lang_code, null);
+                if ($request->hasFile('image_en') || $request->hasFile('image_' . $language->lang_code)) {
+                    $tmpImgPath = createTmpFile($request, 'image_en', $languages[0]);
+                    $imageName = moveFile($request,$language,'image_' . $language->lang_code, 'image_en', 'alt_' . $language->lang_code, 'alt_en', $language->brand_images_folder, $tmpImgPath);
+                    //dd($imageName);
+                }else{
+                    $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
                 }
 
                 //DB::table('brand_slider_2') updateOrCreate
@@ -308,12 +307,12 @@ class BrandController extends Controller
                         ->where('slider_id', $sliderId)
                         ->where('lang', $language->lang_code)
                         ->update([
-                            'title' => $request->input('title_' . $language->lang_code),
-                            'description' => $request->input('description_' . $language->lang_code),
-                            'category' => $request->input('category_' . $language->lang_code),
-                            'url' => $request->input('url_' . $language->lang_code),
+                            'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
+                            'description' => $request->input('description_' . $language->lang_code) ?? $request->input('description_en'),
+                            'category' => $request->input('category_' . $language->lang_code) ?? $request->input('category_en'),
+                            'url' => $request->input('url_' . $language->lang_code) ?? $request->input('url_en'),
                             'image' => $imageName,
-                            'alt' => $request->input('alt_' . $language->lang_code),
+                            'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
                         ]);
                 } else {
                     DB::table('brand_slider_2')->insert([
@@ -321,12 +320,12 @@ class BrandController extends Controller
                         'lang' => $language->lang_code,
                         'brand_id' => $id,
                         'slider_id' => $sliderId,
-                        'title' => $request->input('title_' . $language->lang_code),
-                        'description' => $request->input('description_' . $language->lang_code),
-                        'category' => $request->input('category_' . $language->lang_code),
-                        'url' => $request->input('url_' . $language->lang_code),
+                        'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
+                        'description' => $request->input('description_' . $language->lang_code) ?? $request->input('description_en'),
+                        'category' => $request->input('category_' . $language->lang_code) ?? $request->input('category_en'),
+                        'url' => $request->input('url_' . $language->lang_code) ?? $request->input('url_en'),
                         'image' => $imageName,
-                        'alt' => $request->input('alt_' . $language->lang_code),
+                        'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
                     ]);
                 }
 

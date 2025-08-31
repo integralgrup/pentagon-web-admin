@@ -44,7 +44,8 @@
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link {{ $loop->first ? 'active' : '' }}" id="tab-{{ $language->id }}-tab" data-bs-toggle="tab" data-bs-target="#tab-{{ $language->id }}"
                                             type="button" role="tab" aria-controls="tab-{{ $language->id }}" aria-selected="{{ $loop->first ? 'true' : 'false' }}">
-                                        <img src="{{ $language->domain .'/'. getFolder(['uploads_folder', 'images_folder'], $language->lang_code) .'/'.$language->flag_image }}" alt="{{ $language->title }}" style="width: 20px; margin-right: 5px;"> {{ strtoupper($language->lang_code) }}
+                                        <img src="{{ $language->domain.'/'. getFolder(['uploads_folder', 'images_folder'], $language->lang_code) .'/'. $language->flag_image }}" alt="{{ $language->title }}" style="width: 20px; margin-right: 5px;"> {{ strtoupper($language->lang_code) }}
+
                                     </button>
                                 </li>
                             @endforeach
@@ -88,7 +89,7 @@
                                             <label for="image_{{ $language->lang_code }}" class="form-label">Dosya ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="file" class="form-control" id="image_{{ $language->lang_code }}" name="image_{{ $language->lang_code }}">
                                             @if($image[$language->lang_code])
-                                                <img src="{{ asset(getFolder(['uploads_folder','brand_images_folder'], $language->lang_code) . '/' . $image[$language->lang_code]) }}" alt="{{ $alt[$language->lang_code] }}" style="width: 200px; height: auto; margin-top: 10px;">
+                                                <img src="{{ $language->domain .'/'. getFolder(['uploads_folder','brand_images_folder'], $language->lang_code) . '/' . $image[$language->lang_code] }}" alt="{{ $alt[$language->lang_code] }}" style="width: 200px; height: auto; margin-top: 10px;">
                                                 <input type="hidden" class="form-control" id="old_image_{{ $language->lang_code }}" name="old_image_{{ $language->lang_code }}" value="{{ $image[$language->lang_code] }}" readonly>
                                             @endif
                                         </div>

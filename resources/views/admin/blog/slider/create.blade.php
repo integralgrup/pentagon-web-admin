@@ -56,6 +56,13 @@
                             @csrf
                             <div class="tab-content" id="myTabContent">
                                 @foreach($languages as $language)
+                                <?php 
+                                    if($language->lang_code == 'en'){
+                                        $required = 'required';
+                                    }else{
+                                        $required = '';
+                                    }
+                                ?>
                                 <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" id="tab-{{ $language->id }}" role="tabpanel" aria-labelledby="tab-{{ $language->id }}-tab">
                                     <div class="card-body" style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
                                         <input type="hidden" name="lang_{{ $language->lang_code }}" value="{{ $language->lang_code }}">
@@ -66,7 +73,7 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="alt_{{ $language->lang_code }}" class="form-label">Alt Metin ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="text" class="form-control" id="alt_{{ $language->lang_code }}" name="alt_{{ $language->lang_code }}" required>
+                                            <input type="text" class="form-control" id="alt_{{ $language->lang_code }}" name="alt_{{ $language->lang_code }}" {{ $required }}>
                                         </div>
                                     </div>
                                 </div>

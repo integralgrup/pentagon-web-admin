@@ -35,8 +35,11 @@ class BlogController extends Controller
         if ($request->has('blog_id')) {
                 $blog_id = $request->blog_id; // Use the provided blog_id
             }else{
-                $blog_id = Blog::max('blog_id') + 1; // Increment the maximum blog_id by 1
-                if (!$blog_id) {
+
+                //if blog count is > 0
+                if (Blog::count() > 0) {
+                    $blog_id = Blog::max('blog_id') + 1; // Increment the maximum blog_id by 1
+                } else {
                     $blog_id = 1; // If no blog items exist, start with 1
                 }
             }
@@ -47,39 +50,39 @@ class BlogController extends Controller
             //validation
             foreach ($languages as $language) {
                 
-                $request->validate([
-                    'title_' . $language->lang_code => 'required|max:100',
-                    'seo_url_' . $language->lang_code => 'required|max:255',
-                    'description_' . $language->lang_code => 'required',
-                    'image_' . $language->lang_code => 'nullable|image|max:2048', // Assuming image is optional
-                    'alt_' . $language->lang_code => 'required|max:255',
-                    'seo_title_' . $language->lang_code => 'nullable|max:255',
-                    'seo_description_' . $language->lang_code => 'nullable|max:255',
-                    'seo_keywords_' . $language->lang_code => 'nullable|max:255',
-                ]);
-
-                // save image if it exists
-                if ($request->hasFile('image_' . $language->lang_code)) {
+                if($language->lang_code == 'en'){
                     
-                    $image = $request->file('image_' . $language->lang_code);
-                    $imageName = seoUrl($request->input('alt_' . $language->lang_code)) . '_' . time() . '.' . $image->getClientOriginalExtension();
-                    $image->move(public_path($language->lang_code.'/'.$language->uploads_folder.'/'.$language->blog_images_folder), $imageName); // Save to public/uploads/blog
+                    $request->validate([
+                        'title_' . $language->lang_code => 'required|max:100',
+                        'seo_url_' . $language->lang_code => 'required|max:255',
+                        'description_' . $language->lang_code => 'required',
+                        'image_' . $language->lang_code => 'nullable|image|max:2048', // Assuming image is optional
+                        'alt_' . $language->lang_code => 'required|max:255',
+                        'seo_title_' . $language->lang_code => 'nullable|max:255',
+                        'seo_description_' . $language->lang_code => 'nullable|max:255',
+                        'seo_keywords_' . $language->lang_code => 'nullable|max:255',
+                    ]);
+                }
 
-                } else {
+                if ($request->hasFile('image_en') || $request->hasFile('image_' . $language->lang_code)) {
+                    $tmpImgPath = createTmpFile($request, 'image_en', $languages[0]);
+                    $imageName = moveFile($request,$language,'image_' . $language->lang_code, 'image_en', 'alt_' . $language->lang_code, 'alt_en', $language->blog_images_folder, $tmpImgPath);
+                    //dd($imageName);
+                }else{
                     $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
                 }
 
                 Blog::updateOrCreate(
                     ['blog_id' => $blog_id, 'lang' => $language->lang_code],
                     [
-                        'title' => $request->input('title_' . $language->lang_code),
-                        'description' => $request->input('description_' . $language->lang_code),
+                        'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
+                        'description' => $request->input('description_' . $language->lang_code) ?? $request->input('description_en'),
                         'image' => $imageName,
-                        'alt' => $request->input('alt_' . $language->lang_code),
-                        'seo_url' => $request->input('seo_url_' . $language->lang_code),
-                        'seo_title' => $request->input('seo_title_' . $language->lang_code),
-                        'seo_description' => $request->input('seo_description_' . $language->lang_code),
-                        'seo_keywords' => $request->input('seo_keywords_' . $language->lang_code),
+                        'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
+                        'seo_url' => $request->input('seo_url_' . $language->lang_code) ?? $request->input('seo_url_en'),
+                        'seo_title' => $request->input('seo_title_' . $language->lang_code) ?? $request->input('seo_title_en'),
+                        'seo_description' => $request->input('seo_description_' . $language->lang_code) ?? $request->input('seo_description_en'),
+                        'seo_keywords' => $request->input('seo_keywords_' . $language->lang_code) ?? $request->input('seo_keywords_en'),
                     ]
                 );
 
@@ -143,19 +146,18 @@ class BlogController extends Controller
         }
 
         foreach ($languages as $language) {
-            $request->validate([
-                'image_' . $language->lang_code => 'nullable|mimes:jpg,jpeg,png,mp4|max:4096',
-                'alt_' . $language->lang_code => 'required|max:255',
-            ]);
+            if($language->lang_code == 'en'){
+                $request->validate([
+                    'image_' . $language->lang_code => 'nullable|mimes:jpg,jpeg,png,mp4|max:4096',
+                    'alt_' . $language->lang_code => 'required|max:255',
+                ]);
+            }
 
-            if ($request->hasFile('image_' . $language->lang_code)) {
-
-                $image = $request->file('image_' . $language->lang_code);
-                // Add original file extension
-                $imageName = seoUrl($request->input('alt_' . $language->lang_code)) .  '_' . time() . '.' . $image->getClientOriginalExtension();
-                $image->move(public_path($language->lang_code.'/'.$language->uploads_folder.'/'.$language->blog_images_folder), $imageName);
-
-            }else {
+            if ($request->hasFile('image_en') || $request->hasFile('image_' . $language->lang_code)) {
+                $tmpImgPath = createTmpFile($request, 'image_en', $languages[0]);
+                $imageName = moveFile($request,$language,'image_' . $language->lang_code, 'image_en', 'alt_' . $language->lang_code, 'alt_en', $language->blog_images_folder, $tmpImgPath);
+                //dd($imageName);
+            }else{
                 $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
             }
 
@@ -164,7 +166,7 @@ class BlogController extends Controller
                 [
                     'blog_id' => $id,
                     'media_file' => $imageName,
-                    'alt' => $request->input('alt_' . $language->lang_code),
+                    'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
                 ]
             );
         }

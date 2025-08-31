@@ -63,7 +63,7 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->title }}</td>
                                         <td>
-                                            <img src="{{ asset( getFolder(['uploads_folder','images_folder']) . '/' . $item->image) }}" alt="{{ $item->alt }}" class="img-thumbnail" width="100">
+                                            <img src="{{ $languages[0]->domain .'/'.  getFolder(['uploads_folder','images_folder'], $languages[0]->lang_code) . '/' . $item->image }}" alt="{{ $item->alt }}" class="img-thumbnail" width="100">
                                         </td>
                                         <td>
                                             <a href="{{ route('admin.page.edit', $item->page_id) }}" class="btn btn-warning btn-sm">

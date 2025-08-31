@@ -50,11 +50,11 @@
                         </tr>
                       </thead>
                       <tbody>
-                        @foreach($aboutContent as $about)
+                        @foreach($aboutContent as $key => $about)
                         <tr class="align-middle">
                           <td>{{ $about->id }}</td>
                           <td>{{ $about->title }}</td>
-                          <td><img src="{{ asset($about->image) }}" alt="{{ $about->alt }}" width="50"></td>
+                          <td><img src="{{ $languages[0]->domain .'/'. getFolder(['uploads_folder', 'images_folder'], $languages[0]->lang_code) .'/'.$about->image }}" alt="{{ $about->alt }}" width="50"></td>
                           <td>
                             <a href="{{ route('admin.about.edit') }}" class="btn btn-primary btn-sm">Düzenle</a>
                             <form action="{{ route('admin.about.destroy', $about->id) }}" method="POST" style="display:inline;">

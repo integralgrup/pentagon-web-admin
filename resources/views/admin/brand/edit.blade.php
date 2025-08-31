@@ -92,7 +92,7 @@
                                             <label for="image_{{ $language->lang_code }}">Logo ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="file" class="form-control" id="image_{{ $language->lang_code }}" name="image_{{ $language->lang_code }}">
                                             @if($image[$language->lang_code])
-                                                <img src="{{ asset(getFolder(['uploads_folder','brand_images_folder'], $language->lang_code) . '/' . $image[$language->lang_code]) }}" alt="{{ $alt[$language->lang_code] }}" style="width: 200px; height: auto; margin-top: 10px;">
+                                                <img src="{{ $language->domain.'/'. getFolder(['uploads_folder','brand_images_folder'], $language->lang_code) . '/' . $image[$language->lang_code] }}" alt="{{ $alt[$language->lang_code] }}" style="width: 200px; height: auto; margin-top: 10px;">
                                                 <input type="hidden" class="form-control" id="old_image_{{ $language->lang_code }}" name="old_image_{{ $language->lang_code }}" value="{{ $image[$language->lang_code] }}" readonly>
                                             @endif
                                         </div>
@@ -100,7 +100,7 @@
                                             <label for="bg_image_{{ $language->lang_code }}">Görsel ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="file" class="form-control" id="bg_image_{{ $language->lang_code }}" name="bg_image_{{ $language->lang_code }}">
                                             @if($bg_image[$language->lang_code])
-                                                <img src="{{ asset(getFolder(['uploads_folder','brand_images_folder'], $language->lang_code) . '/' . $bg_image[$language->lang_code]) }}" alt="{{ $alt[$language->lang_code] }}" style="width: 200px; height: auto; margin-top: 10px;">
+                                                <img src="{{ $language->domain.'/'. getFolder(['uploads_folder','brand_images_folder'], $language->lang_code) . '/' . $bg_image[$language->lang_code] }}" alt="{{ $alt[$language->lang_code] }}" style="width: 200px; height: auto; margin-top: 10px;">
                                                 <input type="hidden" class="form-control" id="old_bg_image_{{ $language->lang_code }}" name="old_bg_image_{{ $language->lang_code }}" value="{{ $bg_image[$language->lang_code] }}" readonly>
                                             @endif
                                         </div>

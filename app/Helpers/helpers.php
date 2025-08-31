@@ -103,3 +103,45 @@ if(!function_exists('getStaticText')) {
         return null;
     }
 }
+if(!function_exists('createTmpFile')) {
+    function createTmpFile($request, $inputName, $language)
+    {
+        if($request->hasFile($inputName)){
+            //save image to temp folder
+            $image = $request->file($inputName);
+            $imageName = $language->lang_code . '-' . time() . '-' . uniqid() . '.' . $image->getClientOriginalExtension();
+            $tmpPath = $language->path.'/'.$language->uploads_folder.'/'.$language->images_folder . '/temp/';
+
+            if (!file_exists($tmpPath)) {
+                mkdir($tmpPath, 0777, true);
+            }
+
+            copy($image->getRealPath(), $tmpPath . $imageName);
+
+            $tmpImgPath = $tmpPath . $imageName;
+
+            return $tmpImgPath;
+        }
+    }
+}
+
+if(!function_exists('moveFile')) {
+    function moveFile($request, $language, $fileName, $enFileName, $imgTitle, $enImgTitle, $folderName, $tmpImgPath = null)
+    {
+        $image = $request->file($fileName) ?? $request->file($enFileName);
+        $imageName = seoUrl($request->input($imgTitle) ?? $request->input($enImgTitle)) . '_' . time() . '.' . $image->getClientOriginalExtension();
+        $folderPath = $language->path.'/'.$language->uploads_folder.'/'.$folderName ;
+        $imgPath = $folderPath .'/'. $imageName;
+
+        if(!file_exists($folderPath)) {
+            mkdir($folderPath, 0755, true);
+        }
+
+        if(isset($tmpImgPath) && file_exists($tmpImgPath)) {
+            copy($tmpImgPath, $imgPath);
+        }else{
+            $image->move($folderPath, $imageName); // Move the image to the specified folder
+        }
+        return $imageName;
+    }
+}

@@ -59,6 +59,7 @@
                         <form action="{{ route('admin.menu.store') }}" method="POST" enctype="multipart/form-data">
                         <div class="tab-content" id="myTabContent">
                             @foreach($languages as $language)
+                            <?php $required = $language->lang_code == 'en' ? 'required' : ''; ?>
                             <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" id="tab-{{$language->id}}" role="tabpanel" aria-labelledby="tab{{$language->id}}-tab">
                                 
                                     <div class="card-body" style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
@@ -69,7 +70,7 @@
                                         <!-- Page Type Dropdown -->
                                         <div class="mb-3">
                                             <label for="page_type_{{$language->lang_code}}" class="form-label">Sayfa Türü ({{ $language->lang_code }})</label>
-                                            <select name="page_type_{{$language->lang_code}}" id="page_type_{{$language->lang_code}}" class="form-select">
+                                            <select name="page_type_{{$language->lang_code}}" id="page_type_{{$language->lang_code}}" class="form-select" >
                                                 <option value="">Seçiniz</option>
                                                 <option value="about">Kurumsal</option>
                                                 <option value="contact">İletişim</option>
@@ -85,7 +86,7 @@
                                         <!-- Parent Menu Dropdown -->
                                         <div class="mb-3">
                                             <label for="parent_menu_id_{{$language->lang_code}}" class="form-label">Üst Menü ({{ $language->lang_code }})</label>
-                                            <select name="parent_menu_id_{{$language->lang_code}}" id="parent_menu_id_{{$language->lang_code}}" class="form-select">
+                                            <select name="parent_menu_id_{{$language->lang_code}}" id="parent_menu_id_{{$language->lang_code}}" class="form-select" {{ $required }}>
                                                 <option value="0">Seçiniz</option>
                                                 @foreach($parentMenus as $parentMenu)
                                                     <option value="{{ $parentMenu->menu_id }}">{{ $parentMenu->title }}</option>
@@ -95,19 +96,19 @@
                                         <!-- Title -->
                                         <div class="mb-3">
                                             <label for="title_{{$language->lang_code}}" class="form-label">Başlık ({{ $language->lang_code }})<span class="text-danger">*</span></label>
-                                            <input type="text" name="title_{{$language->lang_code}}" id="title_{{$language->lang_code}}" class="form-control" maxlength="255" required>
+                                            <input type="text" name="title_{{$language->lang_code}}" id="title_{{$language->lang_code}}" class="form-control" maxlength="255" {{ $required }}>
                                         </div>
 
                                         <!-- Image -->
                                         <div class="mb-3">
                                             <label for="image_{{$language->lang_code}}" class="form-label">Resim ({{ $language->lang_code }})<span class="text-danger">*</span></label>
-                                            <input type="file" name="image_{{$language->lang_code}}" id="image_{{$language->lang_code}}" class="form-control" accept="image/*" required>
+                                            <input type="file" name="image_{{$language->lang_code}}" id="image_{{$language->lang_code}}" class="form-control" accept="image/*" {{ $required }}>
                                         </div>
 
                                         <!-- SEO URL -->
                                         <div class="mb-3">
                                             <label for="seo_url_{{$language->lang_code}}" class="form-label">Seo URL ({{ $language->lang_code }})<span class="text-danger">*</span></label>
-                                            <input type="text" name="seo_url_{{$language->lang_code}}" id="seo_url_{{$language->lang_code}}" class="form-control" maxlength="255" required>
+                                            <input type="text" name="seo_url_{{$language->lang_code}}" id="seo_url_{{$language->lang_code}}" class="form-control" maxlength="255" {{ $required }}>
                                         </div>
 
                                         
@@ -115,13 +116,13 @@
                                         <!-- Alt Text -->
                                         <div class="mb-3">
                                             <label for="alt_{{$language->lang_code}}" class="form-label">Alt Text ({{ $language->lang_code }})<span class="text-danger">*</span></label>
-                                            <input type="text" name="alt_{{$language->lang_code}}" id="alt_{{$language->lang_code}}" class="form-control" maxlength="255" required>
+                                            <input type="text" name="alt_{{$language->lang_code}}" id="alt_{{$language->lang_code}}" class="form-control" maxlength="255" {{ $required }}>
                                         </div>
 
                                         <!-- Menu Type -->
                                         <div class="mb-3">
                                             <label for="menu_type_{{$language->lang_code}}" class="form-label">Menu Tipi ({{ $language->lang_code }})<span class="text-danger">*</span></label>
-                                            <select name="menu_type_{{$language->lang_code}}" id="menu_type_{{$language->lang_code}}" class="form-select" required>
+                                            <select name="menu_type_{{$language->lang_code}}" id="menu_type_{{$language->lang_code}}" class="form-select" {{ $required }}>
                                                 <option value="">-- Seçiniz --</option>
                                                 <option value="header">Header</option>
                                                 <option value="footer">Footer</option>

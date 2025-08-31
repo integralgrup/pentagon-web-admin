@@ -42,7 +42,7 @@ class CatalogController extends Controller
 
     public function groupStore(Request $request)
     {
-       
+       //dd($request->all());
        try {
             if($request->has('catalog_group_id')){
                     $catalog_group_id = $request->catalog_group_id; // Use the provided catalog_group_id
@@ -56,23 +56,23 @@ class CatalogController extends Controller
 
 
        foreach($this->languages as $language) {
-            $request->validate([
-                'title_' . $language->lang_code => 'required|max:255',
-                'seo_url_' . $language->lang_code => 'required|max:255',
-                'bg_image_' . $language->lang_code => 'nullable|image|max:2048', // Assuming image is optional
-                'alt_' . $language->lang_code => 'required|max:255',
-                'seo_title_' . $language->lang_code => 'nullable|max:255',
-                'seo_description_' . $language->lang_code => 'nullable|max:255',
-                'seo_keywords_' . $language->lang_code => 'nullable|max:255',
-            ]);
+            if($language->lang_code == 'en'){
+                $request->validate([
+                    'title_' . $language->lang_code => 'required|max:255',
+                    'seo_url_' . $language->lang_code => 'required|max:255',
+                    'bg_image_' . $language->lang_code => 'nullable|image|max:2048', // Assuming image is optional
+                    'alt_' . $language->lang_code => 'required|max:255',
+                    'seo_title_' . $language->lang_code => 'nullable|max:255',
+                    'seo_description_' . $language->lang_code => 'nullable|max:255',
+                    'seo_keywords_' . $language->lang_code => 'nullable|max:255',
+                ]);
+            }
 
-            if ($request->hasFile('bg_image_' . $language->lang_code)) {
-
-                    $image = $request->file('bg_image_' . $language->lang_code);
-                    $imageName = seoUrl($request->input('alt_' . $language->lang_code)) . '_' . time() . '.' . $image->getClientOriginalExtension();
-                    $image->move(public_path($language->lang_code.'/'.$language->uploads_folder.'/'.$language->catalog_files_folder), $imageName); // Save to public/uploads/blog
-
-            } else {
+            if ($request->hasFile('bg_image_en') || $request->hasFile('bg_image_' . $language->lang_code)) {
+                $tmpImgPath = createTmpFile($request, 'bg_image_en', $this->languages[0]);
+                $imageName = moveFile($request,$language,'bg_image_' . $language->lang_code, 'bg_image_en', 'alt_' . $language->lang_code, 'alt_en', $language->catalog_files_folder, $tmpImgPath);
+                //dd($imageName);
+            }else{
                 $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
             }
 
@@ -80,19 +80,20 @@ class CatalogController extends Controller
                 ['catalog_group_id' => $catalog_group_id, 'lang' => $language->lang_code],
                 [
                     'brand_id' => $request->input('brand_id'),
-                    'title' => $request->input('title_' . $language->lang_code),
-                    'seo_url' => $request->input('seo_url_' . $language->lang_code),
+                    'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
+                    'seo_url' => $request->input('seo_url_' . $language->lang_code) ?? $request->input('seo_url_en'),
                     'bg_image' => $imageName,
-                    'alt' => $request->input('alt_' . $language->lang_code),
-                    'seo_title' => $request->input('seo_title_' . $language->lang_code),
-                    'seo_description' => $request->input('seo_description_' . $language->lang_code),
-                    'seo_keywords' => $request->input('seo_keywords_' . $language->lang_code),
+                    'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
+                    'seo_title' => $request->input('seo_title_' . $language->lang_code) ?? $request->input('seo_title_en'),
+                    'seo_description' => $request->input('seo_description_' . $language->lang_code) ?? $request->input('seo_description_en'),
+                    'seo_keywords' => $request->input('seo_keywords_' . $language->lang_code) ?? $request->input('seo_keywords_en'),
                 ]
             );
 
         }
-        return redirect()->back()->with('success', 'Katalog grubu başarıyla oluşturuldu/güncellendi.');
+            return redirect()->route('admin.catalog.group.index')->with('success', 'Katalog grubu başarıyla oluşturuldu/güncellendi.');
         } catch (\Throwable $th) {
+            dd($th);
             return redirect()->back()->with('error', 'Bir hata oluştu: ' . $th->getMessage());
        }
        
@@ -130,6 +131,7 @@ class CatalogController extends Controller
     public function catalogStore(Request $request)
     {
        try {
+
         if($request->has('catalog_id')) {
             $catalogId = $request->catalog_id; // Use the provided catalog_id
         } else {
@@ -138,6 +140,8 @@ class CatalogController extends Controller
                 $catalogId = 1; // If no catalogs exist, start with 1
             }
         }
+
+        $catalogGroupId = $request->input('catalog_group_id');
 
         foreach($this->languages as $language) {
             $request->validate([
@@ -154,7 +158,7 @@ class CatalogController extends Controller
             );
         }
 
-        return redirect()->back()->with('success', 'Katalog başarıyla oluşturuldu/güncellendi.');
+        return redirect()->route('admin.catalog.index', $catalogGroupId)->with('success', 'Katalog başarıyla oluşturuldu/güncellendi.');
 
        } catch (\Throwable $th) {
         throw $th;
@@ -179,6 +183,7 @@ class CatalogController extends Controller
     public function catalogFileIndex($catalogId)
     {
         $catalogFiles = CatalogFile::where(['catalog_id' => $catalogId, 'lang' => app()->getLocale()])->get();
+        
         return view('admin.catalog.file.index', compact('catalogFiles', 'catalogId'));
     }
 
@@ -201,50 +206,47 @@ class CatalogController extends Controller
         }
 
         foreach($this->languages as $language) {
-            $request->validate([
-                'catalog_id' => 'required|integer|exists:catalog,catalog_id',
-                'title_' . $language->lang_code => 'required|max:255',
-                'image_' . $language->lang_code => 'nullable|image|max:2048', // Assuming image is optional
-                'file_' . $language->lang_code => 'nullable|file|mimes:pdf|max:10240', // 10MB Max
-                'alt_' . $language->lang_code => 'required|max:255',
-                'description_' . $language->lang_code => 'required',
-            ]);
-
-            if ($request->hasFile('image_' . $language->lang_code)) {
-
-                    $image = $request->file('image_' . $language->lang_code);
-                    $imageName = seoUrl($request->input('alt_' . $language->lang_code)) . '_' . time() . '.' . $image->getClientOriginalExtension();
-                    $image->move(public_path($language->lang_code.'/'.$language->uploads_folder.'/'.$language->catalog_files_folder), $imageName); // Save to public/uploads/blog
-
-            } else {
+            if($language->lang_code == 'en'){
+                $request->validate([
+                    'catalog_id' => 'required|integer|exists:catalog,catalog_id',
+                    'title_' . $language->lang_code => 'required|max:255',
+                    'image_' . $language->lang_code => 'nullable|image|max:2048', // Assuming image is optional
+                    'file_' . $language->lang_code => 'nullable|file|mimes:pdf|max:10240', // 10MB Max
+                    'alt_' . $language->lang_code => 'required|max:255',
+                    'description_' . $language->lang_code => 'required',
+                ]);
+            }
+            if ($request->hasFile('image_en') || $request->hasFile('image_' . $language->lang_code)) {
+                $tmpImgPath = createTmpFile($request, 'image_en', $this->languages[0]);
+                $imageName = moveFile($request,$language,'image_' . $language->lang_code, 'image_en', 'alt_' . $language->lang_code, 'alt_en', $language->catalog_files_folder, $tmpImgPath);
+                //dd($imageName);
+            }else{
                 $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
             }
 
-            if ($request->hasFile('file_' . $language->lang_code)) {
-
-                    $file = $request->file('file_' . $language->lang_code);
-                    $fileName = seoUrl($request->input('alt_' . $language->lang_code)) . '_' . time() . '.' . $file->getClientOriginalExtension();
-                    $file->move(public_path($language->lang_code.'/'.$language->uploads_folder.'/'.$language->catalog_files_folder), $fileName); // Save to public/uploads/blog
-
-            } else {
+            if ($request->hasFile('file_en') || $request->hasFile('file_' . $language->lang_code)) {
+                $tmpImgPath = createTmpFile($request, 'file_en', $this->languages[0]);
+                $fileName = moveFile($request,$language,'file_' . $language->lang_code, 'file_en', 'alt_' . $language->lang_code, 'alt_en', $language->catalog_files_folder, $tmpImgPath);
+                //dd($fileName);
+            }else{
                 $fileName = $request->input('old_file_' . $language->lang_code, null); // Use old file if no new file is uploaded
             }
-
+            $catalog_id = $request->input('catalog_id');
             CatalogFile::updateOrCreate(
                 ['file_id' => $fileId, 'lang' => $language->lang_code],
                 [
                     'catalog_id' => $request->input('catalog_id'),
-                    'title' => $request->input('title_' . $language->lang_code),
-                    'description' => $request->input('description_' . $language->lang_code),
+                    'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
+                    'description' => $request->input('description_' . $language->lang_code) ?? $request->input('description_en'),
                     'image' => $imageName,
                     'file' => $fileName,
-                    'alt' => $request->input('alt_' . $language->lang_code),
+                    'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
                     'sort' => $request->input('sort_' . $language->lang_code, 0), // Default sort to 0 if not provided
                 ]
             );
         }
 
-        return redirect()->back()->with('success', 'Katalog Dosyası başarıyla oluşturuldu/güncellendi.');
+        return redirect()->route('admin.catalog.files.index', $catalog_id)->with('success', 'Katalog Dosyası başarıyla oluşturuldu/güncellendi.');
 
        } catch (\Throwable $th) {
            dd($th);
@@ -254,7 +256,7 @@ class CatalogController extends Controller
 
     public function catalogFileEdit($id)
     {
-        $catalogFiles = CatalogFile::where(['catalog_id' => $id])->get();
+        $catalogFiles = CatalogFile::where(['file_id' => $id])->get();
         $catalogId = $id;   
         return view('admin.catalog.file.edit', compact('catalogFiles', 'catalogId'));
     }

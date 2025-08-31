@@ -80,7 +80,7 @@
                                             <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" required value="{{ $title[$language->lang_code] ?? '' }}">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="title_1_{{ $language->lang_code }}" class="form-label">Başlık ({{ $language->lang_code }})</label>
+                                            <label for="title_1_{{ $language->lang_code }}" class="form-label">Başlık 2 ({{ $language->lang_code }})</label>
                                             <input type="text" class="form-control" id="title_1_{{ $language->lang_code }}" name="title_1_{{ $language->lang_code }}" required value="{{ $title_1[$language->lang_code] ?? '' }}">
                                         </div>
                                         <div class="mb-3">
@@ -91,7 +91,7 @@
                                             <label for="image_{{ $language->lang_code }}" class="form-label">Görsel ({{ $language->lang_code }})</label>
                                             <input type="file" class="form-control" id="image_{{ $language->lang_code }}" name="image_{{ $language->lang_code }}" accept="image/*" value="{{ $image[$language->lang_code] ?? '' }}">
                                             @if($image[$language->lang_code])
-                                                <img src="{{ asset(getFolder(['uploads_folder','sector_images_folder']) . '/' . $image[$language->lang_code]) }}" alt="{{ $alt[$language->lang_code] }}" style="width: 200px; height: auto; margin-top: 10px;">
+                                                <img src="{{ $language->domain .'/'.  getFolder(['uploads_folder','sector_images_folder'], $language->lang_code) . '/' . $image[$language->lang_code] }}" alt="{{ $alt[$language->lang_code] }}" style="width: 200px; height: auto; margin-top: 10px;">
                                                 <input type="hidden" class="form-control" id="old_image_{{ $language->lang_code }}" name="old_image_{{ $language->lang_code }}" value="{{ $image[$language->lang_code] }}" readonly>
                                             @endif
                                         </div>
@@ -99,7 +99,7 @@
                                             <label for="bg_image_{{ $language->lang_code }}" class="form-label">Arka Plan Görseli ({{ $language->lang_code }})</label>
                                             <input type="file" class="form-control" id="bg_image_{{ $language->lang_code }}" name="bg_image_{{ $language->lang_code }}" accept="image/*" >
                                             @if($bg_image[$language->lang_code])
-                                                <img src="{{ asset(getFolder(['uploads_folder','sector_images_folder'], $language->lang_code) . '/' . $bg_image[$language->lang_code]) }}" alt="{{ $alt[$language->lang_code] }}" style="width: 200px; height: auto; margin-top: 10px;">
+                                                <img src="{{ $language->domain .'/'.  getFolder(['uploads_folder','sector_images_folder'], $language->lang_code) . '/' . $bg_image[$language->lang_code] }}" alt="{{ $alt[$language->lang_code] }}" style="width: 200px; height: auto; margin-top: 10px;">
                                                 <input type="hidden" class="form-control" id="old_bg_image_{{ $language->lang_code }}" name="old_bg_image_{{ $language->lang_code }}" value="{{ $bg_image[$language->lang_code] }}" readonly>
                                             @endif
                                         </div>
@@ -119,12 +119,12 @@
                                         <!-- seo_description -->
                                         <div class="mb-3">
                                             <label for="seo_description_{{ $language->lang_code }}" class="form-label">SEO Açıklaması ({{ $language->lang_code }})</label>
-                                            <textarea class="form-control" id="seo_description_{{ $language->lang_code }}" name="seo_description_{{ $language->lang_code }}" rows="3">{{ $seo_description[$language->lang_code] ?? '' }}</textarea>
+                                            <textarea class="form-control" id="seo_description_{{ $language->lang_code }}" name="seo_description_{{ $language->lang_code }}" required rows="3">{{ $seo_description[$language->lang_code] ?? '' }}</textarea>
                                         </div>
                                         <!-- seo_keywords -->
                                         <div class="mb-3">
                                             <label for="seo_keywords_{{ $language->lang_code }}" class="form-label">SEO Anahtar Kelimeleri ({{ $language->lang_code }})</label>
-                                            <input type="text" class="form-control" id="seo_keywords_{{ $language->lang_code }}" name="seo_keywords_{{ $language->lang_code }}" value="{{ $seo_keywords[$language->lang_code] ?? '' }}">
+                                            <input type="text" class="form-control" id="seo_keywords_{{ $language->lang_code }}" name="seo_keywords_{{ $language->lang_code }}" required value="{{ $seo_keywords[$language->lang_code] ?? '' }}">
                                         </div>
                                     </div>
                                 </div>
