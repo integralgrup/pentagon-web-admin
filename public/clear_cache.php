@@ -7,8 +7,8 @@ ini_set('display_errors', '1');
 use Illuminate\Support\Facades\Artisan;
 
 // Make sure we load the Laravel bootstrap
-require __DIR__ . '/vendor/autoload.php';
-$app = require_once __DIR__ . '/bootstrap/app.php';
+require __DIR__ . '/../vendor/autoload.php';
+$app = require_once __DIR__ . '/../bootstrap/app.php';
 
 // Get the console kernel
 $kernel = $app->make(Illuminate\Contracts\Console\Kernel::class);
