@@ -54,6 +54,7 @@
                         foreach($sliders as $item){
                             $slider_id = $item->slider_id;
                             $title[$item->lang] = $item->title;
+                            $slide_title[$item->lang] = $item->slide_title;
                             $title_1[$item->lang] = $item->title_1;
                             $title_2[$item->lang] = $item->title_2;
                             $button_title[$item->lang] = $item->button_title;
@@ -77,7 +78,7 @@
                                         <!-- slide_title -->
                                         <div class="mb-3">
                                             <label for="slide_title_{{ $language->lang_code }}" class="form-label">Slide Adı ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="text" class="form-control" id="slide_title_{{ $language->lang_code }}" name="slide_title_{{ $language->lang_code }}" required value="{{ $item->slide_title ?? '' }}">
+                                            <input type="text" class="form-control" id="slide_title_{{ $language->lang_code }}" name="slide_title_{{ $language->lang_code }}" required value="{{ $slide_title[$language->lang_code] ?? '' }}">
                                         </div>
                                         <div class="form-group">
                                             <label for="title_{{ $language->lang_code }}">Başlık ({{ strtoupper($language->lang_code) }})</label>
