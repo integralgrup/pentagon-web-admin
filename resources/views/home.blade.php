@@ -11,7 +11,7 @@
                             <div class="item relative w-full h-full">
                                 <div class="image-wrapper w-full h-full pointer-events-none relative" data-swiper-parallax="50%">
                                     <div class="slider-image z-2 w-full h-full">
-                                        <img src="<?= env('HTTP_DOMAIN') .'/'. getFolder(['uploads_folder','images_folder'], app()->getLocale()) .'/'. $item->image ?>" alt="<?=$item->alt?>" width="1920" height="968" class="w-full h-full object-cover">
+                                        <img src="<?= env('HTTP_DOMAIN') .'/'. getFolder(['uploads_folder','images_folder']) .'/'. $item->image ?>" alt="<?=$item->alt?>" width="1920" height="968" class="w-full h-full object-cover">
                                     </div>
                                     <img src="{{ asset('assets') }}/image/static/slider-overlay.png" alt="Slider Overlay" width="1920" height="968" class="absolute left-0 top-0 w-full h-full object-cover z-3 sm:hidden">
                                     <div class="overlay min-sm:hidden absolute left-0 top-0 w-full h-full z-3 bg-white/80"></div>
