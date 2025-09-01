@@ -5,11 +5,21 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Support\Facades\Route;
 
+
+
+// Login route
+Route::get('/admin/login', 'App\Http\Controllers\Admin\LoginController@showLoginForm')->name('admin.login');
+Route::post('/admin/login', 'App\Http\Controllers\Admin\LoginController@login')->name('admin.login.submit');
+Route::get('/admin/logout', 'App\Http\Controllers\Admin\LoginController@logout')->name('admin.logout');
+
+//Project Admin Routes
+
+// Wrap all admin routes with Auth middleware
+Route::middleware(['auth'])->group(function () {
+
 Route::get('/admin', function () {
     return view('admin.dashboard');
 })->name('admin.dashboard'); 
-
-//Project Admin Routes
 
 // admin/menu route to menu controller index function
 Route::get('/admin/menu', 'App\Http\Controllers\Admin\MenuController@index')->name('admin.menu');
@@ -202,6 +212,7 @@ Route::post('/admin/footer-info/store', 'App\Http\Controllers\Admin\FooterInfoCo
 Route::get('/admin/footer-info/{id}/edit', 'App\Http\Controllers\Admin\FooterInfoController@edit')->name('admin.footer_info.edit');
 Route::delete('/admin/footer-info/{id}', 'App\Http\Controllers\Admin\FooterInfoController@destroy')->name('admin.footer_info.destroy');
 
+}); // End of Auth middleware group
 //Project Front End routes
 //Home route
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
