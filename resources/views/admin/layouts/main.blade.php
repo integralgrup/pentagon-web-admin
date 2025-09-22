@@ -47,6 +47,7 @@
     <!--end::Third Party Plugin(Bootstrap Icons)-->
     <!--begin::Required Plugin(AdminLTE)-->
     <link rel="stylesheet" href="{{ asset('admin-template/css/adminlte.css') }}" />
+    <link rel="stylesheet" href="{{ asset('admin-template/summernote/summernote.min.css') }}" />
     <!--end::Required Plugin(AdminLTE)-->
     <!-- apexcharts -->
     <link
@@ -62,6 +63,18 @@
       integrity="sha256-+uGLJmmTKOqBr+2E6KDYs/NRsHxSkONXFHUL0fy2O/4="
       crossorigin="anonymous"
     />
+    <style>
+      .grids-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+      .grids-4 {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+      }
+    </style>
   </head>
   <!--end::Head-->
   <!--begin::Body-->
@@ -292,6 +305,7 @@
     <!--end::App Wrapper-->
     <!--begin::Script-->
     <!--begin::Third Party Plugin(OverlayScrollbars)-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/browser/overlayscrollbars.browser.es6.min.js"
       crossorigin="anonymous"
@@ -308,7 +322,18 @@
     ></script>
     <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
     <script src="{{ asset('admin-template') }}/js/adminlte.js"></script>
+    <script src="{{ asset('admin-template') }}/summernote/summernote.min.js"></script>
     <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
+    <script>
+      $(document).ready(function() {
+          $('.summernote').summernote({
+              height: 300,   // set editor height
+              minHeight: null, // set minimum height of editor
+              maxHeight: null, // set maximum height of editor
+              focus: true     // set focus to editable area after initializing summernote
+          });
+      });
+    </script>
     <script>
       const SELECTOR_SIDEBAR_WRAPPER = '.sidebar-wrapper';
       const Default = {
