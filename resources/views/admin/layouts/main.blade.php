@@ -47,7 +47,7 @@
     <!--end::Third Party Plugin(Bootstrap Icons)-->
     <!--begin::Required Plugin(AdminLTE)-->
     <link rel="stylesheet" href="{{ asset('admin-template/css/adminlte.css') }}" />
-    <link rel="stylesheet" href="{{ asset('admin-template/summernote/summernote.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('admin-template/summernote/summernote-bs5.min.css') }}" />
     <!--end::Required Plugin(AdminLTE)-->
     <!-- apexcharts -->
     <link
@@ -322,7 +322,7 @@
     ></script>
     <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
     <script src="{{ asset('admin-template') }}/js/adminlte.js"></script>
-    <script src="{{ asset('admin-template') }}/summernote/summernote.min.js"></script>
+    <script src="{{ asset('admin-template') }}/summernote/summernote-bs5.min.js"></script>
     <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
     <script>
       $(document).ready(function() {
