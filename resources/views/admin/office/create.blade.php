@@ -64,18 +64,24 @@
                                             <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" required>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="description_{{ $language->lang_code }}" class="form-label">Açıklama ({{ $language->lang_code }})</label>
+                                            <label for="description_{{ $language->lang_code }}" class="form-label">Adres ({{ $language->lang_code }})</label>
                                             <textarea class="form-control" id="description_{{ $language->lang_code }}" name="description_{{ $language->lang_code }}" rows="3" required></textarea>  
                                         </div>
-                                        <!-- seo_title -->
                                         <div class="mb-3">
-                                            <label for="lat_{{ $language->lang_code }}" class="form-label">Enlem ({{ $language->lang_code }})</label>
+                                            <label for="lat_{{ $language->lang_code }}" class="form-label">Harita URL ({{ $language->lang_code }})</label>
                                             <input type="text" class="form-control" id="lat_{{ $language->lang_code }}" name="lat_{{ $language->lang_code }}">
                                         </div>
-                                        <!-- seo_description -->
-                                        <div class="mb-3">
+                                        <div class="mb-3" style="display:none;>
                                             <label for="long_{{ $language->lang_code }}" class="form-label">Boylam ({{ $language->lang_code }})</label>
-                                            <textarea class="form-control" id="long_{{ $language->lang_code }}" name="long_{{ $language->lang_code }}" rows="3"></textarea>
+                                            <textarea class="form-control" id="long_{{ $language->lang_code }}" name="long_{{ $language->lang_code }}" rows="3">-</textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="phone_{{ $language->lang_code }}" class="form-label">Telefon ({{ $language->lang_code }})</label>
+                                            <input type="text" class="form-control" id="phone_{{ $language->lang_code }}" name="phone_{{ $language->lang_code }}" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="email_{{ $language->lang_code }}" class="form-label">E-posta ({{ $language->lang_code }})</label>
+                                            <input type="email" class="form-control" id="email_{{ $language->lang_code }}" name="email_{{ $language->lang_code }}" required>
                                         </div>
                                     </div>
                                 </div>

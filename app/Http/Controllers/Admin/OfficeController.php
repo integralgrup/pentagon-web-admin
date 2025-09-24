@@ -53,7 +53,9 @@ class OfficeController extends Controller
                     'title_' . $language->lang_code => 'required|string|max:100',
                     'description_' . $language->lang_code => 'required|string',
                     'lat_' . $language->lang_code => 'required|string|max:50',
-                    'long_' . $language->lang_code => 'required|string|max:50',
+                    'long_' . $language->lang_code => 'nullable|string|max:50',
+                    'phone_' . $language->lang_code => 'required|string|max:50',
+                    'email_' . $language->lang_code => 'required|string|email|max:100',
                 ]);
 
                 Office::updateOrCreate(
@@ -62,7 +64,9 @@ class OfficeController extends Controller
                         'title' => $data['title_' . $language->lang_code],
                         'description' => $data['description_' . $language->lang_code],
                         'lat' => $data['lat_' . $language->lang_code],
-                        'long' => $data['long_' . $language->lang_code],
+                        'long' => $data['long_' . $language->lang_code] ?? '-',
+                        'phone' => $data['phone_' . $language->lang_code],
+                        'email' => $data['email_' . $language->lang_code],
                     ]
                 );
             }
