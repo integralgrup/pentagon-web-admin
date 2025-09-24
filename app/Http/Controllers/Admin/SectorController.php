@@ -265,7 +265,7 @@ class SectorController extends Controller
     // slider1 destroy
     public function slider1Destroy($id, $sliderId)
     {
-        DB::table('sector_slider_1')->where('id', $sliderId)->delete();
+        DB::table('sector_slider_1')->where('slider_id', $sliderId)->delete();
         return redirect()->route('admin.sector.slider1.index', $id)->with('success', 'Slider başarıyla silindi.');
     }
 
@@ -373,7 +373,7 @@ class SectorController extends Controller
     // slider2 destroy
     public function slider2Destroy($id, $sliderId)
     {
-        DB::table('sector_slider_2')->where('id', $sliderId)->delete();
+        DB::table('sector_slider_2')->where('slider_id', $sliderId)->delete();
         return redirect()->route('admin.sector.slider2.index', $id)->with('success', 'Slider başarıyla silindi.');
     }
 }
