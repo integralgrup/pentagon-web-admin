@@ -52,6 +52,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>Başlık</th>
                                     <th>Görsel</th>
                                     <th>İşlemler</th>
                                 </tr>
@@ -60,6 +61,7 @@
                                 @foreach($sliders as $key => $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $item->title }}</td>
                                         <td><img src="{{ $languages[0]->domain .'/'.  getFolder(['uploads_folder', 'sector_images_folder'], $languages[0]->lang_code) . '/' . $item->image }}" alt="{{ $item->alt }}" width="100"></td>
                                         <td>
                                             <a href="{{ route('admin.sector.slider1.edit', [$id, $item->slider_id]) }}" class="btn btn-warning btn-sm">
