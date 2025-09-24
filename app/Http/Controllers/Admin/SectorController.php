@@ -265,8 +265,8 @@ class SectorController extends Controller
     // slider1 destroy
     public function slider1Destroy($id, $sliderId)
     {
-        DB::table('brand_slider_1')->where('id', $sliderId)->delete();
-        return redirect()->route('admin.brand.slider1.index', $id)->with('success', 'Slider başarıyla silindi.');
+        DB::table('sector_slider_1')->where('id', $sliderId)->delete();
+        return redirect()->route('admin.sector.slider1.index', $id)->with('success', 'Slider başarıyla silindi.');
     }
 
     // Slider2 methods
