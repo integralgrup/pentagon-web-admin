@@ -61,6 +61,7 @@
                             $image[$sector->lang] = $sector->image;
                             $bg_image[$sector->lang] = $sector->bg_image;
                             $alt[$sector->lang] = $sector->alt;
+                            $bg_alt[$sector->lang] = $sector->bg_alt;
                             $seo_title[$sector->lang] = $sector->seo_title;
                             $seo_description[$sector->lang] = $sector->seo_description;
                             $seo_keywords[$sector->lang] = $sector->seo_keywords;
@@ -96,6 +97,10 @@
                                             @endif
                                         </div>
                                         <div class="mb-3">
+                                            <label for="alt_{{ $language->lang_code }}" class="form-label">Alt Metin ({{ $language->lang_code }})</label>
+                                            <input type="text" class="form-control" id="alt_{{ $language->lang_code }}" name="alt_{{ $language->lang_code }}" required value="{{ $alt[$language->lang_code] ?? '' }}">
+                                        </div>
+                                        <div class="mb-3">
                                             <label for="bg_image_{{ $language->lang_code }}" class="form-label">Arka Plan Görseli ({{ $language->lang_code }})</label>
                                             <input type="file" class="form-control" id="bg_image_{{ $language->lang_code }}" name="bg_image_{{ $language->lang_code }}" accept="image/*" >
                                             @if($bg_image[$language->lang_code])
@@ -104,8 +109,8 @@
                                             @endif
                                         </div>
                                         <div class="mb-3">
-                                            <label for="alt_{{ $language->lang_code }}" class="form-label">Alt Metin ({{ $language->lang_code }})</label>
-                                            <input type="text" class="form-control" id="alt_{{ $language->lang_code }}" name="alt_{{ $language->lang_code }}" required value="{{ $alt[$language->lang_code] ?? '' }}">
+                                            <label for="bg_alt_{{ $language->lang_code }}" class="form-label">Alt Metin 2 ({{ $language->lang_code }})</label>
+                                            <input type="text" class="form-control" id="bg_alt_{{ $language->lang_code }}" name="bg_alt_{{ $language->lang_code }}" required value="{{ $bg_alt[$language->lang_code] ?? '' }}">
                                         </div>
                                         <div class="mb-3">
                                             <label for="seo_url_{{ $language->lang_code }}" class="form-label">SEO Url ({{ $language->lang_code }})</label>
