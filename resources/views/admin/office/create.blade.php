@@ -56,32 +56,33 @@
                             @csrf
                             <div class="tab-content" id="myTabContent">
                                 @foreach($languages as $language)
+                                <?php $required = $language->lang_code == 'en' ? 'required' : ''; ?>
                                 <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" id="tab-{{ $language->id }}" role="tabpanel" aria-labelledby="tab-{{ $language->id }}-tab">
                                     <div class="card-body" style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
                                         <input type="hidden" name="lang_{{ $language->lang_code }}" value="{{ $language->lang_code }}">
                                         <div class="mb-3">
                                             <label for="title_{{ $language->lang_code }}" class="form-label">Başlık ({{ $language->lang_code }})</label>
-                                            <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" required>
+                                            <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" {{ $required }}>
                                         </div>
                                         <div class="mb-3">
                                             <label for="description_{{ $language->lang_code }}" class="form-label">Adres ({{ $language->lang_code }})</label>
-                                            <textarea class="form-control" id="description_{{ $language->lang_code }}" name="description_{{ $language->lang_code }}" rows="3" required></textarea>  
+                                            <textarea class="form-control" id="description_{{ $language->lang_code }}" name="description_{{ $language->lang_code }}" rows="3" {{ $required }}></textarea>  
                                         </div>
                                         <div class="mb-3">
                                             <label for="lat_{{ $language->lang_code }}" class="form-label">Harita URL ({{ $language->lang_code }})</label>
-                                            <input type="text" class="form-control" id="lat_{{ $language->lang_code }}" name="lat_{{ $language->lang_code }}">
+                                            <input type="text" class="form-control" id="lat_{{ $language->lang_code }}" name="lat_{{ $language->lang_code }}" {{ $required }}>
                                         </div>
-                                        <div class="mb-3" style="display:none;>
+                                        <div class="mb-3" style="display:none;">
                                             <label for="long_{{ $language->lang_code }}" class="form-label">Boylam ({{ $language->lang_code }})</label>
                                             <textarea class="form-control" id="long_{{ $language->lang_code }}" name="long_{{ $language->lang_code }}" rows="3">-</textarea>
                                         </div>
                                         <div class="mb-3">
                                             <label for="phone_{{ $language->lang_code }}" class="form-label">Telefon ({{ $language->lang_code }})</label>
-                                            <input type="text" class="form-control" id="phone_{{ $language->lang_code }}" name="phone_{{ $language->lang_code }}" required>
+                                            <input type="text" class="form-control" id="phone_{{ $language->lang_code }}" name="phone_{{ $language->lang_code }}" {{ $required }}>
                                         </div>
                                         <div class="mb-3">
                                             <label for="email_{{ $language->lang_code }}" class="form-label">E-posta ({{ $language->lang_code }})</label>
-                                            <input type="email" class="form-control" id="email_{{ $language->lang_code }}" name="email_{{ $language->lang_code }}" required>
+                                            <input type="email" class="form-control" id="email_{{ $language->lang_code }}" name="email_{{ $language->lang_code }}" {{ $required }}>
                                         </div>
                                     </div>
                                 </div>
