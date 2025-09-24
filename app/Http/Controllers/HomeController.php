@@ -7,6 +7,8 @@ use App\Models\Slider;
 use App\Models\Language;
 use App\Models\Sector;
 use App\Models\Brand;
+use App\Models\BrandSlider1;
+use App\Models\BrandSlider2;
 use App\Models\Blog;
 use App\Models\BlogSlider;
 use App\Models\About;
@@ -75,11 +77,9 @@ class HomeController extends Controller
 
         if($menu->page_type == 'brand') {
             if($slug2!= null) {
-                $brand = Brand::where(['lang' => app()->getLocale(), 'seo_url' => $slug2])->first();
-                $slider1 = DB::table('brand_slider_1')->where(['lang' => app()->getLocale(), 'brand_id' => $brand->brand_id])->get();
-                $slider2 = DB::table('brand_slider_2')->where(['lang' => app()->getLocale(), 'brand_id' => $brand->brand_id])->get()->toArray();
-               //debug($slider2);
-                return view('brand', compact('brand', 'slider1', 'slider2'));
+                $brand = Brand::where(['lang' => app()->getLocale(), 'seo_url' => $slug2])->with(['slider1', 'slider2'])->first();
+                //dd($brand);
+                return view('brand', compact('brand'));
             }
             
         }

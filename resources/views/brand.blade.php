@@ -56,7 +56,7 @@
                         <img src="../assets/image/static/vectorel-2.svg" alt="Vektör" width="610" height="535" class="reveal max-w-[610px] xl:max-w-[500px] sm:max-w-full sm:w-full h-auto absolute z-2 pointer-events-none left-1/2 top-1/2 sm:top-[30px] -translate-x-1/2 min-sm:-translate-y-1/2">
                         <div class="sector-slider reveal overflow-hidden relative z-4">
                             <div class="swiper-wrapper">
-                                <?php foreach ($slider1 as $key => $item) { ?>
+                                <?php foreach ($brand->slider1 as $key => $item) { ?>
                                     <div class="swiper-slide overflow-hidden" data-slide-name="<?= $item->title ?>" data-slide-id="<?= $key + 1 ?>">
                                         <div class="item w-full grid grid-cols-2 sm:grid-cols-1 items-end gap-[200px] 2xl:gap-[160px] xl:gap-[100px] lg:gap-[60px] md:gap-[30px]">
                                             <div class="left mb-[90px] 2xl:mb-[60px] xl:mb-[45px] lg:mb-[30px] md:mb-0">
@@ -110,7 +110,7 @@
                             <div class="w-full reveal h-full bg-[#FBFAF6] p-[50px] sm:pt-[20px] sm:pb-[80px] relative z-2 shadow-[0px_4px_100px_0px_rgba(0,0,0,0.10)]">
                                 <div class="product-image-slider overflow-hidden">
                                     <div class="swiper-wrapper">
-                                        <?php foreach ($slider2 as $item) { ?>
+                                        <?php foreach ($brand->slider2 as $item) { ?>
                                             <div class="swiper-slide" data-link="<?= $item->url ?>">
                                                 <div class="item w-full h-full">
                                                     <img src="<?= env('HTTP_DOMAIN').'/'.getFolder(['uploads_folder','brand_images_folder'], app()->getLocale()).'/'. $item->image ?>" alt="Ürün" width="814" height="696" class="w-full h-full object-contain">
@@ -153,7 +153,7 @@
                         <div class="flex flex-col reveal">
                             <div class="product-top-slider overflow-hidden">
                                 <div class="swiper-wrapper">
-                                    <?php foreach ($slider2 as $item) { ?>
+                                    <?php foreach ($brand->slider2 as $item) { ?>
                                         <div class="swiper-slide" data-link="<?= $item->url ?>">
                                             <div class="text-editor w-full">
                                                 <span class="text-[16px] leading-[32px] font-light text-paragraph opacity-65 tracking-[7.2px] block mb-[30px] lg:mb-[15px]">En İyi Kalite</span>
@@ -170,7 +170,7 @@
                             </div>
                             <div class="product-slider pt-[80px] pb-[60px] sm:py-[50px] relative xs:hidden" id="product-slider">
                                 <div class="swiper-wrapper [&_.swiper-slide-next_+_.swiper-slide]:min-xs:opacity-100">
-                                    <?php foreach ($slider2 as $item) { ?>
+                                    <?php foreach ($brand->slider2 as $item) { ?>
                                         <div class="swiper-slide group opacity-0 md:opacity-100 [&.swiper-slide-prev]:min-xs:!opacity-0 [&.swiper-slide-active]:min-xs:opacity-100 [&.swiper-slide-next]:min-xs:opacity-100 [&.swiper-slide-visible]:min-xs:opacity-100 transition-all duration-300" data-link="<?= $item->url ?>">
                                             <div class="item w-full flex flex-col border border-solid border-black/16 bg-[#FBFAF6] transition-all duration-500 group-[&.swiper-slide-active]:border-primary-main group-[&.swiper-slide-active]:shadow-[0px_25px_50px_0px_rgba(0,0,0,0.20)]">
                                                 <div class="image-wrapper p-[25px] rounded-[10px] w-full h-[250px] overflow-hidden mb-[20px] transition-all duration-500 opacity-65 group-[&.swiper-slide-active]:opacity-100">
