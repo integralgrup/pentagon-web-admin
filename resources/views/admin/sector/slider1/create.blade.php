@@ -73,7 +73,7 @@
 
                                         <div class="mb-3">
                                             <label for="image_{{ $language->lang_code }}" class="form-label">Dosya ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="file" class="form-control" id="image_{{ $language->lang_code }}" name="image_{{ $language->lang_code }}">
+                                            <input type="file" class="form-control" id="image_{{ $language->lang_code }}" name="image_{{ $language->lang_code }}" {{ $required }}>
                                         </div>
 
                                         <div class="mb-3">
