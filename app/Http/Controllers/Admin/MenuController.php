@@ -90,7 +90,7 @@ class MenuController extends Controller
                             'lang' => $language->lang_code,
                         ],
                         [
-                            'parent_menu_id' => $request->input('parent_menu_id_' . $language->lang_code) ?? 0,
+                            'parent_menu_id' => $request->input('parent_menu_id_' . $language->lang_code) ?? $request->input('parent_menu_id_en'),
                             'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
                             'seo_url' => $request->input('seo_url_' . $language->lang_code) ?? $request->input('seo_url_en'),
                             'image' => $imageName, // save relative path
