@@ -108,10 +108,10 @@ class SectorController extends Controller
     }
 
     // Show form to edit sector
-    public function edit(Sector $sector)
+    public function edit($sector_id)
     {
-        $sectors = Sector::where('sector_id', $sector->sector_id)->get();
-        return view('admin.sector.edit', compact('sector', 'sectors'));
+        $sectors = Sector::where('sector_id', $sector_id)->get();
+        return view('admin.sector.edit', compact('sectors'));
     }
 
     // Update sector
