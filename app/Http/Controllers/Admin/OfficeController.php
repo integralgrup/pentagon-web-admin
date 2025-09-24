@@ -63,13 +63,13 @@ class OfficeController extends Controller
                 Office::updateOrCreate(
                     ['office_id' => $office_id, 'lang' => $language->lang_code],
                     [
-                        'title' => $data['title_' . $language->lang_code] ?? $data['title_en'],
-                        'description' => $data['description_' . $language->lang_code] ?? $data['description_en'],
-                        'address' => $data['description_' . $language->lang_code] ?? $data['description_en'],
-                        'lat' => $data['lat_' . $language->lang_code] ?? $data['lat_en'],
-                        'long' => $data['long_' . $language->lang_code] ?? '-',
-                        'phone' => $data['phone_' . $language->lang_code] ?? $data['phone_en'],
-                        'email' => $data['email_' . $language->lang_code] ?? $data['email_en'],
+                        'title' => $request->input('title_' . $language->lang_code) ?? $data['title_en'],
+                        'description' => $request->input('description_' . $language->lang_code) ?? $data['description_en'],
+                        'address' => $request->input('description_' . $language->lang_code) ?? $data['description_en'],
+                        'lat' => $request->input('lat_' . $language->lang_code) ?? $data['lat_en'],
+                        'long' => $request->input('long_' . $language->lang_code) ?? '-',
+                        'phone' => $request->input('phone_' . $language->lang_code) ?? $data['phone_en'],
+                        'email' => $request->input('email_' . $language->lang_code) ?? $data['email_en'],
                     ]
                 );
             }
