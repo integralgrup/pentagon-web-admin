@@ -204,15 +204,19 @@ class SectorController extends Controller
                     $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
                 }
 
+                $sector_id = $id;
+
                 //DB::table('sector_slider_1') updateOrCreate
                 $record = DB::table('sector_slider_1')
                     ->where('slider_id', $sliderId)
+                    ->where('sector_id', $sector_id)
                     ->where('lang', $language->lang_code)
                     ->first();
 
                 if ($record) {
                     DB::table('sector_slider_1')
                         ->where('slider_id', $sliderId)
+                        ->where('sector_id', $sector_id)
                         ->where('lang', $language->lang_code)
                         ->update([
                             'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
@@ -225,7 +229,7 @@ class SectorController extends Controller
                     DB::table('sector_slider_1')->insert([
                         'slider_id' => $sliderId,
                         'lang' => $language->lang_code,
-                        'sector_id' => $id,
+                        'sector_id' => $sector_id,
                         'slider_id' => $sliderId,
                         'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
                         'title_1' => $request->input('title_1_' . $language->lang_code) ?? $request->input('title_1_en'),
@@ -313,15 +317,19 @@ class SectorController extends Controller
                     $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
                 }
 
+                $sector_id = $id;
+
                 //DB::table('sector_slider_1') updateOrCreate
                 $record = DB::table('sector_slider_2')
                     ->where('slider_id', $sliderId)
+                    ->where('sector_id', $sector_id)
                     ->where('lang', $language->lang_code)
                     ->first();
 
                 if ($record) {
                     DB::table('sector_slider_2')
                         ->where('slider_id', $sliderId)
+                        ->where('sector_id', $sector_id)
                         ->where('lang', $language->lang_code)
                         ->update([
                             'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
@@ -332,8 +340,7 @@ class SectorController extends Controller
                     DB::table('sector_slider_2')->insert([
                         'slider_id' => $sliderId,
                         'lang' => $language->lang_code,
-                        'sector_id' => $id,
-                        'slider_id' => $sliderId,
+                        'sector_id' => $sector_id,
                         'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
                         'image' => $imageName,
                         'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
