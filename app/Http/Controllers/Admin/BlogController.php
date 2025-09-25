@@ -212,7 +212,7 @@ class BlogController extends Controller
 
     public function sliderDestroy($id, $sliderId)
     {
-        BlogSlider::where('id', $sliderId)->delete();
+        BlogSlider::where('slider_id', $sliderId)->delete();
         return redirect()->route('admin.blog.slider.index', $id)->with('success', 'Slider başarıyla silindi.');
     }
 
