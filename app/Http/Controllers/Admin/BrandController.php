@@ -201,7 +201,7 @@ class BrandController extends Controller
                             'description' => $request->input('description_' . $language->lang_code) ?? $request->input('description_en'),
                             'image' => $imageName,
                             'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
-                            'sort' => $request->input('sort_' . $language->lang_code) ?? 0,
+                            'sort' => $request->input('sort_' . $language->lang_code) ?? $request->input('sort_en') ?? 0,
                         ]);
                 } else {
                     DB::table('brand_slider_1')->insert([
@@ -214,7 +214,7 @@ class BrandController extends Controller
                         'description' => $request->input('description_' . $language->lang_code) ?? $request->input('description_en'),
                         'image' => $imageName,
                         'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
-                        'sort' => $request->input('sort_' . $language->lang_code) ?? 0,
+                        'sort' => $request->input('sort_' . $language->lang_code) ?? $request->input('sort_en') ?? 0,
                     ]);
                 }
 
