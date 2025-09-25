@@ -148,9 +148,14 @@ class SectorController extends Controller
     }
 
     // Delete sector
-    public function destroy(Sector $sector)
+    public function destroy($sector_id)
     {
-        $sector->delete();
+        $sector = Sector::where('sector_id', $sector_id)->delete();
+        
+        // Also delete related sliders
+        DB::table('sector_slider_1')->where('sector_id', $sector_id)->delete();
+        DB::table('sector_slider_2')->where('sector_id', $sector_id)->delete();
+        
         return redirect()->route('admin.sector.index')->with('success', 'Sector deleted successfully!');
     }
 
