@@ -71,7 +71,7 @@ class SectorController extends Controller
 
                 if ($request->hasFile('bg_image_en') || $request->hasFile('bg_image_' . $language->lang_code)) {
                     $tmpImgPath = createTmpFile($request, 'bg_image_en', $this->languages[0]);
-                    $bgImageName = moveFile($request,$language,'bg_image_' . $language->lang_code, 'bg_image_en', 'alt_' . $language->lang_code, 'alt_en', $language->sector_images_folder, $tmpImgPath);
+                    $bgImageName = moveFile($request,$language,'bg_image_' . $language->lang_code, 'bg_image_en', 'bg_alt_' . $language->lang_code, 'bg_alt_en', $language->sector_images_folder, $tmpImgPath);
                     //dd($bgImageName);
                 }else{
                     $bgImageName = $request->input('old_bg_image_' . $language->lang_code, null); // Use old image if no new image is uploaded

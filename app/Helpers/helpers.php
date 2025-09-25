@@ -129,7 +129,7 @@ if(!function_exists('moveFile')) {
     function moveFile($request, $language, $fileName, $enFileName, $imgTitle, $enImgTitle, $folderName, $tmpImgPath = null)
     {
         $image = $request->file($fileName) ?? $request->file($enFileName);
-        $imageName = seoUrl($request->input($imgTitle) ?? $request->input($enImgTitle)) . '_' . time() . '.' . $image->getClientOriginalExtension();
+        $imageName = seoUrl($request->input($imgTitle) ?? $request->input($enImgTitle)) . '_' . microtime(true) . '.' . $image->getClientOriginalExtension();
         $folderPath = $language->path.'/'.$language->uploads_folder.'/'.$folderName ;
         $imgPath = $folderPath .'/'. $imageName;
 
