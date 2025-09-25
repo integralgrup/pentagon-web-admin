@@ -35,10 +35,10 @@
                 <div class="absolute left-0 top-0 z-4 w-full h-full md:static overflow-hidden">
                     <div class="location-tabs container max-w-[1650px] flex flex-col gap-[130px] md:gap-0 md:relative min-md:before:hidden before:md:w-[calc(100%+60px)] before:md:absolute before:md:left-[-30px] before:md:top-0 before:md:h-full before:bg-secondary-main">
                         <div class="tabs flex items-center min-md:justify-center md:whitespace-nowrap md:overflow-x-scroll md:[scroll-snap-type:x_mandatory] md:pb-[40px] md:pt-[60px] mt-[40px] md:my-0 md:px-[15px] sm:px-0">
-                            <?php $locations = ['Head Office','London, UK','Doha, Qatar','Moscow, RUSSIA','New York, USA'];
+                            <?php $locations = $offices;
                             foreach ($locations as $key => $item): ?>
                                 <div class="tab reveal md:snap-start cursor-pointer relative flex flex-col items-center justify-center group px-[50px] xl:px-[25px] last:pr-0 first:pl-0 last:!border-0 border-0 !border-r border-solid border-white/10 <?= $key == 0 ? 'active' : ''; ?>" data-tab-id="<?= $key ?>" data-id="<?= $key ?>">
-                                    <p class="text-[26px] lg:text-[22px] md:text-[20px] leading-none font-medium tracking-[-0.26px] group-[&.active]:tracking-[-0.13px] text-white/50 transition-all duration-300 [-webkit-text-stroke:1px_rgba(182,163,107,0)] group-[&.active]:[-webkit-text-stroke:1px_rgba(182,163,107,1)] group-[&.active]:text-primary-main"><?= $item ?></p>
+                                    <p class="text-[26px] lg:text-[22px] md:text-[20px] leading-none font-medium tracking-[-0.26px] group-[&.active]:tracking-[-0.13px] text-white/50 transition-all duration-300 [-webkit-text-stroke:1px_rgba(182,163,107,0)] group-[&.active]:[-webkit-text-stroke:1px_rgba(182,163,107,1)] group-[&.active]:text-primary-main"><?= $item->title ?></p>
                                     <i class="icon-triangle-down leading-none text-primary-main transition-all duration-300 opacity-0 group-[&.active]:opacity-100 absolute bottom-[-35px]"></i>
                                 </div>
                             <?php endforeach; ?>
@@ -61,42 +61,7 @@
                         </div>
 
                         <div class="flex items-center relative md:relative before:md:w-[calc(100%+60px)] before:md:absolute before:md:left-[-30px] before:md:top-0 before:md:h-full before:bg-primary-main reveal">
-                            <?php $locationsInfo = [
-                                [
-                                    'phone' => '+90 (212) 678 13 13',
-                                    'email' => 'info@pentagon.com.tr',
-                                    'address' => 'IOSB Bedrettin Dalan Bulvarı Metro 34 Plaza No:23/100 Basaksehir – Istanbul / TURKEY',
-                                    'maps' => 'https://maps.google.com'
-                                ],
-
-                                [
-                                    'phone' => '0850 302 6950',
-                                    'email' => 'info@pentayazilim.com',
-                                    'address' => 'Orta Mahalle, Kanuni Sk. No:1 Kat 3, 34880 Kartal/İstanbul',
-                                    'maps' => 'https://maps.google.com'
-                                ],
-
-                                [
-                                    'phone' => '+90 (212) 678 13 13',
-                                    'email' => 'info@pentagon.com.tr',
-                                    'address' => 'IOSB Bedrettin Dalan Bulvarı Metro 34 Plaza No:23/100 Basaksehir – Istanbul / TURKEY',
-                                    'maps' => 'https://maps.google.com'
-                                ],
-
-                                [
-                                    'phone' => '0850 302 6950',
-                                    'email' => 'info@pentayazilim.com',
-                                    'address' => 'Orta Mahalle, Kanuni Sk. No:1 Kat 3, 34880 Kartal/İstanbul',
-                                    'maps' => 'https://maps.google.com'
-                                ],
-
-                                [
-                                    'phone' => '+90 (212) 678 13 13',
-                                    'email' => 'info@pentagon.com.tr',
-                                    'address' => 'IOSB Bedrettin Dalan Bulvarı Metro 34 Plaza No:23/100 Basaksehir – Istanbul / TURKEY',
-                                    'maps' => 'https://maps.google.com'
-                                ],
-                            ];
+                            <?php $locationsInfo = $offices;
                             foreach ($locationsInfo as $key => $item): ?>
 
                                 <div class="content w-full overflow-hidden absolute left-0 top-0 group flex md:grid md:grid-cols-2 xs:flex xs:flex-col items-center justify-center gap-[80px] 2xl:gap-[60px] xl:gap-[45px] md:gap-[30px] md:py-[40px] transition-all duration-700 opacity-0 [&.active]:relative [&.active]:opacity-100 [&.active]:translate-y-0 [&.active]:visible <?= $key == 0 ? 'active' : ''; ?>" id="<?= $key ?>">
@@ -131,45 +96,16 @@
     // Location List
     window.locations = [
         /* Buraya tab miktarı kadar lokasyon girebilirsiniz ve konum, zoom, url ve marker özelliklerini değiştirebilirsiniz. */
+        <?php foreach ($offices as $key => $item): ?>
         {
-            latLng: { lat: 41.06938256380666, lng: 28.827924637822406 },
+            latLng: { lat: <?= $item['lat'] ?>, lng: <?= $item['long'] ?> },
             zoom: 15,
             marker: `<a href="https://maps.google.com" target="_blank" class="relative group flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="h-[45px] w-auto animate-bounce"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z" fill="#B6A36B"/></svg>
                     </a>`
         },
-        {
-            latLng: { lat: 40.90972609407845, lng: 29.203708883725817 },
-            zoom: 15,
-            marker: `<a href="https://pentayazilim.com" target="_blank" class="relative group flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="h-[45px] w-auto animate-bounce"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z" fill="#B6A36B"/></svg>
-                    </a>`
-        },
-
-        {
-            latLng: { lat: 40.90972609407845, lng: 29.203708883725817 },
-            zoom: 15,
-            marker: `<a href="https://maps.google.com" target="_blank" class="relative group flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="h-[45px] w-auto animate-bounce"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z" fill="#B6A36B"/></svg>
-                    </a>`
-        },
-
-        {
-            latLng: { lat: 40.90972609407845, lng: 29.203708883725817 },
-            zoom: 15,
-            marker: `<a href="https://pentayazilim.com" target="_blank" class="relative group flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="h-[45px] w-auto animate-bounce"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z" fill="#B6A36B"/></svg>
-                    </a>`
-        },
-
-        {
-            latLng: { lat: 41.06938256380666, lng: 28.827924637822406 },
-            zoom: 15,
-            marker: `<a href="https://maps.google.com" target="_blank" class="relative group flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="h-[45px] w-auto animate-bounce"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z" fill="#B6A36B"/></svg>
-<!--                        <i class="icon-marker text-[45px] leading-none text-primary-main animate-bounce"></i>-->
-                    </a>`
-        },
+        <?php endforeach; ?>
+        
     ];
 
     // Generate Map Function

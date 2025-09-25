@@ -53,6 +53,7 @@ class OfficeController extends Controller
                     $data = $request->validate([
                         'title_' . $language->lang_code => 'required|string|max:100',
                         'description_' . $language->lang_code => 'required|string',
+                        'map_url_' . $language->lang_code => 'nullable|string|max:255',
                         'lat_' . $language->lang_code => 'required|string|max:50',
                         'long_' . $language->lang_code => 'nullable|string|max:50',
                         'phone_' . $language->lang_code => 'required|string|max:50',
@@ -66,6 +67,7 @@ class OfficeController extends Controller
                         'title' => $request->input('title_' . $language->lang_code) ?? $data['title_en'],
                         'description' => $request->input('description_' . $language->lang_code) ?? $data['description_en'],
                         'address' => $request->input('description_' . $language->lang_code) ?? $data['description_en'],
+                        'map_url' => $request->input('map_url_' . $language->lang_code) ?? $data['map_url_en'],
                         'lat' => $request->input('lat_' . $language->lang_code) ?? $data['lat_en'],
                         'long' => $request->input('long_' . $language->lang_code) ?? '-',
                         'phone' => $request->input('phone_' . $language->lang_code) ?? $data['phone_en'],

@@ -20,6 +20,7 @@ class Office extends Model
         'address',
         'phone',
         'email',
+        'map_url',
         'lat',
         'long',
         'sort',
