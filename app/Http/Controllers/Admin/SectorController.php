@@ -47,6 +47,7 @@ class SectorController extends Controller
                     
                     $request->validate([
                         'lang_'.$language->lang_code => 'required|string|max:10',
+                        'up_title_'.$language->lang_code => 'required|string|max:255',
                         'title_'.$language->lang_code => 'required|string|max:100',
                         'title_1_'.$language->lang_code => 'required|string|max:255',
                         'seo_url_'.$language->lang_code => 'required|string|max:255',
@@ -80,6 +81,7 @@ class SectorController extends Controller
                 $data = [
                     'sector_id' => $sector_id,
                     'lang' => $language->lang_code,
+                    'up_title' => $request->input('up_title_'.$language->lang_code) ?? $request->input('up_title_en'),
                     'title' => $request->input('title_'.$language->lang_code) ?? $request->input('title_en'),
                     'title_1' => $request->input('title_1_'.$language->lang_code) ?? $request->input('title_1_en'),
                     'seo_url' => $request->input('seo_url_'.$language->lang_code) ?? $request->input('seo_url_en'),

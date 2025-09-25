@@ -15,6 +15,7 @@ class Sector extends Model
     protected $fillable = [
         'sector_id',
         'lang',
+        'up_title',
         'title',
         'title_1',
         'seo_url',

@@ -174,7 +174,7 @@
                     </div>
                     <div class="w-3/5 md:w-full pl-[178px] 2xl:pl-[89px] xl:pl-[50px] md:p-0 md:mt-[30px] [@media(min-width:1760px)]:translate-x-[-20px]">
                         <div class="flex flex-col text-editor reveal">
-                            <span class="text-[16px] leading-[32px] font-light text-paragraph opacity-65 tracking-[7.2px] block mb-[30px] lg:mb-[5px]">Bizi Tanıyın</span>
+                            <span class="text-[16px] leading-[32px] font-light text-paragraph opacity-65 tracking-[7.2px] block mb-[30px] lg:mb-[5px]"><?=$sector->up_title?></span>
                             <h2 class="text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-light text-secondary-main mb-[80px] 2xl:mb-[50px] md:mb-[30px] xs:mb-[20px]">
                                 <?= $sector->title_1 ?>
                             </h2>

@@ -73,21 +73,27 @@
                             <div class="tab-content" id="myTabContent">
                                 @foreach($languages as $language)
                                 <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" id="tab-{{ $language->id }}" role="tabpanel" aria-labelledby="tab-{{ $language->id }}-tab">
-                                    <div class="card-body" style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+                                    <div class="card-body" >
                                         <input type="hidden" name="lang_{{ $language->lang_code }}" value="{{ $language->lang_code }}">
                                         <input type="hidden" name="sector_id" value="{{ $sector_id[$language->lang_code] }}">
-                                        <div class="mb-3">
-                                            <label for="title_{{ $language->lang_code }}" class="form-label">Başlık ({{ $language->lang_code }})</label>
-                                            <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" required value="{{ $title[$language->lang_code] ?? '' }}">
+                                        <div class="grids-4">
+                                            <div class="mb-3">
+                                                <label for="up_title_{{ $language->lang_code }}" class="form-label">Üst Metin ({{ $language->lang_code }})</label>
+                                                <input type="text" class="form-control" id="up_title_{{ $language->lang_code }}" name="up_title_{{ $language->lang_code }}" required value="{{ $up_title[$language->lang_code] ?? '' }}">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="title_{{ $language->lang_code }}" class="form-label">Başlık ({{ $language->lang_code }})</label>
+                                                <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" required value="{{ $title[$language->lang_code] ?? '' }}">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="title_1_{{ $language->lang_code }}" class="form-label">Başlık 2 ({{ $language->lang_code }})</label>
+                                                <input type="text" class="form-control" id="title_1_{{ $language->lang_code }}" name="title_1_{{ $language->lang_code }}" required value="{{ $title_1[$language->lang_code] ?? '' }}">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="description_{{ $language->lang_code }}" class="form-label">Açıklama ({{ $language->lang_code }})</label>
+                                                <textarea class="form-control" id="description_{{ $language->lang_code }}" name="description_{{ $language->lang_code }}" rows="3" required>{{ $description[$language->lang_code] ?? '' }}</textarea>
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="title_1_{{ $language->lang_code }}" class="form-label">Başlık 2 ({{ $language->lang_code }})</label>
-                                            <input type="text" class="form-control" id="title_1_{{ $language->lang_code }}" name="title_1_{{ $language->lang_code }}" required value="{{ $title_1[$language->lang_code] ?? '' }}">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="description_{{ $language->lang_code }}" class="form-label">Açıklama ({{ $language->lang_code }})</label>
-                                            <textarea class="form-control" id="description_{{ $language->lang_code }}" name="description_{{ $language->lang_code }}" rows="3" required>{{ $description[$language->lang_code] ?? '' }}</textarea>
-                                       </div>
+                                       
                                         <div class="mb-3">
                                             <label for="image_{{ $language->lang_code }}" class="form-label">Görsel ({{ $language->lang_code }})</label>
                                             <input type="file" class="form-control" id="image_{{ $language->lang_code }}" name="image_{{ $language->lang_code }}" accept="image/*" value="{{ $image[$language->lang_code] ?? '' }}">
@@ -130,6 +136,7 @@
                                         <div class="mb-3">
                                             <label for="seo_keywords_{{ $language->lang_code }}" class="form-label">SEO Anahtar Kelimeleri ({{ $language->lang_code }})</label>
                                             <input type="text" class="form-control" id="seo_keywords_{{ $language->lang_code }}" name="seo_keywords_{{ $language->lang_code }}" required value="{{ $seo_keywords[$language->lang_code] ?? '' }}">
+                                        </div>
                                         </div>
                                     </div>
                                 </div>
