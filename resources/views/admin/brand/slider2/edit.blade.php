@@ -52,6 +52,7 @@
                     </div>
                     <?php 
                         foreach($sliders as $item){
+                            $brand_id_1 = $item->brand_id;
                             $brand_id[$item->lang] = $item->brand_id;
                             $sliderId = $item->slider_id;
                             $title[$item->lang] = $item->title;
@@ -113,7 +114,7 @@
                             </div>
                             <div class="form-group mt-3">
                                 <button type="submit" class="btn btn-primary">Güncelle</button>
-                                <a href="{{ route('admin.about.how_we_do') }}" class="btn btn-secondary">Geri Dön</a>
+                                <a href="{{ route('admin.brand.slider2.index', $brand_id_1) }}" class="btn btn-secondary">Geri Dön</a>
                             </div>
                         </form>
                     </div>
