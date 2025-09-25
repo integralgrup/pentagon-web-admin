@@ -24,7 +24,8 @@
     </script>
 </head>
 <body class="antialiased font-sans [background:linear-gradient(0deg,_#FBFAF6_0%,_#FBFAF6_100%),_#FFF] [&.contact]:!bg-white group/body">
-<?php $menuItems = App\Models\Menu::where(['lang' => app()->getLocale(), 'parent_menu_id' => 0, 'menu_type' => 'header'])->get();?>
+<!-- Get Menu items from app\Models\Menu which is not deleted -->
+<?php $menuItems = App\Models\Menu::where(['lang' => app()->getLocale(), 'parent_menu_id' => 0, 'menu_type' => 'header'])->where('deleted_at', null)->get(); ?>
 <header class="group/header peer header-field h-[112px] sm:h-[80px] z-100 fixed w-full left-0 top-0 duration-500 bg-transparent [&.contact]:bg-[#FCFBF7] [&.contact]:xs:bg-[#FCFBF7]/50 will-change-[height,transform] [&.is-fixed]:!top-0 [&.is-fixed]:!translate-y-0 [&.is-fixed]:bg-[#FCFBF7] [&.is-fixed]:shadow-header [&.is-hidden.is-fixed]:!-translate-y-full [&.is-hidden.is-fixed]:shadow-none [&.no-scroll]:absolute [&.no-scroll]:!transform-none [&.no-scroll]:!shadow-none [&.mobile-menu-active]:bg-white">
     <div class="header-body relative w-full flex h-full">
         <div class="container max-w-[1650px] flex-grow">
