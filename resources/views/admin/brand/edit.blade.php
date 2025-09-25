@@ -85,7 +85,7 @@
                                             <input type="text" class="form-control" id="title_1_{{ $language->lang_code }}" name="title_1_{{ $language->lang_code }}" value="{{ $title_1[$language->lang_code] }}" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="url_{{ $language->lang_code }}">URL ({{ strtoupper($language->lang_code) }})</label>
+                                            <label for="url_{{ $language->lang_code }}">Buton URL ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="text" class="form-control" id="url_{{ $language->lang_code }}" name="url_{{ $language->lang_code }}" value="{{ $url[$language->lang_code] }}" required>
                                         </div>
                                         <div class="form-group">
