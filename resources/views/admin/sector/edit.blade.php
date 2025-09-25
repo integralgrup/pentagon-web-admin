@@ -53,6 +53,7 @@
                     </div>
                     <?php 
                         foreach($sectors as $sector){
+                            $up_title[$sector->lang] = $sector->up_title;
                             $sector_id[$sector->lang] = $sector->sector_id;
                             $seo_url[$sector->lang] = $sector->seo_url;
                             $title[$sector->lang] = $sector->title;
