@@ -171,6 +171,7 @@ class BrandController extends Controller
                         'description_' . $language->lang_code => 'required|string',
                         'alt_' . $language->lang_code => 'required|string|max:255',
                         'image_' . $language->lang_code => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+                        'sort_' . $language->lang_code => 'nullable|integer',
                     ]); 
                 }
 
@@ -198,6 +199,7 @@ class BrandController extends Controller
                             'description' => $request->input('description_' . $language->lang_code) ?? $request->input('description_en'),
                             'image' => $imageName,
                             'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
+                            'sort' => $request->input('sort_' . $language->lang_code) ?? 0,
                         ]);
                 } else {
                     DB::table('brand_slider_1')->insert([
@@ -210,12 +212,13 @@ class BrandController extends Controller
                         'description' => $request->input('description_' . $language->lang_code) ?? $request->input('description_en'),
                         'image' => $imageName,
                         'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
+                        'sort' => $request->input('sort_' . $language->lang_code) ?? 0,
                     ]);
                 }
 
             }
 
-            return redirect()->route('admin.brand.slider1.index', $id)->with('success', 'Slider başarıyla eklendi.');
+            return redirect()->route('admin.brand.slider1.index', $id)->with('success', 'Slider başarıyla kaydedildi.');
         } catch (\Throwable $th) {
             return redirect()->back()->withErrors(['error' => 'Hata oluştu: ' . $th->getMessage()]);
         }
@@ -237,7 +240,7 @@ class BrandController extends Controller
     // slider1 destroy
     public function slider1Destroy($id, $sliderId)
     {
-        DB::table('brand_slider_1')->where('id', $sliderId)->delete();
+        DB::table('brand_slider_1')->where('slider_id', $sliderId)->delete();
         return redirect()->route('admin.brand.slider1.index', $id)->with('success', 'Slider başarıyla silindi.');
     }
 
@@ -353,7 +356,7 @@ class BrandController extends Controller
     // slider2 destroy
     public function slider2Destroy($id, $sliderId)
     {
-        DB::table('brand_slider_2')->where('id', $sliderId)->delete();
+        DB::table('brand_slider_2')->where('slider_id', $sliderId)->delete();
         return redirect()->route('admin.brand.slider2.index', $id)->with('success', 'Slider başarıyla silindi.');
     }
 

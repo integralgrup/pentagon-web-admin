@@ -60,6 +60,7 @@
                             $description[$item->lang] = $item->description;
                             $image[$item->lang] = $item->image;
                             $alt[$item->lang] = $item->alt;
+                            $sort[$item->lang] = $item->sort;
                         }
                     ?>
                     <div class="card-body">
@@ -102,6 +103,12 @@
                                         <div class="mb-3">
                                             <label for="alt_{{ $language->lang_code }}" class="form-label">Alt Metin ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="text" class="form-control" id="alt_{{ $language->lang_code }}" name="alt_{{ $language->lang_code }}" value="{{ $alt[$language->lang_code] ?? '' }}" required>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="sort_{{ $language->lang_code }}" class="form-label">Sıralama ({{ strtoupper($language->lang_code) }})</label>
+                                            <input type="number" class="form-control" id="sort_{{ $language->lang_code }}" name="sort_{{ $language->lang_code }}" value="{{ $sort[$language->lang_code] ?? 0 }}" min="0" required>
+
                                         </div>
                                     </div>
                                 </div>
