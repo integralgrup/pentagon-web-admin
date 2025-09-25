@@ -54,6 +54,7 @@
                         foreach($brands as $brand){
                             $brand_id[$brand->lang] = $brand->brand_id;
                             $url[$brand->lang] = $brand->url;
+                            $up_title[$brand->lang] = $brand->up_title;
                             $title[$brand->lang] = $brand->title;
                             $title_1[$brand->lang] = $brand->title_1;
                             $description[$brand->lang] = $brand->description;
@@ -76,6 +77,11 @@
                                 <input type="hidden" name="lang" value="{{ $language->lang_code }}">
                                 <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" id="tab-{{ $language->id }}" role="tabpanel" aria-labelledby="tab-{{ $language->id }}-tab">
                                     <div class="card-body" style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+                                        
+                                        <div class="form-group">
+                                            <label for="up_title_{{ $language->lang_code }}">Üst Metin ({{ strtoupper($language->lang_code) }})</label>
+                                            <input type="text" class="form-control" id="up_title_{{ $language->lang_code }}" name="up_title_{{ $language->lang_code }}" value="{{ $up_title[$language->lang_code] }}" required>
+                                        </div>
                                         <div class="form-group">
                                             <label for="title_{{ $language->lang_code }}">Başlık ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" value="{{ $title[$language->lang_code] }}" required>

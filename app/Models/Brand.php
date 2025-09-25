@@ -18,6 +18,7 @@ class Brand extends Model
     protected $fillable = [
         'brand_id',
         'lang',
+        'up_title',
         'title',
         'url',
         'title_1',

@@ -49,6 +49,7 @@ class BrandController extends Controller
             foreach ($languages as $language) {
                 if($language->lang_code == 'en'){
                     $request->validate([
+                        'up_title_' . $language->lang_code => 'required|max:100',
                         'title_' . $language->lang_code => 'required|max:100',
                         'title_1_' . $language->lang_code => 'required|max:100',
                         'url_' . $language->lang_code => 'required|max:255',
@@ -84,6 +85,7 @@ class BrandController extends Controller
                 Brand::updateOrCreate(
                     ['brand_id' => $brand_id, 'lang' => $language->lang_code],
                     [
+                        'up_title' => $request->input('up_title_' . $language->lang_code) ?? $request->input('up_title_en'),
                         'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
                         'title_1' => $request->input('title_1_' . $language->lang_code) ?? $request->input('title_1_en'),
                         'url' => $request->input('url_' . $language->lang_code) ?? $request->input('url_en'),
