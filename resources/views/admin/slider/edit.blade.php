@@ -82,27 +82,27 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="title_{{ $language->lang_code }}">Başlık ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="text" name="title_{{ $language->lang_code }}" class="form-control" id="title_{{ $language->lang_code }}" value="{{ $title[$language->lang_code] ?? '' }}">
+                                            <input type="text" name="title_{{ $language->lang_code }}" class="form-control" id="title_{{ $language->lang_code }}" value="{{ $title[$language->lang_code] ?? '' }}" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="title_1_{{ $language->lang_code }}">Başlık 1 ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="text" name="title_1_{{ $language->lang_code }}" class="form-control" id="title_1_{{ $language->lang_code }}" value="{{ $title_1[$language->lang_code] ?? '' }}">
+                                            <input type="text" name="title_1_{{ $language->lang_code }}" class="form-control" id="title_1_{{ $language->lang_code }}" value="{{ $title_1[$language->lang_code] ?? '' }}" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="title_2_{{ $language->lang_code }}">Başlık 2 ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="text" name="title_2_{{ $language->lang_code }}" class="form-control" id="title_2_{{ $language->lang_code }}" value="{{ $title_2[$language->lang_code] ?? '' }}">
+                                            <input type="text" name="title_2_{{ $language->lang_code }}" class="form-control" id="title_2_{{ $language->lang_code }}" value="{{ $title_2[$language->lang_code] ?? '' }}" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="button_title_{{ $language->lang_code }}">Buton Başlığı ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="text" name="button_title_{{ $language->lang_code }}" class="form-control" id="button_title_{{ $language->lang_code }}" value="{{ $button_title[$language->lang_code] ?? '' }}">
+                                            <input type="text" name="button_title_{{ $language->lang_code }}" class="form-control" id="button_title_{{ $language->lang_code }}" value="{{ $button_title[$language->lang_code] ?? '' }}" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="url_{{ $language->lang_code }}">URL ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="text" name="url_{{ $language->lang_code }}" class="form-control" id="url_{{ $language->lang_code }}" value="{{ $url[$language->lang_code] ?? '' }}">
+                                            <input type="text" name="url_{{ $language->lang_code }}" class="form-control" id="url_{{ $language->lang_code }}" value="{{ $url[$language->lang_code] ?? '' }}" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="image_{{ $language->lang_code }}">Resim ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="file" name="image_{{ $language->lang_code }}" class="form-control" id="image_{{ $language->lang_code }}">
+                                            <input type="file" name="image_{{ $language->lang_code }}" class="form-control" id="image_{{ $language->lang_code }}" required  >
                                             @if(isset($image[$language->lang_code]))
                                                 <img src="{{ $language->domain .'/'. getFolder(['uploads_folder','images_folder'], $language->lang_code). '/' . $image[$language->lang_code] }}" alt="{{ $alt[$language->lang_code] }}" style="width: 100px; margin-top: 10px;">
                                                 <input type="hidden" class="form-control" id="old_image_{{ $language->lang_code }}" name="old_image_{{ $language->lang_code }}" value="{{ $image[$language->lang_code] }}" readonly>
@@ -110,11 +110,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="alt_{{ $language->lang_code }}">Alt Metni ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="text" name="alt_{{ $language->lang_code }}" class="form-control" id="alt_{{ $language->lang_code }}" value="{{ $alt[$language->lang_code] ?? '' }}">
+                                            <input type="text" name="alt_{{ $language->lang_code }}" class="form-control" id="alt_{{ $language->lang_code }}" value="{{ $alt[$language->lang_code] ?? '' }}" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="sort_{{ $language->lang_code }}">Sıralama ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="number" name="sort_{{ $language->lang_code }}" class="form-control" id="sort_{{ $language->lang_code }}" value="{{ $sort[$language->lang_code] ?? 0 }}">
+                                            <input type="number" name="sort_{{ $language->lang_code }}" class="form-control" id="sort_{{ $language->lang_code }}" value="{{ $sort[$language->lang_code] ?? 0 }}" required>
                                         </div>
                                     </div>
                                 </div>
