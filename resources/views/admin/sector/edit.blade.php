@@ -76,7 +76,7 @@
                                 <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" id="tab-{{ $language->id }}" role="tabpanel" aria-labelledby="tab-{{ $language->id }}-tab">
                                     <div class="card-body" >
                                         <input type="hidden" name="lang_{{ $language->lang_code }}" value="{{ $language->lang_code }}">
-                                        <input type="hidden" name="sector_id" value="{{ $sector_id[$language->lang_code] }}">
+                                        <input type="hidden" name="sector_id" value="{{ $id }}">
                                         <div class="grids-4">
                                             <div class="mb-3">
                                                 <label for="up_title_{{ $language->lang_code }}" class="form-label">Üst Metin ({{ $language->lang_code }})</label>
