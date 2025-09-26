@@ -17,6 +17,7 @@ class Brand extends Model
 
     protected $fillable = [
         'brand_id',
+        'sector_id',
         'lang',
         'up_title',
         'title',
@@ -42,13 +43,13 @@ class Brand extends Model
     // Define relationship with BrandSlider1 model
     public function slider1()
     {
-        return $this->hasMany(BrandSlider1::class, 'brand_id', 'id');
+        return $this->hasMany(BrandSlider1::class, 'brand_id', 'brand_id');
     }
 
     // Define relationship with BrandSlider2 model
     public function slider2()
     {
-        return $this->hasMany(BrandSlider2::class, 'brand_id', 'id');
+        return $this->hasMany(BrandSlider2::class, 'brand_id', 'brand_id');
     }
 
 }

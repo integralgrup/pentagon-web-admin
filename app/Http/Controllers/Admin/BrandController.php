@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Brand;
+use App\Models\Sector;
 use App\Models\Language; // Assuming you have a Language model to fetch languages
 use Illuminate\Support\Facades\DB;
 
@@ -24,7 +25,8 @@ class BrandController extends Controller
     {
         // code to show create brand form
         $languages = Language::all();
-        return view('admin.brand.create', compact('languages'));
+        $sectors = Sector::where('lang', 'en')->get();
+        return view('admin.brand.create', compact('languages', 'sectors'));
     }
 
     public function store(Request $request)
@@ -49,6 +51,7 @@ class BrandController extends Controller
             foreach ($languages as $language) {
                 if($language->lang_code == 'en'){
                     $request->validate([
+                        'sector_id' => 'required|exists:sector,sector_id',
                         'up_title_' . $language->lang_code => 'required|max:100',
                         'title_' . $language->lang_code => 'required|max:100',
                         'title_1_' . $language->lang_code => 'required|max:100',
@@ -85,6 +88,7 @@ class BrandController extends Controller
                 Brand::updateOrCreate(
                     ['brand_id' => $brand_id, 'lang' => $language->lang_code],
                     [
+                        'sector_id' => $request->input('sector_id') ?? 0, // Store the sector_id for all languages
                         'up_title' => $request->input('up_title_' . $language->lang_code) ?? $request->input('up_title_en'),
                         'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
                         'title_1' => $request->input('title_1_' . $language->lang_code) ?? $request->input('title_1_en'),
@@ -114,9 +118,10 @@ class BrandController extends Controller
         // code to show edit brand form
         $brands = Brand::where('brand_id', $id)->get();
         //dd($brands);
+        $sectors = Sector::where('lang', 'en')->get();
         $languages = Language::all();
 
-        return view('admin.brand.edit', compact('brands', 'languages'));
+        return view('admin.brand.edit', compact('brands', 'languages', 'sectors'));
     }
 
     public function destroy($id)

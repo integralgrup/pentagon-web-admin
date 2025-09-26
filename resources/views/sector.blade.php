@@ -278,8 +278,89 @@
                 </div>
             </div>
         </section>
+        @if(count($brands) > 0)
+        <section class="brands relative mb-[200px] 2xl:mb-[150px] xl:mb-[120px]">
+            <div class="container max-w-[1650px]">
+                <div class="flex flex-wrap items-center">
+                    <div class="w-3/5 md:w-full pr-[77px] md:mt-[15px] md:p-0 md:order-2">
+                        <div class="image-wrapper reveal w-full sm:h-auto relative flex flex-col sm:flex-col-reverse" id="brand-logo-image-area">
+                            <img src="{{ asset( getFolder(['uploads_folder', 'brand_images_folder'], $item->lang) . '/' . $item->image ) }}" alt="Markamız" width="814" height="696" class=" w-full h-[700px] md:h-[580px] sm:h-[320px] object-cover relative z-2 transition-all duration-450 [&.changed]:opacity-0 [&.changed]:translate-y-[5px]" id="brand-image">
+                            <div class="bg-primary-main absolute min-sm:-bottom-[10px] sm:-top-[20px] -left-[60px] sm:-left-[50px] w-[421px] sm:w-[320px] aspect-square"></div>
+                            <div class="reveal nav-buttons w-full flex items-center gap-[30px] pt-[12px] sm:pt-0 sm:pb-[12px] pl-[135px] 2xl:pl-[100px] xl:pl-[70px] sm:pl-[30px] relative z-2">
+                                <div class="brand-prev cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.brand-disabled]:opacity-65 relative [&.brand-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
+                                    <i class="icon-angle-left text-[12px] leading-none text-white"></i>
+                                    <span class="text-[16px] leading-[32px] text-white">Önceki</span>
+                                </div>
 
-        <?php //include 'layout/brands.php'; ?>
+                                <div class="separator w-[1px] h-[22px] bg-white/20"></div>
+
+                                <div class="brand-next cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.brand-disabled]:opacity-65 relative [&.brand-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
+                                    <span class="text-[16px] leading-[32px] text-white">Sonraki</span>
+                                    <i class="icon-angle-right text-[12px] leading-none text-white "></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-2/5 md:w-full md:p-0  md:order-1" id="logo-area">
+                        <div class="flex flex-col reveal">
+                            <div class="brand-slider-top reveal overflow-hidden order-1">
+                                <div class="swiper-wrapper">
+                                    <?php foreach ($brands as $item) { ?>
+                                        <div class="swiper-slide">
+                                            <div class="img hidden" data-image="{{ asset( getFolder(['uploads_folder', 'brand_images_folder'], $item->lang) . '/' . $item->image ) }}"></div>
+                                            <div class="text-editor">
+                                                <span class="text-[16px] leading-[32px] font-light text-paragraph opacity-65 tracking-[7.2px] block mb-[30px] lg:mb-[15px]">{!! $item->up_title !!}</span>
+                                                <h2 class="text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-light text-secondary-main">
+                                                    {!! $item->title_1 !!}
+                                                </h2>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                            <div class="brand-slider my-[40px] md:my-[20px] reveal overflow-hidden order-2 md:order-3 relative before:xs:hidden after:xs:hidden before:absolute before:left-0 before:top-0 before:w-[125px] before:h-full before:z-2 before:[background:linear-gradient(90deg,_#FBFAF6_16.53%,_rgba(247,_249,_249,_0.00)_100%)] after:absolute after:right-0 after:top-0 after:w-[125px] after:h-full after:z-2 after:[background:linear-gradient(270deg,_#FBFAF6_16.53%,_rgba(247,_249,_249,_0.00)_100%)]">
+                                <div class="swiper-wrapper">
+                                    <?php foreach ($brands as $item) { ?>
+                                        <div class="swiper-slide group">
+                                            <div class="img hidden" data-image="{{ asset( getFolder(['uploads_folder', 'brand_images_folder'], $item->lang) . '/' . $item->bg_image ) }}"></div>
+                                            <div class="logo grayscale flex items-center justify-center h-[80px] opacity-50 transition-all duration-300 scale-90 group-[&.swiper-slide-active]:grayscale-0 group-[&.swiper-slide-active]:opacity-100 group-[&.swiper-slide-active]:scale-100">
+                                                <img src="{{ asset( getFolder(['uploads_folder', 'brand_images_folder'], $item->lang) . '/' . $item->image ) }}" alt="Group Logo" width="176" height="40" class="group-[&.swiper-slide-active]:w-full group-[&.swiper-slide-active]:h-full w-5/6 h-5/6 object-contain transition-all duration-450 group-[&.swiper-slide-active]:xs:w-3/4 group-[&.swiper-slide-active]:xs:h-3/4">
+                                            </div>
+                                        </div>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                            <div class="brand-slider-bottom overflow-hidden order-3 md:order-2 reveal">
+                                <div class="swiper-wrapper">
+                                    <?php foreach ($brands as $item) { ?>
+                                        <div class="swiper-slide">
+                                            <div class="img hidden" data-image="{{ asset( getFolder(['uploads_folder', 'brand_images_folder'], $item->lang) . '/' . $item->image ) }}"></div>
+                                            <div class="text-editor order-3 md:order-2 md:mt-[20px]">
+                                                <p class="text-[18px] lg:text-[16px] leading-[32px] font-light text-paragraph mb-[60px] xl:mb-[40px] md:mb-[20px]">
+                                                    {{$item->description}}
+                                                </p>
+                                            </div>
+                                            <a href="<?= $item['url'] ?>" target="_blank" class="order-4 flex items-center justify-center relative w-max overflow-hidden main-button group/button sm:w-full" id="website-button">
+                                                <div class="left px-[30px] py-[20px] flex items-center justify-center z-2 bg-transparent border border-solid border-primary-main transition-all duration-300 sm:w-full relative before:absolute before:left-0 before:top-0 before:w-0 before:h-full before:translate-x-[-100px] group-hover/button:before:min-md:w-full group-hover/button:before:min-md:translate-x-0 before:bg-primary-main before:transition-all before:duration-500">
+                                                        <span class="text-[16px] leading-none font-medium text-primary-main transition-all duration-300 group-hover/button:min-md:duration-600 group-hover/button:min-md:text-white translate-x-[-100px] opacity-0 group-hover/button:min-md:translate-x-0 group-hover/button:min-md:opacity-100 w-0 whitespace-nowrap relative z-2">Websitesine Git</span>
+                                                        <span class="text-[16px] leading-none font-medium text-primary-main transition-all duration-600 group-hover/button:min-md:duration-300 group-hover/button:min-md:text-white group-hover/button:min-md:translate-x-[100px] group-hover/button:min-md:opacity-0 relative z-2">Websitesine Git</span>
+                                                    
+                                                </div>
+                                                <div class="right flex items-center justify-center z-2 bg-[#9D8D5D] py-[22px] px-[24px] border border-solid border-[#9D8D5D] w-[56px] h-[58px] overflow-hidden">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="h-[18px] w-auto transition-all duration-300 group-hover/button:min-md:duration-600 translate-x-[-100px] opacity-0 group-hover/button:min-md:translate-x-[9px] group-hover/button:min-md:opacity-100"><path d="M304 24c0 13.3 10.7 24 24 24H430.1L207 271c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l223-223V184c0 13.3 10.7 24 24 24s24-10.7 24-24V24c0-13.3-10.7-24-24-24H328c-13.3 0-24 10.7-24 24zM72 32C32.2 32 0 64.2 0 104V440c0 39.8 32.2 72 72 72H408c39.8 0 72-32.2 72-72V312c0-13.3-10.7-24-24-24s-24 10.7-24 24V440c0 13.3-10.7 24-24 24H72c-13.3 0-24-10.7-24-24V104c0-13.3 10.7-24 24-24H200c13.3 0 24-10.7 24-24s-10.7-24-24-24H72z" fill="white"/></svg>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="h-[18px] w-auto transition-all duration-600 group-hover/button:min-md:duration-300 group-hover/button:min-md:translate-x-[100px] group-hover/button:min-md:opacity-0 translate-x-[-9px]"><path d="M304 24c0 13.3 10.7 24 24 24H430.1L207 271c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l223-223V184c0 13.3 10.7 24 24 24s24-10.7 24-24V24c0-13.3-10.7-24-24-24H328c-13.3 0-24 10.7-24 24zM72 32C32.2 32 0 64.2 0 104V440c0 39.8 32.2 72 72 72H408c39.8 0 72-32.2 72-72V312c0-13.3-10.7-24-24-24s-24 10.7-24 24V440c0 13.3-10.7 24-24 24H72c-13.3 0-24-10.7-24-24V104c0-13.3 10.7-24 24-24H200c13.3 0 24-10.7 24-24s-10.7-24-24-24H72z" fill="white"/></svg>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        @endif
     </section>
 
 </main>

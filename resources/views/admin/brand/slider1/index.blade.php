@@ -52,6 +52,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>Başlık</th>
                                     <th>Görsel</th>
                                     <th>İşlemler</th>
                                 </tr>
@@ -60,6 +61,7 @@
                                 @foreach($sliders as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $item->title }}</td>
                                         <td><img src="{{ asset( getFolder(['uploads_folder', 'brand_images_folder']) . '/' . $item->image) }}" alt="{{ $item->alt }}" width="100"></td>
                                         <td>
                                             <a href="{{ route('admin.brand.slider1.edit', [$id, $item->slider_id]) }}" class="btn btn-warning btn-sm">
