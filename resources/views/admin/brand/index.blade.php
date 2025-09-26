@@ -54,7 +54,7 @@
                                     <th>#</th>
                                     <th>Başlık</th>
                                     <th>Görsel</th>
-                                    <th style="width: 350px;">İşlemler</th>
+                                    <th style="width: 380px;">İşlemler</th>
                                 </tr>
                             </thead>
                             <tbody>
