@@ -152,7 +152,13 @@ class SectorController extends Controller
     // Delete sector
     public function destroy($sector_id)
     {
-        $sector = Sector::where('sector_id', $sector_id)->delete();
+        $sector = Sector::where('sector_id', $sector_id)->get();
+
+        // Delete each row
+        foreach ($sector as $item) {
+            $item->delete();
+        }
+       
         
         // Also delete related sliders
         DB::table('sector_slider_1')->where('sector_id', $sector_id)->delete();
