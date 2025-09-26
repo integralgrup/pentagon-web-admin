@@ -192,7 +192,42 @@
             </div>
         </section>
 
-        <?php //include 'layout/gallery-section.php'; ?>
+        <section class="gallery mb-[170px] xl:mb-[120px] lg:mb-[90px] md:mb-[60px] overflow-hidden">
+            <div class="container max-w-[1650px]">
+                <h3 class="reveal text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-light text-secondary-main mb-[60px] xs:mb-[30px] text-center">
+                    Pentagon Yapı <br> <span class="font-bold">Galeri Medyası</span>
+                </h3>
+
+                <div class="gallery-slider reveal overflow-[revert]">
+                    <div class="swiper-wrapper items-center h-[700px] xl:h-[600px] md:h-[500px] sm:h-[400px]">
+                        <?php foreach($brand->gallery as $item): ?>
+                            <div class="swiper-slide h-max group/slide sm:opacity-0 [&.swiper-slide-active]:sm:opacity-100 duration-300 transition-all">
+                                <a href="{{ asset( getFolder(['uploads_folder', 'brand_images_folder'], $item->lang) ) .'/'.  $item->image }}" class="overflow-hidden grid place-items-center item w-full h-[600px] group-[&.swiper-slide-active]/slide:h-[700px] group-[&.swiper-slide-active]/slide:xl:h-[600px] xl:h-[500px] group-[&.swiper-slide-active]/slide:md:h-[500px] md:h-[400px] sm:h-[320px] group-[&.swiper-slide-active]/slide:sm:h-[400px] transition-all duration-500 opacity-50 group-[&.swiper-slide-active]/slide:opacity-100 group/gallery" data-fancybox="gallery">
+                                    <img src="{{ asset( getFolder(['uploads_folder', 'brand_images_folder'], $item->lang) ) .'/'.  $item->image }}" alt="Galeri Görsel" class="w-full h-full object-cover transition-transform duration-450 hover:scale-105" data-swiper-parallax="50%">
+                                </a>
+                            </div>
+                        <?php endforeach; ?>
+
+                    </div>
+
+                    <div class="reveal nav-buttons w-full grid place-items-center">
+                        <div class="flex items-center gap-[30px] px-[45px] md:px-[25px] py-[15px] sm:p-[5px] bg-primary-main">
+                            <div class="gallery-prev cursor-pointer flex items-center gap-[9px] md:w-[40px] md:h-[40px] md:justify-center transition-all duration-300 [&.gallery-disabled]:opacity-65 relative [&.gallery-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
+                                <i class="icon-angle-left text-[12px] leading-none text-white"></i>
+                                <span class="text-[16px] leading-[32px] text-white md:hidden">Önceki</span>
+                            </div>
+
+                            <div class="separator w-[1px] h-[22px] bg-white/20"></div>
+
+                            <div class="gallery-next cursor-pointer flex items-center gap-[9px] md:w-[40px] md:h-[40px] md:justify-center transition-all duration-300 [&.gallery-disabled]:opacity-65 relative [&.gallery-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
+                                <span class="text-[16px] leading-[32px] text-white md:hidden">Sonraki</span>
+                                <i class="icon-angle-right text-[12px] leading-none text-white "></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <section class="contact mt-[200px] 2xl:mt-[150px] xl:mt-[120px] lg:mt-[90px] md:mt-[60px] mb-[120px] 2xl:mb-[90px] xl:mb-[60px] md:mb-[50px]">
             <?php //include 'layout/contact-form.php'; ?>

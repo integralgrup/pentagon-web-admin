@@ -84,7 +84,7 @@ class HomeController extends Controller
 
         if($menu->page_type == 'brand') {
             if($slug2!= null) {
-                $brand = Brand::where(['lang' => app()->getLocale(), 'seo_url' => $slug2])->with(['slider1', 'slider2'])->first();
+                $brand = Brand::where(['lang' => app()->getLocale(), 'seo_url' => $slug2])->with(['slider1', 'slider2', 'gallery'])->first();
                 //dd($brand);
                 return view('brand', compact('brand'));
             }

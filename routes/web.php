@@ -114,6 +114,13 @@ Route::post('/admin/brand/{id}/slider2/store', 'App\Http\Controllers\Admin\Brand
 Route::get('/admin/brand/{id}/slider2/{sliderId}/edit', 'App\Http\Controllers\Admin\BrandController@slider2Edit')->name('admin.brand.slider2.edit');
 Route::delete('/admin/brand/{id}/slider2/{sliderId}', 'App\Http\Controllers\Admin\BrandController@slider2Destroy')->name('admin.brand.slider2.destroy');
 
+// Brand Gallery routes
+Route::get('/admin/brand/{id}/gallery', 'App\Http\Controllers\Admin\BrandController@galleryIndex')->name('admin.brand.gallery.index');
+Route::get('/admin/brand/{id}/gallery/create', 'App\Http\Controllers\Admin\BrandController@galleryCreate')->name('admin.brand.gallery.create');
+Route::post('/admin/brand/{id}/gallery/store', 'App\Http\Controllers\Admin\BrandController@galleryStore')->name('admin.brand.gallery.store');
+Route::get('/admin/brand/{id}/gallery/{galleryId}/edit', 'App\Http\Controllers\Admin\BrandController@galleryEdit')->name('admin.brand.gallery.edit');
+Route::delete('/admin/brand/{id}/gallery/{galleryId}', 'App\Http\Controllers\Admin\BrandController@galleryDestroy')->name('admin.brand.gallery.destroy');
+
 // Career routes
 Route::get('/admin/career', 'App\Http\Controllers\Admin\CareerController@index')->name('admin.career.index');
 Route::get('/admin/career/create', 'App\Http\Controllers\Admin\CareerController@create')->name('admin.career.create');

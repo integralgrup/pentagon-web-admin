@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Brand;
+use App\Models\BrandGallery;
+use App\Models\BrandSlider1;
+use App\Models\BrandSlider2;
 use App\Models\Sector;
 use App\Models\Language; // Assuming you have a Language model to fetch languages
 use Illuminate\Support\Facades\DB;
@@ -370,6 +373,92 @@ class BrandController extends Controller
     {
         DB::table('brand_slider_2')->where('slider_id', $sliderId)->delete();
         return redirect()->route('admin.brand.slider2.index', $id)->with('success', 'Slider başarıyla silindi.');
+    }
+
+    // Brand Gallery Index
+    public function galleryIndex($id)
+    {
+        // code to list all gallery images for a specific brand where lang is en use DB Facade
+        $gallery = BrandGallery::where(['brand_id' => $id, 'lang' => 'en'])->get();
+        return view('admin.brand.gallery.index', compact('gallery', 'id'));
+    }
+
+    // gallery create method
+    public function galleryCreate($id)
+    {
+        $languages = Language::all();
+        return view('admin.brand.gallery.create', compact('id', 'languages')); 
+    }
+
+    // gallery store method
+    public function galleryStore(Request $request, $id)
+    {
+        $languages = Language::all();
+        //dd($request->all());
+        try {
+
+            if($request->has('image_id')){
+                $imageId = $request->input('image_id');
+                // Update existing slider
+            }else{
+                // Select max id
+                $imageId = BrandGallery::where('brand_id', $id)->max('image_id') + 1;
+            }
+
+
+            foreach ($languages as $language) {
+
+                //Validation
+                if($language->lang_code == 'en'){   
+                    $request->validate([
+                        'brand_id' => 'required|integer',
+                        'alt_' . $language->lang_code => 'required|string|max:255',
+                        'image_' . $language->lang_code => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+                        'sort_' . $language->lang_code => 'nullable|integer',
+                    ]); 
+                }
+
+                if ($request->hasFile('image_en') || $request->hasFile('image_' . $language->lang_code)) {
+                    $tmpImgPath = createTmpFile($request, 'image_en', $languages[0]);
+                    $imageName = moveFile($request,$language,'image_' . $language->lang_code, 'image_en', 'alt_' . $language->lang_code, 'alt_en', $language->brand_images_folder, $tmpImgPath);
+                    //dd($imageName);
+                }else{
+                    $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
+                }
+
+                BrandGallery::updateOrCreate(
+                    ['image_id' => $imageId, 'lang' => $language->lang_code],
+                    [
+                        'brand_id' => $id,
+                        'image_id' => $imageId,
+                        'sort' => $request->input('sort_' . $language->lang_code) ?? $request->input('sort_en') ?? 0,
+                        'image' => $imageName,
+                        'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
+                    ]
+                );
+
+            }
+
+            return redirect()->route('admin.brand.gallery.index', $id)->with('success', 'Görsel başarıyla kaydedildi.');
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error' => 'Hata oluştu: ' . $th->getMessage()]);
+        }
+    }
+
+    // gallery edit method
+    public function galleryEdit($id, $imageId)
+    {
+        $languages = Language::all();
+        //get gallery array with the specified image_id
+        $gallery = BrandGallery::where('image_id', $imageId)->get();    
+        return view('admin.brand.gallery.edit', compact('gallery', 'id', 'imageId', 'languages'));
+    }
+
+    // gallery destroy
+    public function galleryDestroy($id, $imageId)
+    {
+        BrandGallery::where('image_id', $imageId)->delete();
+        return redirect()->route('admin.brand.gallery.index', $id)->with('success', 'Görsel başarıyla silindi.');
     }
 
 }

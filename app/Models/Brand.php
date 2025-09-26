@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\BrandSlider1;
 use App\Models\BrandSlider2;
+use App\Models\BrandGallery;
 
 class Brand extends Model
 {
@@ -50,6 +51,14 @@ class Brand extends Model
     public function slider2()
     {
         return $this->hasMany(BrandSlider2::class, 'brand_id', 'brand_id');
+    }
+
+    // Define relationship with BrandGallery model
+    public function gallery()
+    {
+        // Get gallery items with same brand_id and lang
+        return $this->hasMany(BrandGallery::class, 'brand_id', 'brand_id')->where('lang', app()->getLocale());
+        //return $this->hasMany(BrandGallery::class, 'brand_id', 'lang');
     }
 
 }
