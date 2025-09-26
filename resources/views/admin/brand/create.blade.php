@@ -56,8 +56,8 @@
                             @csrf
                             <div class="tab-content" id="myTabContent">
                                 <div class="mb-3 px-3">
-                                    <label for="sector_id" class="form-label">Sektör</label>
-                                    <select class="form-select" id="sector_id" name="sector_id" required>
+                                    <label for="sector_ids" class="form-label">Sektör</label>
+                                    <select class="form-select" id="sector_ids" name="sector_ids[]" multiple required>
                                         <option value="">Sektör Seçiniz</option>
                                         @foreach($sectors as $sector)
                                             <option value="{{ $sector->sector_id }}">{{ $sector->title }}</option>

@@ -52,7 +52,7 @@
                     </div>
                     <?php 
                         foreach($brands as $brand){
-                            $sector_id = $brand->sector_id;
+                            $sector_ids = explode(',', $brand->sector_ids)  ?? [];
                             $brand_id[$brand->lang] = $brand->brand_id;
                             $url[$brand->lang] = $brand->url;
                             $up_title[$brand->lang] = $brand->up_title;
@@ -74,11 +74,11 @@
                             
                             <div class="tab-content" id="myTabContent">
                                 <div class="mb-3 px-3">
-                                    <label for="sector_id" class="form-label">Sektör</label>
-                                    <select class="form-select" id="sector_id" name="sector_id" required>
+                                    <label for="sector_ids" class="form-label">Sektör</label>
+                                    <select class="form-select" id="sector_ids" name="sector_ids[]" multiple required>
                                         <option value="">Sektör Seçiniz</option>
                                         @foreach($sectors as $sector)
-                                            <option value="{{ $sector->sector_id }}" {{ $sector->sector_id == $sector_id ? 'selected' : '' }}>{{ $sector->title }}</option>
+                                            <option value="{{ $sector->sector_id }}" {{ in_array($sector->sector_id, $sector_ids) ? 'selected' : '' }}>{{ $sector->title }}</option>
                                         @endforeach
                                     </select>
                                 </div>

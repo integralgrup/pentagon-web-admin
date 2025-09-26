@@ -58,7 +58,13 @@ class HomeController extends Controller
                 $sector = Sector::where(['lang' => app()->getLocale(), 'seo_url' => $slug2])->first();
                 $slider1 = DB::table('sector_slider_1')->where(['lang' => app()->getLocale(), 'sector_id' => $sector->sector_id])->get();
                 $slider2 = DB::table('sector_slider_2')->where(['lang' => app()->getLocale(), 'sector_id' => $sector->sector_id])->get();
-                $brands = Brand::where(['lang' => app()->getLocale(), 'sector_id' => $sector->sector_id])->get();
+                $sector_id = $sector->sector_id;
+                // Get brands associated with the sector, brand's sector_ids is a comma-separated string
+                $brands = Brand::where('lang', app()->getLocale())
+                                ->whereRaw("FIND_IN_SET(?, sector_ids)", [$sector_id])
+                                ->get();
+                //dd($brands);
+                //$brands = Brand::where(['lang' => app()->getLocale(), ])->whereIn('sector_ids', $sector_ids)->get();
                 //dd($slider1, $slider2);
                 return view('sector', compact('sector', 'slider1', 'slider2', 'brands'));
             }
