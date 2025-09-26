@@ -89,6 +89,10 @@
                                             <label for="url_{{ $language->lang_code }}" class="form-label">URL ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="text" class="form-control" id="url_{{ $language->lang_code }}" name="url_{{ $language->lang_code }}" {{ $required }}>
                                         </div>
+                                        <div class="mb-3">
+                                            <label for="sort_{{ $language->lang_code }}" class="form-label">Sıralama ({{ strtoupper($language->lang_code) }})</label>
+                                            <input type="number" class="form-control" id="sort_{{ $language->lang_code }}" name="sort_{{ $language->lang_code }}" min="0">
+                                        </div>
                                     </div>
                                 </div>
                             @endforeach

@@ -292,6 +292,7 @@ class BrandController extends Controller
                         'url_' . $language->lang_code => 'required|string|max:255',
                         'alt_' . $language->lang_code => 'required|string|max:255',
                         'image_' . $language->lang_code => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+                        'sort_' . $language->lang_code => 'nullable|integer',
                     ]); 
                 }
 
@@ -320,6 +321,7 @@ class BrandController extends Controller
                             'url' => $request->input('url_' . $language->lang_code) ?? $request->input('url_en'),
                             'image' => $imageName,
                             'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
+                            'sort' => $request->input('sort_' . $language->lang_code) ?? $request->input('sort_en') ?? 0,
                         ]);
                 } else {
                     DB::table('brand_slider_2')->insert([
@@ -333,6 +335,7 @@ class BrandController extends Controller
                         'url' => $request->input('url_' . $language->lang_code) ?? $request->input('url_en'),
                         'image' => $imageName,
                         'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
+                        'sort' => $request->input('sort_' . $language->lang_code) ?? $request->input('sort_en') ?? 0,
                     ]);
                 }
 

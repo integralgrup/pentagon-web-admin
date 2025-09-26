@@ -61,6 +61,7 @@
                             $url[$item->lang] = $item->url;
                             $image[$item->lang] = $item->image;
                             $alt[$item->lang] = $item->alt;
+                            $sort[$item->lang] = $item->sort;
                         }
                     ?>
                     <div class="card-body">
@@ -107,6 +108,10 @@
                                         <div class="mb-3">
                                             <label for="url_{{ $language->lang_code }}" class="form-label">URL ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="text" class="form-control" id="url_{{ $language->lang_code }}" name="url_{{ $language->lang_code }}" value="{{ $url[$language->lang_code] ?? '' }}" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="sort_{{ $language->lang_code }}" class="form-label">Sıralama ({{ strtoupper($language->lang_code) }})</label>
+                                            <input type="number" class="form-control" id="sort_{{ $language->lang_code }}" name="sort_{{ $language->lang_code }}" value="{{ $sort[$language->lang_code] ?? 0 }}" min="0">
                                         </div>
                                     </div>
                                 </div>
