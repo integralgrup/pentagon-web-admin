@@ -262,6 +262,16 @@ class AboutController extends Controller
         return view('admin.about.how_we_do.edit', compact('howWeDoContent', 'languages'));
     }
 
+    public function howWeDoDestroy(Request $request, $id)
+    {
+        try {
+            DB::table('about_how_we_do')->where('content_id', $id)->delete();
+            return redirect()->route('admin.about.how_we_do')->with('success', 'Nasıl Yaparız içeriği başarıyla silindi.');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => 'Hata oluştu: ' . $e->getMessage()]);
+        }
+    }
+
     // what we do methods
 
     public function whatWeDoIndex(Request $request)
@@ -341,7 +351,7 @@ class AboutController extends Controller
         //dd($whatWeDoContent);
         $languages = Language::all();
         return view('admin.about.what_we_do.edit', compact('whatWeDoContent', 'languages'));
-    }
+    } 
 
     public function whatWeDoDestroy(Request $request, $id)
     {
