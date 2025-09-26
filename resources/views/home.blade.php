@@ -281,7 +281,7 @@
                     <div class="w-3/5 md:hidden md:mb-[30px]">
                         <div id="test" class="items flex flex-col">
                             <?php foreach ($blogs as $key => $item) { ?>
-                                <a href="<?= $item->seo_url ?>" class="reveal blog-item item group transition-all duration-500 [&_>_div]:last:!border-0 py-[25px] md:py-[15px]" data-item-image="<?= env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','blog_images_folder'], app()->getLocale()) . '/' . $item->image ?>" data-blog-id="<?= $key + 1 ?>">
+                                <a href="<?= env('HTTP_DOMAIN') . '/' . getUrl('blog_url', $item->lang) .'/'. $item->seo_url ?>" class="reveal blog-item item group transition-all duration-500 [&_>_div]:last:!border-0 py-[25px] md:py-[15px]" data-item-image="<?= env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','blog_images_folder'], app()->getLocale()) . '/' . $item->image ?>" data-blog-id="<?= $key + 1 ?>">
                                     <div class="flex gap-[50px] xl:gap-[30px] pb-[30px] border-0 !border-b border-solid border-black/10 transition-all duration-500">
                                         <span class="text-[26px] xl:text-[22px] md:text-[20px] leading-[32px] text-paragraph group-hover:text-primary-main transition-all duration-450 [-webkit-text-stroke:2px_rgba(182,163,107,0)] group-hover:[-webkit-text-stroke:2px_rgba(182,163,107,1)]"><?= "0" . ($key + 1) ?></span>
                                         <div class="flex flex-col gap-[10px] min-md:transition-transform min-md:duration-450 group-hover:min-md:translate-y-[-20px]">
@@ -307,7 +307,7 @@
                                                 </div>
                                                 <div class="blog-item item group flex">
                                                     <div class="flex flex-col gap-[10px]">
-                                                        <a href="<?= $item->seo_url ?>" class="text-[20px] leading-[32px] text-paragraph transition-all duration-300 line-clamp-3"><?= $item->title ?></a>
+                                                        <a href="<?= env('HTTP_DOMAIN') . '/' . getUrl('blog_url', $item->lang) .'/'. $item->seo_url ?>" class="text-[20px] leading-[32px] text-paragraph transition-all duration-300 line-clamp-3"><?= $item->title ?></a>
                                                         <p class="description text-[16px] leading-[32px] font-light text-paragraph line-clamp-4"><?= mb_substr($item->description, 0, 100) ?>...</p>
                                                     </div>
                                                 </div>
