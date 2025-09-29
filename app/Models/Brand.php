@@ -44,13 +44,15 @@ class Brand extends Model
     // Define relationship with BrandSlider1 model
     public function slider1()
     {
-        return $this->hasMany(BrandSlider1::class, 'brand_id', 'brand_id');
+        // where lang = current locale
+        return $this->hasMany(BrandSlider1::class, 'brand_id', 'brand_id')->where('lang', app()->getLocale());
     }
 
     // Define relationship with BrandSlider2 model
     public function slider2()
     {
-        return $this->hasMany(BrandSlider2::class, 'brand_id', 'brand_id');
+        // where lang = current locale
+        return $this->hasMany(BrandSlider2::class, 'brand_id', 'brand_id')->where('lang', app()->getLocale());
     }
 
     // Define relationship with BrandGallery model
