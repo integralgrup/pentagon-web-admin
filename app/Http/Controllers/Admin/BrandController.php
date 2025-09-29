@@ -285,7 +285,7 @@ class BrandController extends Controller
                 // Update existing slider
             }else{
                 // Select max id
-                $sliderId = DB::table('brand_slider_2')->where('brand_id', $id)->max('id') + 1;
+                $sliderId = DB::table('brand_slider_2')->where('brand_id', $id)->max('slider_id') + 1;
             }
 
 
