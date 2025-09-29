@@ -41,7 +41,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
-                            <h5 class="card-title mb-0">Marka Slider 2 Listesi</h5>
+                            <h5 class="card-title mb-0">Marka Ürün Listesi</h5>
                             <a href="{{ route('admin.brand.slider2.create', $id) }}" class="btn btn-primary">
                                 <i class="bi bi-plus"></i> Ekle
                             </a>
