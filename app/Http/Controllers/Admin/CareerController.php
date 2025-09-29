@@ -208,7 +208,7 @@ class CareerController extends Controller
 
     public function sliderDestroy($id)
     {
-        CareerSlider::destroy($id);
+        CareerSlider::where('slider_id', $id)->delete();
         return redirect()->route('admin.career.slider.index');
     }
 
