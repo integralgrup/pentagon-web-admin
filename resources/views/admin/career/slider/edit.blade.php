@@ -80,9 +80,9 @@
                                             <label for="title_{{ $language->lang_code }}">Başlık ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" value="{{ $title[$language->lang_code] }}" required>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" style="display:none;">
                                             <label for="title_1_{{ $language->lang_code }}">Alt Başlık ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="text" class="form-control" id="title_1_{{ $language->lang_code }}" name="title_1_{{ $language->lang_code }}" value="{{ $title_1[$language->lang_code] }}" required>
+                                            <input type="text" class="form-control" id="title_1_{{ $language->lang_code }}" name="title_1_{{ $language->lang_code }}" value="-" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="image_{{ $language->lang_code }}">Resim ({{ strtoupper($language->lang_code) }})</label>

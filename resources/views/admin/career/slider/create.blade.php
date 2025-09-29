@@ -71,9 +71,9 @@
                                             <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" {{ $required }}>
                                         </div>
                                         <!-- title_1 -->
-                                        <div class="mb-3">
+                                        <div class="mb-3" style="display:none">
                                             <label for="title_1_{{ $language->lang_code }}" class="form-label">Alt Başlık ({{ $language->lang_code }})</label>
-                                            <input type="text" class="form-control" id="title_1_{{ $language->lang_code }}" name="title_1_{{ $language->lang_code }}" {{ $required }}>
+                                            <input type="text" class="form-control" id="title_1_{{ $language->lang_code }}" name="title_1_{{ $language->lang_code }}" value="-" {{ $required }}>
                                         </div>
                                         <div class="mb-3">
                                             <label for="image_{{ $language->lang_code }}" class="form-label">Görsel ({{ $language->lang_code }})</label>
