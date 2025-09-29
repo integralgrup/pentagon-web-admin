@@ -13,6 +13,7 @@ class CareerSlider extends Model
     protected $fillable = [
         'lang',
         'slider_id',
+        'upper_title',
         'title',
         'title_1',
         'description',

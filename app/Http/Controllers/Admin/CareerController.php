@@ -160,6 +160,7 @@ class CareerController extends Controller
                 if($language->lang_code == 'en'){
                     $request->validate([
                         'lang_' . $language->lang_code => 'required|string|max:10',
+                        'upper_title_' . $language->lang_code => 'required|string|max:100',
                         'title_' . $language->lang_code => 'required|string|max:100',
                         'title_1_' . $language->lang_code => 'required|string|max:255',
                         'description_' . $language->lang_code => 'required|string|max:500',
@@ -182,6 +183,7 @@ class CareerController extends Controller
                         'slider_id' => $slider_id,
                     ],
                     [
+                        'upper_title' => $request->input('upper_title_' . $language->lang_code) ?? $request->input('upper_title_en'),
                         'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
                         'title_1' => $request->input('title_1_' . $language->lang_code) ?? $request->input('title_1_en'),
                         'description' => $request->input('description_' . $language->lang_code) ?? $request->input('description_en'),

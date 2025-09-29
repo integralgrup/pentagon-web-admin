@@ -60,6 +60,12 @@
                                 <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" id="tab-{{ $language->id }}" role="tabpanel" aria-labelledby="tab-{{ $language->id }}-tab">
                                     <div class="card-body" style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
                                         <input type="hidden" name="lang_{{ $language->lang_code }}" value="{{ $language->lang_code }}">
+                                        <!-- upper_title --> 
+                                        <div class="mb-3">
+                                            <label for="upper_title_{{ $language->lang_code }}" class="form-label">Üst Metin ({{ $language->lang_code }})</label>
+                                            <input type="text" class="form-control" id="upper_title_{{ $language->lang_code }}" name="upper_title_{{ $language->lang_code }}" {{ $required }}>
+                                        </div>
+                                        <!-- title -->
                                         <div class="mb-3">
                                             <label for="title_{{ $language->lang_code }}" class="form-label">Başlık ({{ $language->lang_code }})</label>
                                             <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" {{ $required }}>

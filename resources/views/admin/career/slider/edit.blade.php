@@ -52,6 +52,7 @@
                     </div>
                     <?php
                         foreach($slider as $item){
+                            $upper_title[$item->lang] = $item->upper_title;
                             $title[$item->lang] = $item->title;
                             $title_1[$item->lang] = $item->title_1;
                             $description[$item->lang] = $item->description;
@@ -69,6 +70,12 @@
                                 <input type="hidden" name="slider_id" value="{{ $item->slider_id }}" hidden>
                                 <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" id="tab-{{ $language->id }}" role="tabpanel" aria-labelledby="tab-{{ $language->id }}-tab">
                                     <div class="card-body" style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+                                        <!-- upper_title -->
+                                        <div class="form-group">
+                                            <label for="upper_title_{{ $language->lang_code }}">Üst Metin ({{ strtoupper($language->lang_code) }})</label>
+                                            <input type="text" class="form-control" id="upper_title_{{ $language->lang_code }}" name="upper_title_{{ $language->lang_code }}" value="{{ $upper_title[$language->lang_code] }}" required>
+                                        </div>
+
                                         <div class="form-group">
                                             <label for="title_{{ $language->lang_code }}">Başlık ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" value="{{ $title[$language->lang_code] }}" required>
