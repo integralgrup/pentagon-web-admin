@@ -77,9 +77,9 @@
                                             <input type="file" class="form-control" id="image_{{ $language->lang_code }}" name="image_{{ $language->lang_code }}" accept="image/*" {{ $required }}>
                                         </div>
                                         <!-- url input -->
-                                         <div class="mb-3">
+                                         <div class="mb-3" style="display:none;>
                                             <label for="url_{{ $language->lang_code }}" class="form-label">URL ({{ $language->lang_code }})</label>
-                                            <input type="text" class="form-control" id="url_{{ $language->lang_code }}" name="url_{{ $language->lang_code }}" {{ $required }}>
+                                            <input type="text" class="form-control" id="url_{{ $language->lang_code }}" name="url_{{ $language->lang_code }}" value="https://test.com" {{ $required }}>
                                         </div>
                                         <div class="mb-3">
                                             <label for="alt_{{ $language->lang_code }}" class="form-label">Alt Metin ({{ $language->lang_code }})</label>

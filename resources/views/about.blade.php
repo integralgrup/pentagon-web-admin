@@ -242,7 +242,7 @@
                         <div class="swiper-wrapper">
                             <?php foreach ($memberships as $item): ?>
                                 <div class="swiper-slide">
-                                    <a href="#" target="_blank" class="block">
+                                    <a href="{{asset( getFolder(['uploads_folder', 'images_folder'], $item->lang) .'/'. $item->pdf_file )}}" target="_blank" class="block">
                                         <div class="item w-full h-[170px] md:h-[90px] p-[50px] xl:p-[35px] md:p-[30px] sm:p-[15px] xs:px-0 group">
                                             <img src="<?= env('HTTP_DOMAIN').'/'.getFolder(['uploads_folder','images_folder'], app()->getLocale()).'/'.$item->image ?>" alt="<?= $item->alt ?>" width="190" height="62" class="w-full h-full object-contain transition-all duration-500 min-md:opacity-50 min-md:grayscale group-hover:min-md:opacity-100 group-hover:min-md:grayscale-0">
                                         </div>
