@@ -349,7 +349,7 @@ class BrandController extends Controller
 
             }
 
-            return redirect()->route('admin.brand.slider2.index', $id)->with('success', 'Slider başarıyla eklendi.');
+            return redirect()->route('admin.brand.slider2.index', $id)->with('success', 'Ürün başarıyla kaydedildi.');
         } catch (\Throwable $th) {
             return redirect()->back()->withErrors(['error' => 'Hata oluştu: ' . $th->getMessage()]);
         }
@@ -372,7 +372,7 @@ class BrandController extends Controller
     public function slider2Destroy($id, $sliderId)
     {
         DB::table('brand_slider_2')->where('slider_id', $sliderId)->delete();
-        return redirect()->route('admin.brand.slider2.index', $id)->with('success', 'Slider başarıyla silindi.');
+        return redirect()->route('admin.brand.slider2.index', $id)->with('success', 'Ürün başarıyla silindi.');
     }
 
     // Brand Gallery Index

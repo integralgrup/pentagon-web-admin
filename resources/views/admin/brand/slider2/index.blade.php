@@ -1,5 +1,5 @@
 @extends('admin.layouts.main')
-@section('title', 'Marka Slider 2 Listesi')
+@section('title', 'Marka Ürün Listesi')
 
 @section('content')
 
@@ -9,11 +9,11 @@
           <div class="container-fluid">
             <!--begin::Row-->
             <div class="row">
-              <div class="col-sm-6"><h3 class="mb-0">Marka Slider 2 Listesi</h3></div>
+              <div class="col-sm-6"><h3 class="mb-0">Marka Ürün Listesi</h3></div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-end">
                   <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Anasayfa</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Marka Slider 2 Yönetimi</li>
+                  <li class="breadcrumb-item active" aria-current="page">Marka Ürün Yönetimi</li>
                 </ol>
               </div>
             </div>
