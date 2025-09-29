@@ -1,5 +1,5 @@
 @extends('admin.layouts.main')
-@section('title', 'Sektör Slider 1 Listesi')
+@section('title', 'Sektör Slider Listesi')
 
 @section('content')
 
@@ -13,7 +13,7 @@
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-end">
                   <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Anasayfa</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Sektör Slider 1 Yönetimi</li>
+                  <li class="breadcrumb-item active" aria-current="page">Sektör Slider Yönetimi</li>
                 </ol>
               </div>
             </div>
@@ -41,7 +41,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
-                            <h5 class="card-title mb-0">Sektör Slider 1 Listesi</h5>
+                            <h5 class="card-title mb-0">Sektör Slider Listesi</h5>
                             <a href="{{ route('admin.sector.slider1.create', $id) }}" class="btn btn-primary">
                                 <i class="bi bi-plus"></i> Ekle
                             </a>

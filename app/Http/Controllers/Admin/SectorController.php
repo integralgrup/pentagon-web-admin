@@ -364,7 +364,7 @@ class SectorController extends Controller
 
             }
 
-            return redirect()->route('admin.sector.slider2.index', $id)->with('success', 'Slider başarıyla eklendi.');
+            return redirect()->route('admin.sector.slider2.index', $id)->with('success', 'Galeri görseli başarıyla eklendi.');
         } catch (\Throwable $th) {
             dd($th);
             return redirect()->back()->withErrors(['error' => 'Hata oluştu: ' . $th->getMessage()]);
@@ -387,6 +387,6 @@ class SectorController extends Controller
     public function slider2Destroy($id, $sliderId)
     {
         DB::table('sector_slider_2')->where('slider_id', $sliderId)->delete();
-        return redirect()->route('admin.sector.slider2.index', $id)->with('success', 'Slider başarıyla silindi.');
+        return redirect()->route('admin.sector.slider2.index', $id)->with('success', 'Galeri görseli başarıyla silindi.');
     }
 }

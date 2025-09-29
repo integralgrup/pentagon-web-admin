@@ -67,10 +67,10 @@
                                         </td>
                                         <td>
                                             <a href="{{ route('admin.sector.slider1.index', $item->sector_id) }}" class="btn btn-info btn-sm">
-                                                <i class="bi bi-images"></i> Slider 1
+                                                <i class="bi bi-images"></i> Slider
                                             </a>
                                             <a href="{{ route('admin.sector.slider2.index', $item->sector_id) }}" class="btn btn-info btn-sm">
-                                                <i class="bi bi-images"></i> Slider 2
+                                                <i class="bi bi-images"></i> Galeri
                                             </a>
                                             <a href="{{ route('admin.sector.edit', $item->sector_id) }}" class="btn btn-warning btn-sm">
                                                 <i class="bi bi-pencil"></i> Düzenle
