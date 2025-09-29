@@ -97,7 +97,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="description_{{ $language->lang_code }}">Açıklama ({{ strtoupper($language->lang_code) }})</label>
-                                            <textarea class="form-control summernote" id="description_{{ $language->lang_code }}" name="description_{{ $language->lang_code }}" rows="3" required>{{ $description[$language->lang_code] }}</textarea>
+                                            <textarea class="form-control editor " id="description_{{ $language->lang_code }}" name="description_{{ $language->lang_code }}" rows="3" required>{{ $description[$language->lang_code] }}</textarea>
                                         </div>
                                         <div class="grids-3">
                                             <div class="form-group">

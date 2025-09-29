@@ -323,6 +323,8 @@
     <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
     <script src="{{ asset('admin-template') }}/js/adminlte.js"></script>
     <script src="{{ asset('admin-template') }}/summernote/summernote-bs5.min.js"></script>
+    
+
     <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
     <script>
       $(document).ready(function() {
@@ -541,6 +543,16 @@
 
       const sparkline3 = new ApexCharts(document.querySelector('#sparkline-3'), option_sparkline3);
       sparkline3.render();
+    </script>
+    <script src="https://www.integralspor.com/web-manager/ckeditor/ckeditor.js"></script>
+
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function(){
+        document.querySelectorAll('.editor').forEach(function(el){
+          CKEDITOR.replace(el);
+        });
+      });
     </script>
     <!--end::Script-->
   </body>

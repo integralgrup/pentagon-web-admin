@@ -80,7 +80,7 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="description_{{ $language->lang_code }}" class="form-label">Açıklama ({{ $language->lang_code }})</label>
-                                            <textarea class="form-control summernote" id="description_{{ $language->lang_code }}" name="description_{{ $language->lang_code }}" rows="3" {{ $required }}></textarea>
+                                            <textarea class="form-control editor " id="description_{{ $language->lang_code }}" name="description_{{ $language->lang_code }}" rows="3" {{ $required }}></textarea>
                                         </div>
                                         <div class="grids-3 mb-3">
                                             <!-- seo_title -->
