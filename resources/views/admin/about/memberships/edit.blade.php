@@ -54,7 +54,7 @@
                         foreach($membershipsContent as $content){
                             $content_id[$content->lang] = $content->content_id;
                             $title[$content->lang] = $content->title;
-                            $title_1[$content->lang] = $content->title_1;
+                            $pdf_file[$content->lang] = $content->pdf_file;
                             $url_[$content->lang] = $content->url;
                             $image[$content->lang] = $content->image;
                             $alt[$content->lang] = $content->alt;
@@ -75,8 +75,12 @@
                                             <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" value="{{ $title[$language->lang_code] }}" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="title_1_{{ $language->lang_code }}">Başlık 1 ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="text" class="form-control" id="title_1_{{ $language->lang_code }}" name="title_1_{{ $language->lang_code }}" value="{{ $title_1[$language->lang_code] }}" required>
+                                            <label for="pdf_file_{{ $language->lang_code }}">PDF Dosyası ({{ strtoupper($language->lang_code) }})</label>
+                                            <input type="file" class="form-control" id="pdf_file_{{ $language->lang_code }}" name="pdf_file_{{ $language->lang_code }}" accept="application/pdf">
+                                            @if($pdf_file[$language->lang_code])
+                                                <a href="{{ $language->domain .'/'. getFolder(['uploads_folder', 'images_folder'], $language->lang_code) .'/'.$pdf_file[$language->lang_code] }}" target="_blank" style="margin-top: 10px; display: inline-block;">Mevcut PDF Dosyasını Görüntüle</a>
+                                                <input type="hidden" class="form-control" id="old_pdf_file_{{ $language->lang_code }}" name="old_pdf_file_{{ $language->lang_code }}" value="{{ $pdf_file[$language->lang_code] }}" readonly>
+                                            @endif
                                         </div>
                                         <div class="form-group">
                                             <label for="url_{{ $language->lang_code }}">URL ({{ strtoupper($language->lang_code) }})</label>

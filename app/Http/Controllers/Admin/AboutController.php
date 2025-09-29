@@ -398,7 +398,7 @@ class AboutController extends Controller
                 if ($language->lang_code === 'en') {
                     $request->validate([
                         'title_' . $language->lang_code => 'required|string|max:100',
-                        'title_1_' . $language->lang_code => 'required|string|max:255',
+                        'pdf_file_' . $language->lang_code => 'nullable|file|mimes:pdf|max:10048', // 10MB
                         'url_' . $language->lang_code => 'required|string|max:255',
                         'image_' . $language->lang_code => 'nullable|image|max:2048',
                         'alt_' . $language->lang_code => 'required|string|max:255',
@@ -413,6 +413,14 @@ class AboutController extends Controller
                     $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
                 }
 
+                if ($request->hasFile('pdf_file_' . $language->lang_code) || $request->hasFile('pdf_file_en')) {
+                    $tmpPdfPath = createTmpFile($request, 'pdf_file_' . $language->lang_code, $languages[0]);
+                    $pdfName = moveFile($request, $language, 'pdf_file_' . $language->lang_code, 'pdf_file_en', 'title_' . $language->lang_code, 'title_en', $language->images_folder, $tmpPdfPath);
+
+                } else {
+                    $pdfName = $request->input('old_pdf_file_' . $language->lang_code, null); // Use old pdf if no new pdf is uploaded
+                }
+
                 // Create or update the "how we do" content for the specific language
                 DB::table('about_memberships')->updateOrInsert(
                     [
@@ -421,10 +429,10 @@ class AboutController extends Controller
                     ],
                     [
                         'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
-                        'title_1' => $request->input('title_1_' . $language->lang_code) ?? $request->input('title_1_en'),
                         'url' => $request->input('url_' . $language->lang_code) ?? $request->input('url_en'),
                         'image' => $imageName ?? '',
                         'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
+                        'pdf_file' => $pdfName ?? '',
                     ]
                 );
             } // <-- Add this closing brace for the foreach loop

@@ -68,8 +68,8 @@
                                         </div>
                                         <div class="mb-3">
                                             <div>
-                                                <label for="title_1_{{ $language->lang_code }}" class="form-label">Alt Başlık ({{ $language->lang_code }})</label>
-                                                <input type="text" class="form-control" id="title_1_{{ $language->lang_code }}" name="title_1_{{ $language->lang_code }}" {{ $required }}>
+                                                <label for="pdf_file_{{ $language->lang_code }}" class="form-label">PDF Dosyası ({{ $language->lang_code }})</label>
+                                                <input type="file" class="form-control" id="pdf_file_{{ $language->lang_code }}" accept="application/pdf" name="pdf_file_{{ $language->lang_code }}" {{ $required }}>
                                             </div>
                                         </div>
                                         <div class="mb-3">
