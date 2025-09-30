@@ -297,7 +297,7 @@ class BrandController extends Controller
                         'title_' . $language->lang_code => 'required|string|max:255',
                         'upper_title_' . $language->lang_code => 'required|string|max:255',
                         'slide_title_' . $language->lang_code => 'required|string|max:255',
-                        'description_' . $language->lang_code => 'required|string|max:255',
+                        'description_' . $language->lang_code => 'required|string|max:5000',
                         'category_' . $language->lang_code => 'required|string|max:255',
                         'url_' . $language->lang_code => 'required|string|max:255',
                         'alt_' . $language->lang_code => 'required|string|max:255',
