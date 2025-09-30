@@ -56,6 +56,8 @@
                             $brand_id[$item->lang] = $item->brand_id;
                             $sliderId = $item->slider_id;
                             $title[$item->lang] = $item->title;
+                            $upper_title[$item->lang] = $item->upper_title;
+                            $slide_title[$item->lang] = $item->slide_title;
                             $description[$item->lang] = $item->description;
                             $category[$item->lang] = $item->category;
                             $url[$item->lang] = $item->url;
@@ -86,21 +88,33 @@
                                                 <textarea class="form-control" id="description_{{ $language->lang_code }}" name="description_{{ $language->lang_code }}" rows="3" required>{{ $description[$language->lang_code] ?? '' }}</textarea>
                                             </div>
                                         </div>
+                                        <div class="mb-3">
+                                            <div class="mb-3">
+                                                <label for="upper_title_{{ $language->lang_code }}" class="form-label">Slide Üst Başlık ({{ strtoupper($language->lang_code) }})</label>
+                                                <input type="text" class="form-control" id="upper_title_{{ $language->lang_code }}" name="upper_title_{{ $language->lang_code }}" value="{{ $upper_title[$language->lang_code] ?? '' }}" required >
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="slide_title_{{ $language->lang_code }}" class="form-label">Slide Başlık ({{ strtoupper($language->lang_code) }})</label>
+                                                <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="slide_title_{{ $language->lang_code }}" value="{{ $slide_title[$language->lang_code] ?? '' }}" required >
+                                            </div>
+                                        </div>
 
                                         <div class="mb-3">
-
+                                            <div class="mb-3">
                                             <label for="image_{{ $language->lang_code }}" class="form-label">Dosya ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="file" class="form-control" id="image_{{ $language->lang_code }}" name="image_{{ $language->lang_code }}">
                                             @if($image[$language->lang_code])
                                                 <img src="{{ $language->domain .'/'. getFolder(['uploads_folder','brand_images_folder'], $language->lang_code) . '/' . $image[$language->lang_code] }}" alt="{{ $alt[$language->lang_code] }}" style="width: 200px; height: auto; margin-top: 10px;">
                                                 <input type="hidden" class="form-control" id="old_image_{{ $language->lang_code }}" name="old_image_{{ $language->lang_code }}" value="{{ $image[$language->lang_code] }}" readonly>
                                             @endif
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="alt_{{ $language->lang_code }}" class="form-label">Alt Metin ({{ strtoupper($language->lang_code) }})</label>
+                                                <input type="text" class="form-control" id="alt_{{ $language->lang_code }}" name="alt_{{ $language->lang_code }}" value="{{ $alt[$language->lang_code] ?? '' }}" required>
+                                            </div>
                                         </div>
                                         
-                                        <div class="mb-3">
-                                            <label for="alt_{{ $language->lang_code }}" class="form-label">Alt Metin ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="text" class="form-control" id="alt_{{ $language->lang_code }}" name="alt_{{ $language->lang_code }}" value="{{ $alt[$language->lang_code] ?? '' }}" required>
-                                        </div>
+                                        
                                         <div class="mb-3">
                                             <label for="category_{{ $language->lang_code }}" class="form-label">Kategori ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="text" class="form-control" id="category_{{ $language->lang_code }}" name="category_{{ $language->lang_code }}" value="{{ $category[$language->lang_code] ?? '' }}" required>

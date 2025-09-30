@@ -295,6 +295,8 @@ class BrandController extends Controller
                 if($language->lang_code == 'en'){   
                     $request->validate([
                         'title_' . $language->lang_code => 'required|string|max:255',
+                        'upper_title_' . $language->lang_code => 'required|string|max:255',
+                        'slide_title_' . $language->lang_code => 'required|string|max:255',
                         'description_' . $language->lang_code => 'required|string|max:255',
                         'category_' . $language->lang_code => 'required|string|max:255',
                         'url_' . $language->lang_code => 'required|string|max:255',
@@ -324,6 +326,8 @@ class BrandController extends Controller
                         ->where('lang', $language->lang_code)
                         ->update([
                             'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
+                            'upper_title' => $request->input('upper_title_' . $language->lang_code) ?? $request->input('upper_title_en'),
+                            'slide_title' => $request->input('slide_title_' . $language->lang_code) ?? $request->input('slide_title_en'),
                             'description' => $request->input('description_' . $language->lang_code) ?? $request->input('description_en'),
                             'category' => $request->input('category_' . $language->lang_code) ?? $request->input('category_en'),
                             'url' => $request->input('url_' . $language->lang_code) ?? $request->input('url_en'),
@@ -338,6 +342,8 @@ class BrandController extends Controller
                         'brand_id' => $id,
                         'slider_id' => $sliderId,
                         'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
+                        'upper_title' => $request->input('upper_title_' . $language->lang_code) ?? $request->input('upper_title_en'),
+                        'slide_title' => $request->input('slide_title_' . $language->lang_code) ?? $request->input('slide_title_en'),
                         'description' => $request->input('description_' . $language->lang_code) ?? $request->input('description_en'),
                         'category' => $request->input('category_' . $language->lang_code) ?? $request->input('category_en'),
                         'url' => $request->input('url_' . $language->lang_code) ?? $request->input('url_en'),

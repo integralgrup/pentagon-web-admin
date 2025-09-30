@@ -156,9 +156,9 @@
                                     <?php foreach ($brand->slider2 as $item) { ?>
                                         <div class="swiper-slide" data-link="<?= $item->url ?>">
                                             <div class="text-editor w-full">
-                                                <span class="text-[16px] leading-[32px] font-light text-paragraph opacity-65 tracking-[7.2px] block mb-[30px] lg:mb-[15px]">En İyi Kalite</span>
+                                                <span class="text-[16px] leading-[32px] font-light text-paragraph opacity-65 tracking-[7.2px] block mb-[30px] lg:mb-[15px]">{{$item->upper_title}}</span>
                                                 <h2 class="text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-light text-secondary-main mb-[30px]">
-                                                    <?=$brand->title?> <span class="font-bold">Ürünlerimiz</span>
+                                                    <?=$item->slide_title?>
                                                 </h2>
                                                 <p class="text-[18px] lg:text-[16px] leading-[32px] font-light text-paragraph">
                                                     <?= $item->description ?>
