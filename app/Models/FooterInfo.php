@@ -23,6 +23,9 @@ class FooterInfo extends Model
         'linkedin_url',
         'x_url',
         'instagram_url',
+        'footer_text',
+        'footer_logo',
+        'alt',
     ];
 
     protected $dates = ['created_at', 'deleted_at'];
