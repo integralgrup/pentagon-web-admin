@@ -178,8 +178,8 @@
     <div class="blur-area absolute left-0 bottom-0 w-full z-5 py-[10px] bg-white/30 backdrop-blur-[50px]">
         <div class="container max-w-[1650px]">
             <div class="flex items-center justify-between sm:justify-center gap-[24px] xs:flex-col">
-                <p class="text-[15px] leading-[22px] tracking-[-0.15px] text-white font-light">© <?= Date('Y') ?> <?=getStaticText(26)?></p>
-                <img src="{{ asset('assets') }}/image/trademark/logo-white.png" alt="Logo" width="285" height="113" class="w-[100px] h-auto sm:hidden">
+                <p class="text-[15px] leading-[22px] tracking-[-0.15px] text-white font-light">© <?= Date('Y') ?> <?=$footerInfo->footer_text?></p>
+                <img src="{{ asset( getFolder(['uploads_folder', 'images_folder'], app()->getLocale()) . '/' . $footerInfo->footer_logo ) }}" alt="<?=$footerInfo->alt?>" width="285" height="113" class="w-[100px] h-auto sm:hidden">
             </div>
         </div>
     </div>
