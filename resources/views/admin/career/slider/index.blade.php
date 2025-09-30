@@ -49,7 +49,7 @@
                           <th  style="width: 300px">İşlem</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody class="connectedSortable">
                         @foreach($sliders as $slider)
                         <tr class="align-middle">
                           <td>{{ $slider->id }}</td>

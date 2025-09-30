@@ -49,7 +49,7 @@
                           <th  style="width: 300px">İşlem</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody class="connectedSortable">
                         @foreach($jobs as $job)
                         <tr class="align-middle">
                           <td>{{ $job->id }}</td>

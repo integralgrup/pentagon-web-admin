@@ -49,7 +49,7 @@
                           <th  style="width: 300px">İşlem</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody class="connectedSortable">
                         @foreach($catalogFiles as $file)
                         <tr class="align-middle">
                           <td>{{ $file->id }}</td>

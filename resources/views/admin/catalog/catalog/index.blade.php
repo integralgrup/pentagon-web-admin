@@ -47,7 +47,7 @@
                           <th  style="width: 300px">İşlem</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody class="connectedSortable">
                         @foreach($catalogs as $catalog)
                         <tr class="align-middle">
                           <td>{{ $catalog->id }}</td>

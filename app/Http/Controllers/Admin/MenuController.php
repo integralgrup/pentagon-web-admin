@@ -18,7 +18,7 @@ class MenuController extends Controller
         // Here you would typically fetch menu items from the database
         // For now, we will return a simple view
         // Fetch all menu items where lang is 'en'
-        $menus = Menu::where('lang', 'en')->get(); // Adjust the language as needed
+        $menus = Menu::where('lang', 'en')->orderBy('sort')->get(); // Adjust the language as needed
         return view('admin.menu.index', compact('menus'));
     }
 

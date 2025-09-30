@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\FooterInfo; // Assuming you have a FooterInfo model
 use App\Models\Language; // Assuming you have a Language model to fetch languages
+use Illuminate\Support\Facades\DB; // For database operations
 
 class FooterInfoController extends Controller
 {
@@ -103,5 +104,22 @@ class FooterInfoController extends Controller
         $footerInfo = FooterInfo::findOrFail($id);
         $footerInfo->delete();
         return redirect()->route('admin.footer_info.index');
+    }
+
+
+    public function updateSortOrder(Request $request)
+    {
+        //dd($request);
+        $order = $request->input('order'); // ["2","1","3"]
+        $table = $request->input('table');
+        $column_name = $request->input('column_name');
+
+        foreach ($order as $index => $id) {
+            DB::table($table)
+                ->where($column_name, $id)
+                ->update(['sort' => $index + 1]);
+        }
+
+        return response()->json(['status' => 'success']);
     }
 }

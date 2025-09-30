@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>@yield('title', 'Dashboard')</title>
     <!--begin::Accessibility Meta Tags-->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#007bff" media="(prefers-color-scheme: light)" />
@@ -365,16 +366,29 @@
     ></script>
     <!-- sortablejs -->
     <script>
-      new Sortable(document.querySelector('.connectedSortable'), {
-        group: 'shared',
-        handle: '.card-header',
-      });
+    const sortable = new Sortable(document.querySelector('.connectedSortable'), {
+      animation: 150,
+      onEnd: function () {
+        // Collect IDs in the new order
+        const order = Array.from(document.querySelectorAll('.connectedSortable tr'))
+          .map(row => row.getAttribute('data-id'));
+        const table_name = $('.connectedSortable').attr('table_name');
+        const column_name = $('.connectedSortable').attr('column_name');
 
-      const cardHeaders = document.querySelectorAll('.connectedSortable .card-header');
-      cardHeaders.forEach((cardHeader) => {
-        cardHeader.style.cursor = 'move';
-      });
-    </script>
+        // Example: send to server via fetch/Ajax
+        fetch( '<?= route('admin.update_order')?>' , {
+          method: 'POST',
+          headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+        },
+          body: JSON.stringify({ 'order':order, 'table':table_name , 'column_name':column_name})
+        });
+      }
+    });
+  </script>
+
+
     <!-- apexcharts -->
     <script
       src="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.min.js"
@@ -544,6 +558,7 @@
       const sparkline3 = new ApexCharts(document.querySelector('#sparkline-3'), option_sparkline3);
       sparkline3.render();
     </script>
+    
     <script src="https://www.integralspor.com/web-manager/ckeditor/ckeditor.js"></script>
 
 

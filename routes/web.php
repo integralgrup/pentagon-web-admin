@@ -219,6 +219,9 @@ Route::post('/admin/footer-info/store', 'App\Http\Controllers\Admin\FooterInfoCo
 Route::get('/admin/footer-info/{id}/edit', 'App\Http\Controllers\Admin\FooterInfoController@edit')->name('admin.footer_info.edit');
 Route::delete('/admin/footer-info/{id}', 'App\Http\Controllers\Admin\FooterInfoController@destroy')->name('admin.footer_info.destroy');
 
+Route::post('/admin/update-order', 'App\Http\Controllers\Admin\FooterInfoController@updateSortOrder')->name('admin.update_order');
+
+
 }); // End of Auth middleware group
 //Project Front End routes
 //Home route

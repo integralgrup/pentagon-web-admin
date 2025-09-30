@@ -50,9 +50,9 @@
                           <th  style="width: 300px">İşlem</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody class="connectedSortable" table_name="menu" column_name="menu_id">
                         <?php foreach($menus as $menu): ?>
-                        <tr class="align-middle">
+                        <tr  data-id="{{$menu->menu_id}}">
                           <td><?=$menu->id?></td>
                           <td><?=$menu->title?></td>
                           <td>

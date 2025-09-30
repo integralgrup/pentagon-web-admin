@@ -14,7 +14,7 @@ class BlogController extends Controller
     public function index()
     {
         // code to list all blogs where lang is en
-        $blogs = Blog::where('lang', 'en')->get();
+        $blogs = Blog::where('lang', 'en')->orderBy('sort')->get();
         $languages = Language::all(); // Assuming you have a Language model to fetch languages
         return view('admin.blog.index', compact('blogs', 'languages'));
     }

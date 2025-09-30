@@ -48,7 +48,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered" id="sortable-table">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -56,7 +56,7 @@
                                     <th style="width: 350px;">İşlemler</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="connectedSortable">
                                 @foreach($offices as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>

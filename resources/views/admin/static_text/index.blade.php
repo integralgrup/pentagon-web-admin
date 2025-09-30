@@ -48,7 +48,7 @@
                           <th  style="width: 300px">İşlem</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody class="connectedSortable">
                         @foreach($staticTexts as $staticText)
                         <tr class="align-middle">
                           <td>{{ $staticText->id }}</td>
