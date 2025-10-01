@@ -110,8 +110,10 @@ class CatalogController extends Controller
 
     public function groupDestroy($id)
     {
-        $catalogGroup = CatalogGroup::findOrFail($id);
-        $catalogGroup->delete();
+        $catalogGroup = CatalogGroup::where('catalog_group_id', $id)->get();
+        foreach ($catalogGroup as $catalog) {
+            $catalog->delete();
+        }
         return redirect()->route('admin.catalog.group.index')->with('success', 'Catalog group deleted successfully.');
     }
 
