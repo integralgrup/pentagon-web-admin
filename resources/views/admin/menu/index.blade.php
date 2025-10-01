@@ -1,6 +1,13 @@
 @extends('admin.layouts.main')
 @section('title', 'Menü Yönetimi')
-
+<style>
+  .child-row td {
+    background-color: #f1f1f1 !important;
+  }
+  .bi-list {
+    cursor: move;
+  }
+</style>
 @section('content')
    <!--begin::App Content Header-->
         <div class="app-content-header">
@@ -40,31 +47,27 @@
                   </div>
                   <!-- /.card-header -->
                   <div class="card-body table-responsive">
-                    <table class="table table-hover">
+                    <table class="table">
                       <thead>
                         <tr>
+                          <th></th>
                           <th style="width: 30px">#</th>
                           <th>Başlık</th>
                           <th>Menü Tipi</th>
-                          <th>Görsel</th>
                           <th  style="width: 300px">İşlem</th>
                         </tr>
                       </thead>
                       <tbody class="connectedSortable" table_name="menu" column_name="menu_id">
                         @foreach($menus as $menu)
                         <tr  data-id="{{$menu->menu_id}}">
-                          <td>{{ $menu->id }}</td>
-                          <td>{{ $menu->title }}</td>
+                          <td>
+                            <i class="bi bi-list"></i>
+                          </td>
+                          <td>{{ $loop->iteration }}</td>
+                          <td><strong>{{ $menu->title }}</strong></td>
                           <td>
                             {{ $menu->menu_type }}
                           </td>
-                            <td>
-                                @if($menu->image)
-                                <img src="{{ asset(getFolder(['uploads_folder', 'images_folder'], $menu->lang) . '/' . $menu->image) }}" alt="{{ $menu->title }}" style="width: 50px; height: 50px;">
-                                @else
-                                <span class="text-muted">Görsel Yok</span>
-                                @endif
-                            </td>
                           <td>
                             <a href="{{ route('admin.menu.edit', $menu->menu_id) }}" class="btn btn-primary btn-sm">Düzenle</a>
                             <form action="{{ route('admin.menu.destroy', $menu->menu_id) }}" method="POST" style="display:inline;">
@@ -76,19 +79,16 @@
                         </tr>
                         @if($menu->children)
                             @foreach($menu->children as $child)
-                                <tr  data-id="{{$child->menu_id}}">
+                                <tr  data-id="{{$child->menu_id}}" class="child-row">
+                                  <td>
+                                    <i class="bi bi-list"></i>
+                                  </td>
                                   <td>{{ $child->id }}</td>
-                                  <td>-- {{ $child->title }}</td>
+                                  <td> <!-- bullet icon--> 
+                                    &nbsp; &nbsp; - {{ $child->title }}</td>
                                   <td>
                                     {{ $child->menu_type }}
                                   </td>
-                                    <td>
-                                        @if($child->image)
-                                        <img src="{{ asset(getFolder(['uploads_folder', 'images_folder'], $child->lang) . '/' . $child->image) }}" alt="{{ $child->title }}" style="width: 50px; height: 50px;">
-                                        @else
-                                        <span class="text-muted">Görsel Yok</span>
-                                        @endif
-                                    </td>
                                   <td>
                                     <a href="{{ route('admin.menu.edit', $child->menu_id) }}" class="btn btn-primary btn-sm">Düzenle</a>
                                     <form action="{{ route('admin.menu.destroy', $child->menu_id) }}" method="POST" style="display:inline;">
