@@ -52,6 +52,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>Başlık</th>
                                     <th>Görsel</th>
                                     <th>İşlemler</th>
                                 </tr>
@@ -60,6 +61,7 @@
                                 @foreach($sliders as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $item->alt }}</td>
                                         <td><img src="{{ asset( getFolder(['uploads_folder','blog_images_folder']) . '/' . $item->media_file) }}" alt="{{ $item->alt }}" width="100"></td>
                                         <td>
                                             <a href="{{ route('admin.blog.slider.edit', [$id, $item->slider_id]) }}" class="btn btn-warning btn-sm">

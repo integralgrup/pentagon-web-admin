@@ -51,7 +51,6 @@
                       <thead>
                         <tr>
                           <th></th>
-                          <th style="width: 30px">#</th>
                           <th>Başlık</th>
                           <th>Menü Tipi</th>
                           <th  style="width: 300px">İşlem</th>
@@ -63,7 +62,6 @@
                           <td>
                             <i class="bi bi-list"></i>
                           </td>
-                          <td>{{ $loop->iteration }}</td>
                           <td><strong>{{ $menu->title }}</strong></td>
                           <td>
                             {{ $menu->menu_type }}
@@ -83,7 +81,6 @@
                                   <td>
                                     <i class="bi bi-list"></i>
                                   </td>
-                                  <td>{{ $child->id }}</td>
                                   <td> <!-- bullet icon--> 
                                     &nbsp; &nbsp; - {{ $child->title }}</td>
                                   <td>
