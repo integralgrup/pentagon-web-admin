@@ -51,13 +51,13 @@ class OfficeController extends Controller
             foreach($this->languages as $language) {
                 if($language->lang_code == 'en'){
                     $data = $request->validate([
-                        'title_' . $language->lang_code => 'required|string|max:100',
-                        'description_' . $language->lang_code => 'required|string',
+                        'title_' . $language->lang_code => 'nullable|string|max:100',
+                        'description_' . $language->lang_code => 'nullable|string',
                         'map_url_' . $language->lang_code => 'nullable|string|max:255',
-                        'lat_' . $language->lang_code => 'required|string|max:50',
+                        'lat_' . $language->lang_code => 'nullable|string|max:50',
                         'long_' . $language->lang_code => 'nullable|string|max:50',
-                        'phone_' . $language->lang_code => 'required|string|max:50',
-                        'email_' . $language->lang_code => 'required|string|email|max:100',
+                        'phone_' . $language->lang_code => 'nullable|string|max:50',
+                        'email_' . $language->lang_code => 'nullable|string|email|max:100',
                     ]);
                 }
 

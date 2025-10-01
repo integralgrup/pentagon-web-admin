@@ -76,33 +76,33 @@
                                         <div class="grids-3">
                                             <div class="form-group">
                                                 <label for="title_{{ $language->lang_code }}">Başlık ({{ strtoupper($language->lang_code) }})</label>
-                                                <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" value="{{ $title[$language->lang_code] }}" required>
+                                                <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" value="{{ $title[$language->lang_code] }}" >
                                             </div>
                                             <div class="form-group">
                                                 <label for="description_{{ $language->lang_code }}">Adres ({{ strtoupper($language->lang_code) }})</label>
-                                                <textarea class="form-control" id="description_{{ $language->lang_code }}" name="description_{{ $language->lang_code }}" rows="3" required>{{ $description[$language->lang_code] }}</textarea>
+                                                <textarea class="form-control" id="description_{{ $language->lang_code }}" name="description_{{ $language->lang_code }}" rows="3" >{{ $description[$language->lang_code] }}</textarea>
                                             </div>
                                             <div class="form-group">
                                                 <label for="map_url_{{ $language->lang_code }}">Harita URL ({{ strtoupper($language->lang_code) }})</label>
-                                                <input type="text" class="form-control" id="map_url_{{ $language->lang_code }}" name="map_url_{{ $language->lang_code }}" value="{{ $map_url[$language->lang_code] }}" required>
+                                                <input type="text" class="form-control" id="map_url_{{ $language->lang_code }}" name="map_url_{{ $language->lang_code }}" value="{{ $map_url[$language->lang_code] }}" >
                                             </div>
                                         </div>
                                         <div class="grids-4">
                                             <div class="form-group">
                                                 <label for="lat_{{ $language->lang_code }}">Enlem ({{ strtoupper($language->lang_code) }})</label>
-                                                <input type="text" class="form-control" id="lat_{{ $language->lang_code }}" name="lat_{{ $language->lang_code }}" value="{{ $lat[$language->lang_code] }}" required>
+                                                <input type="text" class="form-control" id="lat_{{ $language->lang_code }}" name="lat_{{ $language->lang_code }}" value="{{ $lat[$language->lang_code] }}" >
                                             </div>
                                             <div class="form-group">
                                                 <label for="long_{{ $language->lang_code }}">Boylam ({{ strtoupper($language->lang_code) }})</label>
-                                                <input type="text" class="form-control" id="long_{{ $language->lang_code }}" name="long_{{ $language->lang_code }}" value="{{ $long[$language->lang_code] }}" required>
+                                                <input type="text" class="form-control" id="long_{{ $language->lang_code }}" name="long_{{ $language->lang_code }}" value="{{ $long[$language->lang_code] }}" >
                                             </div>
                                             <div class="form-group">
                                                 <label for="phone_{{ $language->lang_code }}">Telefon ({{ strtoupper($language->lang_code) }})</label>
-                                                <input type="text" class="form-control" id="phone_{{ $language->lang_code }}" name="phone_{{ $language->lang_code }}" value="{{ $phone[$language->lang_code] }}" required>
+                                                <input type="text" class="form-control" id="phone_{{ $language->lang_code }}" name="phone_{{ $language->lang_code }}" value="{{ $phone[$language->lang_code] }}" >
                                             </div>
                                             <div class="form-group">
                                                 <label for="email_{{ $language->lang_code }}">E-posta ({{ strtoupper($language->lang_code) }})</label>
-                                                <input type="email" class="form-control" id="email_{{ $language->lang_code }}" name="email_{{ $language->lang_code }}" value="{{ $email[$language->lang_code] }}" required>
+                                                <input type="email" class="form-control" id="email_{{ $language->lang_code }}" name="email_{{ $language->lang_code }}" value="{{ $email[$language->lang_code] }}" >
                                             </div>
                                         </div>
 

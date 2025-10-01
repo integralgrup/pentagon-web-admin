@@ -56,7 +56,7 @@
                             @csrf
                             <div class="tab-content" id="myTabContent">
                                 @foreach($languages as $language)
-                                <?php $required = $language->lang_code == 'en' ? 'required' : ''; ?>
+                                <?php $required =  ''; ?>
                                 <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" id="tab-{{ $language->id }}" role="tabpanel" aria-labelledby="tab-{{ $language->id }}-tab">
                                     <div class="card-body">
                                         <input type="hidden" name="lang_{{ $language->lang_code }}" value="{{ $language->lang_code }}">
