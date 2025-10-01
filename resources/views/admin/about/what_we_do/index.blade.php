@@ -48,7 +48,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <table class="table table-bordered" id="sortable-table">
+                        <table class="table table-striped dataTable" id="sortable-table">
                             <thead>
                                 <tr>
                                     <th>#</th>

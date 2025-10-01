@@ -38,8 +38,8 @@
                     
                   </div>
                   <!-- /.card-header -->
-                  <div class="card-body p-0">
-                    <table class="table table-striped">
+                  <div class="card-body">
+                    <table class="table table-striped dataTable">
                       <thead>
                         <tr>
                           <th style="width: 30px">#</th>

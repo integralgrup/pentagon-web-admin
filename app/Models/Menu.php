@@ -49,4 +49,10 @@ class Menu extends Model
     {
         return $this->isActive == 1;
     }
+
+    // Relationships (if any) can be defined here
+    // e.g., parent menu relationship
+    public function children() { 
+        return $this->hasMany(Menu::class, 'parent_menu_id')->orderBy('sort')->where('lang', app()->getLocale());
+    } // children()
 }
