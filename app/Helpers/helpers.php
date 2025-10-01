@@ -71,8 +71,8 @@ if(!function_exists('getSubMenuItems')) {
     {
         $lang = app()->getLocale();
         if ($menu_id) {
-            $subMenus = DB::table('menu')->where('lang', $lang)->where('parent_menu_id', $menu_id)->where('deleted_at', null)->get();
-            
+            $subMenus = DB::table('menu')->where('lang', $lang)->where('parent_menu_id', $menu_id)->where('deleted_at', null)->orderBy('sort')->get();
+
             if ($subMenus->isNotEmpty()) {
                 $menuItems = [];
                 foreach ($subMenus as $subMenu) {
