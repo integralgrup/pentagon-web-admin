@@ -172,7 +172,7 @@
             <div class="flex flex-wrap items-center">
                 <div class="w-3/5 md:w-full pr-[77px] md:mt-[15px] md:p-0 md:order-2">
                     <div class="image-wrapper reveal w-full sm:h-auto relative flex flex-col sm:flex-col-reverse" id="brand-logo-image-area">
-                        <img src="<?= env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','brand_images_folder'], app()->getLocale()) . '/' . $brands[0]->bg_image ?>" alt="Markamız" width="814" height="696" class=" w-full h-[700px] md:h-[580px] sm:h-[320px] object-cover relative z-2 transition-all duration-450 [&.changed]:opacity-0 [&.changed]:translate-y-[5px]" id="brand-image">
+                        <img src="" alt="Markamız qwe" width="814" height="696" class=" w-full h-[700px] md:h-[580px] sm:h-[320px] object-cover relative z-2 transition-all duration-450 [&.changed]:opacity-0 [&.changed]:translate-y-[5px]" id="brand-image">
                         <div class="bg-primary-main absolute min-sm:-bottom-[10px] sm:-top-[20px] -left-[60px] sm:-left-[50px] w-[421px] sm:w-[320px] aspect-square"></div>
                         <div class="reveal nav-buttons w-full flex items-center gap-[30px] pt-[12px] sm:pt-0 sm:pb-[12px] pl-[135px] 2xl:pl-[100px] xl:pl-[70px] sm:pl-[30px] relative z-2">
                             <div class="brand-prev cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.brand-disabled]:opacity-65 relative [&.brand-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
@@ -213,7 +213,7 @@
                                     <div class="swiper-slide group">
                                         <div class="img hidden" data-image="<?= env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','brand_images_folder'], app()->getLocale()) . '/' . $item->bg_image ?>"></div>
                                         <div class="logo grayscale flex items-center justify-center h-[80px] opacity-50 transition-all duration-300 scale-90 group-[&.swiper-slide-active]:grayscale-0 group-[&.swiper-slide-active]:opacity-100 group-[&.swiper-slide-active]:scale-100">
-                                            <img src="<?= env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','brand_images_folder'], app()->getLocale()) . '/' . $item->image ?>" alt="Group Logo" width="176" height="40" class="group-[&.swiper-slide-active]:w-full group-[&.swiper-slide-active]:h-full w-5/6 h-5/6 object-contain transition-all duration-450 group-[&.swiper-slide-active]:xs:w-3/4 group-[&.swiper-slide-active]:xs:h-3/4">
+                                            <img src="<?= env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','brand_images_folder'], app()->getLocale()) . '/' . $item->bg_image ?>" alt="Group Logo" width="176" height="40" class="group-[&.swiper-slide-active]:w-full group-[&.swiper-slide-active]:h-full w-5/6 h-5/6 object-contain transition-all duration-450 group-[&.swiper-slide-active]:xs:w-3/4 group-[&.swiper-slide-active]:xs:h-3/4">
                                         </div>
                                     </div>
                                 <?php } ?>

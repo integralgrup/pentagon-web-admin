@@ -35,7 +35,7 @@ class HomeController extends Controller
         $blogs = Blog::where('lang', app()->getLocale())->get();
         $about = About::where('lang', app()->getLocale())->first();
 
-        //dd($sectors);
+        //dd($brands);
 
         return view('home', compact('sliders', 'languages', 'sectors', 'brands', 'blogs', 'about'));
     }

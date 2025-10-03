@@ -111,7 +111,7 @@
                                 <p class=" text-[26px] xl:text-[22px] md:text-[20px] leading-[32px] text-[#6D6243] font-bold mb-[8px]"><?php foreach ($menu[1] as $item): echo $item['title']; endforeach; ?></p>
                                 <ul>
                                     <?php foreach ($menu[1]['menu']['items'] as $item) : ?>
-                                        <li class=""><a href="<?= env('HTTP_DOMAIN') .'/'. $item['seo_url']; ?>" class="text-[18px] lg:text-[16px] leading-[45px] lg:leading-[40px] font-light tracking-[-0.18px] text-white transition-all duration-300 hover:text-[#6D6243] [-webkit-text-stroke:1.5px_rgba(255,255,255,0)] hover:[-webkit-text-stroke:1.5px_rgba(109,98,67,1)] hover:tracking-[-0.05px]"><?php echo $item['title']; ?></a></li>
+                                        <li class=""><a href="<?= env('HTTP_DOMAIN') .'/'. getUrl('brand_url') .'/'. $item['seo_url']; ?>" class="text-[18px] lg:text-[16px] leading-[45px] lg:leading-[40px] font-light tracking-[-0.18px] text-white transition-all duration-300 hover:text-[#6D6243] [-webkit-text-stroke:1.5px_rgba(255,255,255,0)] hover:[-webkit-text-stroke:1.5px_rgba(109,98,67,1)] hover:tracking-[-0.05px]"><?php echo $item['title']; ?></a></li>
                                     <?php endforeach; ?>
                                 </ul>
                             </div>
@@ -130,7 +130,7 @@
                                 <p class=" text-[26px] xl:text-[22px] md:text-[20px] leading-[32px] text-[#6D6243] font-bold mb-[8px]"><?php foreach ($menu[3] as $item): echo $item['title']; endforeach; ?></p>
                                 <ul>
                                     <?php foreach ($menu[3]['menu']['items'] as $item) : ?>
-                                        <li class=""><a href="<?= env('HTTP_DOMAIN') .'/'. $item['seo_url']; ?>" class="text-[18px] lg:text-[16px] leading-[45px] lg:leading-[40px] font-light tracking-[-0.18px] text-white transition-all duration-300 hover:text-[#6D6243] [-webkit-text-stroke:1.5px_rgba(255,255,255,0)] hover:[-webkit-text-stroke:1.5px_rgba(109,98,67,1)] hover:tracking-[-0.05px]"><?php echo $item['title']; ?></a></li>
+                                        <li class=""><a href="<?= env('HTTP_DOMAIN').'/'. $item['seo_url']; ?>" class="text-[18px] lg:text-[16px] leading-[45px] lg:leading-[40px] font-light tracking-[-0.18px] text-white transition-all duration-300 hover:text-[#6D6243] [-webkit-text-stroke:1.5px_rgba(255,255,255,0)] hover:[-webkit-text-stroke:1.5px_rgba(109,98,67,1)] hover:tracking-[-0.05px]"><?php echo $item['title']; ?></a></li>
                                     <?php endforeach; ?>
                                 </ul>
                             </div>
