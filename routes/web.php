@@ -23,11 +23,19 @@ Route::get('/admin', function () {
 
 // admin/menu route to menu controller index function
 Route::get('/admin/menu', 'App\Http\Controllers\Admin\MenuController@index')->name('admin.menu');
-Route ::get('/admin/menu/create', 'App\Http\Controllers\Admin\MenuController@create')->name('admin.menu.create');
+Route ::get('/admin/menu/create/{$type}', 'App\Http\Controllers\Admin\MenuController@create')->name('admin.menu.create');
 Route::post('/admin/menu/store', 'App\Http\Controllers\Admin\MenuController@store')->name('admin.menu.store');
 Route::get('/admin/menu/{id}/edit', 'App\Http\Controllers\Admin\MenuController@edit')->name('admin.menu.edit');
 //Route::put('/admin/menu/{id}', 'App\Http\Controllers\Admin\MenuController@update')->name('admin.menu.update');
 Route::delete('/admin/menu/{id}', 'App\Http\Controllers\Admin\MenuController@destroy')->name('admin.menu.destroy');
+
+// admin/footer menu routes
+Route::get('/admin/footer-menu/{type}', 'App\Http\Controllers\Admin\MenuController@index')->name('admin.menu.footer');
+Route::get('/admin/menu/create/{type}', 'App\Http\Controllers\Admin\MenuController@create')->name('admin.menu.footer.create');
+Route::post('/admin/menu/store/{type}', 'App\Http\Controllers\Admin\MenuController@store')->name('admin.menu.footer.store');
+Route::get('/admin/menu/{id}/edit/{type}', 'App\Http\Controllers\Admin\MenuController@edit')->name('admin.menu.footer.edit');
+//Route::put('/admin/menu/{id}', 'App\Http\Controllers\Admin\MenuController@update')->name('admin.menu.update');
+Route::delete('/admin/menu/{id}/{type}', 'App\Http\Controllers\Admin\MenuController@destroy')->name('admin.menu.footer.destroy');
 
 // admin/language route to language controller index function
 Route::get('/admin/language', 'App\Http\Controllers\Admin\LanguageController@index')->name('admin.language');

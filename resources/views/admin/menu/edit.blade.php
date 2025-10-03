@@ -117,7 +117,6 @@
                                             <select class="form-select" id="menu_type_{{$menu->lang}}" name="menu_type_{{$menu->lang}}" required>
                                                 <option value="header" {{ $menu->{'menu_type'} == 'header' ? 'selected' : '' }}>Header</option>
                                                 <option value="footer" {{ $menu->{'menu_type'} == 'footer' ? 'selected' : '' }}>Footer</option>
-                                                <option value="sidebar" {{ $menu->{'menu_type'} == 'sidebar' ? 'selected' : '' }}>Sidebar</option>
                                             </select>
                                         </div>
                                         <!-- Sort Order -->

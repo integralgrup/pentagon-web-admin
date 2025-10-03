@@ -4,9 +4,6 @@
   .child-row td {
     background-color: #f1f1f1 !important;
   }
-  .bi-list {
-    cursor: move;
-  }
 </style>
 @section('content')
    <!--begin::App Content Header-->
@@ -15,11 +12,11 @@
           <div class="container-fluid">
             <!--begin::Row-->
             <div class="row">
-              <div class="col-sm-6"><h3 class="mb-0">Menü Yönetimi</h3></div>
+              <div class="col-sm-6"><h3 class="mb-0">{{ $type == 'footer' ? 'Footer Menü Yönetimi' : 'Menü Yönetimi' }}</h3></div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-end">
                   <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Anasayfa</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Menü Yönetimi</li>
+                  <li class="breadcrumb-item active" aria-current="page">{{ $type == 'footer' ? 'Footer Menü Yönetimi' : 'Menü Yönetimi' }}</li>
                 </ol>
               </div>
             </div>
@@ -41,9 +38,11 @@
                   <div class="card-header" >
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <h3 style="display:inline-block;" class="card-title"></h3>
-                        <a style="display:inline-block;" href="{{ route('admin.menu.create') }}" class="btn btn-sm btn-primary">Menü Ekle</a>
+                        <?php $type = $type ?? 'header'; 
+                          $url = $type == 'header' ? 'admin.menu' : 'admin.menu.footer';
+                        ?>
+                        <a style="display:inline-block;" href="{{ route($url . '.create', $type) }}" class="btn btn-sm btn-primary">Menü Ekle</a>
                     </div>
-                    
                   </div>
                   <!-- /.card-header -->
                   <div class="card-body table-responsive">

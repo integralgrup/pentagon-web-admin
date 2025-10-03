@@ -51,6 +51,7 @@
                         <table class="table table-striped dataTable" id="sortable-table">
                             <thead>
                                 <tr>
+                                    <th></th>
                                     <th>#</th>
                                     <th>Başlık</th>
                                     <th>Görsel</th>
@@ -60,6 +61,7 @@
                             <tbody class="connectedSortable" table_name="blog" column_name="blog_id">
                                 @foreach($blogs as $item)
                                      <tr  data-id="{{$item->blog_id}}">
+                                        <td><i class="bi bi-list"></i></td>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->title }}</td>
                                         <td>

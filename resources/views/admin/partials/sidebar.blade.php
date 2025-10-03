@@ -46,7 +46,13 @@
                   <li class="nav-item">
                     <a href="{{ route('admin.menu') }}" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
-                      <p>Menü</p>
+                      <p>Menü Yönetimi</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{ route('admin.menu.footer', 'footer') }}" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>Footer Menü Yönetimi</p>
                     </a>
                   </li>
                   <li class="nav-item">

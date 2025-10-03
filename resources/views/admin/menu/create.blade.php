@@ -9,7 +9,7 @@
           <div class="container-fluid">
             <!--begin::Row-->
             <div class="row">
-              <div class="col-sm-6"><h3 class="mb-0">Menü Ekleme</h3></div>
+              <div class="col-sm-6"><h3 class="mb-0">{{$type == 'footer' ? 'Footer ' : ''}}Menü Ekleme</h3></div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-end">
                   <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Anasayfa</a></li>
@@ -122,12 +122,12 @@
                                         <!-- Menu Type -->
                                         <div class="mb-3">
                                             <label for="menu_type_{{$language->lang_code}}" class="form-label">Menu Tipi ({{ $language->lang_code }})<span class="text-danger">*</span></label>
-                                            <select name="menu_type_{{$language->lang_code}}" id="menu_type_{{$language->lang_code}}" class="form-select" {{ $required }}>
-                                                <option value="">-- Seçiniz --</option>
-                                                <option value="header">Header</option>
-                                                <option value="footer">Footer</option>
-                                                <option value="sidebar">Sidebar</option>
-                                            </select>
+                                            <!-- set selectbox as readonly and default value is $type from controller -->
+                                            <select name="menu_type_{{$language->lang_code}}" id="menu_type_{{$language->lang_code}}" class="form-select" readonly {{ $required }}>
+                                                <option value="{{ $type }}" selected>{{ ucfirst($type) }}</option>
+                                            </select>   
+
+                                            
                                         </div>
 
                                         <!-- Submit Button -->

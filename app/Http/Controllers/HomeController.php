@@ -115,14 +115,14 @@ class HomeController extends Controller
         if($menu->page_type == 'blog') {
             if($slug2!= null) {
                 // Get blog posts limit 5 as array
-                $blogs = Blog::where(['lang' => app()->getLocale()])->limit(5)->get()->toArray();
+                $blogs = Blog::where(['lang' => app()->getLocale()])->orderBy('sort')->limit(5)->get()->toArray();
                 //dd($blogs);
                 $blog = Blog::where(['lang' => app()->getLocale(), 'seo_url' => $slug2])->firstOrFail();
                 $blogSlider = BlogSlider::where(['lang' => app()->getLocale(), 'blog_id' => $blog->blog_id])->get();
                 //dd($blogSlider);
                 return view('blog-detail', compact('blog', 'blogs', 'blogSlider'));
             }else{
-                $blogs = Blog::where(['lang' => app()->getLocale()])->limit(5)->get()->toArray();
+                $blogs = Blog::where(['lang' => app()->getLocale()])->orderBy('sort')->limit(5)->get()->toArray();
                 return view('blog', compact('blogs'));
             }
             

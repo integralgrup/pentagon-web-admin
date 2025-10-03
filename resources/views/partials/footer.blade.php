@@ -77,11 +77,16 @@
                         </div>
                     </div>
                 </div>
-                <?php $footerPages = App\Models\Menu::where(['lang' => app()->getLocale(), 'parent_menu_id' => 0, 'page_type' => 'page'])->get();?>
-                <?php $footerAbout = App\Models\Menu::where(['lang' => app()->getLocale(),  'page_type' => 'about'])->get();?>
-                <?php $footerSectors = App\Models\Menu::where(['lang' => app()->getLocale(), 'parent_menu_id' => 2, 'page_type' => 'sector'])->get();?>
-                <?php $footerBrands = App\Models\Menu::where(['lang' => app()->getLocale(), 'parent_menu_id' => 3, 'page_type' => 'brand'])->get();?>
-                <?php $footerCareers = App\Models\Menu::where(['lang' => app()->getLocale(), 'page_type' => 'career'])->get();?>
+
+                <?php 
+                // Fetch footer menus from the database where parent_menu_id != 0 and menu_type = 'footer'
+                $footerPages = App\Models\Menu::where(['lang' => app()->getLocale(),'page_type' => 'page', 'menu_type' => 'footer'])->where('parent_menu_id', '!=', 0)->get();
+                
+                ?>
+                <?php $footerAbout = App\Models\Menu::where(['lang' => app()->getLocale(),  'page_type' => 'about', 'menu_type' => 'footer'])->where('parent_menu_id', '!=', 0)->get();?>
+                <?php $footerSectors = App\Models\Menu::where(['lang' => app()->getLocale(), 'page_type' => 'sector', 'menu_type' => 'footer'])->where('parent_menu_id', '!=', 0)->get();?>
+                <?php $footerBrands = App\Models\Menu::where(['lang' => app()->getLocale(),  'page_type' => 'brand', 'menu_type' => 'footer'])->where('parent_menu_id', '!=', 0)->get();?>
+                <?php $footerCareers = App\Models\Menu::where(['lang' => app()->getLocale(), 'page_type' => 'career', 'menu_type' => 'footer'])->where('parent_menu_id', '!=', 0)->get();?>
 
                 <div class="w-2/3 md:w-full sm:hidden md:relative md:after:w-[calc(100vw+60px)] md:after:h-[calc(100%+90px)] md:after:absolute md:after:left-[-30px] md:after:bottom-[-120px] md:after:bg-primary-main md:after:z-[-1]">
                     <div class="menu w-full grid xsm:flex xsm:flex-wrap grid-cols-3 gap-[120px] 2xl:gap-[90px] xl:gap-[70px] lg:gap-[50px] md:gap-[30px] xsm:gap-0 mt-[70px] pl-[122px] 2xl:pl-[100px] xl:pl-[70px] lg:pl-[40px] md:pl-0">
