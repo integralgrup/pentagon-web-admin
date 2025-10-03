@@ -172,7 +172,7 @@
             <div class="flex flex-wrap items-center">
                 <div class="w-3/5 md:w-full pr-[77px] md:mt-[15px] md:p-0 md:order-2">
                     <div class="image-wrapper reveal w-full sm:h-auto relative flex flex-col sm:flex-col-reverse" id="brand-logo-image-area">
-                        <img src="<?= env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','brand_images_folder'], app()->getLocale()) . '/' . $brands[0]->image ?>" alt="Markamız" width="814" height="696" class=" w-full h-[700px] md:h-[580px] sm:h-[320px] object-cover relative z-2 transition-all duration-450 [&.changed]:opacity-0 [&.changed]:translate-y-[5px]" id="brand-image">
+                        <img src="<?= env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','brand_images_folder'], app()->getLocale()) . '/' . $brands[0]->bg_image ?>" alt="Markamız" width="814" height="696" class=" w-full h-[700px] md:h-[580px] sm:h-[320px] object-cover relative z-2 transition-all duration-450 [&.changed]:opacity-0 [&.changed]:translate-y-[5px]" id="brand-image">
                         <div class="bg-primary-main absolute min-sm:-bottom-[10px] sm:-top-[20px] -left-[60px] sm:-left-[50px] w-[421px] sm:w-[320px] aspect-square"></div>
                         <div class="reveal nav-buttons w-full flex items-center gap-[30px] pt-[12px] sm:pt-0 sm:pb-[12px] pl-[135px] 2xl:pl-[100px] xl:pl-[70px] sm:pl-[30px] relative z-2">
                             <div class="brand-prev cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.brand-disabled]:opacity-65 relative [&.brand-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
@@ -196,7 +196,7 @@
                             <div class="swiper-wrapper">
                                 <?php foreach ($brands as $item) { ?>
                                     <div class="swiper-slide">
-                                        <div class="img hidden" data-image="<?= env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','brand_images_folder'], app()->getLocale()) . '/' . $item->image ?>"></div>
+                                        <div class="img hidden" data-image="<?= env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','brand_images_folder'], app()->getLocale()) . '/' . $item->bg_image ?>"></div>
                                         <div class="text-editor">
                                             <span class="text-[16px] leading-[32px] font-light text-paragraph opacity-65 tracking-[7.2px] block mb-[30px] lg:mb-[15px]"><?= getStaticText(6) ?></span>
                                             <h2 class="text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-light text-secondary-main">

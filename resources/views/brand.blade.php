@@ -17,7 +17,7 @@
                 <div class="flex flex-wrap items-center">
                     <div class="w-2/5 md:w-full md:!pr-0">
                         <div class="image-wrapper reveal w-full h-[650px] md:h-[580px] sm:h-[320px] relative">
-                            <img src="<?= env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','brand_images_folder'], app()->getLocale()) . '/' . $brand->image ?>" alt="Sektör Detay" width="1045" height="539" class="w-full h-full object-cover relative z-2">
+                            <img src="<?= env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','brand_images_folder'], app()->getLocale()) . '/' . $brand->bg_image ?>" alt="Sektör Detay" width="1045" height="539" class="w-full h-full object-cover relative z-2">
                             <div class="bg-primary-main absolute -top-[38px] sm:-top-[20px] -right-[38px] sm:-right-[20px] w-[421px] sm:w-[320px] aspect-square"></div>
                         </div>
                     </div>
