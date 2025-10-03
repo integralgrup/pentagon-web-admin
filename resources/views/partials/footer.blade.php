@@ -80,52 +80,22 @@
 
                 <?php 
                 // Fetch footer menus from the database where parent_menu_id != 0 and menu_type = 'footer'
-                $footerPages = App\Models\Menu::where(['lang' => app()->getLocale(),'page_type' => 'page', 'menu_type' => 'footer'])->where('parent_menu_id', '!=', 0)->get();
-                
+                    $footerMenus = App\Models\Menu::where(['lang' => app()->getLocale(), 'menu_type' => 'footer', 'parent_menu_id' => '0'])->orderBy('sort')->get();
+
                 ?>
-                <?php $footerAbout = App\Models\Menu::where(['lang' => app()->getLocale(),  'page_type' => 'about', 'menu_type' => 'footer'])->where('parent_menu_id', '!=', 0)->get();?>
-                <?php $footerSectors = App\Models\Menu::where(['lang' => app()->getLocale(), 'page_type' => 'sector', 'menu_type' => 'footer'])->where('parent_menu_id', '!=', 0)->get();?>
-                <?php $footerBrands = App\Models\Menu::where(['lang' => app()->getLocale(),  'page_type' => 'brand', 'menu_type' => 'footer'])->where('parent_menu_id', '!=', 0)->get();?>
-                <?php $footerCareers = App\Models\Menu::where(['lang' => app()->getLocale(), 'page_type' => 'career', 'menu_type' => 'footer'])->where('parent_menu_id', '!=', 0)->get();?>
 
                 <div class="w-2/3 md:w-full sm:hidden md:relative md:after:w-[calc(100vw+60px)] md:after:h-[calc(100%+90px)] md:after:absolute md:after:left-[-30px] md:after:bottom-[-120px] md:after:bg-primary-main md:after:z-[-1]">
                     <div class="menu w-full grid xsm:flex xsm:flex-wrap grid-cols-3 gap-[120px] 2xl:gap-[90px] xl:gap-[70px] lg:gap-[50px] md:gap-[30px] xsm:gap-0 mt-[70px] pl-[122px] 2xl:pl-[100px] xl:pl-[70px] lg:pl-[40px] md:pl-0">
-                        <?php $menu = [
-                                [
-                                    'menu' => [
-                                        'title' => getStaticText(21),
-                                        'items' => $footerAbout
-                                    ],
-                                ],
-
-                                [
-                                    'menu' => [
-                                        'title' => getStaticText(22),
-                                        'items' => $footerSectors
-                                    ],
-                                ],
-
-                                [
-                                    'menu' => [
-                                        'title' => getStaticText(23),
-                                        'items' => $footerCareers
-                                    ],
-                                ],
-
-                                [
-                                    'menu' => [
-                                        'title' => getStaticText(24),
-                                        'items' => $footerPages
-                                    ],
-                                ],
-
-                                [
-                                    'menu' => [
-                                        'title' => getStaticText(25),
-                                        'items' => $footerBrands
-                                    ],
-                                ],
-                            ];
+                        <?php $menu = []; ?>
+                        <?php foreach ($footerMenus as $menuitem) : 
+                            $items = App\Models\Menu::where(['lang' => app()->getLocale(), 'parent_menu_id' => $menuitem->menu_id])->orderBy('sort')->get();
+                            $menu[] = [
+                                'menu' => [
+                                    'title' => $menuitem->title,
+                                    'items' => $items->toArray()
+                                ]
+                            ]; 
+                        endforeach; 
                         ?>
                         <div class="flex flex-col xsm:w-1/2 xsm:pr-[15px] gap-[50px] md:gap-[30px] relative after:absolute after:-right-8 after:2xl:-right-2 after:xl:-right-1 after:xsm:right-6 after:top-0 after:w-[1px] after:h-full after:bg-white/10">
                             <div class="item">
