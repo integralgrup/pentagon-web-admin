@@ -92,6 +92,7 @@
                                             <input type="text" class="form-control" id="title_{{$menu->lang}}" name="title_{{$menu->lang}}" value="{{ $menu->title }}" required>
                                         </div>
                                         <!-- Image -->
+                                        @if($menu->menu_type == 'header')
                                         <div class="mb-3">
                                             <label for="image_{{$menu->lang}}" class="form-label">Resim ({{ $menu->lang }})</label>
                                             <input type="file" class="form-control" id="image_{{$menu->lang}}" name="image_{{$menu->lang}}" accept="image/*">
@@ -100,16 +101,17 @@
                                                 <img src="{{ $languages[$key]->domain .'/'. getFolder(['uploads_folder', 'images_folder'], $menu->lang) .'/'.$menu->image }}" alt="Menu Image" class="img-thumbnail mt-2" style="max-width: 200px;">
                                             @endif
                                         </div>
-                                        <!-- SEO URL -->
-                                        <div class="mb-3">
-                                            <label for="seo_url_{{$menu->lang}}" class="form-label">SEO URL ({{ $menu->lang }})<span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="seo_url_{{$menu->lang}}" name="seo_url_{{$menu->lang}}" value="{{ $menu->seo_url }}" required>
-                                        </div>
-                                        
                                         <!-- Alt Text -->
                                         <div class="mb-3">
                                             <label for="alt_{{$menu->lang}}" class="form-label">Alt Text ({{ $menu->lang }})<span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" id="alt_{{$menu->lang}}" name="alt_{{$menu->lang}}" value="{{ $menu->{'alt'} }}" required>
+                                        </div>
+                                        @endif
+                                        
+                                        <!-- SEO URL -->
+                                        <div class="mb-3">
+                                            <label for="seo_url_{{$menu->lang}}" class="form-label">SEO URL ({{ $menu->lang }})<span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="seo_url_{{$menu->lang}}" name="seo_url_{{$menu->lang}}" value="{{ $menu->seo_url }}" required>
                                         </div>
                                         <!-- Menu Type -->
                                         <div class="mb-3">

@@ -98,27 +98,25 @@
                                             <label for="title_{{$language->lang_code}}" class="form-label">Başlık ({{ $language->lang_code }})<span class="text-danger">*</span></label>
                                             <input type="text" name="title_{{$language->lang_code}}" id="title_{{$language->lang_code}}" class="form-control" maxlength="255" {{ $required }}>
                                         </div>
-
-                                        <!-- Image -->
-                                        <div class="mb-3">
-                                            <label for="image_{{$language->lang_code}}" class="form-label">Resim ({{ $language->lang_code }})<span class="text-danger">*</span></label>
-                                            <input type="file" name="image_{{$language->lang_code}}" id="image_{{$language->lang_code}}" class="form-control" accept="image/*" {{ $required }}>
-                                        </div>
-
+                                        @if($type == 'header')
+                                            <!-- Image -->
+                                            <div class="mb-3">
+                                                <label for="image_{{$language->lang_code}}" class="form-label">Resim ({{ $language->lang_code }})<span class="text-danger">*</span></label>
+                                                <input type="file" name="image_{{$language->lang_code}}" id="image_{{$language->lang_code}}" class="form-control" accept="image/*" {{ $required }}>
+                                            </div>
+                                            
+                                            <!-- Alt Text -->
+                                            <div class="mb-3">
+                                                <label for="alt_{{$language->lang_code}}" class="form-label">Alt Text ({{ $language->lang_code }})<span class="text-danger">*</span></label>
+                                                <input type="text" name="alt_{{$language->lang_code}}" id="alt_{{$language->lang_code}}" class="form-control" maxlength="255" {{ $required }}>
+                                            </div>
+                                        
+                                        @endif
                                         <!-- SEO URL -->
                                         <div class="mb-3">
                                             <label for="seo_url_{{$language->lang_code}}" class="form-label">Seo URL ({{ $language->lang_code }})<span class="text-danger">*</span></label>
                                             <input type="text" name="seo_url_{{$language->lang_code}}" id="seo_url_{{$language->lang_code}}" class="form-control" maxlength="255" {{ $required }}>
                                         </div>
-
-                                        
-
-                                        <!-- Alt Text -->
-                                        <div class="mb-3">
-                                            <label for="alt_{{$language->lang_code}}" class="form-label">Alt Text ({{ $language->lang_code }})<span class="text-danger">*</span></label>
-                                            <input type="text" name="alt_{{$language->lang_code}}" id="alt_{{$language->lang_code}}" class="form-control" maxlength="255" {{ $required }}>
-                                        </div>
-
                                         <!-- Menu Type -->
                                         <div class="mb-3">
                                             <label for="menu_type_{{$language->lang_code}}" class="form-label">Menu Tipi ({{ $language->lang_code }})<span class="text-danger">*</span></label>

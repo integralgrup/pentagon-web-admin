@@ -90,7 +90,7 @@
                                     <form action="{{ route('admin.menu.destroy', $child->menu_id) }}" method="POST" style="display:inline;">
                                       @csrf
                                       @method('DELETE')
-                                      <button type="submit" class="btn btn-danger btn-sm">Sil</button>
+                                      <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Bu içeriği silmek istediğinize emin misiniz?')">Sil</button>
                                     </form>
                                   </td>
                                 </tr>

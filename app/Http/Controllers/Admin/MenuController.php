@@ -84,7 +84,7 @@ class MenuController extends Controller
                             'title_' . $language->lang_code => 'required|max:255',
                             'seo_url_' . $language->lang_code => 'required|max:255',
                             'image_' . $language->lang_code => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
-                            'alt_' . $language->lang_code => 'required|max:255',
+                            'alt_' . $language->lang_code => 'nullable|max:255',
                             'menu_type_' . $language->lang_code => 'required|in:header,footer,sidebar', // Assuming these are the valid types
                             'page_type_' . $language->lang_code => 'required|max:255',
                             'sort' => 'nullable|integer',
@@ -107,7 +107,7 @@ class MenuController extends Controller
                             'lang' => $language->lang_code,
                         ],
                         [
-                            'parent_menu_id' => $request->input('parent_menu_id_' . $language->lang_code) ?? $request->input('parent_menu_id_en'),
+                            'parent_menu_id' => $request->input('parent_menu_id_en') ?? $request->input('parent_menu_id_' . $language->lang_code) ?? 0,
                             'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
                             'seo_url' => $request->input('seo_url_' . $language->lang_code) ?? $request->input('seo_url_en'),
                             'image' => $imageName, // save relative path
@@ -146,7 +146,7 @@ class MenuController extends Controller
         $menu_items = Menu::where('menu_id', $id)->get(); // Fetch all menu items with the same menu_id
         $type = $menu_items[0]->menu_type;
 
-        
+
 
         $parentMenus = Menu::where(['lang' => app()->getLocale(), 'parent_menu_id' => 0, 'menu_type' => $type])->get(); // Fetch all parent menus for the dropdown
         
@@ -168,6 +168,8 @@ class MenuController extends Controller
             // Find the menu items by menu_id and delete them
             $menu_items = Menu::where('menu_id', $id)->get();
             $type = $menu_items[0]->menu_type;
+
+            //dd($type);
             if ($menu_items->isEmpty()) {
                 return redirect()->route('admin.menu')->withErrors(['error' => 'Menu item not found.']);
             }
@@ -179,11 +181,11 @@ class MenuController extends Controller
                 $menu_item->delete(); // Delete the menu item
             }
             if( $type) {
-                $route = $type == 'header' ? 'admin.menu' : 'admin.menu.footer';
+                $to = $type == 'header' ? env('HTTP_DOMAIN') . '/admin/menu' : env('HTTP_DOMAIN') . '/admin/footer-menu/footer';
             } else {
-                $route = 'admin.menu';
+                $to = env('HTTP_DOMAIN') . '/admin/menu';
             }
-            return redirect()->route($route)->with('success', 'Menü basarıyla silindi.');
+            return redirect()->to($to)->with('success', 'Menü basarıyla silindi.');
 
         } catch (\Exception $e) {
             return redirect()->route('admin.menu')->withErrors(['error' => 'Hata oluştu: ' . $e->getMessage()]);
