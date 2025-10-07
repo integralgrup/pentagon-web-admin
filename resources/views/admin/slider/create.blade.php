@@ -67,19 +67,19 @@
                                             <input type="text" class="form-control" id="slide_title_{{ $language->lang_code }}" name="slide_title_{{ $language->lang_code }}" {{ $required }}>
                                         </div>
 
-                                        <div class="mb-3">
+                                        <div class="mb-3" style="display:none">
                                             <label for="title_{{ $language->lang_code }}" class="form-label">Başlık ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" {{ $required }}>
+                                            <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" value="-" {{ $required }}>
                                         </div>
 
                                         <!-- title_1 -->
                                         <div class="mb-3">
-                                            <label for="title_1_{{ $language->lang_code }}" class="form-label">Başlık 2 ({{ strtoupper($language->lang_code) }})</label>
+                                            <label for="title_1_{{ $language->lang_code }}" class="form-label">Başlık ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="text" class="form-control" id="title_1_{{ $language->lang_code }}" name="title_1_{{ $language->lang_code }}" {{ $required }}>
                                         </div>
 
                                         <div class="mb-3">
-                                            <label for="title_2_{{ $language->lang_code }}" class="form-label">Başlık 3 ({{ strtoupper($language->lang_code) }})</label>
+                                            <label for="title_2_{{ $language->lang_code }}" class="form-label">Text Açıklama Yazısı ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="text" class="form-control" id="title_2_{{ $language->lang_code }}" name="title_2_{{ $language->lang_code }}" {{ $required }}>
                                         </div>
 
