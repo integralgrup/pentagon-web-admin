@@ -28,7 +28,7 @@
                                         <div class="wrapper h-full flex items-center">
                                             <div class="w-1/3 min-md:translate-y-[-50px] md:w-1/2 sm:w-full">
                                                 <div class="flex flex-col text-editor">
-                                                    <p class="text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-light text-secondary-main mb-[24px] sm:mb-[20px]"><?=$item->title?>
+                                                    <p class="text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-light text-secondary-main mb-[24px] sm:mb-[20px]">
                                                         <span class="font-bold"><?=$item->title_1?></span></p>
                                                     <p class="text-[18px] lg:text-[16px] leading-[32px] font-light text-paragraph mb-[60px] xl:mb-[40px] md:mb-[30px]"><?=$item->title_2?></p>
                                                     <a href="#" class="flex items-center justify-center relative w-max overflow-hidden main-button group sm:w-full">
