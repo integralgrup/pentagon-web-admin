@@ -98,7 +98,7 @@
                                         <div class="mb-3">
                                             <label for="image_{{ $language->lang_code }}" class="form-label">Görsel ({{ $language->lang_code }})</label>
                                             <input type="file" class="form-control" id="image_{{ $language->lang_code }}" name="image_{{ $language->lang_code }}" accept="image/*" value="{{ $image[$language->lang_code] ?? '' }}">
-                                            @if($image[$language->lang_code])
+                                            @if(isset($image[$language->lang_code]))
                                                 <img src="{{ $language->domain .'/'.  getFolder(['uploads_folder','sector_images_folder'], $language->lang_code) . '/' . $image[$language->lang_code] }}" alt="{{ $alt[$language->lang_code] }}" style="width: 200px; height: auto; margin-top: 10px;">
                                                 <input type="hidden" class="form-control" id="old_image_{{ $language->lang_code }}" name="old_image_{{ $language->lang_code }}" value="{{ $image[$language->lang_code] }}" readonly>
                                             @endif
@@ -110,7 +110,7 @@
                                         <div class="mb-3">
                                             <label for="bg_image_{{ $language->lang_code }}" class="form-label">Arka Plan Görseli ({{ $language->lang_code }})</label>
                                             <input type="file" class="form-control" id="bg_image_{{ $language->lang_code }}" name="bg_image_{{ $language->lang_code }}" accept="image/*" >
-                                            @if($bg_image[$language->lang_code])
+                                            @if(isset($bg_image[$language->lang_code]))
                                                 <img src="{{ $language->domain .'/'.  getFolder(['uploads_folder','sector_images_folder'], $language->lang_code) . '/' . $bg_image[$language->lang_code] }}" alt="{{ $alt[$language->lang_code] }}" style="width: 200px; height: auto; margin-top: 10px;">
                                                 <input type="hidden" class="form-control" id="old_bg_image_{{ $language->lang_code }}" name="old_bg_image_{{ $language->lang_code }}" value="{{ $bg_image[$language->lang_code] }}" readonly>
                                             @endif

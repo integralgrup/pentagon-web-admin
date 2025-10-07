@@ -84,7 +84,7 @@
                                         <div class="form-group">
                                             <label for="image_{{ $language->lang_code }}">Resim ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="file" class="form-control" id="image_{{ $language->lang_code }}" name="image_{{ $language->lang_code }}">
-                                            @if($image[$language->lang_code])
+                                            @if(isset($image[$language->lang_code]))
                                                 <input type="hidden" name="old_image_{{ $language->lang_code }}" value="{{ $image[$language->lang_code] }}">
                                                 <img src="{{ asset(getFolder(['uploads_folder','images_folder']) . '/' . $image[$language->lang_code]) }}" alt="{{ $alt[$language->lang_code] }}" style="width: 200px; height: auto; margin-top: 10px;">
                                             @endif
