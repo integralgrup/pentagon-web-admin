@@ -2,7 +2,7 @@
 
 
 @section('content')
-<?php $pageTitle = 'Haberler'; ?>
+<?php $pageTitle = getStaticText(31); ?>
 <?php 
         $breadcrumbImage = "corporate-breadcrumb.jpg";
         $breadcrumbVideo = "breadcrumb-video.mp4";
@@ -33,7 +33,7 @@
                                             <time class="text-[16px] font-medium leading-none tracking-[-0.16px] text-dark/50"><?= date('d'.'.'.'m'.'.'.'Y', strtotime($item['created_at'])) ?></time>
                                         </div>
                                         <h2><a href="<?= env('HTTP_DOMAIN').'/'. getUrl('blog_url'). '/'.$item['seo_url'] ?>" class="<?= $key == 0 ? 'reveal' : ''; ?> block text-[30px] xl:text-[22px] xl:leading-[28px] leading-[35px] font-medium text-secondary-main mb-[25px] line-clamp-2"><?= $item['title'] ?></a></h2>
-                                        <p class="<?= $key == 0 ? 'reveal' : ''; ?> text-[18px] lg:text-[16px] leading-[28px] font-light text-paragraph mb-[50px] xl:mb-[30px] line-clamp-2"><?= mb_substr($item['description'], 0, 100) ?>...</p>
+                                        <p class="<?= $key == 0 ? 'reveal' : ''; ?> text-[18px] lg:text-[16px] leading-[28px] font-light text-paragraph mb-[50px] xl:mb-[30px] line-clamp-2"><?= mb_substr(strip_tags($item['description']), 0, 100) ?>...</p>
                                         <a href="<?= env('HTTP_DOMAIN').'/'. getUrl('blog_url'). '/'.$item['seo_url'] ?>" class="<?= $key == 0 ? 'reveal' : ''; ?> flex items-center justify-center relative w-max overflow-hidden main-button group sm:w-full">
                                             <div class="left px-[30px] py-[20px] flex items-center justify-center z-2 bg-transparent border border-solid border-primary-main transition-all duration-300 sm:w-full relative before:absolute before:left-0 before:top-0 before:w-0 before:h-full before:translate-x-[-100px] group-hover:before:min-md:w-full group-hover:before:min-md:translate-x-0 before:bg-primary-main before:transition-all before:duration-500">
                                                 <span class="text-[16px] leading-none font-medium text-primary-main transition-all duration-300 group-hover:min-md:duration-600 group-hover:min-md:text-white translate-x-[-100px] opacity-0 group-hover:min-md:translate-x-0 group-hover:min-md:opacity-100 w-0 whitespace-nowrap relative z-2"><?=getStaticText(5)?></span>
@@ -155,7 +155,7 @@
                         </div>
                         <div class="flex flex-col">
                             <h3><a href="<?= env('HTTP_DOMAIN').'/'. getUrl('blog_url'). '/'. $item['seo_url'] ?>" class="block text-[24px] xl:text-[20px] xl:leading-[28px] leading-[35px] font-semibold text-secondary-main mb-[20px] line-clamp-2 transition-all duration-300 group-hover/item:min-md:text-white"><?= $item['title'] ?></a></h3>
-                            <p class="text-[17px] lg:text-[16px] leading-[28px] font-light text-paragraph line-clamp-3 transition-all duration-300 group-hover/item:min-md:text-white"><?= mb_substr($item['description'], 0, 100) ?>...</p>
+                            <p class="text-[17px] lg:text-[16px] leading-[28px] font-light text-paragraph line-clamp-3 transition-all duration-300 group-hover/item:min-md:text-white"><?= mb_substr(strip_tags($item['description']), 0, 100) ?>...</p>
                         </div>
                         <a href="<?= env('HTTP_DOMAIN').'/'. getUrl('blog_url'). '/'. $item['seo_url'] ?>" class="flex items-center justify-center relative w-max sm:w-full overflow-hidden main-button group w-full">
                             <div class="w-full left px-[66px] lg:px-[35px] group-hover:min-md:px-[30px] py-[20px] flex items-center justify-center z-2 bg-transparent border border-solid border-paragraph/16 group-hover/item:min-md:border-white/16 group-hover:min-md:border-primary-main transition-all duration-300 group-hover:min-md:bg-primary-main sm:w-full">

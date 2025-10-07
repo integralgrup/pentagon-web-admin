@@ -46,11 +46,11 @@ class SliderController extends Controller
             foreach ($languages as $language) {
                 if($language->lang_code == 'en'){
                     $request->validate([
-                        'slide_title_' . $language->lang_code => 'required|max:100',
-                        'title_' . $language->lang_code => 'required|max:100',
-                        'title_1_' . $language->lang_code => 'nullable|max:100',
-                        'title_2_' . $language->lang_code => 'nullable|max:100',
-                        'button_title_' . $language->lang_code => 'required|max:100',
+                        'slide_title_' . $language->lang_code => 'required|max:400',
+                        'title_' . $language->lang_code => 'required|max:400',
+                        'title_1_' . $language->lang_code => 'nullable|max:400',
+                        'title_2_' . $language->lang_code => 'nullable|max:400',
+                        'button_title_' . $language->lang_code => 'required|max:400',
                         'url_' . $language->lang_code => 'required|max:255',
                         'image_' . $language->lang_code => 'nullable|image|max:2048', // Assuming image is optional
                         'alt_' . $language->lang_code => 'required|max:255',

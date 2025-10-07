@@ -47,12 +47,14 @@
                                         ],
                                     ];
                                     foreach ($social as $item):
+                                        if( empty($item['link']) ) continue;
                                 ?>
                                     <li class="">
                                         <a href="<?= $item['link'] ?>" target="_blank" class="group block transition-all duration-300 hover:scale-110 [&_svg_g,_svg_path]:transition-all [&_svg_g,_svg_path]:duration-300 [&_svg_path]:hover:fill-primary-400 [&_svg_g]:hover:opacity-100">
                                             <i class="icon-<?= $item['icon'] ?> text-[21px] h-[21px] inline-block leading-none text-white/20 transition-all duration-300 group-hover:text-primary-400"></i>
                                         </a>
                                     </li>
+                                    
                                 <?php endforeach; ?>
                             </ul>
                         </div>

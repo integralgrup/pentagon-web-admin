@@ -32,7 +32,7 @@ class HomeController extends Controller
         $sectors = Sector::where('lang', app()->getLocale())->get();
         
         $brands = Brand::where('lang', app()->getLocale())->get();
-        $blogs = Blog::where('lang', app()->getLocale())->get();
+        $blogs = Blog::where('lang', app()->getLocale())->orderBy('sort')->get();
         $about = About::where('lang', app()->getLocale())->first();
 
         //dd($brands);

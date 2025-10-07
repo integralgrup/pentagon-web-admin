@@ -259,7 +259,7 @@
                         <?= getStaticText(8) ?>
                     </h4>
 
-                    <a href="page-blog.php" class="text-[16px] leading-normal font-medium text-paragraph/65 tracking-[-0.16px] transition-all duration-300 px-[66px] py-[22px] border border-solid border-paragraph/16 hover:bg-secondary-main hover:border-secondary-main hover:text-white xsm:w-full xsm:text-center sm:py-[15px] md:hidden">
+                    <a href="{{ env('HTTP_DOMAIN') . '/' . getUrl('blog_url') }}" class="text-[16px] leading-normal font-medium text-paragraph/65 tracking-[-0.16px] transition-all duration-300 px-[66px] py-[22px] border border-solid border-paragraph/16 hover:bg-secondary-main hover:border-secondary-main hover:text-white xsm:w-full xsm:text-center sm:py-[15px] md:hidden">
                         <?= getStaticText(9) ?>
                     </a>
 

@@ -27,7 +27,7 @@
                                     <a href="<?=env('HTTP_DOMAIN')?>"><?=getStaticText(10)?></a>
                                 </li>
                                 <li class="reveal">
-                                    <a href="<?=env('HTTP_DOMAIN').'/'.getUrl('blog_url')?>">Haberler</a>
+                                    <a href="<?=env('HTTP_DOMAIN').'/'.getUrl('blog_url')?>">{{getStaticText(31)}}</a>
                                 </li>
                             </ul>
                         </div>
