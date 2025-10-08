@@ -93,26 +93,28 @@ class AboutController extends Controller
                     }
 
                     if ($request->hasFile('bg_video_' . $language->lang_code) || $request->hasFile('bg_video_en')) {
-                        $tmpBgVideoPath = createTmpFile($request, 'bg_video_' . $language->lang_code, $languages[0]);
+                        $tmpBgVideoPath = createTmpFile($request, 'bg_video_en', $languages[0]);
                         $videoName = moveFile($request,$language, 'bg_video_' . $language->lang_code, 'bg_video_en', 'title_' . $language->lang_code, 'title_en',$language->images_folder, $tmpBgVideoPath);
                     } else {
                         $videoName = $request->input('old_bg_video_' . $language->lang_code, null); // Use old video if no new video is uploaded
                     }
 
                     if ($request->hasFile('mission_image_' . $language->lang_code) || $request->hasFile('mission_image_en')) {
-                        $tmpMissionImagePath = createTmpFile($request, 'mission_image_' . $language->lang_code, $languages[0]);
+                        $tmpMissionImagePath = createTmpFile($request, 'mission_image_en', $languages[0]);
                         $missionImageName = moveFile($request,$language,'mission_image_' . $language->lang_code, 'mission_image_en', 'mission_title_' . $language->lang_code, 'mission_title_en',$language->images_folder, $tmpMissionImagePath);
                     } else {
                         $missionImageName = $request->input('old_mission_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
                     }
 
                     if ($request->hasFile('vision_image_' . $language->lang_code) || $request->hasFile('vision_image_en')) {
-                        $tmpVisionImagePath = createTmpFile($request, 'vision_image_' . $language->lang_code, $languages[0]);
+                        $tmpVisionImagePath = createTmpFile($request, 'vision_image_en', $languages[0]);
                         $visionImageName = moveFile($request,$language,'vision_image_' . $language->lang_code, 'vision_image_en', 'vision_title_' . $language->lang_code, 'vision_title_en',$language->images_folder, $tmpVisionImagePath);
 
                     } else {
                         $visionImageName = $request->input('old_vision_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
                     }
+
+                    
                     // Create or update the about content for the specific language
                     About::updateOrCreate(
                         [
@@ -139,7 +141,7 @@ class AboutController extends Controller
                     );
 
                 }
-                //die();
+                //die('here');
                 @unlink($tmpImgPath);
                 @unlink($tmpBgVideoPath);
                 @unlink($tmpMissionImagePath);

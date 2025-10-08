@@ -107,6 +107,7 @@ if(!function_exists('createTmpFile')) {
     function createTmpFile($request, $inputName, $language)
     {
         if($request->hasFile($inputName)){
+            echo 'Creating temp file for ' . $inputName; echo '<br>';
             //save image to temp folder
             $image = $request->file($inputName);
             $imageName = $language->lang_code . '-' . time() . '-' . uniqid() . '.' . $image->getClientOriginalExtension();
@@ -128,20 +129,27 @@ if(!function_exists('createTmpFile')) {
 if(!function_exists('moveFile')) {
     function moveFile($request, $language, $fileName, $enFileName, $imgTitle, $enImgTitle, $folderName, $tmpImgPath = null)
     {
-        $image = $request->file($fileName) ?? $request->file($enFileName);
-        $imageName = seoUrl($request->input($imgTitle) ?? $request->input($enImgTitle)) . '_' . microtime(true) . '.' . $image->getClientOriginalExtension();
-        $folderPath = $language->path.'/'.$language->uploads_folder.'/'.$folderName ;
-        $imgPath = $folderPath .'/'. $imageName;
+        try {
+            $image = $request->file($fileName) ?? $request->file($enFileName);
+            $imageName = seoUrl($request->input($imgTitle) ?? $request->input($enImgTitle)) . '_' . microtime(true) . '.' . $image->getClientOriginalExtension();
+            $folderPath = $language->path.'/'.$language->uploads_folder.'/'.$folderName ;
+            $imgPath = $folderPath .'/'. $imageName;
 
-        if(!file_exists($folderPath)) {
-            mkdir($folderPath, 0755, true);
-        }
+            if(!file_exists($folderPath)) {
+                mkdir($folderPath, 0755, true);
+            }
 
-        if(isset($tmpImgPath) && file_exists($tmpImgPath)) {
-            copy($tmpImgPath, $imgPath);
-        }else{
-            $image->move($folderPath, $imageName); // Move the image to the specified folder
+            if(isset($tmpImgPath) && file_exists($tmpImgPath)) {
+                //echo $tmpImgPath . ' to ' . $imgPath; echo '<br>';
+                copy($tmpImgPath, $imgPath);
+            }else{
+                $image->move($folderPath, $imageName); // Move the image to the specified folder
+            }
+            return $imageName;
+        } catch (Exception $e) {
+            dd($e);
+            return null; // Error checking file
         }
-        return $imageName;
+        
     }
 }
