@@ -42,6 +42,20 @@ class HomeController extends Controller
 
     public function route($slug, $slug2 = null)
     {
+
+        if($slug == 'copy-db') {
+
+            $lang_array = ['es', 'fr', 'ru', 'ae']; // Add more languages as needed
+
+            if(in_array($slug2, $lang_array)) {
+                $lang = $slug2;
+            } else {
+                return "Invalid or missing language code. Please provide a valid language code (e.g., /copy-db/es).";
+            }
+
+            return $this->copyDB($lang);
+        }
+
         $menu = Menu::where(['seo_url' => $slug, 'lang' => app()->getLocale()])->firstOrFail();
         //dd($menu);
         // If the menu item has a page_type of 'about', fetch the about data
@@ -143,6 +157,59 @@ class HomeController extends Controller
         }
 
         //return view('page', compact('page'));
+    }
+
+    public function copyDB($lang)
+    {
+        $sourceLang = 'en';
+        $targetLang = $lang;
+
+        $tables = [
+            'about_how_we_do',
+            'about_memberships',
+            'about_mission_vision',
+            'about_page',
+            'about_politics',
+            'about_what_we_do',
+            'blog',
+            'blog_slider',
+            'brand',
+            'brand_gallery',
+            'brand_slider_1',
+            'brand_slider_2',
+            'career',
+            'career_jobs',
+            'career_slider',
+            'catalog',
+            'catalog_file',
+            'catalog_group',
+            'footer_info',
+            'main_slider',
+            'menu',
+            'office',
+            'page',
+            'sector',
+            'sector_slider_1',
+            'sector_slider_2',
+            'static_image',
+            'static_text'
+        ];
+
+        //Fetch all records from source language
+        //Change the lang column to target language
+        //Insert into the same table
+        foreach ($tables as $table) {
+            $records = DB::table($table)->where('lang', $sourceLang)->get();
+            foreach ($records as $record) {
+                $newRecord = (array) $record; // Convert stdClass to array
+                $newRecord['lang'] = $targetLang;
+                // Remove primary key to avoid duplicate key error
+                unset($newRecord[array_key_first($newRecord)]);
+                DB::table($table)->insert($newRecord);
+            }
+        }
+
+        return "Database copy from {$sourceLang} to {$targetLang} completed.";
     }
 
     

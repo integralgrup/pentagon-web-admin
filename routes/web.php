@@ -235,3 +235,5 @@ Route::post('/admin/update-order', 'App\Http\Controllers\Admin\FooterInfoControl
 //Home route
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
 Route::get('{slug}/{slug2?}', 'App\Http\Controllers\HomeController@route')->name('page.route');
+// Route for HomeController copyDB function
+//Route::get('/copy-db', 'App\Http\Controllers\HomeController@copyDB')->name('copy.db');
