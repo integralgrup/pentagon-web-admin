@@ -107,7 +107,7 @@ if(!function_exists('createTmpFile')) {
     function createTmpFile($request, $inputName, $language)
     {
         if($request->hasFile($inputName)){
-            echo 'Creating temp file for ' . $inputName; echo '<br>';
+            //echo 'Creating temp file for ' . $inputName; echo '<br>';
             //save image to temp folder
             $image = $request->file($inputName);
             $imageName = $language->lang_code . '-' . time() . '-' . uniqid() . '.' . $image->getClientOriginalExtension();

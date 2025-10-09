@@ -507,7 +507,7 @@ class AboutController extends Controller
                 }
 
                 if ($request->hasFile('image_' . $language->lang_code) || $request->hasFile('image_en')) {
-                    $tmpImgPath = createTmpFile($request, 'image_' . $language->lang_code, $languages[0]);
+                    $tmpImgPath = createTmpFile($request, 'image_en', $languages[0]);
                     $imageName = moveFile($request, $language, 'image_' . $language->lang_code, 'image_en', 'alt_' . $language->lang_code, 'alt_en', $language->images_folder, $tmpImgPath);
 
                 } else {
