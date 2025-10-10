@@ -343,9 +343,9 @@
                 $kvkk = \App\Models\Page::where(['lang' => app()->getLocale(),  'page_id' => 5])->first();
                 $gizlilik = \App\Models\Page::where(['lang' => app()->getLocale(), 'page_id' => 2])->first();
                 ?>  
-                <a target="_blank" href="<?=env('HTTP_DOMAIN') . '' . $kvkk->seo_url?>" class="text-white/50 duration-350 hover:text-white underline text-[13px] font-medium"><?= $kvkk->title ?></a>
+                <a target="_blank" href="<?=env('HTTP_DOMAIN') . '/' . $kvkk->seo_url?>" class="text-white/50 duration-350 hover:text-white underline text-[13px] font-medium"><?= $kvkk->title ?></a>
                 <span class="mx-[10px] text-black/50">|</span>
-                <a  target="_blank" href="<?=env('HTTP_DOMAIN') . '' . $gizlilik->seo_url?>" class="text-white/50 duration-350 hover:text-white underline text-[13px] font-medium"><?= $gizlilik->title ?></a>
+                <a  target="_blank" href="<?=env('HTTP_DOMAIN') . '/' . $gizlilik->seo_url?>" class="text-white/50 duration-350 hover:text-white underline text-[13px] font-medium"><?= $gizlilik->title ?></a>
             </div>
         </div>
 
