@@ -60,12 +60,12 @@
                                     <div class="card-body" style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
                                         <input type="hidden" name="lang_{{ $language->lang_code }}" value="{{ $language->lang_code }}">
                                         <div class="mb-3">
-                                            <label for="title_{{ $language->lang_code }}" class="form-label">Başlık ({{ $language->lang_code }})</label>
-                                            <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" required>
+                                            <label for="title_{{ $language->lang_code }}" class="form-label">Metin ({{ $language->lang_code }})</label>
+                                            <textarea class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" rows="3" ></textarea>
                                         </div>
                                         <div class="mb-3">
                                             <label for="page_name_{{ $language->lang_code }}" class="form-label">Sayfa Adı ({{ $language->lang_code }})</label>
-                                            <input type="text" class="form-control" id="page_name_{{ $language->lang_code }}" name="page_name_{{ $language->lang_code }}" required>
+                                            <input type="text" class="form-control" id="page_name_{{ $language->lang_code }}" name="page_name_{{ $language->lang_code }}" >
                                         </div>
                                     </div>
                                 </div>

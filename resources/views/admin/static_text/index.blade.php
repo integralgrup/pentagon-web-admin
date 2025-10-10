@@ -52,8 +52,8 @@
                         @foreach($staticTexts as $staticText)
                         <tr class="align-middle">
                           <td>{{ $staticText->id }}</td>
-                          <td>{{ strip_tags($staticText->title) }}</td>
-                          <td>{{ strip_tags($staticText->page_name) }}</td>
+                          <td>{{ mb_substr(strip_tags($staticText->title), 0, 50) }} {{ strlen(strip_tags($staticText->title)) > 50 ? "..." : "" }}</td>
+                          <td>{{ mb_substr(strip_tags($staticText->page_name), 0, 50) }} {{ strlen(strip_tags($staticText->page_name)) > 50 ? "..." : "" }}</td>
                           <td>
                             <!-- Katalog Dosyaları -->
                             <a href="{{ route('admin.static_text.edit', $staticText->text_id) }}" class="btn btn-primary btn-sm">Düzenle</a>

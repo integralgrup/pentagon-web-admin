@@ -46,15 +46,15 @@ class StaticTextController extends Controller
 
         foreach($this->languages as $language) {
             $request->validate([
-                'title_' . $language->lang_code => 'required|max:255',
-                'page_name_' . $language->lang_code => 'required|max:255',
+                'title_' . $language->lang_code => 'nullable|max:5000',
+                'page_name_' . $language->lang_code => 'nullable|max:255',
             ]);
 
             StaticText::updateOrCreate(
                 ['text_id' => $textId, 'lang' => $language->lang_code],
                 [
-                    'title' => $request->input('title_' . $language->lang_code),
-                    'page_name' => $request->input('page_name_' . $language->lang_code),
+                    'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
+                    'page_name' => $request->input('page_name_' . $language->lang_code) ?? $request->input('page_name_en'),
                 ]
             );
         }

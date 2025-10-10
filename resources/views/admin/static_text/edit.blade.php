@@ -69,8 +69,8 @@
                                         <input type="hidden" name="lang_{{ $language->lang_code }}" value="{{ $language->lang_code }}">
                                         <input type="hidden" name="text_id" value="{{ $text_id }}">
                                         <div class="mb-3">
-                                            <label for="title_{{ $language->lang_code }}" class="form-label">Başlık ({{ $language->lang_code }})</label>
-                                            <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" required value="{{ $title[$language->lang_code] ?? '' }}">
+                                            <label for="title_{{ $language->lang_code }}" class="form-label">Metin ({{ $language->lang_code }})</label>
+                                            <textarea class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" rows="3" required>{{ $title[$language->lang_code] ?? '' }}</textarea>
                                         </div>
                                         <div class="mb-3">
                                             <label for="page_name_{{ $language->lang_code }}" class="form-label">Sayfa Adı ({{ $language->lang_code }})</label>
