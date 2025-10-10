@@ -172,10 +172,9 @@
 
         <!-- POPUP -->
         <!-- POPUP GDPR -->
-<section id="popup-gdpr" class="popup hidden !rounded-[20px] !m-0 !p-[30px] !max-w-[1024px] w-full [&_.f-button]:!top-[20px] [&_.f-button]:!right-[10px] [&_.f-button]:!opacity-100 [&_.f-button]:!text-black">
+<!--<section id="popup-gdpr" class="popup hidden !rounded-[20px] !m-0 !p-[30px] !max-w-[1024px] w-full [&_.f-button]:!top-[20px] [&_.f-button]:!right-[10px] [&_.f-button]:!opacity-100 [&_.f-button]:!text-black">
     <div class="inner w-full">
         <div class="text-editor !max-w-full">
-            <!-- Stylelar tasarımı yansıtmak adına eklenmiştir. / Backendde silinerek panel editörü üzerinden eklenmeli. -->
             <h4><strong>KİŞİSEL VERİLERİN KORUNMASI</strong></h4>
             <h5><strong>İNTERNET SİTESİ ÇEREZ POLİTİKASI</strong></h5>
 
@@ -230,7 +229,7 @@
             <p><strong>Firma Adı</strong><br><strong>Adres:</strong> Mahalle Adı Sokak Adı. No: 1/A, 34444 İlçe Adı/İl Adı<br><strong>Telefon:</strong> +90 216 555 55 55<br><strong>E – Posta:</strong> mail@alanadi.com<br><strong>Web Adresi:</strong> www.alanadi.com</p>
         </div>
     </div>
-</section>
+</section>-->
 
 <!-- POPUP OFFER FORM -->
 <section id="popup-offer-form" class="hidden w-full h-full !p-0 bg-[#f6f6f6]/15 backdrop-blur-[5px]">
@@ -327,22 +326,26 @@
                 <div class="icon icon-cross icon-close group-hover/close:text-primary-500 group-hover/close:rotate-90 text-white text-[14px] h-[14px] block leading-none duration-350"></div>
             </div>
             <div class="text-field text-white">
-                <div class="title font-medium text-[18px] mb-[15px]">Çerez Ayarları</div>
-                <div class="expo text-[14px] sm:text-[12px] text-white/50">Bu web sitesinde, cihaz bilgilerini ve kişisel verileri işlemek için çerezleri ve benzer işlevleri kullanıyoruz. İşleme, içeriğin, harici hizmetlerin ve üçüncü şahısların unsurlarının, istatistiksel analiz/ölçümün, kişiselleştirilmiş reklamcılığın ve sosyal medyanın entegrasyonunun entegrasyonuna hizmet eder. İşleve bağlı olarak, veriler üçüncü taraflara aktarılır ve onlar tarafından işlenir. Bu onay isteğe bağlıdır, web sitemizin kullanımı için gerekli değildir ve sol alttaki simge kullanılarak herhangi bir zamanda iptal edilebilir.</div>
+                <div class="title font-medium text-[18px] mb-[15px]"><?= getStaticText(31)?></div>
+                <div class="expo text-[14px] sm:text-[12px] text-white/50"><?= getStaticText(32)?></div>
             </div>
             <div class="split my-[20px] sm:my-[10px] bg-white/5 w-full h-[1px]"></div>
             <div class="action-field flex items-center justify-between gap-[20px] sm:flex-col">
                 <button class="accept-cookie close-cookie button group/button w-full flex justify-center items-center gap-[20px] bg-primary-500 px-[20px] hover:bg-primary-600 h-[45px] md:h-[50px] duration-350">
-                    <div class="text text-[13px] text-white font-medium relative z-2 whitespace-nowrap duration-350">Çerezleri Kabul Et</div>
+                    <div class="text text-[13px] text-white font-medium relative z-2 whitespace-nowrap duration-350"><?= getStaticText(33)?></div>
                 </button>
                 <button class="button group/button w-full flex justify-center items-center gap-[20px] bg-transparent px-[20px] h-[45px] md:h-[50px] duration-350 border border-solid border-primary-500">
-                    <div class="text text-[13px] text-white/50 duration-350 font-medium relative z-2 whitespace-nowrap group-hover/button:text-white">Reddet</div>
+                    <div class="text text-[13px] text-white/50 duration-350 font-medium relative z-2 whitespace-nowrap group-hover/button:text-white"><?= getStaticText(34)?></div>
                 </button>
             </div>
             <div class="link-field mt-[30px]">
-                <a href="page.php" class="text-white/50 duration-350 hover:text-white underline text-[13px] font-medium">Kişisel Verilerin Korunması</a>
+                <?php 
+                $kvkk = \App\Models\Page::where(['lang' => app()->getLocale(),  'page_id' => 5])->first();
+                $gizlilik = \App\Models\Page::where(['lang' => app()->getLocale(), 'page_id' => 2])->first();
+                ?>  
+                <a target="_blank" href="<?=env('HTTP_DOMAIN') . '' . $kvkk->seo_url?>" class="text-white/50 duration-350 hover:text-white underline text-[13px] font-medium"><?= $kvkk->title ?></a>
                 <span class="mx-[10px] text-black/50">|</span>
-                <a href="page.php" class="text-white/50 duration-350 hover:text-white underline text-[13px] font-medium">Gizlilik</a>
+                <a  target="_blank" href="<?=env('HTTP_DOMAIN') . '' . $gizlilik->seo_url?>" class="text-white/50 duration-350 hover:text-white underline text-[13px] font-medium"><?= $gizlilik->title ?></a>
             </div>
         </div>
 
