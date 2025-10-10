@@ -408,9 +408,8 @@ class BrandController extends Controller
                 // Update existing slider
             }else{
                 // Select max id
-                $imageId = BrandGallery::where('brand_id', $id)->max('image_id') + 1;
+                $imageId = BrandGallery::max('image_id') + 1;
             }
-
 
             foreach ($languages as $language) {
 
