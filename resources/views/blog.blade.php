@@ -2,7 +2,7 @@
 
 
 @section('content')
-<?php $pageTitle = getStaticText(31); ?>
+<?php $pageTitle = getStaticText(35); ?>
 <?php 
         $breadcrumbImage = "corporate-breadcrumb.jpg";
         $breadcrumbVideo = "breadcrumb-video.mp4";
