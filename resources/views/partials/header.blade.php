@@ -176,7 +176,7 @@
                                         foreach ($menuItems as $key =>  $menuItem):
 
                                             $menu[$key]['title'] = $menuItem->title;
-                                            $menu[$key]['link'] = $menuItem->seo_url == 'javascript:;' ? 'javascript:;' : env('HTTP_DOMAIN') . '/' . $menuItem->seo_url;
+                                            $menu[$key]['link'] = $menuItem->seo_url == 'javascript:;' ? 'javascript:;' : $menuItem->seo_url;
                                             if(getSubMenuItems($menuItem->menu_id) != null){
                                                 $menu[$key]['megamenu'] = getSubMenuItems($menuItem->menu_id);
                                             }
