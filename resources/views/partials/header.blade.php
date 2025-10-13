@@ -176,7 +176,7 @@
                                         foreach ($menuItems as $key =>  $menuItem):
 
                                             $menu[$key]['title'] = $menuItem->title;
-                                            $menu[$key]['link'] = $menuItem->seo_url;
+                                            $menu[$key]['link'] = $menuItem->seo_url == 'javascript:;' ? 'javascript:;' : env('HTTP_DOMAIN') . '/' . $menuItem->seo_url;
                                             if(getSubMenuItems($menuItem->menu_id) != null){
                                                 $menu[$key]['megamenu'] = getSubMenuItems($menuItem->menu_id);
                                             }
@@ -187,7 +187,7 @@
 
                                         foreach ($menu as $key => $item) { ?>
                                             <li class="min-md:h-full w-full px-[25px] md:px-[30px] xl:px-[15px] flex items-center md:flex-wrap md:justify-between group/item menu-item [&_i]:min-md:ml-[5px] [&_i]:md:text-[15px] [&_i]:text-[12px] [&_i]:leading-none [&_i]:md:w-[34px] [&_i]:w-[18px] [&_i]:cursor-pointer [&_i]:aspect-square [&_i]:flex [&_i]:items-center [&_i]:justify-center [&_i]:md:bg-primary-50 [&_i]:before:transition-all [&_i]:before:duration-450 [&_i]:before:content-['\0044'] [&_i]:before:pointer-events-none [&_i]:hover:before:min-md:rotate-180 [&_i]:before:[&.dropdown-active]:rotate-180 <?= isset($item['megamenu']) ? 'has-sub-menu' : ''?>">
-                                                <a href="<?= env('HTTP_DOMAIN') .'/'. $item['link'] ?>" class="inline-block <?= !isset($item['megamenu']) ? 'w-full text-left' : '' ?> py-[10px] text-[17px] lg:text-[16px] leading-[41px] text-black font-light transition-all duration-300 group-hover/item:text-secondary-main [-webkit-text-stroke:1px_rgba(0,0,0,0)] group-hover/item:[-webkit-text-stroke:1px_rgba(8,51,85,1)] relative z-[20]">
+                                                <a href="<?= $item['link'] ?>" class="inline-block <?= !isset($item['megamenu']) ? 'w-full text-left' : '' ?> py-[10px] text-[17px] lg:text-[16px] leading-[41px] text-black font-light transition-all duration-300 group-hover/item:text-secondary-main [-webkit-text-stroke:1px_rgba(0,0,0,0)] group-hover/item:[-webkit-text-stroke:1px_rgba(8,51,85,1)] relative z-[20]">
                                                     <?= $item['title'] ?>
                                                 </a>
                                                 <?php if (isset($item['megamenu'])) { ?>
