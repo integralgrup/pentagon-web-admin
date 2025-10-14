@@ -180,6 +180,7 @@
                             <p class="text-[18px] lg:text-[16px] leading-[32px] font-light text-paragraph mb-[60px] xl:mb-[40px] md:mb-[30px]">
                                 <?= $brand->description; ?>
                             </p>
+                            @if($brand->url != '#')
                             <a href="<?=$brand->url?>" target="_blank" class="flex items-center justify-center relative w-max overflow-hidden main-button group sm:w-full" id="website-button">
                                 <div class="left px-[30px] py-[20px] flex items-center justify-center z-2 bg-transparent border border-solid border-primary-main transition-all duration-300 relative sm:w-full before:absolute before:left-0 before:top-0 before:w-0 before:h-full before:translate-x-[-100px] group-hover:before:min-md:w-full group-hover:before:min-md:translate-x-0 before:bg-primary-main before:transition-all before:duration-500">
                                     <span class="text-[16px] leading-none font-medium text-primary-main transition-all duration-300 group-hover:min-md:duration-600 group-hover:min-md:text-white translate-x-[-100px] opacity-0 group-hover:min-md:translate-x-0 group-hover:min-md:opacity-100 w-0 whitespace-nowrap relative z-2">Websitesine Git</span>
@@ -192,6 +193,7 @@
                                     <!--                                    <i class="icon-globe text-[18px] leading-none text-white transition-all "></i>-->
                                 </div>
                             </a>
+                            @endif
                         </div>
                     </div>
                 </div>

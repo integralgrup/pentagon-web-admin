@@ -22,6 +22,7 @@ class Sector extends Model
         'description',
         'bg_image',
         'image',
+        'banner_image',
         'alt',
         'bg_alt',
         'seo_title',
