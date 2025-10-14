@@ -27,6 +27,7 @@ class Brand extends Model
         'description',
         'bg_image',
         'image',
+        'banner_image',
         'alt',
         'seo_url',
         'seo_title',

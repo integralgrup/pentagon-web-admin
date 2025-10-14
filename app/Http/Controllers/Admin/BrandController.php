@@ -64,6 +64,7 @@ class BrandController extends Controller
                         'bg_image_' . $language->lang_code => 'nullable|max:2048|mimes:webp,svg,jpg,jpeg,png', // Assuming image is optional
                         // webp or svg or jpg or png
                         'image_' . $language->lang_code => 'nullable|max:2048|mimes:webp,svg,jpg,jpeg,png',
+                        'banner_image_' . $language->lang_code => 'nullable|max:2048|mimes:webp,svg,jpg,jpeg,png',
                         'alt_' . $language->lang_code => 'required|max:255',
                         'url_' . $language->lang_code => 'required|max:255',
                         'seo_title_' . $language->lang_code => 'nullable|max:255',
@@ -88,6 +89,14 @@ class BrandController extends Controller
                     $bgImageName = $request->input('old_bg_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
                 }
 
+                if ($request->hasFile('banner_image_' . $language->lang_code) || $request->hasFile('banner_image_en')) {
+                    $tmpImgPath = createTmpFile($request, 'banner_image_en', $languages[0]);
+                    $bannerImageName = moveFile($request,$language,'banner_image_' . $language->lang_code, 'banner_image_en', 'title_' . $language->lang_code, 'title_en', $language->brand_images_folder, $tmpImgPath);
+                    //dd($bannerImageName);
+                }else{
+                    $bannerImageName = $request->input('old_banner_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
+                }
+
                 Brand::updateOrCreate(
                     ['brand_id' => $brand_id, 'lang' => $language->lang_code],
                     [
@@ -97,6 +106,7 @@ class BrandController extends Controller
                         'title_1' => $request->input('title_1_' . $language->lang_code) ?? $request->input('title_1_en'),
                         'url' => $request->input('url_' . $language->lang_code) ?? $request->input('url_en'),
                         'bg_image' => $bgImageName,
+                        'banner_image' => $bannerImageName,
                         'description' => $request->input('description_' . $language->lang_code) ?? $request->input('description_en'),
                         'image' => $imageName,
                         'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),

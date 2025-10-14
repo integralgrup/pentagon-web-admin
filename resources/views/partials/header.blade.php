@@ -176,13 +176,7 @@
                                         foreach ($menuItems as $key =>  $menuItem):
 
                                             $menu[$key]['title'] = $menuItem->title;
-                                            if($menuItem->parent_menu_id == 0){
-                                                $menu[$key]['link'] =  $menuItem->seo_url == 'javascript:;' ? 'javascript:;' : env('HTTP_DOMAIN') . '/' . $menuItem->seo_url;
-                                            } else {
-                                                $menu[$key]['link'] =  env('HTTP_DOMAIN') . '/' . $menuItem->seo_url;
-                                                
-                                            }
-                                            $menu[$key]['seo_url'] =  $menuItem->seo_url;
+                                            $menu[$key]['link'] = $menuItem->seo_url;
                                             if(getSubMenuItems($menuItem->menu_id) != null){
                                                 $menu[$key]['megamenu'] = getSubMenuItems($menuItem->menu_id);
                                             }
@@ -193,7 +187,7 @@
 
                                         foreach ($menu as $key => $item) { ?>
                                             <li class="min-md:h-full w-full px-[25px] md:px-[30px] xl:px-[15px] flex items-center md:flex-wrap md:justify-between group/item menu-item [&_i]:min-md:ml-[5px] [&_i]:md:text-[15px] [&_i]:text-[12px] [&_i]:leading-none [&_i]:md:w-[34px] [&_i]:w-[18px] [&_i]:cursor-pointer [&_i]:aspect-square [&_i]:flex [&_i]:items-center [&_i]:justify-center [&_i]:md:bg-primary-50 [&_i]:before:transition-all [&_i]:before:duration-450 [&_i]:before:content-['\0044'] [&_i]:before:pointer-events-none [&_i]:hover:before:min-md:rotate-180 [&_i]:before:[&.dropdown-active]:rotate-180 <?= isset($item['megamenu']) ? 'has-sub-menu' : ''?>">
-                                                <a href="<?= $item['link'] ?>" class="inline-block <?= !isset($item['megamenu']) ? 'w-full text-left' : '' ?> py-[10px] text-[17px] lg:text-[16px] leading-[41px] text-black font-light transition-all duration-300 group-hover/item:text-secondary-main [-webkit-text-stroke:1px_rgba(0,0,0,0)] group-hover/item:[-webkit-text-stroke:1px_rgba(8,51,85,1)] relative z-[20]">
+                                                <a href="<?= env('HTTP_DOMAIN') .'/'. $item['link'] ?>" class="inline-block <?= !isset($item['megamenu']) ? 'w-full text-left' : '' ?> py-[10px] text-[17px] lg:text-[16px] leading-[41px] text-black font-light transition-all duration-300 group-hover/item:text-secondary-main [-webkit-text-stroke:1px_rgba(0,0,0,0)] group-hover/item:[-webkit-text-stroke:1px_rgba(8,51,85,1)] relative z-[20]">
                                                     <?= $item['title'] ?>
                                                 </a>
                                                 <?php if (isset($item['megamenu'])) { ?>
@@ -206,7 +200,7 @@
                                                                             <ul class="sub-menu flex flex-col gap-[25px] md:gap-[15px] flex-grow relative transition-all duration-700 min-md:opacity-0 group-hover/item:min-md:opacity-100 min-md:delay-100 before:absolute before:top-0 before:left-0 before:w-[1px] before:h-screen before:md:h-full before:bg-black/10">
                                                                                 <?php foreach ($item['megamenu'] as $index => $subitem) { ?>
                                                                                     <li class="submenu-item pl-[65px] md:pl-[30px] relative before:absolute before:w-[3px] before:h-0 before:bottom-0 before:-left-[1px] before:bg-primary-main before:transition-all before:duration-200 hover:before:bottom-[unset] hover:before:top-0 hover:before:h-full" data-item-image="<?= env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','images_folder'], app()->getLocale()) . '/' . $subitem['image'] ?>" data-item-id="<?= $key ?>" <?php if (isset($subitem['tabID'])) { echo 'data-tab-id="'. $subitem['tabID'] . '"'; } ?>>
-                                                                                        <a href="<?= env('HTTP_DOMAIN') .'/'. $item['seo_url'] .'/'. $subitem['link'] ?>" class="block py-[4px] text-[18px] md:text-[16px] leading-[32px] md:leading-[28px] text-paragraph font-light duration-300 hover:text-primary-main hover:tracking-[0.1px] [-webkit-text-stroke:1px_rgba(51,51,51,0)] hover:[-webkit-text-stroke:1px_rgba(182,163,107,1)] <?= isset($subitem['scrollableSection']) ? 'scrollable-selector' : '' ?>" <?php if (isset($subitem['scrollableSection'])) { echo 'data-scrollable-section="'. $subitem['scrollableSection'] . '"'; } ?>>
+                                                                                        <a href="<?= env('HTTP_DOMAIN') .'/'. $item['link'] .'/'. $subitem['link'] ?>" class="block py-[4px] text-[18px] md:text-[16px] leading-[32px] md:leading-[28px] text-paragraph font-light duration-300 hover:text-primary-main hover:tracking-[0.1px] [-webkit-text-stroke:1px_rgba(51,51,51,0)] hover:[-webkit-text-stroke:1px_rgba(182,163,107,1)] <?= isset($subitem['scrollableSection']) ? 'scrollable-selector' : '' ?>" <?php if (isset($subitem['scrollableSection'])) { echo 'data-scrollable-section="'. $subitem['scrollableSection'] . '"'; } ?>>
                                                                                             <?= $subitem['title'] ?>
                                                                                         </a>
                                                                                     </li>
