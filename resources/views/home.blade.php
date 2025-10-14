@@ -229,7 +229,8 @@
                                                 <?=$item->description?>
                                             </p>
                                         </div>
-                                        <a href="<?= $item['website'] ?>" target="_blank" class="order-4 flex items-center justify-center relative w-max overflow-hidden main-button group/button sm:w-full" id="website-button">
+                                        @if($brand->url != '#')
+                                        <a href="<?= $item['url'] ?>" target="_blank" class="order-4 flex items-center justify-center relative w-max overflow-hidden main-button group/button sm:w-full" id="website-button">
                                             <div class="left px-[30px] py-[20px] flex items-center justify-center z-2 bg-transparent border border-solid border-primary-main transition-all duration-300 sm:w-full relative before:absolute before:left-0 before:top-0 before:w-0 before:h-full before:translate-x-[-100px] group-hover/button:before:min-md:w-full group-hover/button:before:min-md:translate-x-0 before:bg-primary-main before:transition-all before:duration-500">
                                                 <span class="text-[16px] leading-none font-medium text-primary-main transition-all duration-300 group-hover/button:min-md:duration-600 group-hover/button:min-md:text-white translate-x-[-100px] opacity-0 group-hover/button:min-md:translate-x-0 group-hover/button:min-md:opacity-100 w-0 whitespace-nowrap relative z-2"><?= getStaticText(7) ?></span>
                                                 <span class="text-[16px] leading-none font-medium text-primary-main transition-all duration-600 group-hover/button:min-md:duration-300 group-hover/button:min-md:text-white group-hover/button:min-md:translate-x-[100px] group-hover/button:min-md:opacity-0 relative z-2"><?= getStaticText(7) ?></span>
@@ -241,6 +242,7 @@
                                                 <!--                                    <i class="icon-globe text-[18px] leading-none text-white transition-all "></i>-->
                                             </div>
                                         </a>
+                                        @endif
                                     </div>
                                 <?php } ?>
                             </div>
