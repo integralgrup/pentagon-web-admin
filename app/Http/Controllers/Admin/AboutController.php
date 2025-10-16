@@ -408,7 +408,7 @@ class AboutController extends Controller
             }
 
                 if ($request->hasFile('image_' . $language->lang_code) || $request->hasFile('image_en')) {
-                    $tmpImgPath = createTmpFile($request, 'image_' . $language->lang_code, $languages[0]);
+                    $tmpImgPath = createTmpFile($request, 'image_en', $languages[0]);
                     $imageName = moveFile($request, $language, 'image_' . $language->lang_code, 'image_en', 'alt_' . $language->lang_code, 'alt_en', $language->images_folder, $tmpImgPath);
 
                 } else {
@@ -416,12 +416,15 @@ class AboutController extends Controller
                 }
 
                 if ($request->hasFile('pdf_file_' . $language->lang_code) || $request->hasFile('pdf_file_en')) {
-                    $tmpPdfPath = createTmpFile($request, 'pdf_file_' . $language->lang_code, $languages[0]);
+                    $tmpPdfPath = createTmpFile($request, 'pdf_file_en', $languages[0]);
                     $pdfName = moveFile($request, $language, 'pdf_file_' . $language->lang_code, 'pdf_file_en', 'title_' . $language->lang_code, 'title_en', $language->images_folder, $tmpPdfPath);
-
+                    
                 } else {
                     $pdfName = $request->input('old_pdf_file_' . $language->lang_code, null); // Use old pdf if no new pdf is uploaded
                 }
+
+
+                //die($pdfName);
 
                 // Create or update the "how we do" content for the specific language
                 DB::table('about_memberships')->updateOrInsert(
@@ -434,7 +437,7 @@ class AboutController extends Controller
                         'url' => $request->input('url_' . $language->lang_code) ?? $request->input('url_en'),
                         'image' => $imageName ?? '',
                         'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
-                        'pdf_file' => $pdfName ?? '',
+                        'pdf_file' => $pdfName ?? 'test.pdf',
                     ]
                 );
             } // <-- Add this closing brace for the foreach loop
