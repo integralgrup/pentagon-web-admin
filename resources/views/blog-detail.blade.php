@@ -2,7 +2,7 @@
 
 @section('content')
     <?php 
-        $pageTitle = 'Haber Detay'; 
+        $pageTitle = $blog->title; 
         $breadcrumbImage = "corporate-breadcrumb.jpg";
         $breadcrumbVideo = "breadcrumb-video.mp4";
         $pageLink = "page-corporate.php";

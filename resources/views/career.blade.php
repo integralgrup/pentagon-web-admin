@@ -3,7 +3,7 @@
 @section('content')
     <main class="main-field header-space career-page">
     <?php
-        $pageTitle = "Kariyer";
+        $pageTitle = $career->title;
         $breadcrumbImage = "career-breadcrumb.jpg";
         $breadcrumbVideo = "breadcrumb-video.mp4";
         $pageLink = "page-career.php";
