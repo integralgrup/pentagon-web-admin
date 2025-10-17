@@ -251,12 +251,16 @@
                                                     $langParam0 = App\Models\Menu::where(['lang' => app()->getLocale(), 'seo_url' => $segments[3]])->first();
                                                     if(isset($blog)):
                                                         $langParam1 = App\Models\Blog::where(['lang' => app()->getLocale(), 'seo_url' => $segments[4]])->first();
+                                                    elseif(isset($careerJob)):
+                                                        $langParam1 = App\Models\CareerJob::where(['lang' => app()->getLocale(), 'seo_url' => $segments[4]])->first();
                                                     else:
                                                         $langParam1 = App\Models\Menu::where(['lang' => app()->getLocale(), 'seo_url' => $segments[4]])->first();
                                                     endif;
                                                     $langParam0_new = App\Models\Menu::where(['lang' => $language->lang_code, 'menu_id' => $langParam0->menu_id])->first();
                                                     if(isset($blog)):
                                                         $langParam1_new = App\Models\Blog::where(['lang' => $language->lang_code, 'blog_id' => $langParam1->blog_id])->first();
+                                                    elseif(isset($careerJob)):
+                                                        $langParam1_new = App\Models\CareerJob::where(['lang' => $language->lang_code, 'job_id' => $langParam1->job_id])->first();
                                                     else:
                                                         $langParam1_new = App\Models\Menu::where(['lang' => $language->lang_code, 'menu_id' => $langParam1->menu_id])->first();
                                                     endif;
