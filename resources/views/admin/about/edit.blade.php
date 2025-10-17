@@ -73,15 +73,20 @@
                                                 <label for="title_1_{{ $about->lang }}" class="form-label">Alt Başlık ({{ $about->lang }})</label>
                                                 <input type="text" class="form-control" id="title_1_{{ $about->lang }}" name="title_1_{{ $about->lang }}" value="{{ $about->title_1 }}" required>
                                             </div>
-                                            <div>
-                                                <label for="title_1_{{ $about->lang }}" class="form-label">Başlık 1 ({{ $about->lang }})</label>
-                                                <input type="text" class="form-control" id="title_1_{{ $about->lang }}" name="title_1_{{ $about->lang }}" value="{{ $about->title_1 }}" required>
-                                            </div>
                                         </div>
                                         <!-- title_1 -->
                                         
 
                                         <div class="mb-3">
+                                            <div>
+                                                <label for="banner_image_{{ $about->lang }}" class="form-label">Header Görsel ({{ $about->lang }})</label>
+                                                <input type="file" class="form-control" id="banner_image_{{ $about->lang }}" name="banner_image_{{ $about->lang }}" accept="image/*">
+                                                @if($about->banner_image)
+                                                <img src="{{ $languages[$key]->domain .'/'. getFolder(['uploads_folder', 'images_folder'], $about->lang ) .'/'.$about->banner_image }}" 
+                                                    alt="{{ $about->title }}" class="img-thumbnail mt-2" style="max-width: 200px;">
+                                                    <input type="hidden" class="form-control mt-2" name="old_banner_image_{{ $about->lang }}" value="{{ $about->banner_image }}" readonly>
+                                                @endif
+                                            </div>
                                             <div>
                                                 <label for="image_{{ $about->lang }}" class="form-label">Görsel ({{ $about->lang }})</label>
                                                 <input type="file" class="form-control" id="image_{{ $about->lang }}" name="image_{{ $about->lang }}" accept="image/*">

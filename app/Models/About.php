@@ -19,6 +19,7 @@ class About extends Model
         'title_1',
         'description',
         'image',
+        'banner_image',
         'alt',
         'bg_video',
         'mission_title',

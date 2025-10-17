@@ -29,6 +29,7 @@ class Menu extends Model
         'alt',
         'menu_type',
         'page_type',
+        'url_block',
         'sort',
         'isActive',
     ];

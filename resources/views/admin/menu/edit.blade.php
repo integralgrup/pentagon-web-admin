@@ -126,11 +126,11 @@
                                             <label for="sort_{{$menu->lang}}" class="form-label">Sıralama ({{ $menu->lang }})</label>
                                             <input type="number" class="form-control" id="sort_{{$menu->lang}}" name="sort_{{$menu->lang}}" value="{{ $menu->{'sort'} }}" min="0">
                                         </div>
-                                        <!-- Active Status -->
-                                        <!--<div class="form-check mb-3">
-                                            <input type="checkbox" class="form-check-input" id="isActive_{{$menu->lang}}" name="isActive_{{$menu->lang}}" value="1" {{ $menu->{'isActive'} ? 'checked' : '' }}>
-                                            <label class="form-check-label" for="isActive_{{$menu->lang}}">Aktif</label>
-                                        </div>-->
+                                        <!-- URL Block -->
+                                        <div class="mb-3">
+                                            <label for="url_block_{{$menu->lang}}" class="form-label">URL Engelleme ({{ $menu->lang }})</label>
+                                            <input type="checkbox" class="form-check-input" id="url_block_{{$menu->lang}}" name="url_block_{{$menu->lang}}" value="1" {{ $menu->{'url_block'} ? 'checked' : '' }}>
+                                        </div>
                                     </div>
                                 </div>
                             @endforeach

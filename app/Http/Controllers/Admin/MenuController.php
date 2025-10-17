@@ -87,6 +87,7 @@ class MenuController extends Controller
                             'alt_' . $language->lang_code => 'nullable|max:255',
                             'menu_type_' . $language->lang_code => 'required|in:header,footer,sidebar', // Assuming these are the valid types
                             'page_type_' . $language->lang_code => 'required|max:255',
+                            'url_block_' . $language->lang_code => 'nullable|boolean',
                             'sort' => 'nullable|integer',
                             'isActive' => 'boolean',
                         ]);
@@ -114,6 +115,7 @@ class MenuController extends Controller
                             'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
                             'menu_type' => $request->input('menu_type_' . $language->lang_code) ?? $request->input('menu_type_en'),
                             'page_type' => $request->input('page_type_' . $language->lang_code) ?? $request->input('page_type_en'),
+                            'url_block' => $request->has('url_block_' . $language->lang_code) ?? $request->input('url_block_en'),
                             'sort' => $request->input('sort_' . $language->lang_code) ?? 0, // default to 0 if not provided
                             'isActive' => $request->isActive ? 1 : 0
                         ]
