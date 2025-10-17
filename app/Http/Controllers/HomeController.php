@@ -61,13 +61,14 @@ class HomeController extends Controller
         // If the menu item has a page_type of 'about', fetch the about data
         if($menu->page_type == 'about') {
             $about = About::where('lang', app()->getLocale())->first();
+            $seo = $about;
             $how_we_do = DB::table('about_how_we_do')->where('lang', app()->getLocale())->get()->toArray();
             $what_we_do =  DB::table('about_what_we_do')->where('lang', app()->getLocale())->get()->toArray();
             $memberships = DB::table('about_memberships')->where('lang', app()->getLocale())->get()->toArray();
             //debug($memberships);
             $politics = DB::table('about_politics')->where('lang', app()->getLocale())->get()->toArray();
             //dd($politics);
-            return view('about', compact('about', 'how_we_do', 'what_we_do', 'memberships', 'politics'));
+            return view('about', compact('about', 'how_we_do', 'what_we_do', 'memberships', 'politics', 'seo'));
         }
 
         if($menu->page_type == 'sector') {
@@ -80,30 +81,30 @@ class HomeController extends Controller
                 $brands = Brand::where('lang', app()->getLocale())
                                 ->whereRaw("FIND_IN_SET(?, sector_ids)", [$sector_id])
                                 ->get();
-                //dd($brands);
-                //$brands = Brand::where(['lang' => app()->getLocale(), ])->whereIn('sector_ids', $sector_ids)->get();
-                //dd($slider1, $slider2);
-                return view('sector', compact('sector', 'slider1', 'slider2', 'brands'));
+                $seo = $sector;
+                return view('sector', compact('sector', 'slider1', 'slider2', 'brands', 'seo'));
             }
             
         }
 
         if($menu->page_type == 'career') {
             $career = Career::where(['lang' => app()->getLocale()])->first();
+            $seo = $career;
             $careerJobs = CareerJob::where(['lang' => app()->getLocale()])->get();
             $careerSlider = CareerSlider::where(['lang' => app()->getLocale()])->get();
             if($slug2!= null) {
                 $careerJob = CareerJob::where(['lang' => app()->getLocale(), 'seo_url' => $slug2])->first();
-                return view('career-job', compact('career', 'careerJobs', 'careerJob'));
+                return view('career-job', compact('career', 'careerJobs', 'careerJob', 'seo'));
             }
-            return view('career', compact('career', 'careerJobs', 'careerSlider'));
+            return view('career', compact('career', 'careerJobs', 'careerSlider', 'seo'));
         }
 
         if($menu->page_type == 'brand') {
             if($slug2!= null) {
                 $brand = Brand::where(['lang' => app()->getLocale(), 'seo_url' => $slug2])->with(['slider1', 'slider2', 'gallery'])->first();
+                $seo = $brand;
                 //dd($brand);
-                return view('brand', compact('brand'));
+                return view('brand', compact('brand', 'seo'));
             }
             
         }
@@ -125,7 +126,9 @@ class HomeController extends Controller
                 ])  
                 // eager load related catalogs
                 ->firstOrFail();
-                return view('catalog', compact('catalogGroup'));
+                $seo = $catalogGroup;
+                //dd($catalogGroup);
+                return view('catalog', compact('catalogGroup', 'seo'));
             }
         }
 
@@ -135,9 +138,10 @@ class HomeController extends Controller
                 $blogs = Blog::where(['lang' => app()->getLocale()])->orderBy('sort')->limit(5)->get()->toArray();
                 //dd($blogs);
                 $blog = Blog::where(['lang' => app()->getLocale(), 'seo_url' => $slug2])->firstOrFail();
+                $seo = $blog;
                 $blogSlider = BlogSlider::where(['lang' => app()->getLocale(), 'blog_id' => $blog->blog_id])->get();
                 //dd($blogSlider);
-                return view('blog-detail', compact('blog', 'blogs', 'blogSlider'));
+                return view('blog-detail', compact('blog', 'blogs', 'blogSlider', 'seo'));
             }else{
                 $blogs = Blog::where(['lang' => app()->getLocale()])->orderBy('sort')->limit(5)->get()->toArray();
                 return view('blog', compact('blogs'));
@@ -152,8 +156,9 @@ class HomeController extends Controller
 
         if($menu->page_type == 'page') {
             $page = Page::where(['lang' => app()->getLocale(), 'seo_url' => $slug])->first();
+            $seo = $page;
             //dd($page);
-            return view('page', compact('page'));
+            return view('page', compact('page', 'seo'));
         }
 
         //return view('page', compact('page'));

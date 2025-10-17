@@ -7,7 +7,11 @@
     <!-- add no index --> 
     <meta name="robots" content="noindex,nofollow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Açıklama alanı">
+    @if(isset($seo))
+    <meta name="keywords" content="{{ $seo->seo_keywords }}">
+    <meta name="description" content="{{ $seo->seo_description }}">
+    <?php $pageTitle = $seo->seo_title; ?>
+    @endif
     <title><?php if (!empty($pageTitle)) echo $pageTitle . ' - '; ?><?= $nameofProject??'Pentagon Yapı'; ?></title>
     <!-- Önbellek tutmasın diye ekledim; '?id<?= rand(); ?>' yazısını silersin -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css?id=' . rand()) }}">
