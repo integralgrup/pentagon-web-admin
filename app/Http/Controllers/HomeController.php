@@ -53,7 +53,7 @@ class HomeController extends Controller
                 return "Invalid or missing language code. Please provide a valid language code (e.g., /copy-db/es).";
             }
 
-            return $this->copyDB($lang);
+            //return $this->copyDB($lang);
         }
 
         $menu = Menu::where(['seo_url' => $slug, 'lang' => app()->getLocale()])->firstOrFail();

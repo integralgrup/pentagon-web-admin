@@ -236,10 +236,37 @@
                                 </div>
                                 <ul class="options bg-primary-main/30 group-[&.is-fixed]/header:bg-secondary-main/30 p-[20px] sm:p-[15px] grid grid-cols-2 gap-[10px] sm:gap-[5px] absolute top-full left-[50%] translate-x-[-50%] 2xl:translate-x-[-75%] lg:translate-x-[-50%] w-max backdrop-blur-xl duration-350 opacity-0 pointer-events-none invisible translate-y-[25px] group-hover/lang:min-md:opacity-100 group-hover/lang:min-md:pointer-events-auto group-hover/lang:min-md:visible group-hover/lang:min-md:translate-y-0 group-hover/lang:min-md:delay-250 group-[&.active]/lang:md:opacity-100 group-[&.active]/lang:md:pointer-events-auto group-[&.active]/lang:md:visible group-hover/[&.active]:md:translate-y-0 group-[&.active]/lang:md:delay-250 group-[&.active]/lang:md:translate-y-[15px]">
                                     <?php $languagesArray = App\Models\Language::all(); 
+                                    // get URL segments
+                                    $segments = explode('/', url()->current());
                                     //$lang = ['tr', 'en', 'ar', 'ru', 'es', 'fr'];
                                         foreach ($languagesArray as $language) { ?>
+                                            <?php 
+                                                if(isset($segments[3]) && isset($segments[4])):
+                                                    $langParam0 = App\Models\Menu::where(['lang' => app()->getLocale(), 'seo_url' => $segments[3]])->first();
+                                                    $langParam1 = App\Models\Menu::where(['lang' => app()->getLocale(), 'seo_url' => $segments[4]])->first();
+
+                                                    $langParam0_new = App\Models\Menu::where(['lang' => $language->lang_code, 'menu_id' => $langParam0->menu_id])->first();
+                                                    $langParam1_new = App\Models\Menu::where(['lang' => $language->lang_code, 'menu_id' => $langParam1->menu_id])->first();
+                                                    //dd($langParam0, $langParam1);
+                                                    if($langParam0 && $langParam1):
+                                                        $url = $language->domain . '/' . $langParam0_new->seo_url . '/' . $langParam1_new->seo_url;
+                                                    endif;
+                                                endif;
+                                                if(isset($segments[3]) && !isset($segments[4])):
+                                                    $langParam0 = App\Models\Menu::where(['lang' => app()->getLocale(), 'seo_url' => $segments[3]])->first();
+
+                                                    $langParam0_new = App\Models\Menu::where(['lang' => $language->lang_code, 'menu_id' => $langParam0->menu_id])->first();
+                                                    //dd($langParam0, $langParam1);
+                                                    if($langParam0 && $langParam0_new):
+                                                        $url = $language->domain . '/' . $langParam0_new->seo_url;
+                                                    endif;
+                                                endif;
+                                                if(!isset($segments[3]) && !isset($segments[4])):
+                                                    $url = $language->domain . '/';
+                                                endif;
+                                            ?>
                                             <li class="option group/option">
-                                                <a href="<?=$language->domain?>" class="flex items-center gap-[10px] bg-primary-main/30 group-[&.is-fixed]/header:bg-secondary-main/30 group-[&.is-fixed]/header:group-hover/option:bg-secondary-main/20 group-hover/option:bg-primary-main/20 px-[12.5px] py-[10px] sm:px-[10px] sm:py-[7.5px] relative border-solid border border-white/15 transition-all duration-450 group-hover/option:border-primary-500 group-[&.is-fixed]/header:group-hover/option:border-secondary-500 group-[&amp;.is-active]/option:before:border-sun-500">
+                                                <a href="<?=$url?>" class="flex items-center gap-[10px] bg-primary-main/30 group-[&.is-fixed]/header:bg-secondary-main/30 group-[&.is-fixed]/header:group-hover/option:bg-secondary-main/20 group-hover/option:bg-primary-main/20 px-[12.5px] py-[10px] sm:px-[10px] sm:py-[7.5px] relative border-solid border border-white/15 transition-all duration-450 group-hover/option:border-primary-500 group-[&.is-fixed]/header:group-hover/option:border-secondary-500 group-[&amp;.is-active]/option:before:border-sun-500">
                                                     <div class="image w-[20px] h-[15px] shrink-0"><img class="full-cover" src="{{ $language->domain  .'/'. getFolder(['uploads_folder', 'images_folder'], $language->lang_code) .'/'. $language->flag_image}}" alt="" loading="lazy"></div>
                                                     <div class="text-white/70 duration-350 group-hover/option:text-white group-[&amp;.is-active]/option:text-white sm:text-[14px] uppercase"><?= $language->lang_code ?></div>
                                                 </a>
