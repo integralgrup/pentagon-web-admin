@@ -57,7 +57,7 @@ class HomeController extends Controller
         }
 
         $menu = Menu::where(['seo_url' => $slug, 'lang' => app()->getLocale()])->firstOrFail();
-        if($app()->getLocale() == 'ae') {
+        if(app()->getLocale() == 'ae') {
             dd($menu);
         }
         // If the menu item has a page_type of 'about', fetch the about data
