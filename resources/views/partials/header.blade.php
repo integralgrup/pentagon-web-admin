@@ -242,6 +242,8 @@
                                         foreach ($languagesArray as $language) { ?>
                                             <?php 
                                                 if(isset($segments[3]) && isset($segments[4])):
+                                                    $segments[3] = urldecode($segments[3]);
+                                                    $segments[4] = urldecode($segments[4]);
                                                     $langParam0 = App\Models\Menu::where(['lang' => app()->getLocale(), 'seo_url' => $segments[3]])->first();
                                                     $langParam1 = App\Models\Menu::where(['lang' => app()->getLocale(), 'seo_url' => $segments[4]])->first();
 
