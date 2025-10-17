@@ -254,7 +254,7 @@
                                                 endif;
                                                 if(isset($segments[3]) && !isset($segments[4])):
                                                     //set $segment[3] as utf8 string
-                                                    $segments[3] = utf8_encode($segments[3]);
+                                                    $segments[3] = urldecode($segments[3]);
                                                     $langParam0 = App\Models\Menu::where(['lang' => app()->getLocale(), 'seo_url' => $segments[3]])->first();
 
                                                     $langParam0_new = App\Models\Menu::where(['lang' => $language->lang_code, 'menu_id' => $langParam0->menu_id])->first();
