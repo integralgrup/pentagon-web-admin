@@ -255,6 +255,10 @@
                                                 if(isset($segments[3]) && !isset($segments[4])):
                                                     $langParam0 = App\Models\Menu::where(['lang' => app()->getLocale(), 'seo_url' => $segments[3]])->first();
 
+                                                    if(app()->getLocale() == 'ru'):
+                                                        dd($segments[3], $langParam0);
+                                                    endif;
+
                                                     $langParam0_new = App\Models\Menu::where(['lang' => $language->lang_code, 'menu_id' => $langParam0->menu_id])->first();
                                                     //dd($langParam0, $langParam1);
                                                     if($langParam0 && $langParam0_new):
