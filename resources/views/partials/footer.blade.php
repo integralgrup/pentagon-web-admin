@@ -74,7 +74,7 @@
                             </div>
                             <div class="flex flex-col gap-[6px]">
                                 <span class="text-[16px] leading-normal font-bold text-white tracking-[-0.16px]"><?=getStaticText(30)?></span>
-                                <a href="mailto:info@pentagon.com.tr" class="text-[16px] leading-[24px] font-light text-white tracking-[-0.16px] mb-[6px] relative w-max after:absolute after:bottom-0 after:right-0 after:bg-white after:w-0 after:h-[1px] after:hover:right-auto after:hover:left-0 after:hover:w-full after:transition-all after:duration-300"><?=$footerInfo->email?></a>
+                                <a href="mailto:<?=$footerInfo->email?>" class="text-[16px] leading-[24px] font-light text-white tracking-[-0.16px] mb-[6px] relative w-max after:absolute after:bottom-0 after:right-0 after:bg-white after:w-0 after:h-[1px] after:hover:right-auto after:hover:left-0 after:hover:w-full after:transition-all after:duration-300"><?=$footerInfo->email?></a>
                             </div>
                         </div>
                     </div>
