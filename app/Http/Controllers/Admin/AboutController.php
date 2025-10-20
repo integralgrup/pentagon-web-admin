@@ -227,7 +227,7 @@ class AboutController extends Controller
                         'title_1_' . $language->lang_code => 'required|string|max:255',
                         'description_' . $language->lang_code => 'required|string',
                         'image_' . $language->lang_code => 'nullable|image|max:2048',
-                        'icon_image_' . $language->lang_code => 'nullable|image|max:2048',
+                        'icon_image_' . $language->lang_code => 'required|string|max:2048',
                         'alt_' . $language->lang_code => 'required|string|max:255',
                     ]);
                 }
@@ -238,13 +238,6 @@ class AboutController extends Controller
 
                 } else {
                     $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
-                }
-
-                if ($request->hasFile('icon_image_' . $language->lang_code) || $request->hasFile('icon_image_en')) {
-                    $tmpIconPath = createTmpFile($request, 'icon_image_en', $languages[0]);
-                    $iconImageName = moveFile($request, $language, 'icon_image_' . $language->lang_code, 'icon_image_en', 'alt_' . $language->lang_code, 'alt_en', $language->images_folder, $tmpIconPath);
-                } else {
-                    $iconImageName = $request->input('old_icon_image_' . $language->lang_code, null); // Use old icon image if no new icon image is uploaded
                 }
 
                 // Create or update the "how we do" content for the specific language
@@ -259,7 +252,7 @@ class AboutController extends Controller
                         'title_1' => $request->input('title_1_' . $language->lang_code) ?? $request->input('title_1_en'),
                         'description' => $request->input('description_' . $language->lang_code) ?? $request->input('description_en'),
                         'image' => $imageName, // save relative path
-                        'icon_image' => $iconImageName, // save relative path
+                        'icon_image' => $request->input('icon_image_' . $language->lang_code) ?? $request->input('icon_image_en'),
                         'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
                     ]
                 );

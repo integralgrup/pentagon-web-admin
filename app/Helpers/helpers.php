@@ -153,3 +153,41 @@ if(!function_exists('moveFile')) {
         
     }
 }
+
+if(!function_exists('getIconList')) {
+    function getIconList()
+    {
+        return [
+            'icon-upload-document',
+            'icon-download-shape',
+            'icon-globe',
+            'icon-angle-down',
+            'icon-angle-right',
+            'icon-angle-left',
+            'icon-marker',
+            'icon-triangle-down',
+            'icon-world',
+            'icon-brain',
+            'icon-check-polygon',
+            'icon-printer',
+            'icon-linkedin',
+            'icon-facebook',
+            'icon-twitter',
+            'icon-whatsapp',
+            'icon-link',
+            'icon-phone',
+            'icon-at',
+            'icon-direct',
+            'icon-share',
+            'icon-gps',
+            'icon-youtube-square',
+            'icon-twitter-square',
+            'icon-instagram-square',
+            'icon-linkedin-square',
+            'icon-facebook-square',
+            'icon-map',
+            'icon-arrow-up-long',
+            // Add more icon class names as needed
+        ];
+    }
+}

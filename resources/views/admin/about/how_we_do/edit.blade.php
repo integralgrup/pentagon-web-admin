@@ -64,6 +64,12 @@
                     <div class="card-body">
                         <form action="{{ route('admin.about.how_we_do.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
+
+                            <?php 
+                                $iconList = getIconList();
+                            ?>
+
+                            
                             
                             <div class="tab-content" id="myTabContent">
                                 @foreach($languages as $key => $language)
@@ -92,13 +98,36 @@
                                             @endif
                                         </div>
                                         <div class="form-group">
-                                            <label for="icon_image_{{ $language->lang_code }}">İkon Görsel ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="file" class="form-control" id="icon_image_{{ $language->lang_code }}" name="icon_image_{{ $language->lang_code }}">
-                                            @if(isset($icon_image[$language->lang_code]))
-                                                <img src="{{ $languages[$key]->domain .'/'. getFolder(['uploads_folder', 'images_folder'], $language->lang_code) .'/'.$icon_image[$language->lang_code] }}" alt="{{ $alt[$language->lang_code] }}" style="width: 200px; height: auto; margin-top: 10px;">
-                                                <input type="hidden" class="form-control" id="old_icon_image_{{ $language->lang_code }}" name="old_icon_image_{{ $language->lang_code }}" value="{{ $icon_image[$language->lang_code] }}" readonly>
-                                            @endif
+                                            <div>
+                                                <label for="icon_image_{{ $language->lang_code }}">İkon Seçimi ({{ strtoupper($language->lang_code) }})</label>
+                                                <select name="icon_image_{{ $language->lang_code }}" id="icon_image_{{ $language->lang_code }}" class="form-control" onchange="updateIconPreview('{{ $language->lang_code }}')">
+                                                    <?php foreach($iconList as $icon): ?>
+                                                        <option value="{{ $icon }}" {{ $icon_image[$language->lang_code] === $icon ? 'selected' : '' }}>{{ $icon }}</option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                                @if(isset($icon_image[$language->lang_code]))
+                                                    <div style="margin-top: 10px;">
+                                                        <i class="iconfont {{ $icon_image[$language->lang_code] }}" style="font-size: 40px;"></i>
+                                                    </div>
+                                                    <input type="hidden" class="form-control" id="old_icon_image_{{ $language->lang_code }}" name="old_icon_image_{{ $language->lang_code }}" value="{{ $icon_image[$language->lang_code] }}" readonly>
+                                                @endif
+                                            </div>
                                         </div>
+                                        <script>
+                                            function updateIconPreview(langCode) {
+                                                var selectElement = document.getElementById('icon_image_' + langCode);
+                                                var selectedIcon = selectElement.value;
+                                                var previewDiv = selectElement.nextElementSibling;
+                                                
+                                                if (!previewDiv || !previewDiv.querySelector('i')) {
+                                                    previewDiv = document.createElement('div');
+                                                    previewDiv.style.marginTop = '10px';
+                                                    selectElement.parentNode.insertBefore(previewDiv, selectElement.nextSibling);
+                                                }
+                                                
+                                                previewDiv.innerHTML = '<i class="iconfont ' + selectedIcon + '" style="font-size: 40px;"></i>';
+                                            }
+                                        </script>
                                         <div class="form-group">
                                             <label for="alt_{{ $language->lang_code }}">Alt Metin ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="text" class="form-control" id="alt_{{ $language->lang_code }}" name="alt_{{ $language->lang_code }}" value="{{ $alt[$language->lang_code] }}" required>

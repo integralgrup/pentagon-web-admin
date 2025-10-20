@@ -317,7 +317,7 @@
                                     <?php foreach($how_we_do as $index => $item): ?>
                                     <div class="box min-sm:max-w-[250px] w-full tab cursor-pointer border border-solid border-black/16 grid place-items-center gap-[30px] p-[35px] lg:p-[20px] xs:p-[15px] transition-all duration-500 group/box <?= $index === 0 ? 'active' : '' ?> [&.active]:bg-secondary-main [&_*]:[&.active]:text-white" data-tab-id="arge-<?= $index ?>" 
                                         data-image="<?=env('HTTP_DOMAIN'). '/'. getFolder(['uploads_folder', 'images_folder'], app()->getLocale()) .'/' .$item->image?>">
-                                        <i class="icon-brain text-[55px] leading-none text-paragraph/50 transition-all duration-500"></i>
+                                        <i class="<?=$item->icon_image?> text-[55px] leading-none text-paragraph/50 transition-all duration-500"></i>
                                         <p class="text-[18px] lg:text-[16px] md:text-[15px] xs:text-[14px] leading-[27px] font-medium text-paragraph/50 transition-all duration-500 text-center">
                                             <?= $item->title ?>
                                         </p>

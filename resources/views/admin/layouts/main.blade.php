@@ -21,6 +21,7 @@
     <meta name="supported-color-schemes" content="light dark" />
     <!-- Preload AdminLTE CSS as a laravel asset -->
     <link rel="preload" href="{{ asset('admin-template/css/adminlte.css') }}" as="style" />
+    <link rel="stylesheet" href="{{ asset('admin-template/css/iconfont.css') }}" as="style" />
     <!--end::Accessibility Features-->
     <!--begin::Fonts-->
     <link
