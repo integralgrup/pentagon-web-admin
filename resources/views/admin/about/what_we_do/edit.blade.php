@@ -1,5 +1,5 @@
 @extends('admin.layouts.main')
-@section('title', 'Hakkımızda(Nasıl Yaparız) Güncelleme')
+@section('title', 'Hakkımızda(Neler Yaparız) Güncelleme')
 
 @section('content')
 <!--begin::App Content Header-->
@@ -8,11 +8,11 @@
           <div class="container-fluid">
             <!--begin::Row-->
             <div class="row">
-              <div class="col-sm-6"><h3 class="mb-0">Hakkımızda(Nasıl Yaparız) Güncelleme</h3></div>
+              <div class="col-sm-6"><h3 class="mb-0">Hakkımızda(Neler Yaparız) Güncelleme</h3></div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-end">
                   <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Anasayfa</a></li>
-                  <li class="breadcrumb item active" aria-current="page">Hakkımızda(Nasıl Yaparız) Yönetimi</li>
+                  <li class="breadcrumb item active" aria-current="page">Hakkımızda(Neler Yaparız) Yönetimi</li>
                 </ol>
               </div>
             </div>
@@ -70,11 +70,11 @@
                                 <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" id="tab-{{ $language->id }}" role="tabpanel" aria-labelledby="tab-{{ $language->id }}-tab">
                                     <div class="card-body" style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
                                         <div class="form-group">
-                                            <label for="title_{{ $language->lang_code }}">Başlık ({{ strtoupper($language->lang_code) }})</label>
+                                            <label for="title_{{ $language->lang_code }}">Üst Başlık ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" value="{{ $title[$language->lang_code] }}" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="title_1_{{ $language->lang_code }}">Başlık 1 ({{ strtoupper($language->lang_code) }})</label>
+                                            <label for="title_1_{{ $language->lang_code }}">Başlık ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="text" class="form-control" id="title_1_{{ $language->lang_code }}" name="title_1_{{ $language->lang_code }}" value="{{ $title_1[$language->lang_code] }}" required>
                                         </div>
                                         <div class="form-group">
