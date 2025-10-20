@@ -60,7 +60,7 @@
                                 @foreach($whatWeDoContent as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->title }}</td>
+                                        <td>{{ $item->title_1 }}</td>
                                         <td>
                                             <a href="{{ route('admin.about.what_we_do.edit', $item->content_id) }}" class="btn btn-warning btn-sm">
                                                 <i class="bi bi-pencil"></i> Düzenle
