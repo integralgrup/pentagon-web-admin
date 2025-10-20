@@ -57,6 +57,7 @@
                             $title_1[$content->lang] = $content->title_1;
                             $description[$content->lang] = $content->description;
                             $image[$content->lang] = $content->image;
+                            $icon_image[$content->lang] = $content->icon_image;
                             $alt[$content->lang] = $content->alt;
                         }
                     ?>
@@ -88,6 +89,14 @@
                                             @if(isset($image[$language->lang_code]))
                                                 <img src="{{ $languages[$key]->domain .'/'. getFolder(['uploads_folder', 'images_folder'], $language->lang_code) .'/'.$image[$language->lang_code] }}" alt="{{ $alt[$language->lang_code] }}" style="width: 200px; height: auto; margin-top: 10px;">
                                                 <input type="hidden" class="form-control" id="old_image_{{ $language->lang_code }}" name="old_image_{{ $language->lang_code }}" value="{{ $image[$language->lang_code] }}" readonly>
+                                            @endif
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="icon_image_{{ $language->lang_code }}">İkon Görsel ({{ strtoupper($language->lang_code) }})</label>
+                                            <input type="file" class="form-control" id="icon_image_{{ $language->lang_code }}" name="icon_image_{{ $language->lang_code }}">
+                                            @if(isset($icon_image[$language->lang_code]))
+                                                <img src="{{ $languages[$key]->domain .'/'. getFolder(['uploads_folder', 'images_folder'], $language->lang_code) .'/'.$icon_image[$language->lang_code] }}" alt="{{ $alt[$language->lang_code] }}" style="width: 200px; height: auto; margin-top: 10px;">
+                                                <input type="hidden" class="form-control" id="old_icon_image_{{ $language->lang_code }}" name="old_icon_image_{{ $language->lang_code }}" value="{{ $icon_image[$language->lang_code] }}" readonly>
                                             @endif
                                         </div>
                                         <div class="form-group">
