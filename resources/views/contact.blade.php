@@ -38,7 +38,7 @@
                             <?php $locations = $offices;
                             foreach ($locations as $key => $item): ?>
                                 <div class="tab reveal md:snap-start cursor-pointer relative flex flex-col items-center justify-center group px-[50px] xl:px-[25px] last:pr-0 first:pl-0 last:!border-0 border-0 !border-r border-solid border-white/10 <?= $key == 0 ? 'active' : ''; ?>" data-tab-id="<?= $key ?>" data-id="<?= $key ?>">
-                                    <p class="text-[26px] lg:text-[22px] md:text-[20px] leading-none font-medium tracking-[-0.26px] group-[&.active]:tracking-[-0.13px] text-white/50 transition-all duration-300 [-webkit-text-stroke:1px_rgba(182,163,107,0)] group-[&.active]:[-webkit-text-stroke:1px_rgba(182,163,107,1)] group-[&.active]:text-primary-main"><?= $item->title ?></p>
+                                    <p class="text-[26px] lg:text-[22px] md:text-[20px] leading-none font-medium tracking-[-0.26px] group-[&.active]:tracking-[-0.13px] text-white/50 transition-all duration-300 [-webkit-text-stroke:1px_rgba(182,163,107,0)] group-[&.active]:[-webkit-text-stroke:1px_rgba(182,163,107,1)] group-[&.active]:text-primary-main text-center"><?= $item->title ?></p>
                                     <i class="icon-triangle-down leading-none text-primary-main transition-all duration-300 opacity-0 group-[&.active]:opacity-100 absolute bottom-[-35px]"></i>
                                 </div>
                             <?php endforeach; ?>
