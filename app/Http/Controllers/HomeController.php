@@ -20,6 +20,7 @@ use App\Models\Catalog;
 use App\Models\CatalogGroup;
 use App\Models\Office;
 use App\Models\Page;
+use App\Models\SeoSettings;
 use Illuminate\Support\Facades\DB;
 
 
@@ -34,10 +35,11 @@ class HomeController extends Controller
         $brands = Brand::where('lang', app()->getLocale())->get();
         $blogs = Blog::where('lang', app()->getLocale())->orderBy('sort')->get();
         $about = About::where('lang', app()->getLocale())->first();
+        $seo = SeoSettings::where('page', 'home')->where('lang', app()->getLocale())->first();
 
         //dd($brands);
 
-        return view('home', compact('sliders', 'languages', 'sectors', 'brands', 'blogs', 'about'));
+        return view('home', compact('sliders', 'languages', 'sectors', 'brands', 'blogs', 'about', 'seo'));
     }
 
     public function route($slug, $slug2 = null)
@@ -143,15 +145,17 @@ class HomeController extends Controller
                 //dd($blogSlider);
                 return view('blog-detail', compact('blog', 'blogs', 'blogSlider', 'seo'));
             }else{
+                $seo = SeoSettings::where('page', 'blog')->where('lang', app()->getLocale())->first();
                 $blogs = Blog::where(['lang' => app()->getLocale()])->orderBy('sort')->limit(5)->get()->toArray();
-                return view('blog', compact('blogs'));
+                return view('blog', compact('blogs', 'seo'));
             }
             
         }
 
         if($menu->page_type == 'contact') {
             $offices = Office::where(['lang' => app()->getLocale()])->get();
-            return view('contact', compact('offices'));
+            $seo = SeoSettings::where('page', 'contact')->where('lang', app()->getLocale())->first();
+            return view('contact', compact('offices', 'seo'));
         }
 
         if($menu->page_type == 'page') {

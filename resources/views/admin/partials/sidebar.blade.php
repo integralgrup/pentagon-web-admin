@@ -138,6 +138,12 @@
                       </li>
                     </ul>
                   </li>
+                  <li class="nav-item">
+                    <a href="{{ route('admin.seo.index') }}" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>SEO Yönetimi</p>
+                    </a>
+                  </li>
                   
                 </ul>
               </li>

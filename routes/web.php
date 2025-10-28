@@ -213,6 +213,13 @@ Route::post('/admin/page/store', 'App\Http\Controllers\Admin\PageController@stor
 Route::get('/admin/page/{id}/edit', 'App\Http\Controllers\Admin\PageController@edit')->name('admin.page.edit');
 Route::delete('/admin/page/{id}', 'App\Http\Controllers\Admin\PageController@destroy')->name('admin.page.destroy');
 
+// Seo Settings routes SeoController
+Route::get('/admin/seo', 'App\Http\Controllers\Admin\SeoController@index')->name('admin.seo.index');
+Route::get('/admin/seo/create', 'App\Http\Controllers\Admin\SeoController@create')->name('admin.seo.create');
+Route::post('/admin/seo/store', 'App\Http\Controllers\Admin\SeoController@store')->name('admin.seo.store');
+Route::get('/admin/seo/{id}/edit', 'App\Http\Controllers\Admin\SeoController@edit')->name('admin.seo.edit');
+Route::delete('/admin/seo/{id}', 'App\Http\Controllers\Admin\SeoController@destroy')->name('admin.seo.destroy');
+
 // Static Text routes
 Route::get('/admin/static-text', 'App\Http\Controllers\Admin\StaticTextController@index')->name('admin.static_text.index');
 Route::get('/admin/static-text/create', 'App\Http\Controllers\Admin\StaticTextController@create')->name('admin.static_text.create');
