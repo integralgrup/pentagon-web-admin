@@ -31,9 +31,9 @@
 </head>
 @if(app()->getLocale() == 'ae')
 <style>
-    body{
+    /*body{
         direction: rtl;
-    }
+    }*/
 </style>
 @endif
 <body class="antialiased font-sans [background:linear-gradient(0deg,_#FBFAF6_0%,_#FBFAF6_100%),_#FFF] [&.contact]:!bg-white group/body">
