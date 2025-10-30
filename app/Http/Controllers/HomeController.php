@@ -145,7 +145,8 @@ class HomeController extends Controller
                 //dd($blogSlider);
                 return view('blog-detail', compact('blog', 'blogs', 'blogSlider', 'seo'));
             }else{
-                $seo = SeoSettings::where('page', 'blog')->where('lang', app()->getLocale())->first();
+                $seo = SeoSettings::where('page', 'news')->where('lang', app()->getLocale())->first();
+                
                 $blogs = Blog::where(['lang' => app()->getLocale()])->orderBy('sort')->limit(5)->get()->toArray();
                 return view('blog', compact('blogs', 'seo'));
             }

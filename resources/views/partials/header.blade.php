@@ -12,7 +12,7 @@
     <meta name="description" content="{{ $seo->seo_description }}">
     <?php $pageTitle = $seo->seo_title; ?>
     @endif
-    <title><?php if (!empty($pageTitle)) echo $pageTitle . ' - '; ?><?= $nameofProject??'Pentagon Yapı'; ?></title>
+    <title><?php if (!empty($pageTitle)) echo $pageTitle; else  echo 'Pentagon Yapı';  ?> </title>
     <!-- Önbellek tutmasın diye ekledim; '?id<?= rand(); ?>' yazısını silersin -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css?id=' . rand()) }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/image/trademark/favicon/apple-touch-icon.png') }}">
