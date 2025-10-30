@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="tr">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +9,7 @@
     @if(isset($seo))
     <meta name="keywords" content="{{ $seo->seo_keywords }}">
     <meta name="description" content="{{ $seo->seo_description }}">
-    <?php $pageTitle = $seo->seo_title; ?>
+    <?php $pageTitle = $seo->seo_title;?>
     @endif
     <title><?php if (!empty($pageTitle)) echo $pageTitle; else  echo 'Pentagon Yapı';  ?> </title>
     <!-- Önbellek tutmasın diye ekledim; '?id<?= rand(); ?>' yazısını silersin -->

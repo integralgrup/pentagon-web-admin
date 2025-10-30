@@ -63,11 +63,12 @@ class HomeController extends Controller
         // If the menu item has a page_type of 'about', fetch the about data
         if($menu->page_type == 'about') {
             $about = About::where('lang', app()->getLocale())->first();
-            $seo = $about;
+            
             $how_we_do = DB::table('about_how_we_do')->where('lang', app()->getLocale())->get()->toArray();
             $what_we_do =  DB::table('about_what_we_do')->where('lang', app()->getLocale())->get()->toArray();
             $memberships = DB::table('about_memberships')->where('lang', app()->getLocale())->get()->toArray();
             //debug($memberships);
+            $seo = SeoSettings::where('page', 'about')->where('lang', app()->getLocale())->first();
             $politics = DB::table('about_politics')->where('lang', app()->getLocale())->get()->toArray();
             //dd($politics);
             return view('about', compact('about', 'how_we_do', 'what_we_do', 'memberships', 'politics', 'seo'));
@@ -91,11 +92,12 @@ class HomeController extends Controller
 
         if($menu->page_type == 'career') {
             $career = Career::where(['lang' => app()->getLocale()])->first();
-            $seo = $career;
+            $seo = SeoSettings::where('page', 'career')->where('lang', app()->getLocale())->first();
             $careerJobs = CareerJob::where(['lang' => app()->getLocale()])->get();
             $careerSlider = CareerSlider::where(['lang' => app()->getLocale()])->get();
             if($slug2!= null) {
                 $careerJob = CareerJob::where(['lang' => app()->getLocale(), 'seo_url' => $slug2])->first();
+                $seo = $careerJob;
                 return view('career-job', compact('career', 'careerJobs', 'careerJob', 'seo'));
             }
             return view('career', compact('career', 'careerJobs', 'careerSlider', 'seo'));

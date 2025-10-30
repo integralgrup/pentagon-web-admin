@@ -7,6 +7,8 @@ function getPageName($page){
     switch($page){
         case 'home':
             return 'Anasayfa';
+        case 'about':
+            return 'Hakkımızda';
         case 'career':
             return 'Kariyer';
         case 'news':

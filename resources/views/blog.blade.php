@@ -2,8 +2,8 @@
 
 
 @section('content')
-<?php $pageTitle = getStaticText(35); ?>
 <?php 
+        $pageTitle = $seo->seo_title ?? 'Pentagon Yapı';
         $breadcrumbImage = "corporate-breadcrumb.jpg";
         $breadcrumbVideo = "breadcrumb-video.mp4";
         $pageLink = "page-corporate.php";

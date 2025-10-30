@@ -66,9 +66,10 @@
                                             <label for="page_{{ $language->lang_code }}" class="form-label">Sayfa Tipi ({{ strtoupper($language->lang_code) }})</label>
                                             <select class="form-select" id="page_{{ $language->lang_code }}" name="page_{{ $language->lang_code }}" {{ $required }}>
                                                 <option value="home">Anasayfa</option>
+                                                <option value="about">Hakkımızda</option>
                                                 <option value="career">Kariyer</option>
                                                 <option value="news">Haberler</option>
-                                                <option value="catalogs">Kataloglar</option>
+                                                
                                                 <option value="contact">İletişim</option>
                                             </select>
                                         </div>
