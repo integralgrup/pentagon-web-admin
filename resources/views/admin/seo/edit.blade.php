@@ -73,9 +73,9 @@
                                             <label for="page_{{ $language->lang_code }}" class="form-label">Sayfa Türü ({{ strtoupper($language->lang_code) }})</label>
                                             <select name="page_{{ $language->lang_code }}" id="page_{{ $language->lang_code }}" class="form-select" required>
                                                 <option value="home" {{ $page[$language->lang_code] == 'home' ? 'selected' : '' }}>Anasayfa</option>
+                                                <option value="about" {{ $page[$language->lang_code] == 'about' ? 'selected' : '' }}>Hakkımızda</option>
                                                 <option value="career" {{ $page[$language->lang_code] == 'career' ? 'selected' : '' }}>Kariyer</option>
                                                 <option value="news" {{ $page[$language->lang_code] == 'news' ? 'selected' : '' }}>Haberler</option>
-                                                <option value="catalogs" {{ $page[$language->lang_code] == 'catalogs' ? 'selected' : '' }}>Kataloglar</option>
                                                 <option value="contact" {{ $page[$language->lang_code] == 'contact' ? 'selected' : '' }}>İletişim</option>
                                             </select>
                                         </div>
