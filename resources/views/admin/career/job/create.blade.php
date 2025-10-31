@@ -80,7 +80,7 @@
                                         <!-- outer_url -->
                                         <div class="mb-3">
                                             <label for="outer_url_{{ $language->lang_code }}" class="form-label">Dış Bağlantı ({{ $language->lang_code }})</label>
-                                            <input type="url" class="form-control" id="outer_url_{{ $language->lang_code }}" name="outer_url_{{ $language->lang_code }}" required>
+                                            <input type="url" class="form-control" id="outer_url_{{ $language->lang_code }}" name="outer_url_{{ $language->lang_code }}">
                                         </div>
                                         <div class="mb-3">
                                             <label for="button_text_{{ $language->lang_code }}" class="form-label">Buton Metni ({{ $language->lang_code }})</label>
