@@ -264,7 +264,7 @@ class CareerController extends Controller
                         'seo_url' => $request->input('seo_url_' . $language->lang_code),
                         'short_description' => $request->input('short_description_' . $language->lang_code),
                         'description' => $request->input('description_' . $language->lang_code),
-                        'outer_url' => $request->input('outer_url_' . $language->lang_code) ?? '-',
+                        'outer_url' => $request->input('outer_url_' . $language->lang_code),
                         'button_text' => $request->input('button_text_' . $language->lang_code),
                         'seo_title' => $request->input('seo_title_' . $language->lang_code),
                         'seo_description' => $request->input('seo_description_' . $language->lang_code),
