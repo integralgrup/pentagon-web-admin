@@ -157,7 +157,7 @@ class AboutController extends Controller
                 @unlink($tmpVisionImagePath);
                 @unlink($tmpbannerImgPath);
 
-            return redirect()->route('admin.about')->with('success', 'Hakkımızda içeriği başarıyla kaydedildi.');
+            return redirect()->route('admin.about.edit')->with('success', 'Hakkımızda içeriği başarıyla kaydedildi.');
         } catch (\Exception $e) {
             throw $e;
             //return redirect()->back()->withErrors(['error' => 'Hata oluştu: ' . $e->getMessage()]);
