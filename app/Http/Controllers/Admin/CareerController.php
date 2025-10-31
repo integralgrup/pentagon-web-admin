@@ -245,7 +245,7 @@ class CareerController extends Controller
                     'lang_' . $language->lang_code => 'required|string|max:10',
                     'title_' . $language->lang_code => 'required|string|max:100',
                     'seo_url_' . $language->lang_code => 'required|string|max:255',
-                    'short_description_' . $language->lang_code => 'required|string|max:255',
+                    'short_description_' . $language->lang_code => 'required|string',
                     'description_' . $language->lang_code => 'required|string',
                     'outer_url_' . $language->lang_code => 'nullable|url|max:255',
                     'button_text_' . $language->lang_code => 'nullable|string|max:50',
