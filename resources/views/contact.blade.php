@@ -2,7 +2,10 @@
 
 @section('content')
 
-<?php $pageTitle = 'İletişim'; $pageLink = "page-contact.php"; ?>
+<?php 
+    $pageTitle = getStaticText(36); 
+    $pageLink = "page-contact.php"; 
+?>
 
 <main class="main-field contact-page">
     <section class="content">
@@ -19,7 +22,7 @@
                                 <a href="<?=env('HTTP_DOMAIN')?>"><?=getStaticText(10)?></a>
                             </li>
                             <li class="reveal">
-                                <a href="<?= $pageLink ?>"><?= $pageTitle ?></a>
+                                <a href="javascript:;"><?= $pageTitle ?></a>
                             </li>
                         </ul>
                     </div>

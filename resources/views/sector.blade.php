@@ -3,7 +3,7 @@
 @section('content')
     <main class="main-field header-space">
     <?php
-        $pageTitle = $sector->title ?? 'Sektör Detay';
+        $pageTitle = $sector->title ?? 'Sector Detail';
         $breadcrumbImage =  env('HTTP_DOMAIN').'/'.getFolder(['uploads_folder','sector_images_folder'], app()->getLocale()).'/'. $sector->bg_image;
         $breadcrumbVideo = "breadcrumb-video.mp4";
         $pageLink = "page-sector-detail.php";
