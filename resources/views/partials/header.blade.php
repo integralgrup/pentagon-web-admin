@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" <?= (app()->getLocale() == 'ae') ? 'dir="rtl"' : 'dir="ltr"'?>   >
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
