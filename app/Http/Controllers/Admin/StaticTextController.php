@@ -40,7 +40,10 @@ class StaticTextController extends Controller
     public function store(Request $request)
     {
         // Code to store static text
-        dd($request->all());
+        //dd($request->all());
+        if($request->has('update')) {
+            return $this->update($request);
+        }
         try {
         if($request->has('text_id')) {
             $textId = $request->text_id; // Use the provided text_id
@@ -71,6 +74,27 @@ class StaticTextController extends Controller
        } catch (\Throwable $th) {
         throw $th;
        }
+    }
+
+    public function update(Request $request)
+    {
+        // Code to update static text
+        $textId = $request->input('text_id');
+
+        foreach($this->languages as $language) {
+            $request->validate([
+                'static_text.' . $language->lang_code => 'nullable|max:5000',
+            ]);
+
+            StaticText::updateOrCreate(
+                ['text_id' => $textId, 'lang' => $language->lang_code],
+                [
+                    'title' => $request->input('static_text.' . $language->lang_code) ?? $request->input('static_text.en'),
+                ]
+            );
+        }
+
+        return redirect()->back()->with('success', 'Statik text başarıyla güncellendi.');
     }
 
     public function edit($id)

@@ -39,6 +39,20 @@
                   </div>
                   <!-- /.card-header -->
                   <div class="card-body">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif  
                     <table class="table table-striped dataTable">
                       <thead>
                         <tr>
@@ -65,6 +79,7 @@
                                 <input class="form-control" type="text" name="static_text[{{ $lang }}]" value="{{ $text->title }}">
                                 @endforeach
                                 <input type="hidden" name="text_id" value="{{ $staticText['tr']->text_id }}">
+                                <input type="hidden" name="update" value="1">
                               </div>
                             </form>
                           </td>
