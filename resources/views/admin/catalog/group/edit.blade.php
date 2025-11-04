@@ -104,11 +104,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="seo_title_{{ $language->lang_code }}">SEO Başlığı ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="text" class="form-control" id="seo_title_{{ $language->lang_code }}" name="seo_title_{{ $language->lang_code }}" value="{{ $seo_title[$language->lang_code] }}" required>
+                                            <input type="text" class="form-control seo_title" id="seo_title_{{ $language->lang_code }}" name="seo_title_{{ $language->lang_code }}" value="{{ $seo_title[$language->lang_code] }}" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="seo_description_{{ $language->lang_code }}">Açıklama ({{ strtoupper($language->lang_code) }})</label>
-                                            <textarea class="form-control" id="seo_description_{{ $language->lang_code }}" name="seo_description_{{ $language->lang_code }}" rows="3" required>{{ $seo_description[$language->lang_code] }}</textarea>
+                                            <textarea class="form-control seo_description" id="seo_description_{{ $language->lang_code }}" name="seo_description_{{ $language->lang_code }}" rows="3" required>{{ $seo_description[$language->lang_code] }}</textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="seo_keywords_{{ $language->lang_code }}">SEO Anahtar Kelimeleri ({{ strtoupper($language->lang_code) }})</label>

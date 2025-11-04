@@ -81,11 +81,11 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="seo_title_{{ $language->lang_code }}" class="form-label">Seo Başlığı ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="text" class="form-control" id="seo_title_{{ $language->lang_code }}" name="seo_title_{{ $language->lang_code }}" required value="{{ $seo_title[$language->lang_code] ?? '' }}">
+                                            <input type="text" class="form-control seo_title" id="seo_title_{{ $language->lang_code }}" name="seo_title_{{ $language->lang_code }}" required value="{{ $seo_title[$language->lang_code] ?? '' }}">
                                         </div>
                                         <div class="form-group">
                                             <label for="seo_description_{{ $language->lang_code }}">Seo Açıklaması ({{ strtoupper($language->lang_code) }})</label>
-                                            <textarea name="seo_description_{{ $language->lang_code }}" class="form-control" id="seo_description_{{ $language->lang_code }}" required>{{ $seo_description[$language->lang_code] ?? '' }}</textarea>
+                                            <textarea name="seo_description_{{ $language->lang_code }}" class="form-control seo_description" id="seo_description_{{ $language->lang_code }}" required>{{ $seo_description[$language->lang_code] ?? '' }}</textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="seo_keywords_{{ $language->lang_code }}">Seo Anahtar Kelimeleri ({{ strtoupper($language->lang_code) }})</label>

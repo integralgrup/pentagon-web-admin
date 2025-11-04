@@ -75,12 +75,12 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="seo_title_{{ $language->lang_code }}" class="form-label">Seo Başlığı ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="text" class="form-control" id="seo_title_{{ $language->lang_code }}" name="seo_title_{{ $language->lang_code }}" {{ $required }}>
+                                            <input type="text" class="form-control seo_title" id="seo_title_{{ $language->lang_code }}" name="seo_title_{{ $language->lang_code }}" {{ $required }}>
                                         </div>
 
                                         <div class="mb-3" >
                                             <label for="seo_description_{{ $language->lang_code }}" class="form-label">Seo Açıklaması ({{ strtoupper($language->lang_code) }})</label>
-                                            <textarea class="form-control" id="seo_description_{{ $language->lang_code }}" name="seo_description_{{ $language->lang_code }}" {{ $required }}></textarea>
+                                            <textarea class="form-control seo_description" id="seo_description_{{ $language->lang_code }}" name="seo_description_{{ $language->lang_code }}" {{ $required }}></textarea>
                                         </div>
 
                                         <!-- title_1 -->

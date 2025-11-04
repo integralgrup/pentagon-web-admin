@@ -151,11 +151,11 @@
                                         </div>
                                         <div class="mb-3" style="display:none;">
                                             <label for="seo_title_{{ $about->lang }}" class="form-label">SEO Başlığı ({{ $about->lang }})</label>
-                                            <input type="text" class="form-control" id="seo_title_{{ $about->lang }}" name="seo_title_{{ $about->lang }}" value="{{ $about->seo_title }}" required>
+                                            <input type="text" class="form-control seo_title" id="seo_title_{{ $about->lang }}" name="seo_title_{{ $about->lang }}" value="{{ $about->seo_title }}" required>
                                         </div>
                                         <div class="mb-3" style="display:none;">
                                             <label for="seo_description_{{ $about->lang }}" class="form-label">SEO Açıklaması ({{ $about->lang }})</label>
-                                            <textarea class="form-control" id="seo_description_{{ $about->lang }}" name="seo_description_{{ $about->lang }}" rows="3" required>{{ $about->seo_description }}</textarea>
+                                            <textarea class="form-control seo_description" id="seo_description_{{ $about->lang }}" name="seo_description_{{ $about->lang }}" rows="3" required>{{ $about->seo_description }}</textarea>
                                         </div>
                                         <div class="mb-3" style="display:none;">
                                             <label for="seo_keywords_{{ $about->lang }}" class="form-label">SEO Anahtar Kelimeleri ({{ $about->lang }})</label>
