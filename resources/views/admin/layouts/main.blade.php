@@ -614,7 +614,10 @@
           // Function to update remaining characters
           const updateCounter = () => {
             const remaining = field.limit - input.value.length;
-            counter.textContent = `${remaining} karakter kaldı.`;
+            // total character limit
+            const total = field.limit;
+            const typed = input.value.length;
+            counter.textContent = `${typed} karakter yazıldı / Maksimum ${remaining} karakter.`;
             counter.style.color = "red";
             counter.style.fontWeight = "bold";
           };

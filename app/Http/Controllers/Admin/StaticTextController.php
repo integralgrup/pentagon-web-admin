@@ -20,7 +20,13 @@ class StaticTextController extends Controller
     public function index()
     {
         // Code to list all static texts
-        $staticTexts = StaticText::where('lang', app()->getLocale())->get();
+        $staticTexts = StaticText::all();
+        //dd($staticTexts);
+        foreach($staticTexts as $text) {
+            $textsById[$text->text_id][$text->lang] = $text;
+        }
+        $staticTexts = $textsById ?? [];
+        //dd($staticTexts);
         return view('admin.static_text.index', compact('staticTexts'));
     }
 
