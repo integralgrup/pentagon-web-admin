@@ -40,6 +40,7 @@ class StaticTextController extends Controller
     public function store(Request $request)
     {
         // Code to store static text
+        dd($request->all());
         try {
         if($request->has('text_id')) {
             $textId = $request->text_id; // Use the provided text_id
