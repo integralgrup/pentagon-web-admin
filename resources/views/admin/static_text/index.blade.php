@@ -50,12 +50,13 @@
                       </thead>
                       <tbody class="connectedSortable">
                         @foreach($staticTexts as $staticText)
-                        <tr class="align-middle">
+                        
+                        <!--<tr class="align-middle">
                           <td>{{ $staticText->id }}</td>
                           <td>{{ mb_substr(strip_tags($staticText->title), 0, 50) }} {{ strlen(strip_tags($staticText->title)) > 50 ? "..." : "" }}</td>
                           <td>{{ mb_substr(strip_tags($staticText->page_name), 0, 50) }} {{ strlen(strip_tags($staticText->page_name)) > 50 ? "..." : "" }}</td>
                           <td>
-                            <!-- Katalog Dosyaları -->
+                            
                             <a href="{{ route('admin.static_text.edit', $staticText->text_id) }}" class="btn btn-primary btn-sm">Düzenle</a>
                             <form action="{{ route('admin.static_text.destroy', $staticText->text_id) }}" method="POST" style="display:inline;">
                               @csrf
@@ -63,7 +64,7 @@
                               <button type="submit" class="btn btn-danger btn-sm">Sil</button>
                             </form>
                           </td>
-                        </tr>
+                        </tr>-->
                         @endforeach
                       </tbody>
                     </table>

@@ -617,7 +617,7 @@
             // total character limit
             const total = field.limit;
             const typed = input.value.length;
-            counter.textContent = `${typed} karakter yazıldı / Maksimum ${remaining} karakter.`;
+            counter.textContent = `${typed} karakter yazıldı / Maksimum ${total} karakter.`;
             counter.style.color = "red";
             counter.style.fontWeight = "bold";
           };
