@@ -16,13 +16,13 @@
             <img src="../assets/image/static/vectorel.svg" alt="Vektör" width="387" height="588" class="pointer-events-none absolute top-1/2 -translate-y-1/2 right-0 ">
             <div class="container max-w-[1650px]">
                 <div class="flex flex-wrap">
-                    <div class="w-1/2 md:w-full pr-[76px] xl:pr-[50px] lg:pr-[25px] md:p-0">
+                    <div class="w-1/2 md:w-full ltr:pr-[76px] ltr:xl:pr-[50px] ltr:lg:pr-[25px] -- rtl:pl-[76px] rtl:xl:pl-[50px] rtl:lg:pl-[25px] md:!p-0">
                         <div class="image-wrapper reveal w-full h-[650px] xl:h-[530px] sm:h-[400px] relative">
                             <img src="<?=env('HTTP_DOMAIN').'/'.getFolder(['uploads_folder', 'images_folder'], app()->getLocale()).'/'.$career->image ?>" alt="Kariyer" width="793" height="651" class="w-full h-full object-cover relative z-2">
-                            <div class="bg-primary-main absolute -top-[38px] sm:-top-[20px] -right-[38px] sm:-right-[20px] w-[421px] sm:w-[320px] aspect-square"></div>
+                            <div class="bg-primary-main absolute -top-[38px] sm:-top-[20px] ltr:-right-[38px] ltr:sm:-right-[20px] rtl:-left-[38px] rtl:sm:-left-[20px] w-[421px] sm:w-[320px] aspect-square"></div>
                         </div>
                     </div>
-                    <div class="w-1/2 md:w-full pl-[76px] xl:pr-[50px] lg:pr-[25px] md:p-0 md:mt-[30px]">
+                    <div class="w-1/2 md:w-full ltr:pl-[76px] ltr:xl:pr-[50px] ltr:lg:pr-[25px] -- rtl:pr-[76px] rtl:xl:pl-[50px] rtl:lg:pl-[25px] md:!p-0 md:mt-[30px]">
                         <div class="flex flex-col text-editor reveal">
                             <span class="text-[16px] leading-[32px] font-light text-paragraph opacity-65 tracking-[7.2px] block mb-[30px] lg:mb-[5px]"><?=$career->upper_title?></span>
                             <h2 class="text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-light text-secondary-main mb-[80px] 2xl:mb-[50px] xl:mb-[30px] xs:mb-[20px]">
@@ -52,7 +52,7 @@
         <section class="career-slider-area overflow-hidden md:bg-secondary-main mb-[200px] xl:mb-[120px] lg:mb-[90px] md:mb-[60px] relative">
             <div class="max-w-[1920px] mx-auto relative overflow-hidden">
                 <div class="container max-w-[1800px]">
-                    <div class="bg-primary-main absolute -z-[1] -bottom-[90px] xl:-bottom-[60px] lg:-bottom-[20px] -right-0 max-w-[440px] [@media(max-width:1780px)_and_(min-width:1441px)]:max-w-[400px] xl:max-w-[360px] w-full h-[426px] md:hidden"></div>
+                    <div class="bg-primary-main absolute -z-[1] -bottom-[90px] xl:-bottom-[60px] lg:-bottom-[20px] -ltr:right-0 rtl:left-0 max-w-[440px] [@media(max-width:1780px)_and_(min-width:1441px)]:max-w-[400px] xl:max-w-[360px] w-full h-[426px] md:hidden"></div>
                     <div class="wrapper min-sm:overflow-hidden bg-secondary-main md:bg-transparent p-[50px] pl-[105px] xl:pl-[80px] lg:pl-[30px] lg:p-[30px] sm:p-[20px_0] relative">
                         <img src="../assets/image/static/vectorel-2.svg" alt="Vektör" width="610" height="535" class="reveal max-w-[610px] xl:max-w-[500px] sm:max-w-full sm:w-full h-auto absolute z-2 pointer-events-none left-1/2 top-1/2 sm:top-[30px] -translate-x-1/2 min-sm:-translate-y-1/2">
                         <div class="sector-slider reveal overflow-hidden relative z-4">
@@ -81,16 +81,16 @@
                     <div class="pagination-navigation flex items-end gap-[112px] pt-[40px] xsm:pt-[20px] xs:pt-0 pb-[20px] md:pb-[40px] lg:gap-[50px] pl-[95px] 2xl:pl-[45px] xl:pl-0 pr-[85px] xl:pr-0 relative z-5 xsm:absolute xsm:bottom-[370px] xs:bottom-[360px] xsm:w-[calc(100%-60px)] xsm:p-0">
                         <div class="reveal sector-pagination flex items-center gap-[30px] xl:gap-[20px] xsm:gap-[15px] xs:gap-[10px] [&_.swiper-pagination-bullet]:!max-w-[192px] xsm:hidden"></div>
                         <div class="reveal nav-buttons pb-[5px] flex items-center gap-[30px] sm:hidden">
-                            <div class="sector-prev cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.sector-disabled]:opacity-65 relative [&.sector-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
-                                <i class="icon-angle-left text-[12px] leading-none text-white"></i>
+                            <div class="sector-prev cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.sector-disabled]:opacity-65 relative [&.sector-disabled]:after:hidden after:absolute after:bottom-0 ltr:after:right-0 rtl:after:left-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 ltr:hover:after:right-auto rtl:hover:after:left-auto ltr:hover:after:left-0 rtl:hover:after:right-0 hover:after:w-full">
+                                <i class="icon-angle-left text-[12px] leading-none text-white rtl:scale-x-[-1]"></i>
                                 <span class="text-[16px] leading-[32px] text-white md:hidden"><?=getStaticText(2)?></span>
                             </div>
 
                             <div class="separator w-[1px] h-[22px] bg-white/20"></div>
 
-                            <div class="sector-next cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.sector-disabled]:opacity-65 relative [&.sector-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
+                            <div class="sector-next cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.sector-disabled]:opacity-65 relative [&.sector-disabled]:after:hidden after:absolute after:bottom-0 ltr:after:right-0 rtl:after:left-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 ltr:hover:after:right-auto rtl:hover:after:left-auto ltr:hover:after:left-0 rtl:hover:after:right-0 hover:after:w-full">
                                 <span class="text-[16px] leading-[32px] text-white md:hidden"><?=getStaticText(3)?></span>
-                                <i class="icon-angle-right text-[12px] leading-none text-white "></i>
+                                <i class="icon-angle-right text-[12px] leading-none text-white rtl:scale-x-[-1]"></i>
                             </div>
                         </div>
                         <div class="swiper-scrollbar hidden xsm:block bg-white/15 [&_.swiper-scrollbar-drag]:bg-white relative left-0 w-full">
@@ -125,7 +125,7 @@
                                                 <span class="text-[16px] leading-none font-medium text-paragraph transition-all duration-300 tracking-[-0.16px] group-hover/item:min-md:text-white group-hover:min-md:text-white"><?=getStaticText(5)?></span>
                                             </div>
                                             <div class="right flex items-center justify-center z-2 bg-[#9D8D5D] py-[22px] border border-solid border-transparent transition-all duration-300 opacity-0 w-0 group-hover:min-md:w-[56px] group-hover:min-md:px-[24px] group-hover:min-md:border-[#9D8D5D] group-hover:min-md:opacity-100 h-[58px]">
-                                                <i class="icon-angle-right text-[12px] leading-none text-white"></i>
+                                                <i class="icon-angle-right text-[12px] leading-none text-white rtl:scale-x-[-1]"></i>
                                             </div>
                                         </a>
 

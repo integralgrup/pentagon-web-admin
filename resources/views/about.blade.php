@@ -222,13 +222,13 @@
             <img src="../assets/image/static/vectorel.svg" alt="Vektör" width="387" height="588" class="pointer-events-none absolute top-1/2 -translate-y-1/2 right-0 ">
             <div class="container max-w-[1650px]">
                 <div class="flex flex-wrap items-center">
-                    <div class="w-3/5 md:w-full translate-x-[-30px] [@media(max-width:1670px)]:pr-[50px] md:!pr-0">
-                        <div class="image-wrapper reveal w-full h-[677px] md:h-[580px] sm:h-[320px] relative">
+                    <div class="w-3/5 md:w-full ltr:translate-x-[-30px] ltr:[@media(max-width:1670px)]:pr-[50px] ltr:md:!pr-0 -- rtl:translate-x-[30px] rtl:[@media(max-width:1670px)]:pl-[50px] rtl:md:!pl-0">
+                        <div class="image-wrapper reveal w-full  h-[677px] ltr:[@media(min-width:1670px)]:-translate-x-[calc((100vw-1650px)/2+30px)] rtl:[@media(min-width:1670px)]:translate-x-[calc((100vw-1650px)/2+30px)] md:h-[580px] sm:h-[320px] relative">
                                 <img src="<?=env('HTTP_DOMAIN'). '/'. getFolder(['uploads_folder', 'images_folder'], app()->getLocale()) .'/' .$about['image']?>" alt="<?=$about['alt']?>" width="911" height="677" class="w-full h-full object-cover relative z-2">
-                            <div class="bg-primary-main absolute -top-[38px] sm:-top-[20px] -right-[38px] sm:-right-[20px] w-[421px] sm:w-[320px] aspect-square"></div>
+                            <div class="bg-primary-main absolute -top-[38px] sm:-top-[20px] ltr:-right-[38px] ltr:sm:-right-[20px] rtl:-left-[38px] rtl:sm:-left-[20px] w-[421px] sm:w-[320px] aspect-square"></div>
                         </div>
                     </div>
-                    <div class="w-2/5 md:w-full md:p-0 md:mt-[30px] [@media(min-width:1760px)]:translate-x-[-20px]">
+                    <div class="w-2/5 md:w-full md:p-0 md:mt-[30px] ltr:[@media(min-width:1760px)]:translate-x-[-20px] rtl:[@media(min-width:1760px)]:translate-x-[20px]">
                         <div class="flex flex-col text-editor reveal">
                             <span class="text-[16px] leading-[32px] font-light text-paragraph opacity-65 tracking-[7.2px] block mb-[30px] lg:mb-[5px]"><?=$about['upper_title']?></span>
                             <h2 class="text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-light text-secondary-main mb-[80px] 2xl:mb-[50px] md:mb-[30px] xs:mb-[20px]">
@@ -248,7 +248,7 @@
             <div id="what-we-do" class="absolute left-0 top-[-150px] xs:top-[-50px]"></div>
             <div class="max-w-[1920px] mx-auto relative overflow-hidden">
                 <div class="container max-w-[1800px]">
-                    <div class="bg-primary-main absolute -z-[1] -bottom-[90px] xl:-bottom-[60px] lg:-bottom-[20px] -right-0 max-w-[440px] [@media(max-width:1780px)_and_(min-width:1441px)]:max-w-[400px] xl:max-w-[360px] w-full h-[426px] md:hidden"></div>
+                    <div class="bg-primary-main absolute -z-[1] -bottom-[90px] xl:-bottom-[60px] lg:-bottom-[20px] -ltr:right-0 rtl:left-0 max-w-[440px] [@media(max-width:1780px)_and_(min-width:1441px)]:max-w-[400px] xl:max-w-[360px] w-full h-[426px] md:hidden"></div>
                     <div class="wrapper min-sm:overflow-hidden bg-secondary-main md:bg-transparent p-[50px] pl-[105px] xl:pl-[80px] lg:pl-[30px] lg:p-[30px] sm:p-[20px_0] relative">
                         <img src="../assets/image/static/vectorel-2.svg" alt="Vektör" width="610" height="535" class="reveal max-w-[610px] xl:max-w-[500px] sm:max-w-full sm:w-full h-auto absolute z-2 pointer-events-none left-1/2 top-1/2 sm:top-[30px] -translate-x-1/2 min-sm:-translate-y-1/2">
                         <div class="sector-slider reveal overflow-hidden relative z-4">
@@ -277,16 +277,16 @@
                     <div class="pagination-navigation flex items-end gap-[112px] pt-[40px] xsm:pt-[20px] xs:pt-0 pb-[20px] md:pb-[40px] lg:gap-[50px] pl-[95px] 2xl:pl-[45px] xl:pl-0 pr-[85px] xl:pr-0 relative z-5 xsm:absolute xsm:bottom-[370px] xs:bottom-[360px] xsm:w-[calc(100%-60px)] xsm:p-0">
                         <div class="reveal sector-pagination flex items-center gap-[30px] xl:gap-[20px] xsm:gap-[15px] xs:gap-[10px] [&_.swiper-pagination-bullet]:!max-w-[234px] xsm:hidden"></div>
                         <div class="reveal nav-buttons pb-[5px] flex items-center gap-[30px] sm:hidden">
-                            <div class="sector-prev cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.sector-disabled]:opacity-65 relative [&.sector-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
-                                <i class="icon-angle-left text-[12px] leading-none text-white"></i>
+                            <div class="sector-prev cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.sector-disabled]:opacity-65 relative [&.sector-disabled]:after:hidden after:absolute after:bottom-0 ltr:after:right-0 rtl:after:left-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 ltr:hover:after:right-auto rtl:hover:after:left-auto ltr:hover:after:left-0 rtl:hover:after:right-0 hover:after:w-full">
+                                <i class="icon-angle-left text-[12px] leading-none text-white rtl:scale-x-[-1]"></i>
                                 <span class="text-[16px] leading-[32px] text-white md:hidden"><?=getStaticText(2)?></span>
                             </div>
 
                             <div class="separator w-[1px] h-[22px] bg-white/20"></div>
 
-                            <div class="sector-next cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.sector-disabled]:opacity-65 relative [&.sector-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
+                            <div class="sector-next cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.sector-disabled]:opacity-65 relative [&.sector-disabled]:after:hidden after:absolute after:bottom-0 ltr:after:right-0 rtl:after:left-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 ltr:hover:after:right-auto rtl:hover:after:left-auto ltr:hover:after:left-0 rtl:hover:after:right-0 hover:after:w-full">
                                 <span class="text-[16px] leading-[32px] text-white md:hidden"><?=getStaticText(3)?></span>
-                                <i class="icon-angle-right text-[12px] leading-none text-white"></i>
+                                <i class="icon-angle-right text-[12px] leading-none text-white rtl:scale-x-[-1]"></i>
                             </div>
                         </div>
                         <div class="swiper-scrollbar hidden xsm:block bg-white/15 [&_.swiper-scrollbar-drag]:bg-white relative left-0 w-full">
@@ -304,10 +304,10 @@
             <img src="../assets/image/static/vectorel.svg" alt="Vektör" width="387" height="588" class="pointer-events-none absolute top-1/2 -translate-y-1/2 right-0 ">
             <div class="container max-w-[1650px]">
                 <div class="flex flex-wrap items-center">
-                    <div class="w-3/5 md:w-full pr-[120px] 2xl:pr-[90px] xl:pr-[60px] md:p-0 md:mt-[10px] md:order-2">
+                    <div class="w-3/5 md:w-full ltr:pr-[120px] ltr:2xl:pr-[90px] ltr:xl:pr-[60px] -- rtl:pl-[120px] rtl:2xl:pl-[90px] rtl:xl:pl-[60px] md:!p-0 md:mt-[10px] md:order-2">
                         <div class="image-wrapper reveal w-full h-[667px] md:h-[580px] sm:h-[320px] relative">
                             <img src="<?=env('HTTP_DOMAIN'). '/'. getFolder(['uploads_folder', 'images_folder'], app()->getLocale()) .'/' .$how_we_do[0]->image?>" alt="Hakkımızda" width="814" height="667" class="w-full h-full object-cover relative z-2 transition-all duration-500 [&.changed]:opacity-0 [&.changed]:translate-y-[10px]" id="box-image">
-                            <div class="bg-primary-main absolute -bottom-[38px] sm:-bottom-[20px] -left-[38px] sm:-left-[20px] w-[421px] sm:w-[320px] aspect-square"></div>
+                            <div class="bg-primary-main absolute -bottom-[38px] sm:-bottom-[20px] ltr:-left-[38px] ltr:sm:-left-[20px] -- rtl:-right-[38px] rtl:sm:-right-[20px] w-[421px] sm:w-[320px] aspect-square"></div>
                         </div>
                     </div>
                     <div class="w-2/5 md:w-full md:p-0 md:order-1">
@@ -346,7 +346,7 @@
             <div id="vision" class="absolute left-0 top-[-150px] xs:top-[-50px]"></div>
             <div class="container max-w-[1650px]">
                 <div class="video relative">
-                    <div class="bg-primary-main absolute -z-[1] -top-[30px] sm:-top-[20px] -right-[30px] sm:-right-[20px] w-[421px] xsm:w-[290px] aspect-square"></div>
+                    <div class="bg-primary-main absolute -z-[1] -top-[30px] sm:-top-[20px] ltr:-right-[30px] ltr:sm:-right-[20px] -- rtl:-left-[30px] rtl:sm:-left-[20px] w-[421px] xsm:w-[290px] aspect-square"></div>
                     <div class="video-image  h-[700px] md:h-[500px] sm:h-[420px] xsm:h-[320px] md:order-2" id="mv-video">
                         <video autoplay loop muted playsinline class="w-full h-full object-cover">
                             <source srcset="<?=env('HTTP_DOMAIN').'/'.getFolder(['uploads_folder','images_folder'], app()->getLocale()).'/'.$about['bg_video'] ?>" src="<?=env('HTTP_DOMAIN').'/'.getFolder(['uploads_folder','images_folder'], app()->getLocale()).'/'.$about['bg_video'] ?>">
@@ -408,13 +408,13 @@
             <div id="policies" class="absolute left-0 top-[-150px] xs:top-[-50px]"></div>
             <div class="container max-w-[1650px]">
                 <div class="flex flex-wrap items-center">
-                    <div class="w-1/2 md:w-full pr-[30px] 2xl:pr-[30px] md:p-0 reveal">
+                    <div class="w-1/2 md:w-full ltr:pr-[30px] rtl:pl-[30px] md:!p-0 reveal">
                         <div class="image-wrapper w-full h-[670px] 2xl:h-[620px] md:h-[580px] sm:h-[320px] relative transition-all duration-500 [&.changed]:opacity-0 [&.changed]:translate-y-[10px]">
                             <img src="<?= env('HTTP_DOMAIN').'/'.getFolder(['uploads_folder','images_folder'], app()->getLocale()).'/'.$politics[0]->image ?>" alt="Hakkımızda" width="814" height="794" class="w-full h-full object-cover relative z-2" id="tab-image">
-                            <div class="bg-primary-main absolute -bottom-[38px] sm:-bottom-[20px] -left-[38px] sm:-left-[20px] w-[421px] sm:w-[320px] aspect-square transition-all duration-500 [&.changed]:opacity-0 [&.changed]:translate-y-[10px]"></div>
+                            <div class="bg-primary-main absolute -bottom-[38px] sm:-bottom-[20px] ltr:-left-[38px] ltr:sm:-left-[20px] -- rtl:-right-[38px] rtl:sm:-right-[20px] w-[421px] sm:w-[320px] aspect-square transition-all duration-500 [&.changed]:opacity-0 [&.changed]:translate-y-[10px]"></div>
                         </div>
                     </div>
-                    <div class="w-1/2 md:w-full pl-[90px] 2xl:pl-[60px] md:p-0 md:mt-[70px]">
+                    <div class="w-1/2 md:w-full ltr:pl-[90px] ltr:2xl:pl-[60px] -- rtl:pr-[90px] rtl:2xl:pr-[60px] md:!p-0 md:mt-[70px]">
                         <div class="flex flex-col">
                             <span class="reveal text-[16px] leading-[32px] font-light text-paragraph opacity-65 tracking-[7.2px] block mb-[30px]"><?=getStaticText(18)?></span>
                             <div class="tabs flex flex-col gap-[28px] w-full reveal">

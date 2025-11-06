@@ -15,7 +15,7 @@
 
     <div class="w-full mb-[135px] xl:mb-[100px] lg:mb-[75px] md:mb-[50px] sm:mb-[35px] sm:hidden">
         <div class="container max-w-[1650px] relative mt-[-310px] xl:mt-[-250px] md:mt-[60px] z-10">
-            <div class="bg-primary-main absolute -z-[1] bottom-[10px] -right-[30px] w-[426px] aspect-square sm:hidden"></div>
+            <div class="bg-primary-main absolute -z-[1] bottom-[10px] ltr:-right-[30px] rtl:-left-[30px] w-[426px] aspect-square sm:hidden"></div>
             <div class="news-slider w-full overflow-hidden">
                 <div class="swiper-wrapper">
                     <?php 
@@ -66,7 +66,7 @@
 
                         <div class="news-next cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.news-disabled]:opacity-65 relative [&.news-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
                             <span class="text-[16px] leading-[32px] text-white"><?=getStaticText(3)?></span>
-                            <i class="icon-angle-right text-[12px] leading-none text-white "></i>
+                            <i class="icon-angle-right text-[12px] leading-none text-white rtl:scale-x-[-1]"></i>
                         </div>
                     </div>
                 </div>
@@ -83,7 +83,7 @@
                         <div class="reveal custom-dropdown xsm:w-full">
                             <div class="dropdown relative group/dropdown">
                                 <div class="placeholder flex items-center justify-between px-[32px] lg:px-[20px] py-[18px] border border-solid border-black/10 cursor-pointer">
-                                    <span class="text-[16px] lg:text-[15px] leading-[25px] font-medium text-black tracking-[-0.16px] transition-all duration-300 block mr-[8px]">2024</span>
+                                    <span class="text-[16px] lg:text-[15px] leading-[25px] font-medium text-black tracking-[-0.16px] transition-all duration-300 block ltr:mr-[8px] rtl:ml-[8px]">2024</span>
                                     <i class="icon-angle-down text-[12px] text-black leading-none transition-all duration-300 group-[&.active]/dropdown:rotate-180"></i>
                                 </div>
                                 <div class="dropdown-list w-full bg-white border border-solid border-black/10 overflow-hidden absolute left-0 z-10 transition-all duration-300 opacity-0 pointer-events-none group-[&.active]/dropdown:opacity-100 group-[&.active]/dropdown:pointer-events-auto">

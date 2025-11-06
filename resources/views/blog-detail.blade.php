@@ -142,9 +142,9 @@
                     </div>
                 </div>
             </div>
-            <div class="w-2/3 md:w-full pl-[85px] 2xl:pl-[55px] xl:pl-[30px] sm:pl-0 md:mt-[30px] relative after:absolute after:w-full after:h-[300px] after:bottom-0 after:left-[60px] after:z-[11] after:pointer-events-none after:bg-[linear-gradient(0deg,_#FBFAF6_20%,_rgba(251,250,246,0.00)_100%)] after:md:hidden" id="news-detail-slider-area">
+            <div class="w-2/3 md:w-full ltr:pl-[85px] ltr:2xl:pl-[55px] ltr:xl:pl-[30px] ltr:sm:pl-0 -- rtl:pr-[85px] rtl:2xl:pr-[55px] rtl:xl:pr-[30px] rtl:sm:pr-0 md:mt-[30px] relative after:absolute after:w-full after:h-[300px] after:bottom-0 ltr:after:left-[60px] rtl:after:right-[60px] after:z-[11] after:pointer-events-none after:bg-[linear-gradient(0deg,_#FBFAF6_20%,_rgba(251,250,246,0.00)_100%)] after:md:hidden" id="news-detail-slider-area">
                 <div class="sticky top-[130px] pb-[90px] sm:pb-[20px] z-10 mt-[-270px] 2xl:mt-[-250px] xl:mt-[-210px] lg:mt-[-200px] md:mt-0">
-                    <div class="bg-primary-main absolute -z-[1] bottom-0 translate-y-[-70px] sm:translate-y-[-10px] translate-x-[60px] 2xl:translate-x-[30px] right-0 w-[426px] sm:w-[250px] aspect-square"></div>
+                    <div class="bg-primary-main absolute -z-[1] bottom-0 translate-y-[-70px] sm:translate-y-[-10px] ltr:translate-x-[60px] ltr:2xl:translate-x-[30px] -- rtl:translate-x-[-60px] rtl:2xl:translate-x-[-30px] ltr:right-0 rtl:left-0 w-[426px] sm:w-[250px] aspect-square"></div>
                     <div class="news-detail-slider overflow-hidden reveal">
                         <div class="swiper-wrapper">
                             <?php foreach($blogSlider as $slide): ?>
@@ -156,16 +156,16 @@
                             <?php endforeach; ?>
                         </div>
                         <div class="nav-buttons pl-[30px] pt-[15px] flex items-center justify-end gap-[30px] md:gap-[20px]">
-                            <div class="news-detail-prev cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.news-detail-disabled]:opacity-65 relative z-4 [&.news-detail-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
-                                <i class="icon-angle-left text-[12px] leading-none text-white"></i>
+                            <div class="news-detail-prev cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.news-detail-disabled]:opacity-65 relative z-4 [&.news-detail-disabled]:after:hidden after:absolute after:bottom-0 ltr:after:right-0 rtl:after:left-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 ltr:hover:after:right-auto rtl:hover:after:left-auto ltr:hover:after:left-0 rtl:hover:after:right-0 hover:after:w-full">
+                                <i class="icon-angle-left text-[12px] leading-none text-white rtl:scale-x-[-1]"></i>
                                 <span class="text-[16px] leading-[32px] text-white"><?=getStaticText(2)?></span>
                             </div>
 
                             <div class="separator w-[1px] h-[22px] bg-white/20 relative z-4"></div>
 
-                            <div class="news-detail-next cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.news-detail-disabled]:opacity-65 relative z-4 [&.news-detail-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
+                            <div class="news-detail-next cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.news-detail-disabled]:opacity-65 relative z-4 [&.news-detail-disabled]:after:hidden after:absolute after:bottom-0 ltr:after:right-0 rtl:after:left-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 ltr:hover:after:right-auto rtl:hover:after:left-auto ltr:hover:after:left-0 rtl:hover:after:right-0 hover:after:w-full">
                                 <span class="text-[16px] leading-[32px] text-white"><?=getStaticText(3)?></span>
-                                <i class="icon-angle-right text-[12px] leading-none text-white "></i>
+                                <i class="icon-angle-right text-[12px] leading-none text-white rtl:scale-x-[-1]"></i>
                             </div>
                         </div>
                     </div>
@@ -182,16 +182,16 @@
                     <span class="font-bold">Haberler & Blog</span>
                 </h4>
                 <div class="reveal nav-buttons flex items-center justify-end gap-[30px] xsm:absolute xsm:w-full xsm:p-[10px] xsm:left-0 xsm:justify-center xsm:bg-white/20 xsm:backdrop-blur-[20px] xsm:z-5">
-                    <div class="other-prev group cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.other-disabled]:opacity-65 [&.other-disabled]:text-paragraph [&.other-disabled]:xsm:text-white relative [&.other-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-primary-main after:xsm:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
-                        <i class="icon-angle-left text-[12px] leading-none text-primary-main xsm:text-white transition-all duration-300 group-[&.other-disabled]:text-paragraph group-[&.other-disabled]:xsm:text-white"></i>
+                    <div class="other-prev group cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.other-disabled]:opacity-65 [&.other-disabled]:text-paragraph [&.other-disabled]:xsm:text-white relative [&.other-disabled]:after:hidden after:absolute after:bottom-0 ltr:after:right-0 rtl:after:left-0 after:w-0 after:h-[1px] after:bg-primary-main after:xsm:bg-white after:transition-all after:duration-300 ltr:hover:after:right-auto rtl:hover:after:left-auto ltr:hover:after:left-0 rtl:hover:after:right-0 hover:after:w-full">
+                        <i class="icon-angle-left text-[12px] leading-none text-primary-main xsm:text-white transition-all duration-300 group-[&.other-disabled]:text-paragraph group-[&.other-disabled]:xsm:text-white rtl:scale-x-[-1]"></i>
                         <span class="text-[16px] leading-[32px] text-primary-main xsm:text-white transition-all duration-300 group-[&.other-disabled]:text-paragraph group-[&.other-disabled]:xsm:text-white"><?=getStaticText(2)?></span>
                     </div>
 
                     <div class="separator w-[1px] h-[22px] bg-paragraph/20 xsm:bg-white/20"></div>
 
-                    <div class="other-next group cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.other-disabled]:opacity-65 [&.other-disabled]:text-paragraph [&.other-disabled]:xsm:text-white relative [&.other-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-primary-main after:xsm:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
+                    <div class="other-next group cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.other-disabled]:opacity-65 [&.other-disabled]:text-paragraph [&.other-disabled]:xsm:text-white relative [&.other-disabled]:after:hidden after:absolute after:bottom-0 ltr:after:right-0 rtl:after:left-0 after:w-0 after:h-[1px] after:bg-primary-main after:xsm:bg-white after:transition-all after:duration-300 ltr:hover:after:right-auto rtl:hover:after:left-auto ltr:hover:after:left-0 rtl:hover:after:right-0 hover:after:w-full">
                         <span class="text-[16px] leading-[32px] text-primary-main xsm:text-white transition-all duration-300 group-[&.other-disabled]:text-paragraph group-[&.other-disabled]:xsm:text-white"><?=getStaticText(3)?></span>
-                        <i class="icon-angle-right text-[12px] leading-none text-primary-main xsm:text-white transition-all duration-300 group-[&.other-disabled]:text-paragraph group-[&.other-disabled]:xsm:text-white"></i>
+                        <i class="icon-angle-right text-[12px] leading-none text-primary-main xsm:text-white transition-all duration-300 group-[&.other-disabled]:text-paragraph group-[&.other-disabled]:xsm:text-white rtl:scale-x-[-1]"></i>
                     </div>
                 </div>
             </div>
@@ -222,7 +222,7 @@
                                             <span class="text-[16px] leading-none font-medium text-paragraph transition-all duration-300 tracking-[-0.16px] group-hover/item:min-md:text-white group-hover:min-md:text-white"><?=getStaticText(5)?></span>
                                         </div>
                                         <div class="right flex items-center justify-center z-2 bg-[#9D8D5D] py-[22px] border border-solid border-transparent transition-all duration-300 opacity-0 w-0 group-hover:min-md:w-[56px] group-hover:min-md:px-[24px] group-hover:min-md:border-[#9D8D5D] group-hover:min-md:opacity-100 h-[58px]">
-                                            <i class="icon-angle-right text-[12px] leading-none text-white"></i>
+                                            <i class="icon-angle-right text-[12px] leading-none text-white rtl:scale-x-[-1]"></i>
                                         </div>
                                     </a>
                                 </div>

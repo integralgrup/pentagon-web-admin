@@ -14,7 +14,7 @@
     <div class="container max-w-[1650px] relative z-4">
         <div class="wrapper w-full pb-[120px]">
             <div class="flex flex-wrap">
-                <div class="w-1/3 md:w-full pr-[199px] 2xl:pr-[150px] xl:pr-[100px] lg:pr-[70px] md:pr-0">
+                <div class="w-1/3 md:w-full ltr:pr-[199px] 2xl:ltr:pr-[150px] xl:ltr:pr-[100px] lg:ltr:pr-[70px] md:ltr:pr-0 -- rtl:pl-[199px] 2xl:rtl:pl-[150px] xl:rtl:pl-[100px] lg:rtl:pl-[70px] md:rtl:pl-0">
                     <div class="flex flex-col mt-[18px]">
                         <div class="logo w-full xs:flex xs:justify-center mb-[60px] lg:mb-[40px] xs:mb-[30px]">
                             <img src="{{ asset('assets') }}/image/trademark/logo-white.png" alt="Logo" width="285" height="113" class=" w-[285px] xs:w-[calc((285px)-285px*0.15)] h-auto">
@@ -62,7 +62,7 @@
 
                             <span class="text-[16px] leading-normal font-bold text-white tracking-[-0.16px]"><?=getStaticText(27)?></span>
                             <p class="text-[16px] leading-[24px] font-light text-white tracking-[-0.16px] mb-[6px]"><?=$footerInfo->address?></p>
-                            <a href="<?= $footerInfo->map_url ?>" target="_blank" class="group flex items-center gap-[20px] w-max relative hover:text-white after:absolute after:bottom-0 after:right-0 after:bg-white after:w-0 after:h-[1px] after:hover:right-auto after:hover:left-0 after:hover:w-full after:transition-all after:duration-300">
+                            <a href="<?= $footerInfo->map_url ?>" target="_blank" class="group flex items-center gap-[20px] w-max relative hover:text-white after:absolute after:bottom-0 ltr:after:right-0 rtl:after:left-0 after:bg-white after:w-0 after:h-[1px] ltr:after:hover:right-auto rtl:after:hover:left-auto ltr:after:hover:left-0 rtl:after:hover:right-0 after:hover:w-full after:transition-all after:duration-300">
                                 <span class="text-[14px] leading-normal font-light text-white uppercase transition-all duration-300 group-hover:text-white"><?=getStaticText(28)?></span>
                                 <i class="icon-map text-[17px] leading-none text-white transition-all duration-300 group-hover:text-white"></i>
                             </a>
@@ -70,11 +70,11 @@
                         <div class="phones flex flex-col gap-[25px] ">
                             <div class="flex flex-col gap-[6px]">
                                 <span class="text-[16px] leading-normal font-bold text-white tracking-[-0.16px]"><?=getStaticText(29)?></span>
-                                <a href="tel:+902126781313" class="text-[16px] leading-[24px] font-light text-white tracking-[-0.16px] mb-[6px] relative w-max after:absolute after:bottom-0 after:right-0 after:bg-white after:w-0 after:h-[1px] after:hover:right-auto after:hover:left-0 after:hover:w-full after:transition-all after:duration-300"><?=$footerInfo->phone?></a>
+                                <a href="tel:+902126781313" class="text-[16px] leading-[24px] font-light text-white tracking-[-0.16px] mb-[6px] relative w-max after:absolute after:bottom-0 ltr:after:right-0 rtl:after:left-0 after:bg-white after:w-0 after:h-[1px] ltr:after:hover:right-auto rtl:after:hover:left-auto ltr:after:hover:left-0 rtl:after:hover:right-0 after:hover:w-full after:transition-all after:duration-300"><?=$footerInfo->phone?></a>
                             </div>
                             <div class="flex flex-col gap-[6px]">
                                 <span class="text-[16px] leading-normal font-bold text-white tracking-[-0.16px]"><?=getStaticText(30)?></span>
-                                <a href="mailto:<?=$footerInfo->email?>" class="text-[16px] leading-[24px] font-light text-white tracking-[-0.16px] mb-[6px] relative w-max after:absolute after:bottom-0 after:right-0 after:bg-white after:w-0 after:h-[1px] after:hover:right-auto after:hover:left-0 after:hover:w-full after:transition-all after:duration-300"><?=$footerInfo->email?></a>
+                                <a href="mailto:<?=$footerInfo->email?>" class="text-[16px] leading-[24px] font-light text-white tracking-[-0.16px] mb-[6px] relative w-max after:absolute after:bottom-0 ltr:after:right-0 rtl:after:left-0 after:bg-white after:w-0 after:h-[1px] ltr:after:hover:right-auto rtl:after:hover:left-auto ltr:after:hover:left-0 rtl:after:hover:right-0 after:hover:w-full after:transition-all after:duration-300"><?=$footerInfo->email?></a>
                             </div>
                         </div>
                     </div>
@@ -87,7 +87,7 @@
                 ?>
 
                 <div class="w-2/3 md:w-full sm:hidden md:relative md:after:w-[calc(100vw+60px)] md:after:h-[calc(100%+90px)] md:after:absolute md:after:left-[-30px] md:after:bottom-[-120px] md:after:bg-primary-main md:after:z-[-1]">
-                    <div class="menu w-full grid xsm:flex xsm:flex-wrap grid-cols-3 gap-[120px] 2xl:gap-[90px] xl:gap-[70px] lg:gap-[50px] md:gap-[30px] xsm:gap-0 mt-[70px] pl-[122px] 2xl:pl-[100px] xl:pl-[70px] lg:pl-[40px] md:pl-0">
+                    <div class="menu w-full grid xsm:flex xsm:flex-wrap grid-cols-3 gap-[120px] 2xl:gap-[90px] xl:gap-[70px] lg:gap-[50px] md:gap-[30px] xsm:gap-0 mt-[70px] ltr:pl-[122px] 2xl:ltr:pl-[100px] xl:ltr:pl-[70px] lg:ltr:pl-[40px] md:ltr:pl-0 -- rtl:pr-[122px] 2xl:rtl:pr-[100px] xl:rtl:pr-[70px] lg:rtl:pr-[40px] md:rtl:pr-0">
                         <?php $menu = []; ?>
                         <?php foreach ($footerMenus as $menuitem) : 
                             $items = App\Models\Menu::where(['lang' => app()->getLocale(), 'parent_menu_id' => $menuitem->menu_id])->orderBy('sort')->get();
@@ -99,7 +99,7 @@
                             ]; 
                         endforeach; 
                         ?>
-                        <div class="flex flex-col xsm:w-1/2 xsm:pr-[15px] gap-[50px] md:gap-[30px] relative after:absolute after:-right-8 after:2xl:-right-2 after:xl:-right-1 after:xsm:right-6 after:top-0 after:w-[1px] after:h-full after:bg-white/10">
+                        <div class="flex flex-col xsm:w-1/2 xsm:pr-[15px] gap-[50px] md:gap-[30px] relative after:absolute ltr:after:-right-8 ltr:after:2xl:-right-2 ltr:after:xl:-right-1 ltr:after:xsm:right-6 -- rtl:after:-left-8 rtl:after:2xl:-left-2 rtl:after:xl:-left-1 rtl:after:xsm:left-6 after:top-0 after:w-[1px] after:h-full after:bg-white/10">
                             <div class="item">
                                 <p class=" text-[26px] xl:text-[22px] md:text-[20px] leading-[32px] text-[#6D6243] font-bold mb-[8px]"><?php foreach ($menu[0] as $item): echo $item['title']; endforeach; ?></p>
                                 <ul>
@@ -118,7 +118,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="flex flex-col xsm:w-1/2 xsm:pl-[15px] gap-[50px] md:gap-[30px] relative after:absolute after:-right-8 after:2xl:-right-2 after:xl:-right-1 after:top-0 after:w-[1px] after:h-full after:bg-white/10 xsm:after:hidden">
+                        <div class="flex flex-col xsm:w-1/2 xsm:pl-[15px] gap-[50px] md:gap-[30px] relative after:absolute ltr:after:-right-8 ltr:after:2xl:-right-2 ltr:after:xl:-right-1 -- rtl:after:-left-8 rtl:after:2xl:-left-2 rtl:after:xl:-left-1 after:top-0 after:w-[1px] after:h-full after:bg-white/10 xsm:after:hidden">
                             <div class="item">
                                 <p class=" text-[26px] xl:text-[22px] md:text-[20px] leading-[32px] text-[#6D6243] font-bold mb-[8px]"><?php foreach ($menu[2] as $item): echo $item['title']; endforeach; ?></p>
                                 <ul>
@@ -172,9 +172,9 @@
 
         <!-- POPUP -->
         <!-- POPUP GDPR -->
-<!--<section id="popup-gdpr" class="popup hidden !rounded-[20px] !m-0 !p-[30px] !max-w-[1024px] w-full [&_.f-button]:!top-[20px] [&_.f-button]:!right-[10px] [&_.f-button]:!opacity-100 [&_.f-button]:!text-black">
+<!--<section id="popup-gdpr" class="popup hidden !rounded-[20px] !m-0 !p-[30px] !max-w-[1024px] w-full [&_.f-button]:!top-[20px] ltr:[&_.f-button]:!right-[10px] rtl:[&_.f-button]:!left-[10px] [&_.f-button]:!opacity-100 [&_.f-button]:!text-black">
     <div class="inner w-full">
-        <div class="text-editor !max-w-full">
+        <div class="text-editor !max-w-full rtl:text-right">
             <h4><strong>KİŞİSEL VERİLERİN KORUNMASI</strong></h4>
             <h5><strong>İNTERNET SİTESİ ÇEREZ POLİTİKASI</strong></h5>
 

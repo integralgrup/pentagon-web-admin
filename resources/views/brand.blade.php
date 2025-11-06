@@ -166,12 +166,12 @@
             <div class="container max-w-[1650px]">
                 <div class="flex flex-wrap items-center">
                     <div class="w-2/5 md:w-full md:!pr-0">
-                        <div class="image-wrapper reveal w-full h-[650px] md:h-[580px] sm:h-[320px] relative">
+                        <div class="image-wrapper reveal w-full [@media(min-width:1670px)]:w-[calc(100%+((100vw-1650px)/2))] h-[650px] translate-x-[30px] ltr:[@media(min-width:1670px)]:-translate-x-[calc((100vw-1650px)/2+30px)] rtl:[@media(min-width:1670px)]:translate-x-[calc((100vw-1650px)/2+50px)] md:h-[580px] sm:h-[320px] relative">
                             <img src="<?= env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','brand_images_folder'], app()->getLocale()) . '/' . $brand->bg_image ?>" alt="Sektör Detay" width="1045" height="539" class="w-full h-full object-cover relative z-2">
-                            <div class="bg-primary-main absolute -top-[38px] sm:-top-[20px] -right-[38px] sm:-right-[20px] w-[421px] sm:w-[320px] aspect-square"></div>
+                            <div class="bg-primary-main absolute -top-[38px] sm:-top-[20px] ltr:-right-[38px] ltr:sm:-right-[20px] rtl:-left-[38px] rtl:sm:-left-[20px] w-[421px] sm:w-[320px] aspect-square"></div>
                         </div>
                     </div>
-                    <div class="w-3/5 md:w-full pl-[178px] 2xl:pl-[89px] xl:pl-[50px] md:p-0 md:mt-[30px] [@media(min-width:1760px)]:translate-x-[-20px]">
+                    <div class="w-3/5 md:w-full ltr:pl-[178px] ltr:2xl:pl-[89px] ltr:xl:pl-[50px] -- rtl:pr-[178px] rtl:2xl:pr-[89px] rtl:xl:pr-[50px] md:!p-0 md:mt-[30px] ltr:[@media(min-width:1760px)]:translate-x-[-20px] rtl:[@media(min-width:1760px)]:translate-x-[20px]">
                         <div class="flex flex-col text-editor reveal">
                             <span class="text-[16px] leading-[32px] font-light text-paragraph opacity-65 tracking-[7.2px] block mb-[30px] lg:mb-[5px]"><?= $brand->up_title ?></span>
                             <h1 class="text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-light text-secondary-main mb-[80px] 2xl:mb-[50px] md:mb-[30px] xs:mb-[20px]">
@@ -183,12 +183,12 @@
                             @if($brand->url != '#')
                             <a href="<?=$brand->url?>" target="_blank" class="flex items-center justify-center relative w-max overflow-hidden main-button group sm:w-full" id="website-button">
                                 <div class="left px-[30px] py-[20px] flex items-center justify-center z-2 bg-transparent border border-solid border-primary-main transition-all duration-300 relative sm:w-full before:absolute before:left-0 before:top-0 before:w-0 before:h-full before:translate-x-[-100px] group-hover:before:min-md:w-full group-hover:before:min-md:translate-x-0 before:bg-primary-main before:transition-all before:duration-500">
-                                    <span class="text-[16px] leading-none font-medium text-primary-main transition-all duration-300 group-hover:min-md:duration-600 group-hover:min-md:text-white translate-x-[-100px] opacity-0 group-hover:min-md:translate-x-0 group-hover:min-md:opacity-100 w-0 whitespace-nowrap relative z-2">Websitesine Git</span>
+                                    <span class="text-[16px] leading-none font-medium text-primary-main transition-all duration-300 group-hover:min-md:duration-600 group-hover:min-md:text-white translate-x-[-100px] opacity-0 group-hover:min-md:translate-x-0 rtl:group-hover:min-md:translate-x-[-12px] group-hover:min-md:opacity-100 w-0 whitespace-nowrap relative z-2">Websitesine Git</span>
                                     <span class="text-[16px] leading-none font-medium text-primary-main transition-all duration-600 group-hover:min-md:duration-300 group-hover:min-md:text-white group-hover:min-md:translate-x-[100px] group-hover:min-md:opacity-0 relative z-2">Websitesine Git</span>
                                 </div>
                                 <div class="right flex items-center justify-center z-2 bg-[#9D8D5D] py-[22px] px-[24px] border border-solid border-[#9D8D5D] w-[56px] h-[58px] overflow-hidden">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="h-[18px] w-auto transition-all duration-300 group-hover:min-md:duration-600 translate-x-[-100px] opacity-0 group-hover:min-md:translate-x-[9px] group-hover:min-md:opacity-100"><path d="M304 24c0 13.3 10.7 24 24 24H430.1L207 271c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l223-223V184c0 13.3 10.7 24 24 24s24-10.7 24-24V24c0-13.3-10.7-24-24-24H328c-13.3 0-24 10.7-24 24zM72 32C32.2 32 0 64.2 0 104V440c0 39.8 32.2 72 72 72H408c39.8 0 72-32.2 72-72V312c0-13.3-10.7-24-24-24s-24 10.7-24 24V440c0 13.3-10.7 24-24 24H72c-13.3 0-24-10.7-24-24V104c0-13.3 10.7-24 24-24H200c13.3 0 24-10.7 24-24s-10.7-24-24-24H72z" fill="white"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="h-[18px] w-auto transition-all duration-600 group-hover:min-md:duration-300 group-hover:min-md:translate-x-[100px] group-hover:min-md:opacity-0 translate-x-[-9px]"><path d="M304 24c0 13.3 10.7 24 24 24H430.1L207 271c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l223-223V184c0 13.3 10.7 24 24 24s24-10.7 24-24V24c0-13.3-10.7-24-24-24H328c-13.3 0-24 10.7-24 24zM72 32C32.2 32 0 64.2 0 104V440c0 39.8 32.2 72 72 72H408c39.8 0 72-32.2 72-72V312c0-13.3-10.7-24-24-24s-24 10.7-24 24V440c0 13.3-10.7 24-24 24H72c-13.3 0-24-10.7-24-24V104c0-13.3 10.7-24 24-24H200c13.3 0 24-10.7 24-24s-10.7-24-24-24H72z" fill="white"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="h-[18px] w-auto transition-all duration-300 group-hover:min-md:duration-600 translate-x-[-100px] opacity-0 ltr:group-hover:min-md:translate-x-[9px] rtl:group-hover:min-md:translate-x-[-9px] group-hover:min-md:opacity-100"><path d="M304 24c0 13.3 10.7 24 24 24H430.1L207 271c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l223-223V184c0 13.3 10.7 24 24 24s24-10.7 24-24V24c0-13.3-10.7-24-24-24H328c-13.3 0-24 10.7-24 24zM72 32C32.2 32 0 64.2 0 104V440c0 39.8 32.2 72 72 72H408c39.8 0 72-32.2 72-72V312c0-13.3-10.7-24-24-24s-24 10.7-24 24V440c0 13.3-10.7 24-24 24H72c-13.3 0-24-10.7-24-24V104c0-13.3 10.7-24 24-24H200c13.3 0 24-10.7 24-24s-10.7-24-24-24H72z" fill="white"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="h-[18px] w-auto transition-all duration-600 group-hover:min-md:duration-300 group-hover:min-md:translate-x-[100px] group-hover:min-md:opacity-0 ltr:translate-x-[-9px] rtl:translate-x-[9px]"><path d="M304 24c0 13.3 10.7 24 24 24H430.1L207 271c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l223-223V184c0 13.3 10.7 24 24 24s24-10.7 24-24V24c0-13.3-10.7-24-24-24H328c-13.3 0-24 10.7-24 24zM72 32C32.2 32 0 64.2 0 104V440c0 39.8 32.2 72 72 72H408c39.8 0 72-32.2 72-72V312c0-13.3-10.7-24-24-24s-24 10.7-24 24V440c0 13.3-10.7 24-24 24H72c-13.3 0-24-10.7-24-24V104c0-13.3 10.7-24 24-24H200c13.3 0 24-10.7 24-24s-10.7-24-24-24H72z" fill="white"/></svg>
                                     <!--                                    <i class="icon-globe text-[18px] leading-none text-white transition-all w-0 whitespace-nowrap"></i>-->
                                     <!--                                    <i class="icon-globe text-[18px] leading-none text-white transition-all "></i>-->
                                 </div>
@@ -203,7 +203,7 @@
        <section class="career-slider-area overflow-hidden md:bg-secondary-main mb-[180px] xl:mb-[120px] lg:mb-[90px] md:mb-[60px] relative">
             <div class="max-w-[1920px] mx-auto relative overflow-hidden">
                 <div class="container max-w-[1800px]">
-                    <div class="bg-primary-main absolute -z-[1] -bottom-[90px] xl:-bottom-[60px] lg:-bottom-[20px] -right-0 max-w-[440px] [@media(max-width:1780px)_and_(min-width:1441px)]:max-w-[400px] xl:max-w-[360px] w-full h-[426px] md:hidden"></div>
+                    <div class="bg-primary-main absolute -z-[1] -bottom-[90px] xl:-bottom-[60px] lg:-bottom-[20px] -ltr:right-0 rtl:left-0 max-w-[440px] [@media(max-width:1780px)_and_(min-width:1441px)]:max-w-[400px] xl:max-w-[360px] w-full h-[426px] md:hidden"></div>
                     <div class="wrapper min-sm:overflow-hidden bg-secondary-main md:bg-transparent p-[50px] pl-[105px] xl:pl-[80px] lg:pl-[30px] lg:p-[30px] sm:p-[20px_0] relative">
                         <img src="../assets/image/static/vectorel-2.svg" alt="Vektör" width="610" height="535" class="reveal max-w-[610px] xl:max-w-[500px] sm:max-w-full sm:w-full h-auto absolute z-2 pointer-events-none left-1/2 top-1/2 sm:top-[30px] -translate-x-1/2 min-sm:-translate-y-1/2">
                         <div class="sector-slider reveal overflow-hidden relative z-4">
@@ -232,16 +232,16 @@
                     <div class="pagination-navigation flex items-end gap-[112px] pt-[40px] xsm:pt-[20px] xs:pt-0 pb-[20px] md:pb-[40px] lg:gap-[50px] pl-[95px] 2xl:pl-[45px] xl:pl-0 pr-[85px] xl:pr-0 relative z-5 xsm:absolute xsm:bottom-[370px] xs:bottom-[360px] xsm:w-[calc(100%-60px)] xsm:p-0">
                         <div class="reveal sector-pagination flex items-center gap-[30px] xl:gap-[20px] xsm:gap-[15px] xs:gap-[10px] [&_.swiper-pagination-bullet]:!max-w-[234px] xsm:hidden"></div>
                         <div class="reveal nav-buttons pb-[5px] flex items-center gap-[30px] sm:hidden">
-                            <div class="sector-prev cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.sector-disabled]:opacity-65 relative [&.sector-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
-                                <i class="icon-angle-left text-[12px] leading-none text-white"></i>
+                            <div class="sector-prev cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.sector-disabled]:opacity-65 relative [&.sector-disabled]:after:hidden after:absolute after:bottom-0 ltr:after:right-0 rtl:after:left-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 ltr:hover:after:right-auto rtl:hover:after:left-auto ltr:hover:after:left-0 rtl:hover:after:right-0 hover:after:w-full">
+                                <i class="icon-angle-left text-[12px] leading-none text-white rtl:scale-x-[-1]"></i>
                                 <span class="text-[16px] leading-[32px] text-white md:hidden"><?=getStaticText(2)?></span>
                             </div>
 
                             <div class="separator w-[1px] h-[22px] bg-white/20"></div>
 
-                            <div class="sector-next cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.sector-disabled]:opacity-65 relative [&.sector-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
+                            <div class="sector-next cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.sector-disabled]:opacity-65 relative [&.sector-disabled]:after:hidden after:absolute after:bottom-0 ltr:after:right-0 rtl:after:left-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 ltr:hover:after:right-auto rtl:hover:after:left-auto ltr:hover:after:left-0 rtl:hover:after:right-0 hover:after:w-full">
                                 <span class="text-[16px] leading-[32px] text-white md:hidden"><?=getStaticText(3)?></span>
-                                <i class="icon-angle-right text-[12px] leading-none text-white "></i>
+                                <i class="icon-angle-right text-[12px] leading-none text-white rtl:scale-x-[-1]"></i>
                             </div>
                         </div>
                         <div class="swiper-scrollbar hidden xsm:block bg-white/15 [&_.swiper-scrollbar-drag]:bg-white relative left-0 w-full">
@@ -257,7 +257,7 @@
         <section class="products overflow-hidden relative pb-[200px] 2xl:pb-[150px] xl:pb-[120px] lg:pb-[90px] md:pb-[60px] pt-[150px] 2xl:pt-[120px] xl:pt-[90px] lg:pt-[60px] after:absolute after:z-2 after:pointer-events-none after:right-0 after:bottom-[250px] 2xl:after:bottom-[200px] xl:after:bottom-[160px] md:after:bottom-[100px] xs:after:hidden after:w-[192px] after:h-[450px] after:bg-[linear-gradient(270deg,_#FBFAF6_0%,_rgba(251,250,246,0.00)_100%)]">
             <div class="container max-w-[1650px]">
                 <div class="flex flex-wrap items-center">
-                    <div class="w-3/5 md:w-full pr-[120px] 2xl:pr-[90px] xl:pr-[60px] md:p-0 relative z-10 md:my-[30px]" id="product-slide-area">
+                    <div class="w-3/5 md:w-full ltr:pr-[120px] ltr:2xl:pr-[90px] ltr:xl:pr-[60px] -- rtl:pl-[120px] rtl:2xl:pl-[90px] rtl:xl:pl-[60px] md:!p-0 relative z-10 md:my-[30px]" id="product-slide-area">
                         <div class="image-wrapper w-full h-[800px] 2xl:h-[700px] md:h-[580px] sm:h-[320px] relative">
                             <div class="w-full reveal h-full bg-[#FBFAF6] p-[50px] sm:pt-[20px] sm:pb-[80px] relative z-2 shadow-[0px_4px_100px_0px_rgba(0,0,0,0.10)]">
                                 <div class="product-image-slider overflow-hidden">
@@ -272,29 +272,29 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="reveal bg-primary-main absolute -bottom-[60px] sm:-bottom-[50px] -left-[60px] sm:-left-[50px] w-[421px] sm:w-[320px] aspect-square"></div>
-                            <div class="reveal nav-buttons w-full flex items-center gap-[30px] pt-[12px] pl-[135px] 2xl:pl-[100px] xl:pl-[70px] sm:pl-[30px] relative z-2">
-                                <div class="product-prev cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.product-disabled]:opacity-65 relative [&.product-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
-                                    <i class="icon-angle-left text-[12px] leading-none text-white"></i>
+                            <div class="reveal bg-primary-main absolute -bottom-[60px] sm:-bottom-[50px] ltr:-left-[60px] ltr:sm:-left-[50px] -- rtl:-right-[60px] rtl:sm:-right-[50px] w-[421px] sm:w-[320px] aspect-square"></div>
+                            <div class="reveal nav-buttons w-full flex items-center gap-[30px] pt-[12px] ltr:pl-[135px] ltr:2xl:pl-[100px] ltr:xl:pl-[70px] ltr:sm:pl-[30px] -- rtl:pr-[135px] rtl:2xl:pr-[100px] rtl:xl:pr-[70px] rtl:sm:pr-[30px] relative z-2">
+                                <div class="product-prev cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.product-disabled]:opacity-65 relative [&.product-disabled]:after:hidden after:absolute after:bottom-0 ltr:after:right-0 right:after:left-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 ltr:hover:after:right-auto rtl:hover:after:left-auto ltr:hover:after:left-0 rtl:hover:after:right-0 hover:after:w-full">
+                                    <i class="icon-angle-left text-[12px] leading-none text-white rtl:scale-x-[-1]"></i>
                                     <span class="text-[16px] leading-[32px] text-white"><?=getStaticText(2)?></span>
                                 </div>
 
                                 <div class="separator w-[1px] h-[22px] bg-white/20"></div>
 
-                                <div class="product-next cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.product-disabled]:opacity-65 relative [&.product-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
+                                <div class="product-next cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.product-disabled]:opacity-65 relative [&.product-disabled]:after:hidden after:absolute after:bottom-0 ltr:after:right-0 right:after:left-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 ltr:hover:after:right-auto rtl:hover:after:left-auto ltr:hover:after:left-0 rtl:hover:after:right-0 hover:after:w-full">
                                     <span class="text-[16px] leading-[32px] text-white"><?=getStaticText(3)?></span>
-                                    <i class="icon-angle-right text-[12px] leading-none text-white "></i>
+                                    <i class="icon-angle-right text-[12px] leading-none text-white rtl:scale-x-[-1]"></i>
                                 </div>
                             </div>
 
                             <a href="#" target="_blank" class="reveal flex items-center justify-center absolute right-[30px] bottom-[30px] w-max overflow-hidden main-button group" id="link-button">
                                 <div class="left px-[30px] py-[20px] flex items-center justify-center z-2 bg-white border border-solid border-primary-main transition-all duration-300 relative before:absolute before:left-0 before:top-0 before:w-0 before:h-full before:translate-x-[-100px] group-hover:before:min-md:w-full group-hover:before:min-md:translate-x-0 before:bg-primary-main before:transition-all before:duration-500">
-                                    <span class="text-[16px] leading-none font-medium text-primary-main transition-all duration-300 group-hover:min-md:duration-600 group-hover:min-md:text-white translate-x-[-100px] opacity-0 group-hover:min-md:translate-x-0 group-hover:min-md:opacity-100 w-0 whitespace-nowrap relative z-2">Ürünü İncele</span>
+                                    <span class="text-[16px] leading-none font-medium text-primary-main transition-all duration-300 group-hover:min-md:duration-600 group-hover:min-md:text-white translate-x-[-100px] opacity-0 group-hover:min-md:translate-x-0 rtl:group-hover:min-md:translate-x-[-12px] group-hover:min-md:opacity-100 w-0 whitespace-nowrap relative z-2">Ürünü İncele</span>
                                     <span class="text-[16px] leading-none font-medium text-primary-main transition-all duration-600 group-hover:min-md:duration-300 group-hover:min-md:text-white group-hover:min-md:translate-x-[100px] group-hover:min-md:opacity-0 relative z-2">Ürünü İncele</span>
                                 </div>
                                 <div class="right flex items-center justify-center z-2 bg-[#9D8D5D] py-[22px] px-[24px] border border-solid border-[#9D8D5D] w-[56px] h-[58px] overflow-hidden">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="h-[18px] w-auto transition-all duration-300 group-hover:min-md:duration-600 translate-x-[-100px] opacity-0 group-hover:min-md:translate-x-[9px] group-hover:min-md:opacity-100"><path d="M304 24c0 13.3 10.7 24 24 24H430.1L207 271c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l223-223V184c0 13.3 10.7 24 24 24s24-10.7 24-24V24c0-13.3-10.7-24-24-24H328c-13.3 0-24 10.7-24 24zM72 32C32.2 32 0 64.2 0 104V440c0 39.8 32.2 72 72 72H408c39.8 0 72-32.2 72-72V312c0-13.3-10.7-24-24-24s-24 10.7-24 24V440c0 13.3-10.7 24-24 24H72c-13.3 0-24-10.7-24-24V104c0-13.3 10.7-24 24-24H200c13.3 0 24-10.7 24-24s-10.7-24-24-24H72z" fill="white"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="h-[18px] w-auto transition-all duration-600 group-hover:min-md:duration-300 group-hover:min-md:translate-x-[100px] group-hover:min-md:opacity-0 translate-x-[-9px]"><path d="M304 24c0 13.3 10.7 24 24 24H430.1L207 271c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l223-223V184c0 13.3 10.7 24 24 24s24-10.7 24-24V24c0-13.3-10.7-24-24-24H328c-13.3 0-24 10.7-24 24zM72 32C32.2 32 0 64.2 0 104V440c0 39.8 32.2 72 72 72H408c39.8 0 72-32.2 72-72V312c0-13.3-10.7-24-24-24s-24 10.7-24 24V440c0 13.3-10.7 24-24 24H72c-13.3 0-24-10.7-24-24V104c0-13.3 10.7-24 24-24H200c13.3 0 24-10.7 24-24s-10.7-24-24-24H72z" fill="white"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="h-[18px] w-auto transition-all duration-300 group-hover:min-md:duration-600 translate-x-[-100px] opacity-0 ltr:group-hover:min-md:translate-x-[9px] rtl:group-hover:min-md:translate-x-[-9px] group-hover:min-md:opacity-100"><path d="M304 24c0 13.3 10.7 24 24 24H430.1L207 271c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l223-223V184c0 13.3 10.7 24 24 24s24-10.7 24-24V24c0-13.3-10.7-24-24-24H328c-13.3 0-24 10.7-24 24zM72 32C32.2 32 0 64.2 0 104V440c0 39.8 32.2 72 72 72H408c39.8 0 72-32.2 72-72V312c0-13.3-10.7-24-24-24s-24 10.7-24 24V440c0 13.3-10.7 24-24 24H72c-13.3 0-24-10.7-24-24V104c0-13.3 10.7-24 24-24H200c13.3 0 24-10.7 24-24s-10.7-24-24-24H72z" fill="white"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="h-[18px] w-auto transition-all duration-600 group-hover:min-md:duration-300 group-hover:min-md:translate-x-[100px] group-hover:min-md:opacity-0 ltr:translate-x-[-9px] rtl:translate-x-[9px]"><path d="M304 24c0 13.3 10.7 24 24 24H430.1L207 271c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l223-223V184c0 13.3 10.7 24 24 24s24-10.7 24-24V24c0-13.3-10.7-24-24-24H328c-13.3 0-24 10.7-24 24zM72 32C32.2 32 0 64.2 0 104V440c0 39.8 32.2 72 72 72H408c39.8 0 72-32.2 72-72V312c0-13.3-10.7-24-24-24s-24 10.7-24 24V440c0 13.3-10.7 24-24 24H72c-13.3 0-24-10.7-24-24V104c0-13.3 10.7-24 24-24H200c13.3 0 24-10.7 24-24s-10.7-24-24-24H72z" fill="white"/></svg>
 <!--                                    <i class="icon-globe text-[18px] leading-none text-white transition-all w-0 whitespace-nowrap"></i>-->
 <!--                                    <i class="icon-globe text-[18px] leading-none text-white transition-all "></i>-->
                                 </div>
@@ -364,8 +364,8 @@
 
                     <div class="reveal nav-buttons w-full grid place-items-center">
                         <div class="flex items-center gap-[30px] px-[45px] md:px-[25px] py-[15px] sm:p-[5px] bg-primary-main">
-                            <div class="gallery-prev cursor-pointer flex items-center gap-[9px] md:w-[40px] md:h-[40px] md:justify-center transition-all duration-300 [&.gallery-disabled]:opacity-65 relative [&.gallery-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
-                                <i class="icon-angle-left text-[12px] leading-none text-white"></i>
+                            <div class="gallery-prev cursor-pointer flex items-center gap-[9px] md:w-[40px] md:h-[40px] md:justify-center transition-all duration-300 [&.gallery-disabled]:opacity-65 relative [&.gallery-disabled]:after:hidden after:absolute after:bottom-0 ltr:after:right-0 rtl:after:left-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 ltr:hover:after:right-auto rtl:hover:after:left-auto ltr:hover:after:left-0 rtl:hover:after:right-0 hover:after:w-full">
+                                <i class="icon-angle-left text-[12px] leading-none text-white rtl:scale-x-[-1]"></i>
                                 <span class="text-[16px] leading-[32px] text-white md:hidden">Önceki</span>
                             </div>
 

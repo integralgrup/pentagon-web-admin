@@ -20,12 +20,12 @@
         </div>
         <div class="container max-w-[1650px] mb-[130px] 2xl:mb-[90px] lg:mb-[45px] md:mb-[30px]">
             <div class="form-area bg-secondary-main relative">
-                <div class="bg-primary-main absolute -z-[1] -bottom-[40px] -left-[40px] w-[501px] aspect-square md:hidden"></div>
+                <div class="bg-primary-main absolute -z-[1] -bottom-[40px] ltr:-left-[40px] rtl:-right-[40px] w-[501px] aspect-square md:hidden"></div>
                 <div class="relative grid grid-cols-[2.5fr_2fr] md:grid-cols-1 gap-[80px] xl:gap-[30px]">
                     <div class="left flex items-center reveal md:hidden">
-                        <img src="../assets/image/static/career-mockup.png" alt="Pentagon Kariyer" width="900" height="796" class="w-[900px] h-auto translate-x-[-40px] sm:translate-x-[-20px]">
+                        <img src="../assets/image/static/career-mockup.png" alt="Pentagon Kariyer" width="900" height="796" class="w-[900px] h-auto ltr:translate-x-[-40px] ltr:sm:translate-x-[-20px] -- rtl:translate-x-[40px] rtl:sm:translate-x-[20px]">
                     </div>
-                    <div class="right py-[72px] xl:py-[50px] pr-[100px] 2xl:pr-[60px] lg:pr-[45px] md:px-[30px]">
+                    <div class="right py-[72px] xl:py-[50px] ltr:pr-[100px] ltr:2xl:pr-[60px] ltr:lg:pr-[45px] -- rtl:pl-[100px] rtl:2xl:pl-[60px] rtl:lg:pl-[45px] md:px-[30px]">
                         <div class="form">
                             <h3 class="reveal text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-light text-white mb-[50px] lg:mb-[30px]">
                                 Başvuru <span class="font-bold">Formu</span>
@@ -105,12 +105,12 @@
                                     <div class="form-group flex justify-end sm:col-span-2 sm:justify-start">
                                         <button type="submit" class="flex items-center justify-center relative w-max overflow-hidden main-button group sm:w-full">
                                             <div class="left px-[30px] py-[20px] flex items-center justify-center z-2 bg-transparent border border-solid border-primary-main transition-all duration-300 sm:w-full relative before:absolute before:left-0 before:top-0 before:w-0 before:h-full before:translate-x-[-100px] group-hover:before:min-md:w-full group-hover:before:min-md:translate-x-0 before:bg-primary-main before:transition-all before:duration-500">
-                                                <span class="text-[16px] leading-none font-medium text-white transition-all duration-300 group-hover:min-md:duration-600 group-hover:min-md:text-white translate-x-[-100px] opacity-0 group-hover:min-md:translate-x-0 group-hover:min-md:opacity-100 w-0 whitespace-nowrap relative z-2">Başvur</span>
+                                                <span class="text-[16px] leading-none font-medium text-white transition-all duration-300 group-hover:min-md:duration-600 group-hover:min-md:text-white translate-x-[-100px] opacity-0 group-hover:min-md:translate-x-0 rtl:group-hover:min-md:translate-x-[-12px] group-hover:min-md:opacity-100 w-0 whitespace-nowrap relative z-2">Başvur</span>
                                                 <span class="text-[16px] leading-none font-medium text-white transition-all duration-600 group-hover:min-md:duration-300 group-hover:min-md:text-white group-hover:min-md:translate-x-[100px] group-hover:min-md:opacity-0 relative z-2">Başvur</span>
                                             </div>
                                             <div class="right flex items-center justify-center z-2 bg-[#9D8D5D] py-[22px] px-[24px] border border-solid border-[#9D8D5D] w-[56px] h-[58px] overflow-hidden">
-                                                <i class="icon-angle-right text-[12px] leading-none text-white transition-all duration-300 group-hover:min-md:duration-600 translate-x-[-100px] opacity-0 group-hover:min-md:translate-x-0 group-hover:min-md:opacity-100 w-0 whitespace-nowrap"></i>
-                                                <i class="icon-angle-right text-[12px] leading-none text-white transition-all duration-600 group-hover:min-md:duration-300 group-hover:min-md:translate-x-[100px] group-hover:min-md:opacity-0"></i>
+                                                <i class="icon-angle-right text-[12px] leading-none text-white transition-all duration-300 group-hover:min-md:duration-600 translate-x-[-100px] opacity-0 group-hover:min-md:translate-x-0 rtl:group-hover:min-md:translate-x-[-12px] group-hover:min-md:opacity-100 w-0 whitespace-nowrap rtl:scale-x-[-1]"></i>
+                                                <i class="icon-angle-right text-[12px] leading-none text-white transition-all duration-600 group-hover:min-md:duration-300 group-hover:min-md:translate-x-[100px] group-hover:min-md:opacity-0 rtl:scale-x-[-1]"></i>
                                             </div>
                                         </button>
                                     </div>

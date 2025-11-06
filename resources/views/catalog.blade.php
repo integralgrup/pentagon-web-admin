@@ -17,7 +17,7 @@
         <div class="container max-w-[1650px]">
             <div class="flex flex-col gap-[50px] md:gap-[30px]">
                 <div class="filters w-full flex items-center justify-between">
-                    <div class="reveal separator pr-[80px] xl:pr-[50px] w-full xs:hidden">
+                    <div class="reveal separator ltr:pr-[80px] ltr:xl:pr-[50px] -- rtl:pl-[80px] rtl:xl:pl-[50px] w-full xs:hidden">
                         <div class="w-full h-[1px] bg-black/8"></div>
                     </div>
 
@@ -26,7 +26,7 @@
                         <div class="reveal custom-dropdown sm:w-full">
                             <div class="dropdown relative group/dropdown">
                                 <div class="placeholder flex items-center justify-between px-[32px] lg:px-[20px] py-[18px] border border-solid border-black/10 cursor-pointer transition-all duration-300 hover:border-black/30 group-[&.dropdown-active]">
-                                    <span class="text-[16px] lg:text-[15px] leading-[25px] font-medium text-black tracking-[-0.16px] transition-all duration-300 block mr-[8px]">Tümünü Gör</span>
+                                    <span class="text-[16px] lg:text-[15px] leading-[25px] font-medium text-black tracking-[-0.16px] transition-all duration-300 block ltr:mr-[8px] rtl:ml-[8px]">Tümünü Gör</span>
                                     <i class="icon-angle-down text-[12px] text-black leading-none transition-all duration-300 group-[&.active]/dropdown:rotate-180"></i>
                                 </div>
                                 <div class="dropdown-list w-full bg-white border border-solid border-black/10 overflow-hidden absolute left-0 z-10 transition-all duration-300 opacity-0 pointer-events-none group-[&.active]/dropdown:opacity-100 group-[&.active]/dropdown:pointer-events-auto">
