@@ -103,46 +103,10 @@
         </div>
     </section>
 
-    <!--<section class="about-us relative mb-[150px] xl:mb-[120px] lg:mb-[90px] md:mb-[60px]" id="about-us">
-        <img src="{{ asset('assets')}}/image/static/vectorel.svg" alt="Vektör" width="387" height="588" class="pointer-events-none absolute top-1/2 -translate-y-1/2 right-0 ">
-        <div class="container max-w-[1650px]">
-            <div class="flex flex-wrap items-center">
-                <div class="w-3/5 md:w-full translate-x-[-30px] [@media(max-width:1670px)]:pr-[50px] md:!pr-0">
-                    <div class="image-wrapper reveal w-full h-[677px] md:h-[580px] sm:h-[320px] relative">
-                        <img src="<?= env('HTTP_DOMAIN') .'/'. getFolder(['uploads_folder','images_folder'], app()->getLocale()) .'/'.$about->image ?>" alt="Hakkımızda" width="911" height="677" class="w-full h-full object-cover relative z-2">
-                        <div class="bg-primary-main absolute -top-[38px] sm:-top-[20px] -right-[38px] sm:-right-[20px] w-[421px] sm:w-[320px] aspect-square"></div>
-                    </div>
-                </div>
-                <div class="w-2/5 md:w-full md:p-0 md:mt-[30px] [@media(min-width:1760px)]:translate-x-[-20px]">
-                    <div class="flex flex-col text-editor reveal">
-                        <span class="text-[16px] leading-[32px] font-light text-paragraph opacity-65 tracking-[7.2px] block mb-[30px] lg:mb-[5px]"><?= getStaticText(1) ?></span>
-                        <h1 class="text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-light text-secondary-main mb-[80px] 2xl:mb-[50px] md:mb-[30px] xs:mb-[20px]">
-                            <?=$about->title?>
-                        </h1>
-                        <p class="text-[22px] lg:text-[18px] leading-[45px] lg:leading-[40px] font-light tracking-[-0.22px] text-paragraph mb-[30px] xs:mb-[20px]"><?=$about->title_1?></p>
-                        <p class="text-[18px] lg:text-[16px] leading-[32px] font-light text-paragraph mb-[60px] xl:mb-[40px] md:mb-[30px]">
-                            <?=$about->description?>
-                        </p>
-                        <a href="{{ env('HTTP_DOMAIN') .'/'. getUrl('about_url') }}" class="flex items-center justify-center relative w-max overflow-hidden main-button group sm:w-full">
-                            <div class="left px-[30px] py-[20px] flex items-center justify-center z-2 bg-transparent border border-solid border-primary-main transition-all duration-300 sm:w-full relative before:absolute before:left-0 before:top-0 before:w-0 before:h-full before:translate-x-[-100px] group-hover:before:min-md:w-full group-hover:before:min-md:translate-x-0 before:bg-primary-main before:transition-all before:duration-500">
-                                <span class="text-[16px] leading-none font-medium text-primary-main transition-all duration-300 group-hover:min-md:duration-600 group-hover:min-md:text-white translate-x-[-100px] opacity-0 group-hover:min-md:translate-x-0 group-hover:min-md:opacity-100 w-0 whitespace-nowrap relative z-2"><?= getStaticText(5) ?></span>
-                                <span class="text-[16px] leading-none font-medium text-primary-main transition-all duration-600 group-hover:min-md:duration-300 group-hover:min-md:text-white group-hover:min-md:translate-x-[100px] group-hover:min-md:opacity-0 relative z-2"><?= getStaticText(5) ?></span>
-                            </div>
-                            <div class="right flex items-center justify-center z-2 bg-[#9D8D5D] py-[22px] px-[24px] border border-solid border-[#9D8D5D] w-[56px] h-[58px] overflow-hidden">
-                                <i class="icon-angle-right text-[12px] leading-none text-white transition-all duration-300 group-hover:min-md:duration-600 translate-x-[-100px] opacity-0 group-hover:min-md:translate-x-0 group-hover:min-md:opacity-100 w-0 whitespace-nowrap"></i>
-                                <i class="icon-angle-right text-[12px] leading-none text-white transition-all duration-600 group-hover:min-md:duration-300 group-hover:min-md:translate-x-[100px] group-hover:min-md:opacity-0"></i>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>-->
-
     <section class="sector-slider-area overflow-hidden md:bg-secondary-main mb-[150px] xl:mb-[120px] lg:mb-[90px] md:mb-[60px] relative">
         <div class="max-w-[1920px] w-full mx-auto relative overflow-hidden">
             <div class="container max-w-[1800px]">
-                <div class="bg-primary-main absolute -z-[1] -bottom-[90px] xl:-bottom-[60px] lg:-bottom-[20px] -right-0 max-w-[440px] [@media(max-width:1780px)_and_(min-width:1441px)]:max-w-[400px] xl:max-w-[360px] w-full h-[426px] md:hidden"></div>
+                <div class="bg-primary-main absolute -z-[1] -bottom-[90px] xl:-bottom-[60px] lg:-bottom-[20px] -ltr:right-0 rtl:left-0 max-w-[440px] [@media(max-width:1780px)_and_(min-width:1441px)]:max-w-[400px] xl:max-w-[360px] w-full h-[426px] md:hidden"></div>
                 <div class="wrapper min-sm:overflow-hidden bg-secondary-main md:bg-transparent p-[50px] pl-[105px] xl:pl-[80px] lg:pl-[30px] lg:p-[30px] sm:p-[20px_0] relative">
                     <img src="{{ asset('assets')}}/image/static/vectorel-2.svg" alt="Vektör" width="846" height="742" class="reveal min-sm:max-w-[846px] w-full h-auto absolute z-2 pointer-events-none left-1/2 top-1/2 sm:top-[30px] -translate-x-1/2 min-sm:-translate-y-1/2">
                     <div class="sector-slider reveal overflow-hidden relative z-4">
@@ -157,12 +121,12 @@
                                                 <p class="text-[17px] md:text-[16px] sm:text-[15px] leading-[32px] sm:leading-[28px] font-light text-white mb-[20px] sm:mb-[5px]"><?= $item['description'] ?></p>
                                                 <a href="<?= env('HTTP_DOMAIN') .'/'. getUrl('sector_url') .'/'. $item->seo_url ?>" class="flex items-center justify-center relative w-max overflow-hidden main-button group sm:w-full">
                                                     <div class="left px-[30px] py-[20px] flex items-center justify-center z-2 bg-transparent border border-solid border-primary-main transition-all duration-300 sm:w-full relative before:absolute before:left-0 before:top-0 before:w-0 before:h-full before:translate-x-[-100px] group-hover:before:min-md:w-full group-hover:before:min-md:translate-x-0 before:bg-primary-main before:transition-all before:duration-500">
-                                                        <span class="text-[16px] leading-none font-medium text-white transition-all duration-300 group-hover:min-md:duration-600 group-hover:min-md:text-white translate-x-[-100px] opacity-0 group-hover:min-md:translate-x-0 group-hover:min-md:opacity-100 w-0 whitespace-nowrap relative z-2"><?= getStaticText(5) ?></span>
+                                                        <span class="text-[16px] leading-none font-medium text-white transition-all duration-300 group-hover:min-md:duration-600 group-hover:min-md:text-white translate-x-[-100px] opacity-0 group-hover:min-md:translate-x-0 rtl:group-hover:min-md:translate-x-[-12px] group-hover:min-md:opacity-100 w-0 whitespace-nowrap relative z-2"><?= getStaticText(5) ?></span>
                                                         <span class="text-[16px] leading-none font-medium text-white transition-all duration-600 group-hover:min-md:duration-300 group-hover:min-md:text-white group-hover:min-md:translate-x-[100px] group-hover:min-md:opacity-0 relative z-2"><?= getStaticText(5) ?></span>
                                                     </div>
                                                     <div class="right flex items-center justify-center z-2 bg-[#9D8D5D] py-[22px] px-[24px] border border-solid border-[#9D8D5D] w-[56px] h-[58px] overflow-hidden">
-                                                        <i class="icon-angle-right text-[12px] leading-none text-white transition-all duration-300 group-hover:min-md:duration-600 translate-x-[-100px] opacity-0 group-hover:min-md:translate-x-0 group-hover:min-md:opacity-100 w-0 whitespace-nowrap"></i>
-                                                        <i class="icon-angle-right text-[12px] leading-none text-white transition-all duration-600 group-hover:min-md:duration-300 group-hover:min-md:translate-x-[100px] group-hover:min-md:opacity-0"></i>
+                                                        <i class="icon-angle-right text-[12px] leading-none text-white transition-all duration-300 group-hover:min-md:duration-600 translate-x-[-100px] opacity-0 group-hover:min-md:translate-x-0 rtl:group-hover:min-md:translate-x-[-12px] group-hover:min-md:opacity-100 w-0 whitespace-nowrap rtl:scale-x-[-1]"></i>
+                                <i class="icon-angle-right text-[12px] leading-none text-white transition-all duration-600 group-hover:min-md:duration-300 group-hover:min-md:translate-x-[100px] group-hover:min-md:opacity-0 rtl:scale-x-[-1]"></i>
                                                     </div>
                                                 </a>
                                             </div>
@@ -181,14 +145,14 @@
                 <div class="pagination-navigation flex items-end gap-[112px] pt-[40px] xsm:pt-[20px] xs:pt-0 pb-[20px] md:pb-[40px] lg:gap-[50px] pl-[95px] 2xl:pl-[45px] xl:pl-0 pr-[85px] xl:pr-0 relative z-5 xsm:absolute xsm:bottom-[370px] xs:bottom-[360px] xsm:w-[calc(100%-60px)] xsm:p-0">
                     <div class="sector-pagination reveal flex items-center gap-[30px] xl:gap-[20px] xsm:gap-[15px] xs:gap-[10px] xsm:hidden"></div>
                     <div class="nav-buttons reveal pb-[5px] flex items-center gap-[30px] sm:hidden">
-                        <div class="sector-prev cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.sector-disabled]:opacity-65 relative [&.sector-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
-                            <i class="icon-angle-left text-[12px] leading-none text-white"></i>
+                        <div class="sector-prev cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.sector-disabled]:opacity-65 relative [&.sector-disabled]:after:hidden after:absolute after:bottom-0 ltr:after:right-0 rtl:after:left-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 ltr:hover:after:right-auto rtl:hover:after:left-auto ltr:hover:after:left-0 rtl:hover:after:right-0 hover:after:w-full">
+                            <i class="icon-angle-left text-[12px] leading-none text-white rtl:scale-x-[-1]"></i>
                             <span class="text-[16px] leading-[32px] text-white md:hidden"><?= getStaticText(2) ?></span>
                         </div>
 
                         <div class="separator w-[1px] h-[22px] bg-white/20"></div>
 
-                        <div class="sector-next cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.sector-disabled]:opacity-65 relative [&.sector-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
+                        <div class="sector-next cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.sector-disabled]:opacity-65 relative [&.sector-disabled]:after:hidden after:absolute after:bottom-0 ltr:after:right-0 rtl:after:left-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 ltr:hover:after:right-auto rtl:hover:after:left-auto ltr:hover:after:left-0 rtl:hover:after:right-0 hover:after:w-full">
                             <span class="text-[16px] leading-[32px] text-white md:hidden"><?= getStaticText(3) ?></span>
                             <i class="icon-angle-right text-[12px] leading-none text-white rtl:scale-x-[-1]"></i>
                         </div>
@@ -359,7 +323,7 @@
                     <div class="w-2/5 md:hidden flex items-center justify-center relative reveal">
                         <div class="image-wrapper w-full h-[406px] xl:h-[370px] lg:h-[350px] sm:h-[300px] min-md:absolute min-md:left-0 min-md:top-1/2 min-md:-translate-y-1/2 transition-all duration-500 [&.changed]:opacity-0 [&.changed]:translate-y-[5px]" id="blog-image">
                             <img src="{{ asset('assets') }}/image/general/home-blog.jpg" alt="Blog Resim" width="657" height="406" class="w-full h-full object-cover relative z-2" id="item-image">
-                            <div class="bg-primary-main absolute -bottom-[15px] -right-[15px] w-[269px] aspect-square"></div>
+                            <div class="bg-primary-main absolute -bottom-[15px] ltr:-right-[15px] rtl:-left-[15px] w-[269px] aspect-square"></div>
                         </div>
                     </div>
                 </div>
