@@ -108,7 +108,7 @@
             <div class="container max-w-[1800px]">
                 <div class="bg-primary-main absolute -z-[1] -bottom-[90px] xl:-bottom-[60px] lg:-bottom-[20px] -ltr:right-0 rtl:left-0 max-w-[440px] [@media(max-width:1780px)_and_(min-width:1441px)]:max-w-[400px] xl:max-w-[360px] w-full h-[426px] md:hidden"></div>
                 <div class="wrapper min-sm:overflow-hidden bg-secondary-main md:bg-transparent p-[50px] pl-[105px] xl:pl-[80px] lg:pl-[30px] lg:p-[30px] sm:p-[20px_0] relative">
-                    <img src="{{ asset('assets')}}/image/static/vectorel-2.svg" alt="Vektör" width="846" height="742" class="reveal min-sm:max-w-[846px] w-full h-auto absolute z-2 pointer-events-none left-1/2 top-1/2 sm:top-[30px] -translate-x-1/2 min-sm:-translate-y-1/2">
+                    <img src="../assets/image/static/vectorel-2.svg" alt="Vektör" width="846" height="742" class="reveal min-sm:max-w-[846px] w-full h-auto absolute z-2 pointer-events-none left-1/2 top-1/2 sm:top-[30px] -translate-x-1/2 min-sm:-translate-y-1/2">
                     <div class="sector-slider reveal overflow-hidden relative z-4">
                         <div class="swiper-wrapper">
                             <?php foreach ($sectors as $key => $item) { ?>
@@ -126,7 +126,7 @@
                                                     </div>
                                                     <div class="right flex items-center justify-center z-2 bg-[#9D8D5D] py-[22px] px-[24px] border border-solid border-[#9D8D5D] w-[56px] h-[58px] overflow-hidden">
                                                         <i class="icon-angle-right text-[12px] leading-none text-white transition-all duration-300 group-hover:min-md:duration-600 translate-x-[-100px] opacity-0 group-hover:min-md:translate-x-0 rtl:group-hover:min-md:translate-x-[-12px] group-hover:min-md:opacity-100 w-0 whitespace-nowrap rtl:scale-x-[-1]"></i>
-                                <i class="icon-angle-right text-[12px] leading-none text-white transition-all duration-600 group-hover:min-md:duration-300 group-hover:min-md:translate-x-[100px] group-hover:min-md:opacity-0 rtl:scale-x-[-1]"></i>
+                                                        <i class="icon-angle-right text-[12px] leading-none text-white transition-all duration-600 group-hover:min-md:duration-300 group-hover:min-md:translate-x-[100px] group-hover:min-md:opacity-0 rtl:scale-x-[-1]"></i>
                                                     </div>
                                                 </a>
                                             </div>
