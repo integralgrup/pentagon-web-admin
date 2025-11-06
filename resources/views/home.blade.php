@@ -172,7 +172,11 @@
             <div class="flex flex-wrap items-center">
                 <div class="w-3/5 md:w-full ltr:pr-[77px] rtl:pl-[77px] md:mt-[15px] md:!p-0 md:order-2">
                     <div class="image-wrapper reveal w-full sm:h-auto relative flex flex-col sm:flex-col-reverse" id="brand-logo-image-area">
-                        <img src="" alt="Markamız qwe" width="814" height="696" class=" w-full h-[700px] md:h-[580px] sm:h-[320px] object-cover relative z-2 transition-all duration-450 [&.changed]:opacity-0 [&.changed]:translate-y-[5px]" id="brand-image">
+                        <div class="relative h-[700px] md:h-[580px] sm:h-[320px]">
+                        <?php foreach ($brands as $logo): ?>
+                            <img data-brand-image src="<?= $logo['image'] ?>" alt="Markamız" width="814" height="696" class="absolute inset-0 size-full object-cover z-2 transition-all duration-450 first:!opacity-100 [&:not(.toggle)]:opacity-0">
+                        <?php endforeach; ?>
+                    </div>
                         <div class="bg-primary-main absolute min-sm:-bottom-[10px] sm:-top-[20px] ltr:-left-[60px] ltr:sm:-left-[50px] -- rtl:-right-[60px] rtl:sm:-right-[50px] w-[421px] sm:w-[320px] aspect-square"></div>
                     <div class="reveal nav-buttons w-full flex items-center gap-[30px] pt-[12px] sm:pt-0 sm:pb-[12px] ltr:pl-[135px] ltr:2xl:pl-[100px] ltr:xl:pl-[70px] ltr:sm:pl-[30px] -- rtl:pr-[135px] rtl:2xl:pr-[100px] rtl:xl:pr-[70px] rtl:sm:pr-[30px] relative z-2">
                         <div class="brand-prev cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.brand-disabled]:opacity-65 relative [&.brand-disabled]:after:hidden after:absolute after:bottom-0 ltr:after:right-0 rtl:after:left-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 ltr:hover:after:right-auto rtl:hover:after:left-auto ltr:hover:after:left-0 rtl:hover:after:right-0 hover:after:w-full">
@@ -222,7 +226,6 @@
                             <div class="swiper-wrapper">
                                 <?php foreach ($brands as $item) { ?>
                                     <div class="swiper-slide">
-                                        <div class="img hidden" data-image="<?= $item['image'] ?>"></div>
                                         <div class="text-editor order-3 md:order-2 md:mt-[20px]">
                                             <p class="text-[18px] lg:text-[16px] leading-[32px] font-light text-paragraph mb-[60px] xl:mb-[40px] md:mb-[20px]">
                                                 <?=$item->description?>
