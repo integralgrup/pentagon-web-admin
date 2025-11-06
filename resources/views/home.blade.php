@@ -174,7 +174,7 @@
                     <div class="image-wrapper reveal w-full sm:h-auto relative flex flex-col sm:flex-col-reverse" id="brand-logo-image-area">
                         <div class="relative h-[700px] md:h-[580px] sm:h-[320px]">
                         <?php foreach ($brands as $logo): ?>
-                            <img data-brand-image src="<?= env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','brand_images_folder'], app()->getLocale()) . '/' . $logo['image'] ?>" alt="Markamız" width="814" height="696" class="absolute inset-0 size-full object-cover z-2 transition-all duration-450 first:!opacity-100 [&:not(.toggle)]:opacity-0">
+                            <img data-brand-image src="<?= env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','brand_images_folder'], app()->getLocale()) . '/' . $logo['banner_image'] ?>" alt="Markamız" width="814" height="696" class="absolute inset-0 size-full object-cover z-2 transition-all duration-450 first:!opacity-100 [&:not(.toggle)]:opacity-0">
                         <?php endforeach; ?>
                     </div>
                         <div class="bg-primary-main absolute min-sm:-bottom-[10px] sm:-top-[20px] ltr:-left-[60px] ltr:sm:-left-[50px] -- rtl:-right-[60px] rtl:sm:-right-[50px] w-[421px] sm:w-[320px] aspect-square"></div>
