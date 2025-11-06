@@ -7,7 +7,7 @@
             <div class="swiper-wrapper">
                 <?php
                     foreach ($sliders as $key => $item) { ?>
-                        <div class="swiper-slide isolate overflow-hidden" data-slide-name="<?= $item->slide_title ?>">
+                        <!--<div class="swiper-slide isolate overflow-hidden" data-slide-name="<?= $item->slide_title ?>">
                             <div class="item relative w-full h-full">
                                 <div class="image-wrapper w-full h-full pointer-events-none relative" data-swiper-parallax="50%">
                                     <div class="slider-image z-2 w-full h-full">
@@ -39,6 +39,47 @@
                                                         <div class="right flex items-center justify-center z-2 bg-[#9D8D5D] py-[22px] px-[24px] border border-solid border-[#9D8D5D] w-[56px] h-[58px] overflow-hidden">
                                                             <i class="icon-angle-right text-[12px] leading-none text-white transition-all duration-300 group-hover:min-md:duration-600 translate-x-[-100px] opacity-0 group-hover:min-md:translate-x-0 group-hover:min-md:opacity-100 w-0 whitespace-nowrap"></i>
                                                             <i class="icon-angle-right text-[12px] leading-none text-white transition-all duration-600 group-hover:min-md:duration-300 group-hover:min-md:translate-x-[100px] group-hover:min-md:opacity-0"></i>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                        <div class="swiper-slide isolate overflow-hidden" data-slide-name="<?= $item->slide_title ?>">
+                            <div class="item relative w-full h-full">
+                                <div class="image-wrapper w-full h-full pointer-events-none relative" data-swiper-parallax="50%">
+                                    <div class="slider-image z-2 w-full h-full">
+                                        <img src="<?= env('HTTP_DOMAIN') .'/'. getFolder(['uploads_folder','images_folder'], $item->lang) .'/'. $item->image ?>" alt="<?=$item->alt?>" width="1920" height="968" class="w-full h-full object-cover">
+                                    </div>
+                                    <img src="../assets/image/static/slider-overlay.png" alt="Slider Overlay" width="1920" height="968" class="absolute left-0 top-0 w-full h-full object-cover z-3 rtl:scale-x-[-1] sm:hidden">
+                                    <div class="overlay min-sm:hidden absolute left-0 top-0 w-full h-full z-3 bg-white/80"></div>
+                                    <div class="overlays hidden">
+                                        <div class="overlay-1 absolute left-0 bottom-0 w-full h-[48px] z-3 [background:linear-gradient(180deg,_#FBFAF6_0.38%,_rgba(251,250,246,0.15)_29.8%,_rgba(251,250,246,0.00)_62.07%)]"></div>
+                                        <div class="overlay-2 absolute left-0 top-0 w-full h-full z-4 [background:linear-gradient(156deg,_#FFF_1.74%,_rgba(255,255,255,0.00)_29.3%)]"></div>
+                                        <div class="overlay-3 absolute left-0 top-0 w-full h-full z-5 [background:radial-gradient(115.89%_108.39%_at_49.35%_-28.77%,_#FCFBF7_0.38%,_rgba(252,251,247,0.00)_35%)]"></div>
+                                        <div class="overlay-4 absolute left-0 top-0 w-full h-full z-6 [background:linear-gradient(188deg,_#FBFAF6_11.42%,_rgba(251,250,246,0.81)_31.08%,_rgba(251,250,246,0.68)_37.96%,_rgba(251,250,246,0.00)_65.46%)]"></div>
+                                        <div class="overlay-5 absolute left-0 top-0 w-full h-full z-7 opacity-30 [background:linear-gradient(180deg,_rgba(255,255,255,0.00)_0%,_#D9D9D9_100%)]"></div>
+                                    </div>
+                                </div>
+                                <div class="content absolute w-full h-full left-0 top-0 <?= $key == 0 ? 'reveal' : ''; ?>">
+                                    <div class="container max-w-[1650px] h-full">
+                                        <div class="wrapper h-full flex items-center">
+                                            <div class="w-1/3 min-md:translate-y-[-50px] md:w-1/2 sm:w-full">
+                                                <div class="flex flex-col text-editor">
+                                                    <p class="text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-light text-secondary-main mb-[24px] sm:mb-[20px]">
+                                                        <span class="font-bold"><?=$item->title_1?></span></p>
+                                                    <p class="text-[18px] lg:text-[16px] leading-[32px] font-light text-paragraph mb-[60px] xl:mb-[40px] md:mb-[30px]"><?=$item->title_2?></p>
+                                                    <a href="#" class="flex items-center justify-center relative w-max overflow-hidden main-button group sm:w-full">
+                                                        <div class="left px-[30px] py-[20px] flex items-center justify-center z-2 bg-transparent border border-solid border-primary-main transition-all duration-300 sm:w-full relative before:absolute before:left-0 before:top-0 before:w-0 before:h-full before:translate-x-[-100px] group-hover:before:min-md:w-full group-hover:before:min-md:translate-x-0 before:bg-primary-main before:transition-all before:duration-500">
+                                                            <span class="text-[16px] leading-none font-medium text-primary-main transition-all duration-300 group-hover:min-md:duration-600 group-hover:min-md:text-white translate-x-[-100px] opacity-0 group-hover:min-md:translate-x-0 rtl:group-hover:min-md:translate-x-[-12px] group-hover:min-md:opacity-100 w-0 whitespace-nowrap relative z-2"><?=$item->button_title?></span>
+                                                            <span class="text-[16px] leading-none font-medium text-primary-main transition-all duration-600 group-hover:min-md:duration-300 group-hover:min-md:text-white group-hover:min-md:translate-x-[100px] group-hover:min-md:opacity-0 relative z-2"><?=$item->button_title?></span>
+                                                        </div>
+                                                        <div class="right flex items-center justify-center z-2 bg-[#9D8D5D] py-[22px] px-[24px] border border-solid border-[#9D8D5D] w-[56px] h-[58px] overflow-hidden">
+                                                            <i class="icon-angle-right text-[12px] leading-none text-white transition-all duration-300 group-hover:min-md:duration-600 translate-x-[-100px] opacity-0 group-hover:min-md:translate-x-0 rtl:group-hover:min-md:translate-x-[-12px] group-hover:min-md:opacity-100 w-0 whitespace-nowrap rtl:scale-x-[-1] rtl:origin-left"></i>
+                                                            <i class="icon-angle-right text-[12px] leading-none text-white transition-all duration-600 group-hover:min-md:duration-300 group-hover:min-md:translate-x-[100px] group-hover:min-md:opacity-0 rtl:scale-x-[-1]"></i>
                                                         </div>
                                                     </a>
                                                 </div>
@@ -177,7 +218,7 @@
                             <img data-brand-image src="<?= env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','brand_images_folder'], app()->getLocale()) . '/' . $logo['banner_image'] ?>" alt="Markamız" width="814" height="696" class="absolute inset-0 size-full object-cover z-2 transition-all duration-450 first:!opacity-100 [&:not(.toggle)]:opacity-0">
                         <?php endforeach; ?>
                     </div>
-                        <div class="bg-primary-main absolute min-sm:-bottom-[10px] sm:-top-[20px] ltr:-left-[60px] ltr:sm:-left-[50px] -- rtl:-right-[60px] rtl:sm:-right-[50px] w-[421px] sm:w-[320px] aspect-square"></div>
+                    <div class="bg-primary-main absolute min-sm:-bottom-[10px] sm:-top-[20px] ltr:-left-[60px] ltr:sm:-left-[50px] -- rtl:-right-[60px] rtl:sm:-right-[50px] w-[421px] sm:w-[320px] aspect-square"></div>
                     <div class="reveal nav-buttons w-full flex items-center gap-[30px] pt-[12px] sm:pt-0 sm:pb-[12px] ltr:pl-[135px] ltr:2xl:pl-[100px] ltr:xl:pl-[70px] ltr:sm:pl-[30px] -- rtl:pr-[135px] rtl:2xl:pr-[100px] rtl:xl:pr-[70px] rtl:sm:pr-[30px] relative z-2">
                         <div class="brand-prev cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.brand-disabled]:opacity-65 relative [&.brand-disabled]:after:hidden after:absolute after:bottom-0 ltr:after:right-0 rtl:after:left-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 ltr:hover:after:right-auto rtl:hover:after:left-auto ltr:hover:after:left-0 rtl:hover:after:right-0 hover:after:w-full">
                             <i class="icon-angle-left text-[12px] leading-none text-white rtl:scale-x-[-1]"></i>
