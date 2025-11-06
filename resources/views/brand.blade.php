@@ -373,7 +373,7 @@
 
                             <div class="gallery-next cursor-pointer flex items-center gap-[9px] md:w-[40px] md:h-[40px] md:justify-center transition-all duration-300 [&.gallery-disabled]:opacity-65 relative [&.gallery-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
                                 <span class="text-[16px] leading-[32px] text-white md:hidden">Sonraki</span>
-                                <i class="icon-angle-right text-[12px] leading-none text-white "></i>
+                                <i class="icon-angle-right text-[12px] leading-none text-white rtl:scale-x-[-1]"></i>
                             </div>
                         </div>
                     </div>

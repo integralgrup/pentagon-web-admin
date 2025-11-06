@@ -223,7 +223,7 @@
                             <div class="separator w-[1px] h-[22px] bg-white/20"></div>
                             <div class="brand-next cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.brand-disabled]:opacity-65 relative [&.brand-disabled]:after:hidden after:absolute after:bottom-0 ltr:after:right-0 rtl:after:left-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 ltr:hover:after:right-auto rtl:hover:after:left-auto ltr:hover:after:left-0 rtl:hover:after:right-0 hover:after:w-full">
                                 <span class="text-[16px] leading-[32px] text-white"><?= getStaticText(3) ?></span>
-                                <i class="icon-angle-right text-[12px] leading-none text-white "></i>
+                                <i class="icon-angle-right text-[12px] leading-none text-white rtl:scale-x-[-1]"></i>
                             </div>
                         </div>
                     </div>
