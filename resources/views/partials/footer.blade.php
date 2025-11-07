@@ -2,7 +2,7 @@
     $footerInfo = App\Models\FooterInfo::where('lang', app()->getLocale())->first();
 ?>
 <footer class="footer-field bg-secondary-main pt-[60px] sm:pt-[45px] xs:pt-[5px] w-full relative overflow-hidden">
-    <div class="scroll-top absolute flex flex-col items-center right-[35px] bottom-[145px] z-10 cursor-pointer transition-all duration-300 hover:scale-x-95 hover:scale-y-110" id="scroll-top">
+    <div class="scroll-top absolute flex flex-col items-center ltr:right-[35px] rtl:left-[35px] bottom-[145px] z-10 cursor-pointer transition-all duration-300 hover:scale-x-95 hover:scale-y-110" id="scroll-top">
         <i class="icon-arrow-up-long text-[27px] text-white"></i>
         <p class="text-[12px] leading-normal tracking-[1.2px] font-medium text-white uppercase"><?=getStaticText(12)?></p>
     </div>
