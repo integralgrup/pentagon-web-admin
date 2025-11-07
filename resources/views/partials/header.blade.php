@@ -30,9 +30,9 @@
 </head>
 @if(app()->getLocale() == 'ae')
 <style>
-    /*body{
-        direction: rtl;
-    }*/
+    .header-nav ul li a {
+        white-space: nowrap;
+    }
 </style>
 @endif
 <body class="antialiased font-sans [background:linear-gradient(0deg,_#FBFAF6_0%,_#FBFAF6_100%),_#FFF] [&.contact]:!bg-white group/body">
