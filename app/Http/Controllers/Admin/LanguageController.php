@@ -70,9 +70,9 @@ class LanguageController extends Controller
                 'brand_images_folder' => 'nullable|string|max:255',
                 'blog_images_folder' => 'nullable|string|max:255',
                 'catalog_files_folder' => 'nullable|string|max:255',
-                'ga_code' => 'nullable|string|max:100',
-                'bitrix_form_code' => 'nullable|string|max:100',
-                'bitrix_widget_code' => 'nullable|string|max:100',
+                'ga_code' => 'nullable|string',
+                'bitrix_form_code' => 'nullable|string',
+                'bitrix_widget_code' => 'nullable|string',
                 'sort' => 'nullable|integer'
             ]);
 

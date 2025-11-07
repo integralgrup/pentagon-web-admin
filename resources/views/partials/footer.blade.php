@@ -1,5 +1,6 @@
 <?php
     $footerInfo = App\Models\FooterInfo::where('lang', app()->getLocale())->first();
+    $language = App\Models\Language::where('lang_code', app()->getLocale())->first();
 ?>
 <footer class="footer-field bg-secondary-main pt-[60px] sm:pt-[45px] xs:pt-[5px] w-full relative overflow-hidden">
     <div class="scroll-top absolute flex flex-col items-center ltr:right-[35px] rtl:left-[35px] bottom-[145px] z-10 cursor-pointer transition-all duration-300 hover:scale-x-95 hover:scale-y-110" id="scroll-top">
@@ -351,6 +352,7 @@
 
     <!-- Önbellek tutmasın diye ekledim '?id<?= rand(); ?>' yazısını silersin -->
     <script src="{{ asset('assets/js/script.js?id=' . rand()) }}"></script>
+    {!! $language->bitrix_widget_code !!}
 
 </body>
 
