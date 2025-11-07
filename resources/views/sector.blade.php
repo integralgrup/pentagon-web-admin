@@ -245,7 +245,7 @@
         <section class="gallery mb-[170px] xl:mb-[120px] lg:mb-[90px] md:mb-[60px] overflow-hidden">
             <div class="container max-w-[1650px]">
                 <h3 class="reveal text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-light text-secondary-main mb-[60px] xs:mb-[30px] text-center">
-                    Pentagon Yapı <br> <span class="font-bold">Galeri Medyası</span>
+                    {{ getStaticText(38) }}
                 </h3>
 
                 <div class="gallery-slider reveal overflow-[revert]">
