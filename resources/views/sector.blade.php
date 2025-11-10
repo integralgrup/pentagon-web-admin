@@ -436,7 +436,7 @@
                                             <div class="img hidden" data-image="<?= $item['image'] ?>"></div>
                                             <div class="text-editor order-3 md:order-2 md:mt-[20px]">
                                                 <p class="text-[18px] lg:text-[16px] leading-[32px] font-light text-paragraph mb-[60px] xl:mb-[40px] md:mb-[20px]">
-                                                    <?=$item->description?>
+                                                    <?=$item['description']?>
                                                  </p>
                                             </div>
                                             <a href="<?= $item['website'] ?>" target="_blank" class="order-4 flex items-center justify-center relative w-max overflow-hidden main-button group/button sm:w-full" id="website-button">
