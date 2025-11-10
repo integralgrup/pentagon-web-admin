@@ -395,13 +395,22 @@
                     'website' => 'https://netrags.com',
                     'title' => 'Netrags'
                 ],
-            ];  ?>
+            ]; 
+                foreach ($brands as $brand) {
+                    $logos[] = [
+                        'logo' => env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','brand_images_folder'], app()->getLocale()) . '/' . $brand->image,
+                        'image' => env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','brand_images_folder'], app()->getLocale()) . '/' . $brand->bg_image,
+                        'website' => $brand->url,
+                        'title' => $brand->title
+                    ];
+                }
+            ?>
             <div class="container max-w-[1650px]">
                 <div class="flex flex-wrap items-center">
                     <div class="w-3/5 md:w-full ltr:pr-[77px] rtl:pl-[77px] md:mt-[15px] md:!p-0 md:order-2">
                         <div class="image-wrapper reveal w-full sm:h-auto relative flex flex-col sm:flex-col-reverse" id="brand-logo-image-area">
                             <div class="relative h-[700px] md:h-[580px] sm:h-[320px]">
-                                <?php foreach ($brands as $logo): ?>
+                                <?php foreach ($logos as $logo): ?>
                                     <img data-brand-image src="<?= $logo['image'] ?>" alt="Markamız" width="814" height="696" class="absolute inset-0 size-full object-cover z-2 transition-all duration-450 first:!opacity-100 [&:not(.toggle)]:opacity-0">
                                 <?php endforeach; ?>
                             </div>
@@ -425,7 +434,7 @@
                         <div class="flex flex-col reveal">
                             <div class="brand-slider-top reveal overflow-hidden order-1">
                                 <div class="swiper-wrapper">
-                                    <?php foreach ($brands as $item) { ?>
+                                    <?php foreach ($logos as $item) { ?>
                                         <div class="swiper-slide">
                                             <div class="img hidden" data-image="<?= $item['image'] ?>"></div>
                                             <div class="text-editor">
@@ -442,7 +451,7 @@
                             </div>
                             <div class="brand-slider my-[40px] md:my-[20px] reveal overflow-hidden order-2 md:order-3 relative before:xs:hidden after:xs:hidden before:absolute before:left-0 before:top-0 before:w-[125px] before:h-full before:z-2 before:[background:linear-gradient(90deg,_#FBFAF6_16.53%,_rgba(247,_249,_249,_0.00)_100%)] after:absolute after:right-0 after:top-0 after:w-[125px] after:h-full after:z-2 after:[background:linear-gradient(270deg,_#FBFAF6_16.53%,_rgba(247,_249,_249,_0.00)_100%)]">
                                 <div class="swiper-wrapper">
-                                    <?php foreach ($brands as $item) { ?>
+                                    <?php foreach ($logos as $item) { ?>
                                         <div class="swiper-slide group">
                                             <div class="logo grayscale flex items-center justify-center h-[80px] opacity-50 transition-all duration-300 scale-90 group-[&.swiper-slide-active]:grayscale-0 group-[&.swiper-slide-active]:opacity-100 group-[&.swiper-slide-active]:scale-100">
                                                 <img src="../assets/image/logos/<?= $item['logo'] ?>" alt="Group Logo" width="176" height="40" class="group-[&.swiper-slide-active]:w-full group-[&.swiper-slide-active]:h-full w-5/6 h-5/6 object-contain transition-all duration-450 group-[&.swiper-slide-active]:xs:w-3/4 group-[&.swiper-slide-active]:xs:h-3/4">
@@ -453,7 +462,7 @@
                             </div>
                             <div class="brand-slider-bottom overflow-hidden order-3 md:order-2 reveal">
                                 <div class="swiper-wrapper">
-                                    <?php foreach ($brands as $item) { ?>
+                                    <?php foreach ($logos as $item) { ?>
                                         <div class="swiper-slide">
                                             <div class="img hidden" data-image="<?= $item['image'] ?>"></div>
                                             <div class="text-editor order-3 md:order-2 md:mt-[20px]">
