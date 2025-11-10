@@ -411,7 +411,7 @@
                                             <div class="text-editor">
                                                 <span class="text-[16px] leading-[32px] font-light text-paragraph opacity-65 tracking-[7.2px] block mb-[30px] lg:mb-[15px]">Markalarımız</span>
                                                 <h2 class="text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-light text-secondary-main">
-                                                    <?=$item->title?>
+                                                    <?=$item['title']?>
                                                 </h2>
                                             </div>
                                         </div>
