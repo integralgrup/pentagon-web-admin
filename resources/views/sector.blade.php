@@ -365,39 +365,7 @@
             </div>
         </section>--> 
         <section class="brands relative mb-[200px] 2xl:mb-[150px] xl:mb-[120px]">
-            <?php 
-            //dd($brands);
-            $logos = [
-                [
-                    'logo' => 'easy-garden.svg',
-                    'image' => '../assets/image/general/brand-image.jpg',
-                    'website' => 'https://easygarden.com',
-                    'title' => 'Easy Garden'
-                ],
-
-                [
-                    'logo' => 'geo-bera.svg',
-                    'image' => '../assets/image/general/career-image.jpg',
-                    'website' => 'https://geobera.com',
-                    'title' => 'Gero Bera'
-                ],
-
-                [
-                    'logo' => 'pera-grass.svg',
-                    'image' => '../assets/image/general/gallery-image.jpg',
-                    'website' => 'https://geragrass.com',
-                    'title' => 'Pera Grass'
-                ],
-
-                [
-                    'logo' => 'net-rags.svg',
-                    'image' => '../assets/image/general/home-sector.jpg',
-                    'website' => 'https://netrags.com',
-                    'title' => 'Netrags'
-                ],
-            ]; 
-                dd($brands);
-            ?>
+            
             <div class="container max-w-[1650px]">
                 <div class="flex flex-wrap items-center">
                     <div class="w-3/5 md:w-full ltr:pr-[77px] rtl:pl-[77px] md:mt-[15px] md:!p-0 md:order-2">
