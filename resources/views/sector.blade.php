@@ -368,7 +368,7 @@
             <?php 
             
             $logos = [
-                /*[
+                [
                     'logo' => 'easy-garden.svg',
                     'image' => '../assets/image/general/brand-image.jpg',
                     'website' => 'https://easygarden.com',
@@ -394,16 +394,9 @@
                     'image' => '../assets/image/general/home-sector.jpg',
                     'website' => 'https://netrags.com',
                     'title' => 'Netrags'
-                ],*/
+                ],
             ]; 
-                foreach ($brands as $brand) {
-                    $logos[] = [
-                        'logo' => env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','brand_images_folder'], app()->getLocale()) . '/' . $brand->image,
-                        'image' => env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','brand_images_folder'], app()->getLocale()) . '/' . $brand->bg_image,
-                        'website' => $brand->url,
-                        'title' => $brand->title
-                    ];
-                }
+                
             ?>
             <div class="container max-w-[1650px]">
                 <div class="flex flex-wrap items-center">
@@ -454,7 +447,7 @@
                                     <?php foreach ($logos as $item) { ?>
                                         <div class="swiper-slide group">
                                             <div class="logo grayscale flex items-center justify-center h-[80px] opacity-50 transition-all duration-300 scale-90 group-[&.swiper-slide-active]:grayscale-0 group-[&.swiper-slide-active]:opacity-100 group-[&.swiper-slide-active]:scale-100">
-                                                <img src="<?= $item['logo'] ?>" alt="Group Logo" width="176" height="40" class="group-[&.swiper-slide-active]:w-full group-[&.swiper-slide-active]:h-full w-5/6 h-5/6 object-contain transition-all duration-450 group-[&.swiper-slide-active]:xs:w-3/4 group-[&.swiper-slide-active]:xs:h-3/4">
+                                                <img src="../assets/image/logos/<?= $item['logo'] ?>" alt="Group Logo" width="176" height="40" class="group-[&.swiper-slide-active]:w-full group-[&.swiper-slide-active]:h-full w-5/6 h-5/6 object-contain transition-all duration-450 group-[&.swiper-slide-active]:xs:w-3/4 group-[&.swiper-slide-active]:xs:h-3/4">
                                             </div>
                                         </div>
                                     <?php } ?>
