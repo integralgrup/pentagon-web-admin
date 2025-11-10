@@ -372,7 +372,8 @@
                         'logo' => env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','brand_images_folder'], app()->getLocale()) . '/' . $brand['banner_image'],
                         'image' => env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','brand_images_folder'], app()->getLocale()) . '/' . $brand['bg_image'],
                         'website' => $brand['url'],
-                        'title' => $brand['title']
+                        'title' => $brand['title'],
+                        'description' => $brand['description'],
                     ];
                 }
             ?>
