@@ -396,7 +396,7 @@
                     'title' => 'Netrags'
                 ],
             ]; 
-                
+                dd($brands);
             ?>
             <div class="container max-w-[1650px]">
                 <div class="flex flex-wrap items-center">
@@ -431,7 +431,7 @@
                                         <div class="swiper-slide">
                                             <div class="img hidden" data-image="<?= env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','brand_images_folder'], app()->getLocale()) . '/' . $item->bg_image ?>"></div>
                                             <div class="text-editor">
-                                                <span class="text-[16px] leading-[32px] font-light text-paragraph opacity-65 tracking-[7.2px] block mb-[30px] lg:mb-[15px]">Markalarımız</span>
+                                                <span class="text-[16px] leading-[32px] font-light text-paragraph opacity-65 tracking-[7.2px] block mb-[30px] lg:mb-[15px]"><?= getStaticText(6) ?></span>
                                                 <h2 class="text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-light text-secondary-main">
                                                     <?= $item->title ?>
                                                 </h2>
