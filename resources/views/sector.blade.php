@@ -404,7 +404,7 @@
                         <div class="image-wrapper reveal w-full sm:h-auto relative flex flex-col sm:flex-col-reverse" id="brand-logo-image-area">
                             <div class="relative h-[700px] md:h-[580px] sm:h-[320px]">
                                 <?php foreach ($brands as $logo): ?>
-                                    <img data-brand-image src="<?= env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','brand_images_folder'], app()->getLocale()) . '/' . $logo['banner_image'] ?>" alt="Markamız" width="814" height="696" class="absolute inset-0 size-full object-cover z-2 transition-all duration-450 first:!opacity-100 [&:not(.toggle)]:opacity-0">
+                                    <img data-brand-image src="<?= env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','brand_images_folder'], app()->getLocale()) . '/' . $logo['bg_image'] ?>" alt="Markamız" width="814" height="696" class="absolute inset-0 size-full object-cover z-2 transition-all duration-450 first:!opacity-100 [&:not(.toggle)]:opacity-0">
                                 <?php endforeach; ?>
                             </div>
                             <div class="bg-primary-main absolute min-sm:-bottom-[10px] sm:-top-[20px] ltr:-left-[60px] ltr:sm:-left-[50px] -- rtl:-right-[60px] rtl:sm:-right-[50px] w-[421px] sm:w-[320px] aspect-square"></div>
@@ -427,9 +427,9 @@
                         <div class="flex flex-col reveal">
                             <div class="brand-slider-top reveal overflow-hidden order-1">
                                 <div class="swiper-wrapper">
-                                    <?php foreach ($logos as $item) { ?>
+                                    <?php foreach ($brands as $item) { ?>
                                         <div class="swiper-slide">
-                                            <div class="img hidden" data-image="<?= $item['image'] ?>"></div>
+                                            <div class="img hidden" data-image="<?= env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','brand_images_folder'], app()->getLocale()) . '/' . $item['bg_image'] ?>"></div>
                                             <div class="text-editor">
                                                 <span class="text-[16px] leading-[32px] font-light text-paragraph opacity-65 tracking-[7.2px] block mb-[30px] lg:mb-[15px]">Markalarımız</span>
                                                 <h2 class="text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-light text-secondary-main">
@@ -444,10 +444,10 @@
                             </div>
                             <div class="brand-slider my-[40px] md:my-[20px] reveal overflow-hidden order-2 md:order-3 relative before:xs:hidden after:xs:hidden before:absolute before:left-0 before:top-0 before:w-[125px] before:h-full before:z-2 before:[background:linear-gradient(90deg,_#FBFAF6_16.53%,_rgba(247,_249,_249,_0.00)_100%)] after:absolute after:right-0 after:top-0 after:w-[125px] after:h-full after:z-2 after:[background:linear-gradient(270deg,_#FBFAF6_16.53%,_rgba(247,_249,_249,_0.00)_100%)]">
                                 <div class="swiper-wrapper">
-                                    <?php foreach ($logos as $item) { ?>
+                                    <?php foreach ($brands as $item) { ?>
                                         <div class="swiper-slide group">
                                             <div class="logo grayscale flex items-center justify-center h-[80px] opacity-50 transition-all duration-300 scale-90 group-[&.swiper-slide-active]:grayscale-0 group-[&.swiper-slide-active]:opacity-100 group-[&.swiper-slide-active]:scale-100">
-                                                <img src="../assets/image/logos/<?= $item['logo'] ?>" alt="Group Logo" width="176" height="40" class="group-[&.swiper-slide-active]:w-full group-[&.swiper-slide-active]:h-full w-5/6 h-5/6 object-contain transition-all duration-450 group-[&.swiper-slide-active]:xs:w-3/4 group-[&.swiper-slide-active]:xs:h-3/4">
+                                                <img src="<?= env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','brand_images_folder'], app()->getLocale()) . '/' . $item['image'] ?>" alt="Group Logo" width="176" height="40" class="group-[&.swiper-slide-active]:w-full group-[&.swiper-slide-active]:h-full w-5/6 h-5/6 object-contain transition-all duration-450 group-[&.swiper-slide-active]:xs:w-3/4 group-[&.swiper-slide-active]:xs:h-3/4">
                                             </div>
                                         </div>
                                     <?php } ?>
@@ -457,7 +457,7 @@
                                 <div class="swiper-wrapper">
                                     <?php foreach ($logos as $item) { ?>
                                         <div class="swiper-slide">
-                                            <div class="img hidden" data-image="<?= $item['image'] ?>"></div>
+                                            <div class="img hidden" data-image="<?= env('HTTP_DOMAIN').'/'. getFolder(['uploads_folder','brand_images_folder'], app()->getLocale()) . '/' . $item['bg_image'] ?>"></div>
                                             <div class="text-editor order-3 md:order-2 md:mt-[20px]">
                                                 <p class="text-[18px] lg:text-[16px] leading-[32px] font-light text-paragraph mb-[60px] xl:mb-[40px] md:mb-[20px]">
                                                     İnşaat sektöründeki köklü deneyimimiz ve yenilikçi bakış açımızla geleceği inşa ediyoruz. Küresel arenada, spor tesislerinden sürdürülebilir konutlara kadar geniş bir yelpazede faaliyet gösteriyoruz.
