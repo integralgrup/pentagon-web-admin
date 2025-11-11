@@ -33,6 +33,9 @@
     .header-nav ul li a {
         white-space: nowrap;
     }
+    .b24-window-panel{
+        background-color: #fff !important;
+    }
 </style>
 @endif
 <body class="antialiased font-sans [background:linear-gradient(0deg,_#FBFAF6_0%,_#FBFAF6_100%),_#FFF] [&.contact]:!bg-white group/body">
