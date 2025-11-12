@@ -66,7 +66,7 @@
 
         </div>
     </section>
-
+        <div><h1>AKNVRL</h1></div>
     <section class="about-us relative mb-[150px] xl:mb-[120px] lg:mb-[90px] md:mb-[60px]" id="about-us">
         <img src="{{ asset('assets')}}/image/static/vectorel.svg" alt="Vektör" width="387" height="588" class="pointer-events-none absolute top-1/2 -translate-y-1/2 right-0 ">
         <div class="container max-w-[1650px]">
