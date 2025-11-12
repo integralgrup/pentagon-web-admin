@@ -41,6 +41,10 @@
         background-color: #fff !important;
     }
 </style>
+<script>
+    window.BX24WidgetConfig = { webrtc: false };
+</script>
+
 <body class="antialiased font-sans [background:linear-gradient(0deg,_#FBFAF6_0%,_#FBFAF6_100%),_#FFF] [&.contact]:!bg-white group/body">
 <!-- Get Menu items from app\Models\Menu which is not deleted -->
 <?php $menuItems = App\Models\Menu::where(['lang' => app()->getLocale(), 'parent_menu_id' => 0, 'menu_type' => 'header'])->where('deleted_at', null)->orderBy('sort')->get(); ?>
