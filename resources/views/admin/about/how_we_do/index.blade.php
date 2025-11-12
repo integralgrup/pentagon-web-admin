@@ -56,7 +56,7 @@
                                     <th>İşlemler</th>
                                 </tr>
                             </thead>
-                            <tbody class="connectedSortable" table_name="about_how_we_do">
+                            <tbody class="connectedSortable" table_name="about_how_we_do" column_name="content_id">
                                 @foreach($how_we_do as $item)
                                     <tr data-id="{{$item->content_id}}">
                                         <td>{{ $loop->iteration }}</td>
