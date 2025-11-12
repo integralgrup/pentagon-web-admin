@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- add no index --> 
-    <meta name="robots" content="noindex,nofollow">
+    <meta name="robots" content="index,follow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @if(isset($seo))
     <meta name="keywords" content="{{ $seo->seo_keywords }}">
