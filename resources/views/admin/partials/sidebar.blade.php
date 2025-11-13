@@ -203,6 +203,12 @@
                       <p>Dil Ayarları</p>
                     </a>
                   </li>
+                  <li class="nav-item">
+                    <a href="{{ route('admin.code.edit') }}" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>Kod Ayarları</p>
+                    </a>
+                  </li>
                 </ul>
               </li>
             </ul>

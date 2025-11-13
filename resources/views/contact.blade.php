@@ -103,7 +103,7 @@
                     <?=getStaticText(37)?>
                 </h4>
                 <div>
-                    {!! $language->bitrix_form_code !!}
+                    {!! $code->bitrix_form_code !!}
                 </div>
                 <!--<form action="#" method="post" id="contact-form" enctype="multipart/form-data">
                     <div class="grid grid-cols-2 gap-[30px] sm:gap-[25px] xs:gap-[12px]">

@@ -21,6 +21,7 @@ use App\Models\CatalogGroup;
 use App\Models\Office;
 use App\Models\Page;
 use App\Models\SeoSettings;
+use App\Models\Code;
 use Illuminate\Support\Facades\DB;
 
 
@@ -159,9 +160,11 @@ class HomeController extends Controller
         if($menu->page_type == 'contact') {
             $offices = Office::where(['lang' => app()->getLocale()])->get();
             $seo = SeoSettings::where('page', 'contact')->where('lang', app()->getLocale())->first();
+            $code = Code::where('lang', app()->getLocale())->first();
             $language = Language::where('lang_code', app()->getLocale())->first();
+            
             //dd($language);
-            return view('contact', compact('offices', 'seo', 'language'));
+            return view('contact', compact('offices', 'seo', 'language', 'code'));
         }
 
         if($menu->page_type == 'page') {

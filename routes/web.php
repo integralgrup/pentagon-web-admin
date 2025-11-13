@@ -234,6 +234,13 @@ Route::post('/admin/footer-info/store', 'App\Http\Controllers\Admin\FooterInfoCo
 Route::get('/admin/footer-info/{id}/edit', 'App\Http\Controllers\Admin\FooterInfoController@edit')->name('admin.footer_info.edit');
 Route::delete('/admin/footer-info/{id}', 'App\Http\Controllers\Admin\FooterInfoController@destroy')->name('admin.footer_info.destroy');
 
+// Code Routes
+Route::get('/admin/code', 'App\Http\Controllers\Admin\CodeController@index')->name('admin.code.index');
+Route::get('/admin/code/create', 'App\Http\Controllers\Admin\CodeController@create')->name('admin.code.create');
+Route::post('/admin/code/store', 'App\Http\Controllers\Admin\CodeController@store')->name('admin.code.store');
+Route::get('/admin/code/edit', 'App\Http\Controllers\Admin\CodeController@edit')->name('admin.code.edit');
+Route::delete('/admin/code/{id}', 'App\Http\Controllers\Admin\CodeController@destroy')->name('admin.code.destroy');
+
 Route::post('/admin/update-order', 'App\Http\Controllers\Admin\FooterInfoController@updateSortOrder')->name('admin.update_order');
 
 

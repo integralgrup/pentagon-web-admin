@@ -352,7 +352,8 @@
 
     <!-- Önbellek tutmasın diye ekledim '?id<?= rand(); ?>' yazısını silersin -->
     <script src="{{ asset('assets/js/script.js?id=' . rand()) }}"></script>
-    {!! $language->bitrix_widget_code !!}
+    <?php $code = \App\Models\Code::where('lang', app()->getLocale())->first(); ?>
+    {!! $code->bitrix_widget_code !!}
 
 </body>
 
