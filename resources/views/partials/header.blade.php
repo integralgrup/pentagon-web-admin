@@ -27,6 +27,10 @@
         /*to prevent Firefox FOUC, this must be here*/
         let FF_FOUC_FIX;
     </script>
+    <?php $language = App\Models\Language::where('lang_code', app()->getLocale())->first(); 
+        //dd($language);
+    ?>  
+    {!! $language->ga_code !!}
 </head>
 @if(app()->getLocale() == 'ae')
 <style>
