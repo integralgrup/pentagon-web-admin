@@ -63,7 +63,7 @@ class FooterInfoController extends Controller
                     $imageName = moveFile($request,$language,'image_' . $language->lang_code, 'footer_logo_en', 'alt_' . $language->lang_code, 'alt_en', $language->images_folder, $tmpImgPath);
                     //dd($imageName);
                 }else{
-                    $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
+                    $imageName = $request->input('old_footer_logo_' . $language->lang_code, null); // Use old image if no new image is uploaded
                 }
 
                 FooterInfo::updateOrCreate(
