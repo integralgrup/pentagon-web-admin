@@ -68,7 +68,7 @@
                           <th>İşlem</th>
                         </tr>
                       </thead>
-                      <tbody class="connectedSortable">
+                      <tbody class="">
                         @foreach($staticTexts as $staticText)
                         <tr>
                           <td>

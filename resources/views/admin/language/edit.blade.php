@@ -124,7 +124,7 @@
                                 <label for="catalog_files_folder" class="form-label">Katalog Dosyaları Klasörü</label>
                                 <input type="text" class="form-control" id="catalog_files_folder" name="catalog_files_folder" value="{{ $language->catalog_files_folder }}" required>
                             </div>
-                            <div class="mb-2">  
+                            <!--<div class="mb-2">  
                                 <label for="ga_code" class="form-label">Google Analytics Kodu</label>
                                 <textarea class="form-control" id="ga_code" name="ga_code">{{ $language->ga_code }}</textarea>
                             </div>
@@ -135,7 +135,7 @@
                             <div class="mb-2">  
                                 <label for="bitrix_widget_code" class="form-label">Bitrix Widget Kodu</label>
                                 <textarea class="form-control" id="bitrix_widget_code" name="bitrix_widget_code">{{ $language->bitrix_widget_code }}</textarea>
-                            </div>
+                            </div>-->
                             <div class="mb-2">
                                 <label for="sort" class="form-label">Sıralama</label>
                                 <input type="number" class="form-control" id="sort" name="sort" value="{{ $language->sort }}" required>

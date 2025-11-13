@@ -157,22 +157,20 @@
                                         </div>
 
                                         <!-- GA Code -->
-                                        <div class="mb-2">
+                                        <!--<div class="mb-2">
                                             <label for="ga_code" class="form-label">Google Analytics Code</label>
                                             <textarea name="ga_code" id="ga_code" class="form-control"></textarea>
                                         </div>
 
-                                        <!-- Bitrix Form Code -->
                                         <div class="mb-2">
                                             <label for="bitrix_form_code" class="form-label">Bitrix Form Code</label>
                                             <textarea name="bitrix_form_code" id="bitrix_form_code" class="form-control"></textarea>
                                         </div>
 
-                                        <!-- Bitrix Widget Code -->
                                         <div class="mb-2">
                                             <label for="bitrix_widget_code" class="form-label">Bitrix Widget Code</label>
                                             <textarea name="bitrix_widget_code" id="bitrix_widget_code" class="form-control"></textarea>
-                                        </div>
+                                        </div>-->
 
                                         <!-- Sort -->
                                         <div class="mb-2">

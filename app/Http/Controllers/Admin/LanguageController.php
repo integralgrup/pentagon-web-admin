@@ -126,7 +126,7 @@ class LanguageController extends Controller
 
             // Redirect back with success message
             return redirect()->back()
-                         ->with('success', 'Language item created successfully!');
+                         ->with('success', 'Dil ayarları başarıyla kaydedildi!');
             //return redirect()->route('admin.menu')->with('success', 'Menu item created successfully.');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => 'Failed to create language item: ' . $e->getMessage()]);
