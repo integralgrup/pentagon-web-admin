@@ -104,6 +104,12 @@
                     </a>
                   </li>
                   <li class="nav-item">
+                    <a href="{{ route('admin.static_image.index') }}" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>Sabit Görsel Yönetimi</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
                     <a href="{{ route('admin.footer_info.create') }}" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Footer İletişim Yönetimi</p>

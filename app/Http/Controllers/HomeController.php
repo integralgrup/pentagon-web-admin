@@ -21,12 +21,28 @@ use App\Models\CatalogGroup;
 use App\Models\Office;
 use App\Models\Page;
 use App\Models\SeoSettings;
+use App\Models\StaticImage;
 use App\Models\Code;
 use Illuminate\Support\Facades\DB;
 
 
 class HomeController extends Controller
 {
+
+    // construct function
+    public function __construct()
+    {
+        $static_images = StaticImage::where('lang', app()->getLocale())->get();
+
+        foreach($static_images as $image) {
+            $imagesByTitle[$image->title] = $image;
+        }
+
+
+        view()->share('static_images', $imagesByTitle);
+
+        //dd($imagesByTitle);
+    }
     public function index()
     {
 
@@ -59,6 +75,8 @@ class HomeController extends Controller
 
             //return $this->copyDB($lang);
         }
+
+        
 
         $menu = Menu::where(['seo_url' => $slug, 'lang' => app()->getLocale()])->firstOrFail();
         //dd($menu);

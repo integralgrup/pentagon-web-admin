@@ -15,8 +15,8 @@
     <!-- Önbellek tutmasın diye ekledim; '?id<?= rand(); ?>' yazısını silersin -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css?id=' . rand()) }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/image/trademark/favicon/apple-touch-icon.png') }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/image/trademark/favicon/favicon-32x32.png') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/image/trademark/favicon/favicon-16x16.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset( getFolder(['uploads_folder', 'images_folder'], app()->getLocale()) . '/' . $static_images['favicon']->image )  }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset( getFolder(['uploads_folder', 'images_folder'], app()->getLocale()) . '/' . $static_images['favicon']->image )  }}">
     <link rel="manifest" href="{{ asset('assets/image/trademark/favicon/site.webmanifest') }}">
     <link rel="mask-icon" href="{{ asset('assets/image/trademark/favicon/safari-pinned-tab.svg') }}" color="#b6a36b">
     <link rel="shortcut icon" href="{{ asset('assets/image/trademark/favicon/favicon.ico') }}" type="image/x-icon">
@@ -32,6 +32,10 @@
         //dd($language);
     ?>  
     {!! $code->ga_code !!}
+    {!! $code->yandex_metrica_code !!}
+    {!! $code->facebook_pixel_code !!}
+    {!! $code->microsoft_clarity_code !!}
+    {!! $code->google_tag_manager_head_code !!}
 </head>
 @if(app()->getLocale() == 'ae')
 <style>
@@ -51,6 +55,7 @@
 </script>
 
 <body class="antialiased font-sans [background:linear-gradient(0deg,_#FBFAF6_0%,_#FBFAF6_100%),_#FFF] [&.contact]:!bg-white group/body">
+{!! $code->google_tag_manager_body_code !!}
 <!-- Get Menu items from app\Models\Menu which is not deleted -->
 <?php $menuItems = App\Models\Menu::where(['lang' => app()->getLocale(), 'parent_menu_id' => 0, 'menu_type' => 'header'])->where('deleted_at', null)->orderBy('sort')->get(); ?>
 <header class="group/header peer header-field h-[112px] sm:h-[80px] z-100 fixed w-full left-0 top-0 duration-500 bg-transparent [&.contact]:bg-[#FCFBF7] [&.contact]:xs:bg-[#FCFBF7]/50 will-change-[height,transform] [&.is-fixed]:!top-0 [&.is-fixed]:!translate-y-0 [&.is-fixed]:bg-[#FCFBF7] [&.is-fixed]:shadow-header [&.is-hidden.is-fixed]:!-translate-y-full [&.is-hidden.is-fixed]:shadow-none [&.no-scroll]:absolute [&.no-scroll]:!transform-none [&.no-scroll]:!shadow-none [&.mobile-menu-active]:bg-white">

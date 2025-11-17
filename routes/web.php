@@ -227,6 +227,13 @@ Route::post('/admin/static-text/store', 'App\Http\Controllers\Admin\StaticTextCo
 Route::get('/admin/static-text/{id}/edit', 'App\Http\Controllers\Admin\StaticTextController@edit')->name('admin.static_text.edit');
 Route::delete('/admin/static-text/{id}', 'App\Http\Controllers\Admin\StaticTextController@destroy')->name('admin.static_text.destroy');
 
+// Static Image routes
+Route::get('/admin/static-image', 'App\Http\Controllers\Admin\StaticImageController@index')->name('admin.static_image.index');
+Route::get('/admin/static-image/create', 'App\Http\Controllers\Admin\StaticImageController@create')->name('admin.static_image.create');
+Route::post('/admin/static-image/store', 'App\Http\Controllers\Admin\StaticImageController@store')->name('admin.static_image.store');
+Route::get('/admin/static-image/{id}/edit', 'App\Http\Controllers\Admin\StaticImageController@edit')->name('admin.static_image.edit');
+Route::delete('/admin/static-image/{id}', 'App\Http\Controllers\Admin\StaticImageController@destroy')->name('admin.static_image.destroy');
+
 // FooterInfo routes
 Route::get('/admin/footer-info', 'App\Http\Controllers\Admin\FooterInfoController@index')->name('admin.footer_info.index');
 Route::get('/admin/footer-info/create', 'App\Http\Controllers\Admin\FooterInfoController@create')->name('admin.footer_info.create');

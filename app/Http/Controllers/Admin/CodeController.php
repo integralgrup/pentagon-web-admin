@@ -61,8 +61,8 @@ class CodeController extends Controller
                     'yandex_metrica_code' => 'nullable|string',
                     'facebook_pixel_code' => 'nullable|string',
                     'microsoft_clarity_code' => 'nullable|string',
-                    //'extra_code_1' => 'nullable|string',
-                    //'extra_code_2' => 'nullable|string',
+                    'google_tag_manager_head_code' => 'nullable|string',
+                    'google_tag_manager_body_code' => 'nullable|string',
                 ]);
 
                 
@@ -77,8 +77,8 @@ class CodeController extends Controller
                         'yandex_metrica_code' => $request->input('yandex_metrica_code_' . $language->lang_code) ?? $request->input('yandex_metrica_code_en'),
                         'facebook_pixel_code' => $request->input('facebook_pixel_code_' . $language->lang_code) ?? $request->input('facebook_pixel_code_en'),
                         'microsoft_clarity_code' => $request->input('microsoft_clarity_code_' . $language->lang_code) ?? $request->input('microsoft_clarity_code_en'),
-                        //'extra_code_1' => $request->extra_code_1,
-                        //'extra_code_2' => $request->extra_code_2
+                        'google_tag_manager_head_code' => $request->input('google_tag_manager_head_code_' . $language->lang_code) ?? $request->input('google_tag_manager_head_code_en'),
+                        'google_tag_manager_body_code' => $request->input('google_tag_manager_body_code_' . $language->lang_code) ?? $request->input('google_tag_manager_body_code_en')
                     ]
                 );
             }

@@ -27,7 +27,7 @@ class Code extends Model
         'yandex_metrica_code',
         'facebook_pixel_code',
         'microsoft_clarity_code',
-        'extra_code_1',
-        'extra_code_2'
+        'google_tag_manager_head_code',
+        'google_tag_manager_body_code'
     ];
 }

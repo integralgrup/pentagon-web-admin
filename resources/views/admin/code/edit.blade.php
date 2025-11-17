@@ -65,14 +65,15 @@
                                         <label for="ga_code_{{ $language->lang }}" class="form-label">Google Analytics Kodu</label>
                                         <textarea class="form-control" id="ga_code_{{ $language->lang }}" name="ga_code_{{ $language->lang }}">{{ $language->ga_code }}</textarea>
                                     </div>
-                                    <div class="mb-2">
-                                        <label for="bitrix_form_code_{{ $language->lang }}" class="form-label">Bitrix Form Kodu</label>
-                                        <textarea class="form-control" id="bitrix_form_code_{{ $language->lang }}" name="bitrix_form_code_{{ $language->lang }}">{{ $language->bitrix_form_code }}</textarea>
+                                    <div class="mb-2">  
+                                        <label for="google_tag_manager_head_code_{{ $language->lang }}" class="form-label">Google Tag Manager (Head) Kodu</label>
+                                        <textarea class="form-control" id="google_tag_manager_head_code_{{ $language->lang }}" name="google_tag_manager_head_code_{{ $language->lang }}">{{ $language->google_tag_manager_head_code }}</textarea>
                                     </div>
                                     <div class="mb-2">  
-                                        <label for="bitrix_widget_code_{{ $language->lang }}" class="form-label">Bitrix Widget Kodu</label>
-                                        <textarea class="form-control" id="bitrix_widget_code_{{ $language->lang }}" name="bitrix_widget_code_{{ $language->lang }}">{{ $language->bitrix_widget_code }}</textarea>
+                                        <label for="google_tag_manager_body_code_{{ $language->lang }}" class="form-label">Google Tag Manager (Body) Kodu</label>
+                                        <textarea class="form-control" id="google_tag_manager_body_code_{{ $language->lang }}" name="google_tag_manager_body_code_{{ $language->lang }}">{{ $language->google_tag_manager_body_code }}</textarea>
                                     </div>
+                                    
                                     <div class="mb-2">  
                                         <label for="yandex_metrica_code_{{ $language->lang }}" class="form-label">Yandex Metrica Kodu</label>
                                         <textarea class="form-control" id="yandex_metrica_code_{{ $language->lang }}" name="yandex_metrica_code_{{ $language->lang }}">{{ $language->yandex_metrica_code }}</textarea>
@@ -85,14 +86,15 @@
                                         <label for="microsoft_clarity_code_{{ $language->lang }}" class="form-label">Microsoft Clarity Kodu</label>
                                         <textarea class="form-control" id="microsoft_clarity_code_{{ $language->lang }}" name="microsoft_clarity_code_{{ $language->lang }}">{{ $language->microsoft_clarity_code }}</textarea>
                                     </div>
-                                    <!--<div class="mb-2">  
-                                        <label for="extra_code_1_{{ $language->lang }}" class="form-label">Extra Code 1</label>
-                                        <textarea class="form-control" id="extra_code_1_{{ $language->lang }}" name="extra_code_1_{{ $language->lang }}">{{ $language->extra_code_1 }}</textarea>
+                                    <div class="mb-2">
+                                        <label for="bitrix_form_code_{{ $language->lang }}" class="form-label">Bitrix Form Kodu</label>
+                                        <textarea class="form-control" id="bitrix_form_code_{{ $language->lang }}" name="bitrix_form_code_{{ $language->lang }}">{{ $language->bitrix_form_code }}</textarea>
                                     </div>
                                     <div class="mb-2">  
-                                        <label for="extra_code_2_{{ $language->lang }}" class="form-label">Extra Code 2</label>
-                                        <textarea class="form-control" id="extra_code_2_{{ $language->lang }}" name="extra_code_2_{{ $language->lang }}">{{ $language->extra_code_2 }}</textarea>
-                                    </div>-->
+                                        <label for="bitrix_widget_code_{{ $language->lang }}" class="form-label">Bitrix Widget Kodu</label>
+                                        <textarea class="form-control" id="bitrix_widget_code_{{ $language->lang }}" name="bitrix_widget_code_{{ $language->lang }}">{{ $language->bitrix_widget_code }}</textarea>
+                                    </div>
+                                    
                                 </div>
                                 <!-- Submit Button -->
                                 <div class="card-footer">
