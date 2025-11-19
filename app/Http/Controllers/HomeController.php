@@ -84,12 +84,12 @@ class HomeController extends Controller
         if($menu->page_type == 'about') {
             $about = About::where('lang', app()->getLocale())->first();
             
-            $how_we_do = DB::table('about_how_we_do')->where('lang', app()->getLocale())->get()->toArray();
-            $what_we_do =  DB::table('about_what_we_do')->where('lang', app()->getLocale())->get()->toArray();
-            $memberships = DB::table('about_memberships')->where('lang', app()->getLocale())->get()->toArray();
+            $how_we_do = DB::table('about_how_we_do')->where('lang', app()->getLocale())->orderBy('sort')->get()->toArray();
+            $what_we_do =  DB::table('about_what_we_do')->where('lang', app()->getLocale())->orderBy('sort')->get()->toArray();
+            $memberships = DB::table('about_memberships')->where('lang', app()->getLocale())->orderBy('sort')->get()->toArray();
             //debug($memberships);
             $seo = SeoSettings::where('page', 'about')->where('lang', app()->getLocale())->first();
-            $politics = DB::table('about_politics')->where('lang', app()->getLocale())->get()->toArray();
+            $politics = DB::table('about_politics')->where('lang', app()->getLocale())->orderBy('sort')->get()->toArray();
             //dd($politics);
             return view('about', compact('about', 'how_we_do', 'what_we_do', 'memberships', 'politics', 'seo'));
         }

@@ -50,15 +50,15 @@
                     <div class="card-body">
                         <table class="table table-striped dataTable" id="sortable-table">
                             <thead>
-                                <tr>
+                                <tr> 
                                     <th>#</th>
                                     <th>Başlık</th>
                                     <th>İşlemler</th>
                                 </tr>
                             </thead>
-                            <tbody class="connectedSortable">
+                            <tbody class="connectedSortable" table_name="about_what_we_do" column_name="content_id">
                                 @foreach($whatWeDoContent as $item)
-                                    <tr>
+                                    <tr data-id="{{$item->content_id}}">
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->title_1 }}</td>
                                         <td>

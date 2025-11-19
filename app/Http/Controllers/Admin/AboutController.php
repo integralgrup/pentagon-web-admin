@@ -194,6 +194,7 @@ class AboutController extends Controller
         $how_we_do = DB::table('about_how_we_do')
         //where('lang', $request->input('lang', 'en')) // Filter by language if provided
             ->where('lang', $request->input('lang', 'en')) // Filter by language if provided
+            ->orderBy('sort')
             ->get();
         return view('admin.about.how_we_do.index', compact('languages','how_we_do'));
     }
@@ -293,6 +294,7 @@ class AboutController extends Controller
         $whatWeDoContent =  DB::table('about_what_we_do')
         //where('lang', $request->input('lang', 'en')) // Filter by language if provided
             ->where('lang', $request->input('lang', 'en')) // Filter by language if provided
+            ->orderBy('sort')
             ->get();
         $languages = Language::all(); // Fetch all languages for the dropdown
         return view('admin.about.what_we_do.index', compact('whatWeDoContent', 'languages'));
@@ -381,6 +383,7 @@ class AboutController extends Controller
     {
         $membershipsContent = DB::table('about_memberships')
             ->where('lang', $request->input('lang', 'en')) // Filter by language if provided
+            ->orderBy('sort')
             ->get();
         $languages = Language::all();
         return view('admin.about.memberships.index', compact('membershipsContent', 'languages'));
@@ -486,6 +489,7 @@ class AboutController extends Controller
     {
         $politicsContent = DB::table('about_politics')
             ->where('lang', $request->input('lang', 'en')) // Filter by language if provided
+            ->orderBy('sort')
             ->get();
         return view('admin.about.politics.index', compact('politicsContent'));
     }
