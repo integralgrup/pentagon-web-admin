@@ -52,7 +52,8 @@ class HomeController extends Controller
         
         $brands = Brand::where('lang', app()->getLocale())->get();
         $blogs = Blog::where('lang', app()->getLocale())->orderBy('sort')->get();
-        $about = About::where('lang', app()->getLocale())->first();
+        $about = DB::table('about_home')->where('lang', app()->getLocale())->first();
+        
         $seo = SeoSettings::where('page', 'home')->where('lang', app()->getLocale())->first();
 
         //dd($brands);

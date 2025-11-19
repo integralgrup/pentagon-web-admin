@@ -169,6 +169,12 @@
                     </a>
                   </li>
                   <li class="nav-item">
+                    <a href="{{ route('admin.about.home.edit') }}" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>Hakkımızda Anasayfa</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
                     <a href="{{ route('admin.about.how_we_do') }}" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Nasıl Yaparız?</p>

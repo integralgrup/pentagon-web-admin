@@ -571,4 +571,66 @@ class AboutController extends Controller
         }
     }
 
+    // AboutHome edit
+    public function aboutHomeEdit()
+    {
+        $aboutHomeContent = DB::table('about_home')->get();
+        //dd($aboutHomeContent);
+        $languages = Language::all();
+        return view('admin.about.about_home.edit', compact('aboutHomeContent', 'languages'));
+    }
+
+    public function aboutHomeStore(Request $request)
+    {
+        //dd($request->all());
+        try {
+            $languages = Language::all(); // Fetch all languages for the dropdown   
+            foreach ($languages as $language) {
+                // Validate the request data
+                if($language->lang_code == 'en'){
+                    $request->validate([
+                        'lang_' . $language->lang_code => 'required|string|max:10',
+                        'upper_title_' . $language->lang_code => 'required|string|max:100',
+                        'title_' . $language->lang_code => 'required|string|max:100',
+                        'title_1_' . $language->lang_code => 'required|string|max:255',
+                        'description_' . $language->lang_code => 'required|string',
+                        'button_text_' . $language->lang_code => 'required|string|max:50',
+                        'button_url_' . $language->lang_code => 'required|string|max:255',
+                        'image_' . $language->lang_code => 'nullable|image|max:2048',
+                        'alt_' . $language->lang_code => 'required|string|max:255',
+                    ]);
+                }
+                // if request has file image_en but doesn't have image_<lang_code>
+                if ($request->hasFile('image_en') || $request->hasFile('image_' . $language->lang_code)) {
+                    $tmpImgPath = createTmpFile($request, 'image_en', $languages[0]);
+                    $imageName = moveFile($request,$language,'image_' . $language->lang_code, 'image_en', 'alt_' . $language->lang_code, 'alt_en', $language->images_folder, $tmpImgPath);
+                    //dd($imageName);
+                }else{
+                    $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
+                }
+
+                // Create or update the about home content for the specific language
+                DB::table('about_home')->updateOrInsert(
+                    [
+                        'lang' => $language->lang_code,
+                    ],
+                    [
+                        'upper_title' => $request->input('upper_title_' . $language->lang_code) ?: $request->input('upper_title_en'),
+                        'image' => $imageName, // save relative path
+                        'alt' => $request->input('alt_' . $language->lang_code) ?: $request->input('alt_en'),
+                        'button_text' => $request->input('button_text_' . $language->lang_code) ?: $request->input('button_text_en'),
+                        'button_url' => $request->input('button_url_' . $language->lang_code) ?: $request->input('button_url_en'),
+                        'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
+                        'title_1' => $request->input('title_1_' . $language->lang_code) ?? $request->input('title_1_en'),
+                        'description' => $request->input('description_' . $language->lang_code) ?? $request->input('description_en'),
+                    ]
+                );
+            }
+            return redirect()->route('admin.about.home.edit')->with('success', 'Hakkımızda Anasayfa içeriği başarıyla kaydedildi.');
+        } catch (\Exception $e) {
+            throw $e;
+            //return redirect()->back()->withErrors(['error' => 'Hata oluştu: ' . $e->getMessage()]);
+        }
+    }
+
 }

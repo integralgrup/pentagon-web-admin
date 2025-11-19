@@ -85,6 +85,11 @@ Route::get('/admin/about/politics/{id}/edit', 'App\Http\Controllers\Admin\AboutC
 Route::post('/admin/about/politics', 'App\Http\Controllers\Admin\AboutController@politicsUpdate')->name('admin.about.politics.update');
 Route::delete('/admin/about/politics/{id}', 'App\Http\Controllers\Admin\AboutController@politicsDestroy')->name('admin.about.politics.destroy');
 
+// admin/about/home urls
+Route::get('/admin/about/home', 'App\Http\Controllers\Admin\AboutController@aboutHomeEdit')->name('admin.about.home.edit');
+Route::post('/admin/about/home', 'App\Http\Controllers\Admin\AboutController@aboutHomeStore')->name('admin.about.home.store');
+
+
 // blog routes
 Route::get('/admin/blog', 'App\Http\Controllers\Admin\BlogController@index')->name('admin.blog');
 Route::get('/admin/blog/create', 'App\Http\Controllers\Admin\BlogController@create')->name('admin.blog.create');
