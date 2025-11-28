@@ -79,16 +79,16 @@
             <div class="filters flex items-center mb-[50px] md:mb-[30px] md:grid md:grid-cols-2 justify-between">
                 <div class="flex items-center sm:col-span-2 gap-[20px_30px] whitespace-nowrap sm:whitespace-normal">
                     <div class="item flex items-center gap-[10px] sm:w-full sm:justify-between xsm:flex-col xsm:items-start">
-                        <span class="reveal block text-[18px] lg:text-[16px] leading-[25px] font-light text-paragraph tracking-[-0.18px]">Yıla göre filtrele</span>
+                        <span class="reveal block text-[18px] lg:text-[16px] leading-[25px] font-light text-paragraph tracking-[-0.18px]">{{getStaticText(41)}}</span>
                         <div class="reveal custom-dropdown xsm:w-full">
                             <div class="dropdown relative group/dropdown">
                                 <div class="placeholder flex items-center justify-between px-[32px] lg:px-[20px] py-[18px] border border-solid border-black/10 cursor-pointer">
-                                    <span class="text-[16px] lg:text-[15px] leading-[25px] font-medium text-black tracking-[-0.16px] transition-all duration-300 block ltr:mr-[8px] rtl:ml-[8px]">2024</span>
+                                    <span class="text-[16px] lg:text-[15px] leading-[25px] font-medium text-black tracking-[-0.16px] transition-all duration-300 block ltr:mr-[8px] rtl:ml-[8px]"></span>
                                     <i class="icon-angle-down text-[12px] text-black leading-none transition-all duration-300 group-[&.active]/dropdown:rotate-180"></i>
                                 </div>
                                 <div class="dropdown-list w-full bg-white border border-solid border-black/10 overflow-hidden absolute left-0 z-10 transition-all duration-300 opacity-0 pointer-events-none group-[&.active]/dropdown:opacity-100 group-[&.active]/dropdown:pointer-events-auto">
                                     <ul class="flex flex-col gap-[10px] overflow-hidden [&_li]:px-[5px] [&_li]:py-[15px] [&_li]:block hover:[&_li]:bg-black/5 [&_li]:text-[15px] [&_li]:leading-none [&_li]:font-medium [&_li]:text-paragraph [&_li]:transition-all [&_li]:duration-300 hover:[&_li]:text-primary-main [&_li]:w-full [&_li]:text-center [&_li]:cursor-pointer">
-                                        <?php for ($i = 2023; $i >= 2019; $i--): ?>
+                                        <?php $year = date('Y'); for ($i = $year; $i >= $year-3; $i--): ?>
                                             <li><?= $i ?></li>
                                         <?php endfor; ?>
                                     </ul>
@@ -98,19 +98,17 @@
                     </div>
 
                     <div class="item flex items-center gap-[10px] sm:w-full sm:justify-between xsm:flex-col xsm:items-start">
-                        <span class="reveal block text-[18px] lg:text-[16px] leading-[25px] font-light text-paragraph tracking-[-0.18px]">Listeleme Tipi</span>
+                        <span class="reveal block text-[18px] lg:text-[16px] leading-[25px] font-light text-paragraph tracking-[-0.18px]">{{getStaticText(42)}}</span>
                         <div class="reveal custom-dropdown xsm:w-full">
                             <div class="dropdown relative group/dropdown">
                                 <div class="placeholder flex items-center justify-between px-[32px] lg:px-[20px] py-[18px] border border-solid border-black/10 cursor-pointer">
-                                    <span class="text-[16px] lg:text-[15px] leading-[25px] font-medium text-black tracking-[-0.16px] transition-all duration-300 block mr-[8px]">Haber</span>
+                                    <span class="text-[16px] lg:text-[15px] leading-[25px] font-medium text-black tracking-[-0.16px] transition-all duration-300 block mr-[8px]">{{getStaticText(43)}}</span>
                                     <i class="icon-angle-down text-[12px] text-black leading-none transition-all duration-300 group-[&.active]/dropdown:rotate-180"></i>
                                 </div>
                                 <div class="dropdown-list w-full bg-white border border-solid border-black/10 overflow-hidden absolute left-0 z-10 transition-all duration-300 opacity-0 pointer-events-none group-[&.active]/dropdown:opacity-100 group-[&.active]/dropdown:pointer-events-auto">
                                     <ul class="flex flex-col gap-[10px] overflow-hidden [&_li]:px-[5px] [&_li]:py-[15px] [&_li]:block hover:[&_li]:bg-black/5 [&_li]:text-[15px] [&_li]:leading-none [&_li]:font-medium [&_li]:text-paragraph [&_li]:transition-all [&_li]:duration-300 hover:[&_li]:text-primary-main [&_li]:w-full [&_li]:text-center [&_li]:cursor-pointer">
-                                        <li>Blog</li>
-                                        <li>Haber</li>
-                                        <li>Blog</li>
-                                        <li>Haber</li>
+                                        <li>{{getStaticText(43)}}</li>
+                                        <li>{{getStaticText(44)}}</li>
                                     </ul>
                                 </div>
                             </div>
