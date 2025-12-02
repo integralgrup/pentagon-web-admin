@@ -267,6 +267,7 @@
                                                 if(isset($segments[3]) && isset($segments[4])):
                                                     $segments[3] = urldecode($segments[3]);
                                                     $segments[4] = urldecode($segments[4]);
+
                                                     $langParam0 = App\Models\Menu::where(['lang' => app()->getLocale(), 'seo_url' => $segments[3]])->first();
                                                     if(isset($blog)):
                                                         $langParam1 = App\Models\Blog::where(['lang' => app()->getLocale(), 'seo_url' => $segments[4]])->first();
@@ -284,6 +285,7 @@
                                                         $langParam1_new = App\Models\Menu::where(['lang' => $language->lang_code, 'menu_id' => $langParam1->menu_id])->first();
                                                     endif;
                                                     //dd($langParam0, $langParam1);
+                                                    //dd($langParam1_new);
                                                     if($langParam0 && $langParam1):
                                                         $url = $language->domain . '/' . $langParam0_new->seo_url . '/' . $langParam1_new->seo_url;
                                                     endif;
