@@ -6,7 +6,7 @@
     <!-- Homepage -->
     <url>
         <loc>{{ url('/') }}</loc>
-        <lastmod>{{ now()->toAtomString() }}</lastmod>
+        <lastmod>{{ now('Y-m-d')->toAtomString() }}</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
