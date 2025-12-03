@@ -30,9 +30,9 @@
 
         <url>
             <loc>{{ url('/' . $pageParam . $menu->seo_url) }}</loc>
-            <lastmod>{{ $menu->created_at }}</lastmod>
+            <lastmod>{{ date('Y-m-d', strtotime($menu->created_at)) }}</lastmod>
             <changefreq>weekly</changefreq>
-            <priority>0.8</priority>
+            <priority>0.9</priority>
         </url>
     @endforeach
 
@@ -40,9 +40,9 @@
     @foreach ($blogs as $blog)
         <url>
             <loc>{{ url('/' . getUrl('blog_url') . '/' . $blog->seo_url) }}</loc>
-            <lastmod>{{ $blog->created_at }}</lastmod>
+            <lastmod>{{ date('Y-m-d', strtotime($blog->created_at)) }}</lastmod>
             <changefreq>weekly</changefreq>
-            <priority>0.7</priority>
+            <priority>0.9</priority>
         </url>
     @endforeach
 
@@ -50,9 +50,9 @@
     @foreach ($careerJobs as $careerJob)
         <url>
             <loc>{{ url('/' . getUrl('career_url') . '/' . $careerJob->seo_url) }}</loc>
-            <lastmod>{{ $careerJob->created_at }}</lastmod>
+            <lastmod>{{ date('Y-m-d', strtotime($careerJob->created_at)) }}</lastmod>
             <changefreq>weekly</changefreq>
-            <priority>0.6</priority>
+            <priority>0.9</priority>
         </url>
     @endforeach
 
